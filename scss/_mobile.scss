@@ -1,9 +1,31 @@
 //XL Screens or Wide Screens
+@import url('https://fonts.googleapis.com/css2?family=Acme&family=Cedarville+Cursive&family=Dancing+Script:wght@700&family=Parisienne&family=Quicksand:wght@700&family=Yellowtail&display=swap');
 @include mediaXl {
+	.about-me {
+		text-align: justify;
+		font-size: 18px;
+		text-indent: 0px;
+		margin: 0;
+		font-family: 'Dancing Script', cursive;
+		line-height: 30px;
+		padding: 4px;
+		word-spacing: 1px;
+		letter-spacing: 1px;
+	}
 }
 
 //Desktops and Laptops
 @include mediaLg {
+	.about-me {
+		font-size: 18px;
+		text-indent: 0px;
+		margin: 0;
+		line-height: 20px;
+		padding: 4px;
+		font-family: 'Dancing Script', cursive;
+		word-spacing: 1px;
+		letter-spacing: 1px;
+	}
 }
 //Tablets
 @include mediaMd {
@@ -38,6 +60,21 @@
 			height: 150px;
 		}
 	}
+	.about-info {
+		grid-template-areas:
+			'bioimage'
+			'bio'
+			'job1'
+			'job2'
+			'job3';
+		grid-template-columns: 1fr;
+		.about-me {
+			letter-spacing: 2.5px;
+			font-size: 13px;
+			font-family: 'Quicksand', sans-serif;
+			word-spacing: 1px;
+		}
+	}
 }
 
 //Smart Phones
@@ -46,3 +83,10 @@
 		margin-top: 10vh;
 	}
 }
+
+/*font-family: 'Acme', sans-serif;
+font-family: 'Cedarville Cursive', cursive;
+font-family: 'Dancing Script', cursive;
+font-family: 'Parisienne', cursive;
+font-family: 'Quicksand', sans-serif;
+font-family: 'Yellowtail', cursive;*/

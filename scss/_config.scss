@@ -1,4 +1,4 @@
-$primary-color: #1e2129;
+$primary-color: #444;
 $secondary-color: #eece1a;
 $show-home-image: true;
 $home-image: url(../img/blur-close-up.jpg);
@@ -12,6 +12,7 @@ $background-opacity: 0.9;
 			background: $home-image;
 			background-attachment: fixed;
 			background-size: cover;
+			background-repeat: no-repeat;
 			&:after {
 				content: '';
 				position: absolute;
@@ -23,6 +24,14 @@ $background-opacity: 0.9;
 				background: rgba($primary-color, $background-opacity);
 			}
 		}
+	}
+}
+//Set text Color
+@function set-text-color($color) {
+	@if (lightness($color) >40) {
+		@return black;
+	} @else {
+		@return white;
 	}
 }
 //Media Query Mixins

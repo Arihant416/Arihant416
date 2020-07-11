@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Acme&family=Cedarville+Cursive&family=Dancing+Script:wght@700&family=Parisienne&family=Quicksand:wght@700&family=Yellowtail&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Acme&family=Cedarville+Cursive&family=Dancing+Script:wght@700&family=Parisienne&family=Quicksand:wght@700&family=Yellowtail&display=swap");
 .menu-btn {
   position: absolute;
   z-index: 3;
@@ -10,7 +11,7 @@
     width: 28px;
     height: 3px;
     margin: 0 0 5px 0;
-    background: #fff;
+    background: white;
     border-radius: 3px;
     transition: all 0.3s ease-out; }
   .menu-btn.close {
@@ -43,14 +44,14 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background: #13151a;
+    background: #373737;
     list-style: none;
     transform: translate3d(0, -100%, 0);
     transition: all 0.3s ease-out; }
     .menu-nav.show {
       transform: translate3d(0, 0, 0); }
   .menu-branding {
-    background: #1a1c23;
+    background: #3f3f3f;
     transform: translate3d(0, 100%, 0);
     transition: all 0.3s ease-out; }
     .menu-branding.show {
@@ -75,7 +76,7 @@
     text-transform: uppercase;
     padding: 1rem 0;
     font-weight: 300;
-    color: #fff;
+    color: white;
     text-decoration: none;
     transition: all 0.3s ease-out; }
     .menu .nav-link:hover {
@@ -92,6 +93,152 @@
 
 .nav-item:nth-child(4) {
   transition-delay: 0.4s; }
+
+* {
+  box-sizing: border-box; }
+
+body {
+  background: #444;
+  color: white;
+  height: 100%;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.5; }
+  body#bg-img {
+    background: url(../img/blur-close-up.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat; }
+    body#bg-img:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: rgba(68, 68, 68, 0.9); }
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-weight: 400; }
+  h1.lg-heading,
+  h2.lg-heading,
+  h3.lg-heading {
+    font-family: 'Dancing Script', cursive;
+    font-size: 5rem; }
+  h1.sm-heading,
+  h2.sm-heading,
+  h3.sm-heading {
+    margin-bottom: 2rem;
+    padding: 0.2rem 1rem;
+    background: rgba(74, 74, 74, 0.2);
+    font-family: 'Quicksand', sans-serif; }
+    h1.sm-heading:hover,
+    h2.sm-heading:hover,
+    h3.sm-heading:hover {
+      color: #25af86;
+      transition: all 0.3s ease-out; }
+  h1 .icon-code:hover,
+  h2 .icon-code:hover,
+  h3 .icon-code:hover {
+    color: teal;
+    transition: all 0.3s ease-out;
+    cursor: default; }
+
+a {
+  color: white;
+  text-decoration: none; }
+
+header {
+  position: fixed;
+  z-index: 2;
+  width: 100%; }
+
+.text-secondary {
+  color: #eece1a; }
+
+main {
+  padding: 4rem;
+  min-height: calc(100vh-60px); }
+  main .icons {
+    margin-top: 1rem; }
+    main .icons a {
+      padding: 0.4rem; }
+    main .icons .github:hover {
+      color: #030303;
+      transition: all 0.3s ease-out; }
+    main .icons .facebook:hover {
+      color: #3434ec;
+      transition: all 0.3s ease-out; }
+    main .icons .linkedin:hover {
+      color: teal;
+      transition: all 0.3s ease-out; }
+    main .icons .twitter:hover {
+      color: #02b3b3;
+      transition: all 0.3s ease-out; }
+  main#home {
+    overflow: hidden; }
+    main#home h1 {
+      margin-top: 20vh; }
+
+.about-info {
+  display: grid;
+  grid-gap: 30px;
+  grid-template-areas: 'bioimage bio bio' 'job1 job2 job3';
+  grid-template-columns: repeat(3, 1fr); }
+  .about-info .bio-image {
+    grid-area: bioimage;
+    margin: auto;
+    border-radius: 50%;
+    border: solid 2px #eece1a; }
+  .about-info .bio {
+    grid-area: bio;
+    font-size: 1.5rem; }
+  .about-info .job-1 {
+    grid-area: job1; }
+  .about-info .job-2 {
+    grid-area: job2; }
+  .about-info .job-3 {
+    grid-area: job3; }
+  .about-info .job {
+    background: #515151;
+    padding: 0.5rem;
+    border-bottom: #eece1a 1px solid;
+    border-radius: 5px; }
+
+#main-footer {
+  text-align: center;
+  padding: 1rem;
+  background: #353535;
+  color: white;
+  height: 60px;
+  font-family: 'Dancing Script', cursive; }
+
+@media screen and (min-width: 1171px) {
+  .about-me {
+    text-align: justify;
+    font-size: 18px;
+    text-indent: 0px;
+    margin: 0;
+    font-family: 'Dancing Script', cursive;
+    line-height: 30px;
+    padding: 4px;
+    word-spacing: 1px;
+    letter-spacing: 1px; } }
+
+@media screen and (min-width: 769px) and (max-width: 1170px) {
+  .about-me {
+    font-size: 18px;
+    text-indent: 0px;
+    margin: 0;
+    line-height: 20px;
+    padding: 4px;
+    font-family: 'Dancing Script', cursive;
+    word-spacing: 1px;
+    letter-spacing: 1px; } }
 
 @media screen and (max-width: 768px) {
   main {
@@ -118,102 +265,26 @@
     .menu-branding .portrait {
       background: url("../img/small.jpg");
       width: 150px;
-      height: 150px; } }
+      height: 150px; }
+  .about-info {
+    grid-template-areas: 'bioimage' 'bio' 'job1' 'job2' 'job3';
+    grid-template-columns: 1fr; }
+    .about-info .about-me {
+      letter-spacing: 2.5px;
+      font-size: 13px;
+      font-family: 'Quicksand', sans-serif;
+      word-spacing: 1px; } }
 
 @media screen and (max-width: 500px) {
   main#home h1 {
     margin-top: 10vh; } }
 
-* {
-  box-sizing: border-box; }
-
-body {
-  background: #1e2129;
-  color: #f5ffff;
-  height: 100%;
-  margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.5; }
-  body#bg-img {
-    background: url(../img/blur-close-up.jpg);
-    background-attachment: fixed;
-    background-size: cover; }
-    body#bg-img:after {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      background: rgba(30, 33, 41, 0.9); }
-
-h1,
-h2,
-h3 {
-  margin: 0;
-  font-weight: 400; }
-  h1.lg-heading,
-  h2.lg-heading,
-  h3.lg-heading {
-    font-family: 'Dancing Script', cursive;
-    font-size: 5rem; }
-  h1.sm-heading,
-  h2.sm-heading,
-  h3.sm-heading {
-    margin-bottom: 2rem;
-    padding: 0.2rem 1rem;
-    background: rgba(35, 39, 48, 0.2);
-    font-family: 'Quicksand', sans-serif; }
-    h1.sm-heading:hover,
-    h2.sm-heading:hover,
-    h3.sm-heading:hover {
-      color: darksalmon;
-      transition: all 0.3s ease-out; }
-  h1 .icon-code:hover,
-  h2 .icon-code:hover,
-  h3 .icon-code:hover {
-    color: teal;
-    transition: all 0.3s ease-out;
-    cursor: default; }
-
-a {
-  color: white;
-  text-decoration: none; }
-
-header {
-  position: fixed;
-  z-index: 2;
-  width: 100%; }
-
-.text-secondary {
-  color: #eece1a; }
-
-main {
-  padding: 4rem;
-  height: 100%;
-  text-align: center; }
-  main .icons {
-    margin-top: 1rem; }
-    main .icons a {
-      padding: 0.4rem; }
-    main .icons .github:hover {
-      color: #030303;
-      transition: all 0.3s ease-out; }
-    main .icons .facebook:hover {
-      color: #3434ec;
-      transition: all 0.3s ease-out; }
-    main .icons .linkedin:hover {
-      color: teal;
-      transition: all 0.3s ease-out; }
-    main .icons .twitter:hover {
-      color: #02b3b3;
-      transition: all 0.3s ease-out; }
-  main#home {
-    overflow: hidden; }
-    main#home h1 {
-      margin-top: 20vh; }
-
+/*font-family: 'Acme', sans-serif;
+font-family: 'Cedarville Cursive', cursive;
+font-family: 'Dancing Script', cursive;
+font-family: 'Parisienne', cursive;
+font-family: 'Quicksand', sans-serif;
+font-family: 'Yellowtail', cursive;*/
 /*font-family: 'Acme', sans-serif;
 font-family: 'Cedarville Cursive', cursive;
 font-family: 'Dancing Script', cursive;
