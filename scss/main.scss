@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Dancing+Script:wght@700&family=Parisienne&family=Yellowtail&display=swap');
 @import 'config';
 @import 'menu';
 * {
@@ -16,12 +16,16 @@ body {
 }
 
 //Headings
+.emoji {
+	font-family: sans-serif !important;
+}
 h1,
 h2,
 h3 {
 	margin: 0;
 	font-weight: 400;
 	&.lg-heading {
+		font-family: 'Parisienne', cursive;
 		font-size: 5rem;
 	}
 	&.sm-heading {
