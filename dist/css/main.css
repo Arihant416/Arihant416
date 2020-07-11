@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Dancing+Script:wght@700&family=Parisienne&family=Yellowtail&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Acme&family=Cedarville+Cursive&family=Dancing+Script:wght@700&family=Parisienne&family=Yellowtail&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Acme&family=Cedarville+Cursive&family=Dancing+Script:wght@700&family=Parisienne&family=Quicksand:wght@700&family=Yellowtail&display=swap");
 .menu-btn {
   position: absolute;
   z-index: 3;
@@ -27,7 +26,7 @@
   position: fixed;
   top: 0;
   width: 100%;
-  opacity: 0.95;
+  opacity: 0.9;
   visibility: hidden; }
   .menu.show {
     visibility: visible; }
@@ -41,7 +40,7 @@
     height: 100vh;
     overflow: hidden; }
   .menu-nav {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
     background: #13151a;
@@ -51,7 +50,7 @@
     .menu-nav.show {
       transform: translate3d(0, 0, 0); }
   .menu-branding {
-    background: #1e2129;
+    background: #1a1c23;
     transform: translate3d(0, 100%, 0);
     transition: all 0.3s ease-out; }
     .menu-branding.show {
@@ -59,8 +58,9 @@
     .menu-branding .portrait {
       width: 250px;
       height: 250px;
-      background: url("../img/portfolio.jpg");
-      border: solid 3px #1e2129; }
+      background: url("../img/finalEdit.jpg");
+      border-radius: 50%;
+      border: solid 3px paleturquoise; }
   .menu .nav-item {
     transform: translate3d(600px, 0, 0);
     transition: all 0.3s ease-out; }
@@ -93,6 +93,37 @@
 .nav-item:nth-child(4) {
   transition-delay: 0.4s; }
 
+@media screen and (max-width: 768px) {
+  main {
+    align-items: center;
+    text-align: center; }
+    main .lg-heading {
+      line-height: 1;
+      margin-bottom: 1rem; }
+  ul.menu-nav,
+  div.menu-branding {
+    float: none;
+    width: 100%;
+    min-height: 0; }
+    ul.menu-nav.show,
+    div.menu-branding.show {
+      transform: translate3d(0, 0, 0); }
+  .menu-nav {
+    height: 75vh;
+    transform: translate3d(-100%, 0, 0);
+    font-size: 24px; }
+  .menu-branding {
+    height: 25vh;
+    transform: translate3d(100%, 0, 0); }
+    .menu-branding .portrait {
+      background: url("../img/small.jpg");
+      width: 150px;
+      height: 150px; } }
+
+@media screen and (max-width: 500px) {
+  main#home h1 {
+    margin-top: 10vh; } }
+
 * {
   box-sizing: border-box; }
 
@@ -101,7 +132,7 @@ body {
   color: #f5ffff;
   height: 100%;
   margin: 0;
-  font-family: 'Dancing Script', cursive, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.5; }
   body#bg-img {
     background: url(../img/blur-close-up.jpg);
@@ -117,9 +148,6 @@ body {
       z-index: -1;
       background: rgba(30, 33, 41, 0.9); }
 
-.emoji {
-  font-family: sans-serif !important; }
-
 h1,
 h2,
 h3 {
@@ -128,14 +156,15 @@ h3 {
   h1.lg-heading,
   h2.lg-heading,
   h3.lg-heading {
-    font-family: 'Parisienne', cursive;
+    font-family: 'Dancing Script', cursive;
     font-size: 5rem; }
   h1.sm-heading,
   h2.sm-heading,
   h3.sm-heading {
     margin-bottom: 2rem;
     padding: 0.2rem 1rem;
-    background: rgba(35, 39, 48, 0.2); }
+    background: rgba(35, 39, 48, 0.2);
+    font-family: 'Quicksand', sans-serif; }
     h1.sm-heading:hover,
     h2.sm-heading:hover,
     h3.sm-heading:hover {
@@ -184,3 +213,10 @@ main {
     overflow: hidden; }
     main#home h1 {
       margin-top: 20vh; }
+
+/*font-family: 'Acme', sans-serif;
+font-family: 'Cedarville Cursive', cursive;
+font-family: 'Dancing Script', cursive;
+font-family: 'Parisienne', cursive;
+font-family: 'Quicksand', sans-serif;
+font-family: 'Yellowtail', cursive;*/

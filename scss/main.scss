@@ -1,6 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Dancing+Script:wght@700&family=Parisienne&family=Yellowtail&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Acme&family=Cedarville+Cursive&family=Dancing+Script:wght@700&family=Parisienne&family=Quicksand:wght@700&family=Yellowtail&display=swap');
 @import 'config';
 @import 'menu';
+@import 'mobile';
 * {
 	box-sizing: border-box;
 }
@@ -10,28 +11,26 @@ body {
 	color: #f5ffff;
 	height: 100%;
 	margin: 0;
-	font-family: 'Dancing Script', cursive, 'Segoe UI', Tahoma, Geneva, Verdana,
-		sans-serif;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	line-height: 1.5;
 }
 
 //Headings
-.emoji {
-	font-family: sans-serif !important;
-}
+
 h1,
 h2,
 h3 {
 	margin: 0;
 	font-weight: 400;
 	&.lg-heading {
-		font-family: 'Parisienne', cursive;
+		font-family: 'Dancing Script', cursive;
 		font-size: 5rem;
 	}
 	&.sm-heading {
 		margin-bottom: 2rem;
 		padding: 0.2rem 1rem;
 		background: rgba(lighten($primary-color, 2.5), 0.2);
+		font-family: 'Quicksand', sans-serif;
 		&:hover {
 			color: darksalmon;
 			@include easeOut;
@@ -92,3 +91,10 @@ main {
 		}
 	}
 }
+
+/*font-family: 'Acme', sans-serif;
+font-family: 'Cedarville Cursive', cursive;
+font-family: 'Dancing Script', cursive;
+font-family: 'Parisienne', cursive;
+font-family: 'Quicksand', sans-serif;
+font-family: 'Yellowtail', cursive;*/

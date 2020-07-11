@@ -1,5 +1,4 @@
 //Menu Button
-@import url('https://fonts.googleapis.com/css2?family=Acme&family=Cedarville+Cursive&family=Dancing+Script:wght@700&family=Parisienne&family=Yellowtail&display=swap');
 .menu-btn {
 	position: absolute;
 	z-index: 3;
@@ -44,7 +43,7 @@
 	position: fixed;
 	top: 0;
 	width: 100%;
-	opacity: 0.95;
+	opacity: 0.9;
 	visibility: hidden;
 	&.show {
 		visibility: visible;
@@ -61,8 +60,7 @@
 		overflow: hidden;
 	}
 	&-nav {
-		font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
-			'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 		margin: 0;
 		padding: 0;
 		background: darken($primary-color, 5);
@@ -78,7 +76,7 @@
 
 	//Branding side
 	&-branding {
-		background: $primary-color;
+		background: darken($primary-color, 2);
 		transform: translate3d(0, 100%, 0);
 		@include easeOut;
 
@@ -90,8 +88,9 @@
 		.portrait {
 			width: 250px;
 			height: 250px;
-			background: url('../img/portfolio.jpg');
-			border: solid 3px $primary-color;
+			background: url('../img/finalEdit.jpg');
+			border-radius: 50%;
+			border: solid 3px paleturquoise;
 		}
 	}
 	.nav-item {
