@@ -102,7 +102,7 @@ main {
 		grid-area: bioimage;
 		margin: auto;
 		border-radius: 50%;
-		border: solid 2px $secondary-color;
+		border: solid 2px $primary-color;
 	}
 	.bio {
 		grid-area: bio;
@@ -118,10 +118,69 @@ main {
 		grid-area: job3;
 	}
 	.job {
-		background: lighten($primary-color, 5);
+		background: darken($primary-color, 10);
 		padding: 0.5rem;
 		border-bottom: $secondary-color 1px solid;
 		border-radius: 5px;
+		font-family: 'Dancing Script', cursive;
+		h2 {
+			text-align: center;
+			padding-bottom: 2px;
+			border-bottom: 1px solid darken($secondary-color, 10);
+			cursor: pointer;
+			&:hover {
+				color: black;
+				background: linear-gradient(180deg, #abdede, #d2dcfe);
+				@include easeOut;
+			}
+		}
+		ol {
+			counter-reset: li;
+			list-style: none;
+			*list-style: decimal;
+			padding: 0;
+			text-align: center;
+		}
+		ol {
+			.li-items {
+				padding: auto;
+				font-size: 25px;
+				.fa-node-js {
+					color: green;
+				}
+				.fa-react {
+					color: skyblue;
+				}
+				.fa-database {
+					color: lightgreen;
+				}
+				.fa-python {
+					color: yellowgreen;
+				}
+				.fa-code {
+					color: rgb(40, 167, 226);
+				}
+			}
+			.li-items:hover {
+				text-decoration: complement($primary-color);
+				cursor: pointer;
+				.fa-node-js {
+					color: white;
+				}
+				.fa-react {
+					color: white;
+				}
+				.fa-database {
+					color: white;
+				}
+				.fa-python {
+					color: white;
+				}
+				.fa-code {
+					color: white;
+				}
+			}
+		}
 	}
 }
 
@@ -131,7 +190,12 @@ main {
 	background: darken($primary-color, 6);
 	color: set-text-color($primary-color);
 	height: 60px;
-	font-family: 'Dancing Script', cursive;
+	font-family: 'Acme', sans-serif;
+	&:hover {
+		background: linear-gradient(to right, #acdebf, $primary-color);
+		color: black;
+		@include easeOut;
+	}
 }
 @import 'mobile';
 /*font-family: 'Acme', sans-serif;
