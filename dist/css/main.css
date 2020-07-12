@@ -44,14 +44,14 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background: #082f35;
+    background: #016979;
     list-style: none;
     transform: translate3d(0, -100%, 0);
     transition: all 0.3s ease-out; }
     .menu-nav.show {
       transform: translate3d(0, 0, 0); }
   .menu-branding {
-    background: #0b3b42;
+    background: #017688;
     transform: translate3d(0, 100%, 0);
     transition: all 0.3s ease-out; }
     .menu-branding.show {
@@ -68,7 +68,7 @@
     .menu .nav-item.show {
       transform: translate3d(0, 0, 0); }
     .menu .nav-item.current > a {
-      color: #2f995b; }
+      color: #c7f108; }
   .menu .nav-link {
     display: inline-block;
     position: relative;
@@ -80,7 +80,7 @@
     text-decoration: none;
     transition: all 0.3s ease-out; }
     .menu .nav-link:hover {
-      color: #2f995b; }
+      color: #c7f108; }
 
 .nav-item:nth-child(1) {
   transition-delay: 0.1s; }
@@ -98,7 +98,7 @@
   box-sizing: border-box; }
 
 body {
-  background: #051c1f;
+  background: #01535f;
   color: white;
   height: 100vh;
   margin: 0;
@@ -117,7 +117,7 @@ body {
       width: 100%;
       height: 100%;
       z-index: -1;
-      background: rgba(12, 67, 75, 0.9); }
+      background: rgba(1, 127, 146, 0.9); }
 
 h1,
 h2,
@@ -128,13 +128,14 @@ h3 {
   h2.lg-heading,
   h3.lg-heading {
     font-family: 'Dancing Script', cursive;
-    font-size: 5rem; }
+    font-size: 5rem;
+    text-align: center; }
   h1.sm-heading,
   h2.sm-heading,
   h3.sm-heading {
     margin-bottom: 2rem;
     padding: 0.2rem 1rem;
-    background: rgba(14, 77, 86, 0.2);
+    text-align: center;
     font-family: 'Quicksand', sans-serif; }
     h1.sm-heading:hover,
     h2.sm-heading:hover,
@@ -144,17 +145,11 @@ h3 {
   h1.text-bio,
   h2.text-bio,
   h3.text-bio {
-    text-align: center;
+    font-family: 'Quicksand', cursive;
     background: -webkit-linear-gradient(#f3c809, #10eff7);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent; }
-  h1 .icon-code:hover,
-  h2 .icon-code:hover,
-  h3 .icon-code:hover {
-    color: teal;
-    transition: all 0.3s ease-out;
-    cursor: default; }
 
 a {
   color: white;
@@ -166,26 +161,27 @@ header {
   width: 100%; }
 
 .text-secondary {
-  color: #2f995b; }
+  color: #c7f108; }
 
 main {
   padding: 4rem;
   min-height: calc(100vh-60px); }
   main .icons {
-    margin-top: 1rem; }
+    margin-top: 1rem;
+    text-align: center; }
     main .icons a {
       padding: 0.4rem; }
     main .icons .github:hover {
       color: #030303;
       transition: all 0.3s ease-out; }
     main .icons .facebook:hover {
-      color: #3434ec;
+      color: #0a0abd;
       transition: all 0.3s ease-out; }
     main .icons .linkedin:hover {
-      color: teal;
+      color: #18a9ec;
       transition: all 0.3s ease-out; }
     main .icons .twitter:hover {
-      color: #02b3b3;
+      color: #03d6d6;
       transition: all 0.3s ease-out; }
   main#home {
     overflow: hidden; }
@@ -201,7 +197,7 @@ main {
     grid-area: bioimage;
     margin: auto;
     border-radius: 50%;
-    border: solid 2px #0c434b; }
+    border: solid 2px #017f92; }
   .about-info .bio {
     grid-area: bio;
     font-size: 1.5rem; }
@@ -212,15 +208,15 @@ main {
   .about-info .job-3 {
     grid-area: job3; }
   .about-info .job {
-    background: #051c1f;
+    background: #00272d;
     padding: 0.5rem;
-    border-bottom: #2f995b 1px solid;
+    border-bottom: #c7f108 1px solid;
     border-radius: 5px;
     font-family: 'Dancing Script', cursive; }
     .about-info .job h2 {
       text-align: center;
       padding-bottom: 2px;
-      border-bottom: 1px solid #237244;
+      border-bottom: 1px solid #9ec006;
       cursor: pointer; }
       .about-info .job h2:hover {
         color: black;
@@ -246,7 +242,7 @@ main {
       .about-info .job ol .li-items .fa-code {
         color: #28a7e2; }
     .about-info .job ol .li-items:hover {
-      text-decoration: #4b140c;
+      text-decoration: #921401;
       cursor: pointer; }
       .about-info .job ol .li-items:hover .fa-node-js {
         color: white;
@@ -299,7 +295,7 @@ main {
       background-clip: text;
       -webkit-text-fill-color: transparent; }
     .about-info .job ol .games:hover {
-      background: -webkit-linear-gradient(#ce5c23, #f50202, #cfbd17);
+      background: -webkit-linear-gradient(#14f089, #f502f5, #cfbd17);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent; }
@@ -344,10 +340,10 @@ main {
     transition: all 0.3s ease-out; }
     #contact .boxes div:hover {
       padding: 0.5rem 1.5rem;
-      background: #2f995b;
-      color: white; }
+      background: #c7f108;
+      color: black; }
       #contact .boxes div:hover span {
-        color: white; }
+        color: black; }
 
 .btn, .btn-dark, .btn-light {
   display: block;
@@ -369,11 +365,10 @@ main {
 #main-footer {
   text-align: center;
   padding: 1rem;
-  background: linear-gradient(to right, #0c434b, #2f995b);
+  background: linear-gradient(45deg, darkslategrey, whitesmoke);
   color: black;
   font-family: 'Quicksand', cursive; }
   #main-footer:hover {
-    color: black;
     opacity: 0.8;
     transition: all 0.3s ease-out; }
 
