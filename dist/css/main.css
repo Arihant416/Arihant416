@@ -44,14 +44,14 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background: #373737;
+    background: #082f35;
     list-style: none;
     transform: translate3d(0, -100%, 0);
     transition: all 0.3s ease-out; }
     .menu-nav.show {
       transform: translate3d(0, 0, 0); }
   .menu-branding {
-    background: #3f3f3f;
+    background: #0b3b42;
     transform: translate3d(0, 100%, 0);
     transition: all 0.3s ease-out; }
     .menu-branding.show {
@@ -98,9 +98,9 @@
   box-sizing: border-box; }
 
 body {
-  background: #444;
+  background: #051c1f;
   color: white;
-  height: 100%;
+  height: 100vh;
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.5; }
@@ -117,7 +117,7 @@ body {
       width: 100%;
       height: 100%;
       z-index: -1;
-      background: rgba(68, 68, 68, 0.9); }
+      background: rgba(12, 67, 75, 0.9); }
 
 h1,
 h2,
@@ -134,13 +134,21 @@ h3 {
   h3.sm-heading {
     margin-bottom: 2rem;
     padding: 0.2rem 1rem;
-    background: rgba(74, 74, 74, 0.2);
+    background: rgba(14, 77, 86, 0.2);
     font-family: 'Quicksand', sans-serif; }
     h1.sm-heading:hover,
     h2.sm-heading:hover,
     h3.sm-heading:hover {
       color: #25af86;
       transition: all 0.3s ease-out; }
+  h1.text-bio,
+  h2.text-bio,
+  h3.text-bio {
+    text-align: center;
+    background: -webkit-linear-gradient(#f3c809, #10eff7);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent; }
   h1 .icon-code:hover,
   h2 .icon-code:hover,
   h3 .icon-code:hover {
@@ -193,7 +201,7 @@ main {
     grid-area: bioimage;
     margin: auto;
     border-radius: 50%;
-    border: solid 2px #444; }
+    border: solid 2px #0c434b; }
   .about-info .bio {
     grid-area: bio;
     font-size: 1.5rem; }
@@ -204,7 +212,7 @@ main {
   .about-info .job-3 {
     grid-area: job3; }
   .about-info .job {
-    background: #2b2b2b;
+    background: #051c1f;
     padding: 0.5rem;
     border-bottom: #2f995b 1px solid;
     border-radius: 5px;
@@ -216,7 +224,7 @@ main {
       cursor: pointer; }
       .about-info .job h2:hover {
         color: black;
-        background: linear-gradient(180deg, #abdede, #d2dcfe);
+        background: linear-gradient(180deg, #51a0a0, #d2dcfe);
         transition: all 0.3s ease-out; }
     .about-info .job ol {
       counter-reset: li;
@@ -238,18 +246,73 @@ main {
       .about-info .job ol .li-items .fa-code {
         color: #28a7e2; }
     .about-info .job ol .li-items:hover {
-      text-decoration: #444444;
+      text-decoration: #4b140c;
       cursor: pointer; }
       .about-info .job ol .li-items:hover .fa-node-js {
-        color: white; }
+        color: white;
+        transform: scale(1.5); }
       .about-info .job ol .li-items:hover .fa-react {
-        color: white; }
+        color: blueviolet;
+        transform: scale(1.5); }
       .about-info .job ol .li-items:hover .fa-database {
-        color: white; }
+        color: white;
+        transform: scale(1.5); }
       .about-info .job ol .li-items:hover .fa-python {
-        color: white; }
+        color: darkgoldenrod;
+        transform: scale(1.5); }
       .about-info .job ol .li-items:hover .fa-code {
-        color: white; }
+        color: blue;
+        transform: scale(1.5); }
+      .about-info .job ol .li-items:hover .codechef {
+        background: -webkit-linear-gradient(#f36609, #f78b10);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent; }
+      .about-info .job ol .li-items:hover .gfg {
+        background: -webkit-linear-gradient(#2edb0b, #10f577);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent; }
+      .about-info .job ol .li-items:hover .hackerearth {
+        background: -webkit-linear-gradient(#473b8a, #4c00ff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent; }
+      .about-info .job ol .li-items:hover .hackerrank {
+        background: -webkit-linear-gradient(#2ec708, #bef00a, #8a9e8a);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent; }
+      .about-info .job ol .li-items:hover .leetcode {
+        background: -webkit-linear-gradient(#030100, yellow, #fde403);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent; }
+    .about-info .job ol .music:hover {
+      background: -webkit-linear-gradient(#030100, yellow, #fde403);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent; }
+    .about-info .job ol .series:hover {
+      background: -webkit-linear-gradient(#692401, #0fc2a4, #474638);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent; }
+    .about-info .job ol .games:hover {
+      background: -webkit-linear-gradient(#ce5c23, #f50202, #cfbd17);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent; }
+    .about-info .job ol .coding:hover {
+      background: -webkit-linear-gradient(#490df0, #b3b354, #0f9bf8);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent; }
+    .about-info .job ol .blogs:hover {
+      background: -webkit-linear-gradient(rgba(206, 72, 5, 0.363), #ffff15, #1a1249);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent; }
 
 .projects {
   display: grid;
@@ -300,20 +363,18 @@ main {
   color: #fff; }
 
 .btn-light {
-  background: #919191;
+  background: pink;
   color: #333; }
 
 #main-footer {
-  bottom: 0;
-  left: 0;
   text-align: center;
   padding: 1rem;
-  background: #353535;
-  color: white;
-  font-family: 'Acme', sans-serif; }
+  background: linear-gradient(to right, #0c434b, #2f995b);
+  color: black;
+  font-family: 'Quicksand', cursive; }
   #main-footer:hover {
-    background: linear-gradient(to right, #acdebf, #444);
     color: black;
+    opacity: 0.8;
     transition: all 0.3s ease-out; }
 
 @media screen and (min-width: 1171px) {
@@ -326,7 +387,11 @@ main {
     font-size: 20px;
     font-family: 'Dancing Script';
     word-spacing: 2px;
-    letter-spacing: 1px; } }
+    letter-spacing: 1px;
+    background: -webkit-linear-gradient(#09ebf3, #dbf300);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent; } }
 
 @media screen and (min-width: 769px) and (max-width: 1170px) {
   .text-secondary {
@@ -340,7 +405,11 @@ main {
     padding: 4px;
     font-family: 'Dancing Script', cursive;
     word-spacing: 1px;
-    letter-spacing: 1px; } }
+    letter-spacing: 1px;
+    background: -webkit-linear-gradient(#f3b509, #10aef7);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent; } }
 
 @media screen and (max-width: 768px) {
   main {
@@ -377,7 +446,11 @@ main {
       font-family: 'Quicksand', sans-serif;
       word-spacing: 1px;
       display: flex;
-      flex-flow: column wrap; }
+      flex-flow: column wrap;
+      background: -webkit-linear-gradient(#ca4d4d, #00f867);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent; }
   .projects {
     grid-template-columns: repeat(2, 1fr); } }
 

@@ -13,6 +13,11 @@
 		font-family: 'Dancing Script';
 		word-spacing: 2px;
 		letter-spacing: 1px;
+
+		background: -webkit-linear-gradient(rgb(9, 235, 243), rgb(219, 243, 0));
+		-webkit-background-clip: text;
+		background-clip: text;
+		-webkit-text-fill-color: transparent;
 	}
 }
 
@@ -32,6 +37,11 @@
 		font-family: 'Dancing Script', cursive;
 		word-spacing: 1px;
 		letter-spacing: 1px;
+
+		background: -webkit-linear-gradient(rgb(243, 181, 9), rgb(16, 174, 247));
+		-webkit-background-clip: text;
+		background-clip: text;
+		-webkit-text-fill-color: transparent;
 	}
 }
 //Tablets
@@ -82,6 +92,11 @@
 			word-spacing: 1px;
 			display: flex;
 			flex-flow: column wrap;
+
+			background: -webkit-linear-gradient(rgb(202, 77, 77), rgb(0, 248, 103));
+			-webkit-background-clip: text;
+			background-clip: text;
+			-webkit-text-fill-color: transparent;
 		}
 	}
 	.projects {

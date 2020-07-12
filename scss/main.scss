@@ -6,9 +6,9 @@
 }
 body {
 	@include background;
-	background: $primary-color;
+	background: darken($primary-color, 10);
 	color: set-text-color($primary-color);
-	height: 100%;
+	height: 100vh;
 	margin: 0;
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	line-height: 1.5;
@@ -34,6 +34,14 @@ h3 {
 			color: rgb(37, 175, 134);
 			@include easeOut;
 		}
+	}
+	&.text-bio {
+		text-align: center;
+
+		background: -webkit-linear-gradient(rgb(243, 200, 9), rgb(16, 239, 247));
+		-webkit-background-clip: text;
+		background-clip: text;
+		-webkit-text-fill-color: transparent;
 	}
 	.icon-code:hover {
 		color: teal;
@@ -130,7 +138,7 @@ main {
 			cursor: pointer;
 			&:hover {
 				color: black;
-				background: linear-gradient(180deg, #abdede, #d2dcfe);
+				background: linear-gradient(180deg, #51a0a0, #d2dcfe);
 				@include easeOut;
 			}
 		}
@@ -166,19 +174,121 @@ main {
 				cursor: pointer;
 				.fa-node-js {
 					color: white;
+					transform: scale(1.5);
 				}
 				.fa-react {
-					color: white;
+					color: blueviolet;
+					transform: scale(1.5);
 				}
 				.fa-database {
 					color: white;
+					transform: scale(1.5);
 				}
 				.fa-python {
-					color: white;
+					color: darkgoldenrod;
+					transform: scale(1.5);
 				}
 				.fa-code {
-					color: white;
+					color: blue;
+					transform: scale(1.5);
 				}
+				.codechef {
+					background: -webkit-linear-gradient(
+						rgb(243, 102, 9),
+						rgb(247, 139, 16)
+					);
+					-webkit-background-clip: text;
+					background-clip: text;
+					-webkit-text-fill-color: transparent;
+				}
+				.gfg {
+					background: -webkit-linear-gradient(
+						rgb(46, 219, 11),
+						rgb(16, 245, 119)
+					);
+					-webkit-background-clip: text;
+					background-clip: text;
+					-webkit-text-fill-color: transparent;
+				}
+				.hackerearth {
+					background: -webkit-linear-gradient(
+						rgb(71, 59, 138),
+						rgb(76, 0, 255)
+					);
+					-webkit-background-clip: text;
+					background-clip: text;
+					-webkit-text-fill-color: transparent;
+				}
+				.hackerrank {
+					background: -webkit-linear-gradient(
+						rgb(46, 199, 8),
+						rgb(190, 240, 10),
+						rgb(138, 158, 138)
+					);
+					-webkit-background-clip: text;
+					background-clip: text;
+					-webkit-text-fill-color: transparent;
+				}
+				.leetcode {
+					background: -webkit-linear-gradient(
+						rgb(3, 1, 0),
+						yellow,
+						rgb(253, 228, 3)
+					);
+					-webkit-background-clip: text;
+					background-clip: text;
+					-webkit-text-fill-color: transparent;
+				}
+			}
+			.music:hover {
+				background: -webkit-linear-gradient(
+					rgb(3, 1, 0),
+					yellow,
+					rgb(253, 228, 3)
+				);
+				-webkit-background-clip: text;
+				background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+			.series:hover {
+				background: -webkit-linear-gradient(
+					rgb(105, 36, 1),
+					rgb(15, 194, 164),
+					rgb(71, 70, 56)
+				);
+				-webkit-background-clip: text;
+				background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+			.games:hover {
+				background: -webkit-linear-gradient(
+					rgb(206, 92, 35),
+					rgb(245, 2, 2),
+					rgb(207, 189, 23)
+				);
+				-webkit-background-clip: text;
+				background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+			.coding:hover {
+				background: -webkit-linear-gradient(
+					rgb(73, 13, 240),
+					rgb(179, 179, 84),
+					rgb(15, 155, 248)
+				);
+				-webkit-background-clip: text;
+				background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+			.blogs:hover {
+				background: -webkit-linear-gradient(
+					rgba(206, 72, 5, 0.363),
+					rgb(255, 255, 21),
+					rgb(26, 18, 73)
+				);
+				-webkit-background-clip: text;
+				background-clip: text;
+				-webkit-text-fill-color: transparent;
 			}
 		}
 	}
@@ -252,21 +362,20 @@ main {
 }
 .btn-light {
 	@extend .btn;
-	background: lighten($primary-color, 30);
+	background: lighten(pink, 0);
 	color: #333;
 }
 
 #main-footer {
-	bottom: 0;
-	left: 0;
 	text-align: center;
 	padding: 1rem;
-	background: darken($primary-color, 6);
-	color: set-text-color($primary-color);
-	font-family: 'Acme', sans-serif;
+	background: linear-gradient(to right, $primary-color, $secondary-color);
+	color: black;
+	font-family: 'Quicksand', cursive;
+
 	&:hover {
-		background: linear-gradient(to right, #acdebf, $primary-color);
 		color: black;
+		opacity: 0.8;
 		@include easeOut;
 	}
 }
