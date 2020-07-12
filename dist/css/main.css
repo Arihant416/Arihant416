@@ -263,6 +263,29 @@ main {
       border-color: skyblue;
       transition: all 0.3s ease-out; }
 
+#contact .lg-heading,
+#contact .sm-heading {
+  text-align: center; }
+
+#contact .boxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 1rem; }
+  #contact .boxes div {
+    font-size: 1rem;
+    border: 3px #fff solid;
+    padding: 1.5rem 2.5rem;
+    margin-bottom: 3rem;
+    transition: all 0.3s ease-out; }
+    #contact .boxes div:hover {
+      padding: 0.5rem 1.5rem;
+      background: #2f995b;
+      color: white; }
+      #contact .boxes div:hover span {
+        color: white; }
+
 .btn, .btn-dark, .btn-light {
   display: block;
   padding: 0.5rem 1rem;
@@ -281,11 +304,12 @@ main {
   color: #333; }
 
 #main-footer {
+  bottom: 0;
+  left: 0;
   text-align: center;
   padding: 1rem;
   background: #353535;
   color: white;
-  height: 60px;
   font-family: 'Acme', sans-serif; }
   #main-footer:hover {
     background: linear-gradient(to right, #acdebf, #444);
