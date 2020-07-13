@@ -9,6 +9,7 @@
 		color: skyblue;
 	}
 	.about-me {
+		margin-top: 40px;
 		font-size: 20px;
 		font-family: 'Dancing Script';
 		word-spacing: 2px;
@@ -17,8 +18,22 @@
 		-webkit-background-clip: text;
 		background-clip: text;
 		-webkit-text-fill-color: transparent;
-		&:hover {
-			font-size: 1.4rem;
+	}
+	.about-me-links {
+		font-size: 18px;
+		text-indent: 0px;
+		line-height: 20px;
+		padding: 4px;
+		font-family: 'Dancing Script', cursive;
+		word-spacing: 1px;
+		letter-spacing: 1px;
+		align-self: center;
+		font-size: 1.4rem;
+		.nav-link1 {
+			float: right;
+		}
+		.nav-link2 {
+			float: left;
 		}
 	}
 }
@@ -52,6 +67,23 @@
 		-webkit-text-fill-color: transparent;
 		&:hover {
 			font-size: 1.4rem;
+		}
+	}
+	.about-me-links {
+		font-size: 18px;
+		text-indent: 0px;
+		line-height: 20px;
+		padding: 4px;
+		font-family: 'Dancing Script', cursive;
+		word-spacing: 1px;
+		letter-spacing: 1px;
+		.nav-link1 {
+			float: left;
+			font-size: 1rem;
+		}
+		.nav-link2 {
+			float: right;
+			font-size: 1rem;
 		}
 	}
 }
@@ -104,10 +136,28 @@
 			display: flex;
 			flex-flow: column wrap;
 
-			background: -webkit-linear-gradient(rgb(202, 77, 77), rgb(0, 248, 103));
+			background: -webkit-linear-gradient(rgb(179, 202, 77), rgb(8, 197, 255));
 			-webkit-background-clip: text;
 			background-clip: text;
 			-webkit-text-fill-color: transparent;
+		}
+		.about-me-links {
+			text-indent: 0px;
+			line-height: 20px;
+			padding: 4px;
+			font-family: 'Dancing Script', cursive;
+			word-spacing: 1px;
+			letter-spacing: 1px;
+			.nav-link1 {
+				font-size: 1rem;
+				float: left;
+				color: $secondary-color;
+			}
+			.nav-link2 {
+				font-size: 1rem;
+				float: right;
+				color: $secondary-color;
+			}
 		}
 	}
 }
