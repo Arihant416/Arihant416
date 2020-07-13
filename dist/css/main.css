@@ -140,7 +140,7 @@ h3 {
     h1.sm-heading:hover,
     h2.sm-heading:hover,
     h3.sm-heading:hover {
-      color: #25af86;
+      color: #c7f108;
       transition: all 0.3s ease-out; }
   h1.text-bio,
   h2.text-bio,
@@ -310,17 +310,71 @@ main {
       background-clip: text;
       -webkit-text-fill-color: transparent; }
 
-.projects {
-  display: grid;
-  grid-gap: 0.7rem;
-  grid-template-columns: repeat(3, 1fr); }
-  .projects img {
-    width: 100%;
-    border: 2px solid teal; }
-    .projects img:hover {
-      opacity: 0.5;
-      border-color: skyblue;
-      transition: all 0.3s ease-out; }
+.main {
+  max-width: 1200px;
+  margin: 0 auto; }
+  .main img {
+    height: auto;
+    max-width: 100%;
+    vertical-align: middle; }
+  .main .btn, .main .btn-dark, .main .btn-light {
+    display: inline-block;
+    padding: 0.2rem;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 400;
+    cursor: pointer;
+    background: transparent; }
+  .main .btn:hover, .main .btn-dark:hover, .main .btn-light:hover {
+    background: -webkit-linear-gradient(#f0c60d, #04eea8, #043b5f);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent; }
+  .main .btn-dark {
+    font-weight: 700;
+    color: #000; }
+  .main .btn-light {
+    color: rgba(255, 255, 255, 0.822); }
+  .main .cards {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0; }
+    .main .cards :hover {
+      box-shadow: 10px 20px 0px -20px #0be0bd; }
+  .main .cards_item {
+    display: flex;
+    padding: 0.6rem; }
+  @media (min-width: 40rem) {
+    .main .cards_item {
+      width: 50%; } }
+  @media (min-width: 56rem) {
+    .main .cards_item {
+      width: 33.3333%; } }
+  .main .card {
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0 20px 40px -14px #080000;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; }
+  .main .card_content {
+    padding: 1rem;
+    background: linear-gradient(to top right, #0e6170 40%, #19a1d6 100%); }
+  .main .card_title {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    margin: 0px; }
+  .main .card_text {
+    color: #ffffff;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+    font-weight: 400; }
 
 #contact .lg-heading,
 #contact .sm-heading {
@@ -345,22 +399,12 @@ main {
       #contact .boxes div:hover span {
         color: black; }
 
-.btn, .btn-dark, .btn-light {
-  display: block;
-  padding: 0.5rem 1rem;
-  border: 0;
-  margin-bottom: 0.3rem; }
-  .btn:hover, .btn-dark:hover, .btn-light:hover {
-    background: linear-gradient(to right, skyblue, grey);
-    color: black; }
-
-.btn-dark {
-  background: black;
-  color: #fff; }
-
-.btn-light {
-  background: pink;
-  color: #333; }
+.index-footer {
+  text-align: center;
+  color: rgba(12, 0, 0, 0.781);
+  margin-top: 20px; }
+  .index-footer .heart {
+    color: maroon; }
 
 #main-footer {
   text-align: center;
@@ -371,6 +415,10 @@ main {
   #main-footer:hover {
     opacity: 0.8;
     transition: all 0.3s ease-out; }
+  #main-footer .heart {
+    color: maroon; }
+    #main-footer .heart:hover {
+      transform: scale(1); }
 
 @media screen and (min-width: 1171px) {
   .projects {
@@ -391,8 +439,6 @@ main {
 @media screen and (min-width: 769px) and (max-width: 1170px) {
   .text-secondary {
     text-align: center; }
-  .projects {
-    grid-template-columns: repeat(3, 1fr); }
   .about-me {
     font-size: 18px;
     text-indent: 0px;
@@ -445,15 +491,11 @@ main {
       background: -webkit-linear-gradient(#ca4d4d, #00f867);
       -webkit-background-clip: text;
       background-clip: text;
-      -webkit-text-fill-color: transparent; }
-  .projects {
-    grid-template-columns: repeat(2, 1fr); } }
+      -webkit-text-fill-color: transparent; } }
 
 @media screen and (max-width: 500px) {
   main#home h1 {
-    margin-top: 10vh; }
-  .projects {
-    grid-template-columns: 1fr; } }
+    margin-top: 10vh; } }
 
 /*font-family: 'Acme', sans-serif;
 font-family: 'Cedarville Cursive', cursive;
