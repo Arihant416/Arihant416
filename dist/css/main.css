@@ -317,7 +317,7 @@ main {
     height: auto;
     max-width: 100%;
     vertical-align: middle; }
-  .main .btn, .main .btn-dark, .main .btn-light {
+  .main .btn, .main .btn-dark, .main .btn-light, .main .card_text .btn-bluish {
     display: inline-block;
     padding: 0.2rem;
     font-size: 14px;
@@ -325,7 +325,7 @@ main {
     font-weight: 400;
     cursor: pointer;
     background: transparent; }
-  .main .btn:hover, .main .btn-dark:hover, .main .btn-light:hover {
+  .main .btn:hover, .main .btn-dark:hover, .main .btn-light:hover, .main .card_text .btn-bluish:hover {
     background: -webkit-linear-gradient(#f0c60d, #04eea8, #043b5f);
     -webkit-background-clip: text;
     background-clip: text;
@@ -369,12 +369,22 @@ main {
     letter-spacing: 1px;
     text-transform: capitalize;
     margin: 0px; }
+    .main .card_title:hover {
+      cursor: pointer;
+      background: -webkit-linear-gradient(#131312, #000806, #043b5f);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent; }
   .main .card_text {
     color: #ffffff;
     font-size: 0.875rem;
     line-height: 1.5;
     margin-bottom: 1.25rem;
     font-weight: 400; }
+    .main .card_text .btn-bluish {
+      margin-top: 10px;
+      font-weight: bold;
+      color: darkkhaki; }
 
 #contact .lg-heading,
 #contact .sm-heading {
@@ -434,11 +444,16 @@ main {
     background: -webkit-linear-gradient(#09ebf3, #dbf300);
     -webkit-background-clip: text;
     background-clip: text;
-    -webkit-text-fill-color: transparent; } }
+    -webkit-text-fill-color: transparent; }
+    .about-me:hover {
+      font-size: 1.4rem; } }
 
 @media screen and (min-width: 769px) and (max-width: 1170px) {
   .text-secondary {
     text-align: center; }
+  .about-info {
+    grid-template-areas: 'bioimage' 'bio' 'job1' 'job2' 'job3';
+    grid-template-columns: 1fr; }
   .about-me {
     font-size: 18px;
     text-indent: 0px;
@@ -450,7 +465,9 @@ main {
     background: -webkit-linear-gradient(#f3b509, #10aef7);
     -webkit-background-clip: text;
     background-clip: text;
-    -webkit-text-fill-color: transparent; } }
+    -webkit-text-fill-color: transparent; }
+    .about-me:hover {
+      font-size: 1.4rem; } }
 
 @media screen and (max-width: 768px) {
   main {

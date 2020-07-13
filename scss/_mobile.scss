@@ -13,11 +13,13 @@
 		font-family: 'Dancing Script';
 		word-spacing: 2px;
 		letter-spacing: 1px;
-
 		background: -webkit-linear-gradient(rgb(9, 235, 243), rgb(219, 243, 0));
 		-webkit-background-clip: text;
 		background-clip: text;
 		-webkit-text-fill-color: transparent;
+		&:hover {
+			font-size: 1.4rem;
+		}
 	}
 }
 
@@ -25,6 +27,15 @@
 @include mediaLg {
 	.text-secondary {
 		text-align: center;
+	}
+	.about-info {
+		grid-template-areas:
+			'bioimage'
+			'bio'
+			'job1'
+			'job2'
+			'job3';
+		grid-template-columns: 1fr;
 	}
 	.about-me {
 		font-size: 18px;
@@ -39,6 +50,9 @@
 		-webkit-background-clip: text;
 		background-clip: text;
 		-webkit-text-fill-color: transparent;
+		&:hover {
+			font-size: 1.4rem;
+		}
 	}
 }
 //Tablets

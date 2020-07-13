@@ -377,6 +377,17 @@ main {
 		letter-spacing: 1px;
 		text-transform: capitalize;
 		margin: 0px;
+		&:hover {
+			cursor: pointer;
+			background: -webkit-linear-gradient(
+				rgb(19, 19, 18),
+				rgb(0, 8, 6),
+				rgb(4, 59, 95)
+			);
+			-webkit-background-clip: text;
+			background-clip: text;
+			-webkit-text-fill-color: transparent;
+		}
 	}
 
 	.card_text {
@@ -385,6 +396,13 @@ main {
 		line-height: 1.5;
 		margin-bottom: 1.25rem;
 		font-weight: 400;
+
+		.btn-bluish {
+			@extend .btn;
+			margin-top: 10px;
+			font-weight: bold;
+			color: darkkhaki;
+		}
 	}
 }
 #contact {
