@@ -74,18 +74,34 @@ main {
 		.github:hover {
 			color: rgb(3, 3, 3);
 			@include easeOut();
+			font-size: 10px;
 		}
 		.facebook:hover {
 			color: rgb(10, 10, 189);
 			@include easeOut();
+			font-size: 10px;
 		}
 		.linkedin:hover {
 			color: rgb(24, 169, 236);
 			@include easeOut();
+			font-size: 10px;
 		}
 		.twitter:hover {
 			color: rgb(3, 214, 214);
 			@include easeOut();
+			font-size: 10px;
+		}
+		.resume {
+			font-size: 40px;
+			font-weight: bold;
+			color: black;
+			font-family: 'Dancing Script', sans-serif;
+			&:hover {
+				background: -webkit-linear-gradient(rgb(228, 12, 12), rgb(0, 41, 19));
+				-webkit-background-clip: text;
+				background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
 		}
 	}
 	&#home {
@@ -297,10 +313,12 @@ main {
 		height: auto;
 		max-width: 100%;
 		vertical-align: middle;
+		&:hover {
+			transform: scale(1.1);
+		}
 	}
 	.btn {
 		display: inline-block;
-
 		padding: 0.2rem;
 		font-size: 14px;
 		text-transform: uppercase;
@@ -312,22 +330,26 @@ main {
 	}
 	.btn:hover {
 		background: -webkit-linear-gradient(
-			rgb(240, 198, 13),
-			rgb(4, 238, 168),
+			rgb(255, 208, 0),
+			rgb(255, 255, 255),
 			rgb(4, 59, 95)
 		);
 		-webkit-background-clip: text;
 		background-clip: text;
 		-webkit-text-fill-color: transparent;
+		transform: scale(1.1);
 	}
 	.btn-dark {
 		@extend .btn;
 		font-weight: 700;
 		color: #000;
+		float: right;
 	}
 
 	.btn-light {
 		@extend .btn;
+		font-weight: 700;
+		float: left;
 		color: rgba(255, 255, 255, 0.822);
 	}
 	.cards {
@@ -337,13 +359,13 @@ main {
 		margin: 0;
 		padding: 0;
 		:hover {
-			box-shadow: 10px 20px 0px -20px rgb(11, 224, 189);
+			box-shadow: 10px 20px 0px -20px rgba(141, 48, 48, 0);
 		}
 	}
 
 	.cards_item {
 		display: flex;
-		padding: 0.6rem;
+		padding: 1.2rem;
 	}
 
 	@media (min-width: 40rem) {
@@ -359,7 +381,7 @@ main {
 	}
 	.card {
 		background-color: white;
-		border-radius: 1rem;
+		border-radius: 1.2rem;
 		box-shadow: 0 20px 40px -14px rgb(8, 0, 0);
 		display: flex;
 		flex-direction: column;
@@ -368,7 +390,11 @@ main {
 
 	.card_content {
 		padding: 1rem;
-		background: linear-gradient(to top right, #0e6170 40%, #19a1d6 100%);
+		background: linear-gradient(
+			to top right,
+			darken($primary-color, 10),
+			lighten($primary-color, 10)
+		);
 	}
 	.card_title {
 		color: #ffffff;
@@ -377,12 +403,22 @@ main {
 		letter-spacing: 1px;
 		text-transform: capitalize;
 		margin: 0px;
+		background: -webkit-linear-gradient(
+			rgb(7, 89, 114),
+			rgb(0, 0, 0),
+			rgb(77, 6, 6)
+		);
+		-webkit-background-clip: text;
+		background-clip: text;
+		-webkit-text-fill-color: transparent;
 		&:hover {
+			transform: scaleX(0.9);
+			@include easeOut;
 			cursor: pointer;
 			background: -webkit-linear-gradient(
-				rgb(19, 19, 18),
-				rgb(0, 8, 6),
-				rgb(4, 59, 95)
+				rgb(255, 255, 0),
+				rgb(0, 255, 191),
+				rgb(255, 255, 255)
 			);
 			-webkit-background-clip: text;
 			background-clip: text;
@@ -391,18 +427,12 @@ main {
 	}
 
 	.card_text {
-		color: #ffffff;
+		color: #000000;
 		font-size: 0.875rem;
-		line-height: 1.5;
+		line-height: 1.4;
+		text-shadow: 1px 1px 1px 0 black;
 		margin-bottom: 1.25rem;
-		font-weight: 400;
-
-		.btn-bluish {
-			@extend .btn;
-			margin-top: 10px;
-			font-weight: bold;
-			color: darkkhaki;
-		}
+		font-weight: 550;
 	}
 }
 #contact {
@@ -443,26 +473,32 @@ main {
 .index-footer {
 	text-align: center;
 	color: rgba(12, 0, 0, 0.781);
-	margin-top: 20px;
+	margin-top: 40px;
 	.heart {
 		color: maroon;
+	}
+	&:hover {
+		transform: scale3d(1, 1, 1);
+		color: white;
+		font-size: 20px;
+		@include easeOut;
 	}
 }
 #main-footer {
 	text-align: center;
 	padding: 1rem;
-	background: linear-gradient(45deg, darkslategrey, whitesmoke);
-	color: black;
+	background: linear-gradient(45deg, $primary-color rgb(21, 113, 136));
+	color: whitesmoke;
 	font-family: 'Quicksand', cursive;
 
 	&:hover {
-		opacity: 0.8;
+		transform: scaleX(0.9);
 		@include easeOut;
 	}
 	.heart {
 		color: maroon;
 		&:hover {
-			transform: scale(1);
+			transform: scale(0.9);
 		}
 	}
 }
