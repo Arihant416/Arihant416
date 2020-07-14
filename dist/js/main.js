@@ -32,3 +32,6 @@ function myFunction() {
 		'Almost there , this app will soon be deployed. Please check out the Github Repository😊'
 	);
 }
+function myFunction2() {
+	alert('Sorry, this project is hosted on Glitch, not on GitHub.');
+}

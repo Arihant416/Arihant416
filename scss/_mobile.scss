@@ -1,9 +1,6 @@
 //XL Screens or Wide Screens
 @import url('https://fonts.googleapis.com/css2?family=Acme&family=Cedarville+Cursive&family=Dancing+Script:wght@700&family=Parisienne&family=Quicksand:wght@700&family=Yellowtail&display=swap');
 @include mediaXl {
-	.projects {
-		grid-template-columns: repeat(4, 1fr);
-	}
 	.text-secondary {
 		text-align: center;
 		color: skyblue;
@@ -34,6 +31,11 @@
 		}
 		.nav-link2 {
 			float: left;
+		}
+	}
+	.main {
+		.card_text {
+			display: none;
 		}
 	}
 }
@@ -84,6 +86,11 @@
 		.nav-link2 {
 			float: right;
 			font-size: 1rem;
+		}
+	}
+	.main {
+		.card_text {
+			display: none;
 		}
 	}
 }

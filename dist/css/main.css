@@ -223,7 +223,7 @@ main {
   .about-info .job-3 {
     grid-area: job3; }
   .about-info .job {
-    background: #00272d;
+    background: #01535f;
     padding: 0.5rem;
     border-bottom: #c7f108 1px solid;
     border-radius: 5px;
@@ -375,7 +375,7 @@ main {
       width: 33.3333%; } }
   .main .card {
     background-color: white;
-    border-radius: 1.2rem;
+    border-radius: 0.2rem;
     box-shadow: 0 20px 40px -14px #080000;
     display: flex;
     flex-direction: column;
@@ -389,6 +389,7 @@ main {
     font-weight: 700;
     letter-spacing: 1px;
     text-transform: capitalize;
+    text-align: center;
     margin: 0px;
     background: -webkit-linear-gradient(#075972, black, #4d0606);
     -webkit-background-clip: text;
@@ -398,7 +399,7 @@ main {
       transform: scaleX(0.9);
       transition: all 0.3s ease-out;
       cursor: pointer;
-      background: -webkit-linear-gradient(yellow, #00ffbf, white);
+      background: -webkit-linear-gradient(black, black, #090b8a);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent; }
@@ -409,6 +410,92 @@ main {
     text-shadow: 1px 1px 1px 0 black;
     margin-bottom: 1.25rem;
     font-weight: 550; }
+
+.breaker-projects .main {
+  max-width: 900px;
+  margin: 0 auto; }
+
+.breaker-projects h2 {
+  font-size: 24px;
+  font-weight: 400;
+  text-align: center; }
+
+.breaker-projects img {
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle; }
+
+.breaker-projects .btn, .breaker-projects .btn-dark, .breaker-projects .btn-light {
+  display: inline-block;
+  padding: 0.2rem;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 400;
+  cursor: pointer;
+  background: transparent; }
+
+.breaker-projects .btn:hover, .breaker-projects .btn-dark:hover, .breaker-projects .btn-light:hover {
+  background: -webkit-linear-gradient(#f81b1b, #6e0000, #043b5f);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transform: scale(1.1); }
+
+.breaker-projects .btn-dark {
+  font-weight: 700;
+  color: #000;
+  float: right; }
+
+.breaker-projects .btn-light {
+  font-weight: 700;
+  float: left;
+  color: rgba(236, 55, 55, 0.822); }
+
+.breaker-projects .cards {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+
+.breaker-projects .cards_item {
+  display: flex;
+  padding: 1rem; }
+
+@media (min-width: 40rem) {
+  .breaker-projects .cards_item {
+    width: 50%; } }
+
+@media (min-width: 56rem) {
+  .breaker-projects .cards_item {
+    width: 33.3333%; } }
+
+.breaker-projects .card {
+  background-color: white;
+  border-radius: 0.25rem;
+  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; }
+
+.breaker-projects .card_content {
+  padding: 1rem;
+  background: linear-gradient(to bottom left, #8dd8ef 40%, #ffc39e 100%); }
+
+.breaker-projects .card_title {
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+  margin: 0px; }
+
+.breaker-projects .card_text {
+  color: #000000;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+  font-weight: 400; }
 
 #contact .lg-heading,
 #contact .sm-heading {
@@ -459,8 +546,6 @@ main {
       transform: scale(0.9); }
 
 @media screen and (min-width: 1171px) {
-  .projects {
-    grid-template-columns: repeat(4, 1fr); }
   .text-secondary {
     text-align: center;
     color: skyblue; }
@@ -487,7 +572,9 @@ main {
     .about-me-links .nav-link1 {
       float: right; }
     .about-me-links .nav-link2 {
-      float: left; } }
+      float: left; }
+  .main .card_text {
+    display: none; } }
 
 @media screen and (min-width: 769px) and (max-width: 1170px) {
   .text-secondary {
@@ -522,7 +609,9 @@ main {
       font-size: 1rem; }
     .about-me-links .nav-link2 {
       float: right;
-      font-size: 1rem; } }
+      font-size: 1rem; }
+  .main .card_text {
+    display: none; } }
 
 @media screen and (max-width: 768px) {
   main {
