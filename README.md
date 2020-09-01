@@ -1,3 +1,6 @@
-### Hi there 👋
+### Hi there 👋,
+> Glad to have you onboard.
 
-# Good to have you here
+# I am Arihant.
+# About me
+> I am a senior IT undergraduate at SKIT College Jaipur, passionate about programming primarily in C++, Python & JavaScript. 
