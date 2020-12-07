@@ -1,6 +1,13 @@
-### Hi there 👋,
-> Glad to have you onboard.
+## Hi, 👋
 
-# I am Arihant.
-### About me
-> I am a senior IT undergraduate at SKIT College Jaipur, passionate about programming primarily in C++, Python & JavaScript. 
+I am Arihant, a software/fullstack engineer and computer science enthusiast.
+Find me on
+
+- [LinkedIn](https://linkedin.com/in/arihant416)
+- [Twitter](https://twitter.com/Arihant2302)
+- [HashNode](https://arihant.hashnode.dev)
+- [CodeChef](https://codechef.com/users/arihantchef)
+
+<p>Right now I am working on my DSA Skills and MERN Stack.</p>
+
+> See you folks around, looking forward to connecting with you all.
