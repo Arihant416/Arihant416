@@ -1,6 +1,6 @@
 ## Hi, 👋
 
-I am Arihant, a software/fullstack engineer and computer science enthusiast.
+I am Arihant, a software/fullstack engineer and computer science enthusiast.  
 Find me on
 
 - [LinkedIn](https://linkedin.com/in/arihant416)
