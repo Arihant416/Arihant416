@@ -1,4 +1,4 @@
-# Hi there, I'm Arihant 👋
+# Hi there, I'm <i>Arihant</i> 👋
 
 [![Twitter Follow](https://img.shields.io/twitter/follow/Arihant2302?color=1DA1F2&logo=twitter&style=for-the-badge)](https://twitter.com/intent/follow?original_referer=https%3A%2F%2Fgithub.com%2FArihant2302&screen_name=Arihant2302)
 
@@ -9,20 +9,21 @@
 [<img align="left" style="margin-right:10px"  alt="codeSTACKr | Instagram" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/hackerrank.svg" />](https://hackerrank.com/arihantjain416)
 <br/>
 
-## About me,
+## <em>About me</em>
 
 - 😌I am an engineering student, a developer and to-be technical blogger👀 from &#127470;&#127475;
 
 - 💥Passionate about computer science, open source, web-development & singing.
 
-- 🔭 I’m currently working on <code><img src="https://res.cloudinary.com/arihantcloudinary416/image/upload/v1609745965/mySvgs/web_co8cbw.svg" alt="Web Development" height="21px"></code>
+- 🔭 I’m currently working on <code><img src="https://res.cloudinary.com/arihantcloudinary416/image/upload/v1609745965/mySvgs/web_co8cbw.svg" alt="Web Development" height="21px"></code> ✝ <img src="https://img.shields.io/badge/%F0%9F%92%BB%E2%8C%A8-Data%20Structures%20%26%20Algorithms-blue" alt= "DSA" height="21px">
 
 - 🐱‍🏍We can talk about - Music, Movies/Web-series, coding & life.
 
 - 📫 Find me on: Any of the above platforms,🔝
 
-* ⚡ Dev Tools/Languages:
-<p align="center" style="text-align:center">
+### Dev Tools/Languages
+
+<p align="center" style="text-align:center; display:inline-block;">
 <code><img src="https://res.cloudinary.com/arihantcloudinary416/image/upload/v1609745967/mySvgs/jetbrains_pycharm_zz2hbp.svg" alt="Pycharm" style="vertical-align:top margin:6px 4px" height="21"></code>
 <code><img src="https://res.cloudinary.com/arihantcloudinary416/image/upload/v1609745969/mySvgs/visualstudio_code_in3brk.svg" alt="VSCode" style="vertical-align:top margin:6px 4px" height="21"></code>
 <code><img src="https://res.cloudinary.com/arihantcloudinary416/image/upload/v1609745965/mySvgs/python_cyejqn.svg" alt="Python3" style="vertical-align:top margin:6px 4px" height="21"></code>
