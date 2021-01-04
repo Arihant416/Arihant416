@@ -17,9 +17,9 @@
 
 - 🔭 I’m currently working on <code><img src="https://res.cloudinary.com/arihantcloudinary416/image/upload/v1609745965/mySvgs/web_co8cbw.svg" alt="Web Development" height="21px"></code> ✝ <img src="https://img.shields.io/badge/%F0%9F%92%BB%E2%8C%A8-Data%20Structures%20%26%20Algorithms-blue" alt= "DSA" height="21px">
 
-- 🐱‍🏍We can talk about - Music, Movies/Web-series, coding & life.
+- 🐱‍🏍We can talk about - Music, Movies/Web-series, coding or life changing topics🤣
 
-- 📫 Find me on: Any of the above platforms,🔝
+- 📫 Find me on: Any of the above platforms,🔝. Let's build together 💖
 
 ### Dev Tools/Languages
 
@@ -48,3 +48,5 @@ alt="Nodejs" style="vertical-align:top margin:6px 4px" height="22"></code>
   <img align="center" style="display:block; margin-bottom:20px" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Arihant416&theme=dark" />
   <img align="center"  style="display:block" src="https://github-readme-stats.vercel.app/api?username=Arihant416&show_icons=true&theme=buefy" alt="Arihant's github stats"/>
 </a></p>
+
+<footer align="center" style="font-family: monospace; font-weight: bolder; margin-top:100px">Looking forward to connecting with y'all :)</footer>
