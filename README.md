@@ -21,7 +21,7 @@
 
 - 📫 Find me on: Any of the above platforms,🔝. Let's build together 💖
 
-### Dev Tools/Languages
+### <em>Dev Tools/Languages</em>
 
 <p align="center" style="text-align:center; display:inline-block;">
 <code><img src="https://res.cloudinary.com/arihantcloudinary416/image/upload/v1609745967/mySvgs/jetbrains_pycharm_zz2hbp.svg" alt="Pycharm" style="vertical-align:top margin:6px 4px" height="21"></code>
@@ -43,12 +43,12 @@ alt="Nodejs" style="vertical-align:top margin:6px 4px" height="22"></code>
 
 </p>
 
-<p align="center">
+<p align="center" style="display:block;">
 <a href="https://github.com/Arihant416">
-  <img align="center" style="display:block; margin-bottom:20px" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Arihant416&theme=dark" />
-  <img align="center"  style="display:block" src="https://github-readme-stats.vercel.app/api?username=Arihant416&show_icons=true&theme=buefy" alt="Arihant's github stats"/>
+  <img align="center" style="margin-bottom:20px" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Arihant416&theme=dark" />
+  <img align="center" src="https://github-readme-stats.vercel.app/api?username=Arihant416&show_icons=true&theme=buefy" alt="Arihant's github stats"/>
 </a></p>
 
 ---
 
-      Looking forward to connecting with y'all :)
+<p align="center" style="font-family:monospace; font-weight:bolder; bottom:0">Looking forward to connecting with y'all :)</p>
