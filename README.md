@@ -46,7 +46,7 @@ alt="Nodejs" style="vertical-align:top margin:6px 4px" height="22"></code>
 <p align="center" style="display:block;">
 <a href="https://github.com/Arihant416">
   <img align="center" style="margin-bottom:20px" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Arihant416&theme=dark" />
-  <img align="center" src="https://github-readme-stats.vercel.app/api?username=Arihant416&show_icons=true&theme=buefy" alt="Arihant's github stats"/>
+  <img align="center" src="https://github-readme-stats.vercel.app/api?username=Arihant416&show_icons=true&theme=midnight-purple" alt="Arihant's github stats"/>
 </a></p>
 
 ---
