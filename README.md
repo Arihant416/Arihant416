@@ -49,4 +49,6 @@ alt="Nodejs" style="vertical-align:top margin:6px 4px" height="22"></code>
   <img align="center"  style="display:block" src="https://github-readme-stats.vercel.app/api?username=Arihant416&show_icons=true&theme=buefy" alt="Arihant's github stats"/>
 </a></p>
 
-<footer align="center" style="font-family: monospace; font-weight: bolder; margin-top:100px">Looking forward to connecting with y'all :)</footer>
+---
+
+      Looking forward to connecting with y'all :)
