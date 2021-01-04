@@ -11,17 +11,18 @@
 
 ## About me,
 
-- 😌<em>I am an engineering student, a developer and to-be technical blogger 🐱‍👤from &#127470;&#127475;</em>
-- 💥<em>Passionate about computer science, open source, web-development & singing💖</em>.
+- 😌I am an engineering student, a developer and to-be technical blogger👀 from &#127470;&#127475;
 
-- 🔭<em> I’m currently working on <code><img src="https://res.cloudinary.com/arihantcloudinary416/image/upload/v1609745965/mySvgs/web_co8cbw.svg" alt="Web Development" style="vertical-align:top margin:6px 4px" height="21px"> </em>
+- 💥Passionate about computer science, open source, web-development & singing.
 
-- 💬 Talk to me about: Music, Movies/Web-series, coding & life.
+- 🔭 I’m currently working on <code><img src="https://res.cloudinary.com/arihantcloudinary416/image/upload/v1609745965/mySvgs/web_co8cbw.svg" alt="Web Development" height="21px"></code>
+
+- 🐱‍🏍We can talk about - Music, Movies/Web-series, coding & life.
 
 - 📫 Find me on: Any of the above platforms,🔝
 
-- ⚡ Dev Tools/Languages:
-<p align="center">
+* ⚡ Dev Tools/Languages:
+<p align="center" style="text-align:center">
 <code><img src="https://res.cloudinary.com/arihantcloudinary416/image/upload/v1609745967/mySvgs/jetbrains_pycharm_zz2hbp.svg" alt="Pycharm" style="vertical-align:top margin:6px 4px" height="21"></code>
 <code><img src="https://res.cloudinary.com/arihantcloudinary416/image/upload/v1609745969/mySvgs/visualstudio_code_in3brk.svg" alt="VSCode" style="vertical-align:top margin:6px 4px" height="21"></code>
 <code><img src="https://res.cloudinary.com/arihantcloudinary416/image/upload/v1609745965/mySvgs/python_cyejqn.svg" alt="Python3" style="vertical-align:top margin:6px 4px" height="21"></code>
@@ -35,12 +36,14 @@ alt="HTML" style="vertical-align:top margin:6px 4px" height="21"></code>
 <code><img src="https://img.shields.io/badge/React-%E2%9A%9B-blue" 
 alt="Reactjs" style="vertical-align:top margin:6px 4px" height="22"></code>
 <code><img src="https://img.shields.io/badge/Redux-%E2%9A%9B-purple" 
-alt="Reactjs" style="vertical-align:top margin:6px 4px" height="22"></code>
+alt="Reduxjs" style="vertical-align:top margin:6px 4px" height="22"></code>
+<code><img src="https://img.shields.io/badge/Node-Js-green" 
+alt="Nodejs" style="vertical-align:top margin:6px 4px" height="22"></code>
 
 </p>
 
 <p align="center">
 <a href="https://github.com/Arihant416">
-  <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Arihant416&theme=dark" />
-  <img align="center" src="https://github-readme-stats.vercel.app/api?username=Arihant416&show_icons=true&theme=buefy" alt="Arihant's github stats"/>
+  <img align="center" style="display:block; margin-bottom:20px" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Arihant416&theme=dark" />
+  <img align="center"  style="display:block" src="https://github-readme-stats.vercel.app/api?username=Arihant416&show_icons=true&theme=buefy" alt="Arihant's github stats"/>
 </a></p>
