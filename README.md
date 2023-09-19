@@ -11,13 +11,13 @@
 
 ## <em>About me</em>
 
-- 😌I am an engineering student, a developer and to-be technical blogger👀 from &#127470;&#127475;
+- 😌I am a Software Engineer, currently working in a FinTech Domain, building Backend APIs.
 
-- 💥Passionate about computer science, open source, web-development & singing.
+- 💥Passionate about computer science, open source, web-development, singing and anime(One Piece is real)
 
-- 🔭 I’m currently working on <code><img src="https://res.cloudinary.com/arihantcloudinary416/image/upload/v1609745965/mySvgs/web_co8cbw.svg" alt="Web Development" height="21px"></code> ✝ <img src="https://img.shields.io/badge/%F0%9F%92%BB%E2%8C%A8-Data%20Structures%20%26%20Algorithms-blue" alt= "DSA" height="21px">
+- 🔭I’m currently working on learning System Design techniques and technologies like AWS, Selenium(For Web Automation), Serverless Frameworks, Python, MongoDB and alot more. 
 
-- 🐱‍🏍We can talk about - Music, Movies/Web-series, coding or life changing topics🤣
+- In my previous role, I also got my hands dirty on Frontend Technologies like HTML, CSS, JavaScript(React, Angular, Redux and Node too). 
 
 - 📫 Find me on: Any of the above platforms,🔝. Let's build together 💖
 
