@@ -11,7 +11,7 @@
 
 ## <em>About me</em>
 
-- 😌I am a Software Engineer, currently working in a FinTech Domain, building Backend APIs.
+- 😌I am a Software Engineer, currently working at Perfios, building Backend APIs.
 
 - 💥Passionate about computer science, open source, web-development, singing and anime(One Piece is real)
 
