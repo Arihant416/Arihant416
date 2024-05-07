@@ -20,7 +20,7 @@
 
 - Cloud Technologies: I'm familiar with Azure DevOps and have hands-on experience with AWS Compute services such as Lambda, ECS, CloudFormation, EC2 and S3, Docker. 
 
-- Problem-solving skills: I have a moderately solid foundation in data structures and algorithms, with expertise in C++.
+- I have a moderately solid foundation in data structures and algorithms, with expertise in C++.
 
 - Architectural design: I've utilized Low-Level Design (LLD) and High-Level Design (HLD) methodologies to create scalable and efficient systems.
 
