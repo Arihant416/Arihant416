@@ -11,37 +11,27 @@
 
 ## <em>About me</em>
 
-- 😌I am a Software Engineer, currently working at Perfios, building Backend APIs.
+- 😌Currently contributing as a Senior Member of Technical Team at Perfios, where I'm engaged in crafting pretty cool APIs. 
+- Over the past 3 years, I've delved deep into web development, honing my expertise in both back-end and front-end technologies.
+
+### <em>Here's a breakdown of my technical inclination<em>
+- Front-end technologies: JavaScript (including Angular, React.js, TypeScript), HTML, and CSS. I also have experience with popular frameworks like Bootstrap, Material UI and Materialize CSS.
+
+- Back-end Stack: I've worked extensively with Python, MongoDB, Node.js, Express and am familiar with PostgreSQL, MySQL to build robust back-end APIs.
+
+- Cloud Technologies: I'm familiar with Azure DevOps and have hands-on experience with AWS Compute services such as Lambda, ECS, CloudFormation, EC2 and S3, Docker. 
+
+- Problem-solving skills: I have a moderately solid foundation in data structures and algorithms, with expertise in C++.
+
+- Architectural design: I've utilized Low-Level Design (LLD) and High-Level Design (HLD) methodologies to create scalable and efficient systems.
 
 - 💥Passionate about computer science, open source, web-development, singing and anime(One Piece is real)
 
 - 🔭I’m currently working on learning System Design techniques and technologies like AWS, Selenium(For Web Automation), Serverless Frameworks, Python, MongoDB and alot more. 
 
-- In my previous role, I also got my hands dirty on Frontend Technologies like HTML, CSS, JavaScript(React, Angular, Redux and Node too). 
-
 - 📫 Find me on: Any of the above platforms,🔝. Let's build together 💖
 
-### <em>Dev Tools/Languages</em>
 
-<p align="center" style="text-align:center; display:inline-block;">
-<code><img src="https://res.cloudinary.com/arihantcloudinary416/image/upload/v1609745967/mySvgs/jetbrains_pycharm_zz2hbp.svg" alt="Pycharm" style="vertical-align:top margin:6px 4px" height="21"></code>
-<code><img src="https://res.cloudinary.com/arihantcloudinary416/image/upload/v1609745969/mySvgs/visualstudio_code_in3brk.svg" alt="VSCode" style="vertical-align:top margin:6px 4px" height="21"></code>
-<code><img src="https://res.cloudinary.com/arihantcloudinary416/image/upload/v1609745965/mySvgs/python_cyejqn.svg" alt="Python3" style="vertical-align:top margin:6px 4px" height="21"></code>
-<code><img src="https://res.cloudinary.com/arihantcloudinary416/image/upload/v1609745963/mySvgs/html_yscvbw.svg" alt="HTML" style="vertical-align:top margin:6px 4px" height="21"></code>
-<code><img src="https://res.cloudinary.com/arihantcloudinary416/image/upload/v1609745963/mySvgs/js_ci6xog.svg" 
-alt="JavaScript" style="vertical-align:top margin:6px 4px" height="21"></code>
-<code><img src="https://img.shields.io/badge/%3C%2F%3E-C%2FC%2B%2B-black" 
-alt="C/C++" style="vertical-align:top margin:6px 4px;color:white" height="21"></code>
-<code><img src="https://res.cloudinary.com/arihantcloudinary416/image/upload/v1609745963/mySvgs/html_yscvbw.svg" 
-alt="HTML" style="vertical-align:top margin:6px 4px" height="21"></code>
-<code><img src="https://img.shields.io/badge/React-%E2%9A%9B-blue" 
-alt="Reactjs" style="vertical-align:top margin:6px 4px" height="22"></code>
-<code><img src="https://img.shields.io/badge/Redux-%E2%9A%9B-purple" 
-alt="Reduxjs" style="vertical-align:top margin:6px 4px" height="22"></code>
-<code><img src="https://img.shields.io/badge/Node-Js-green" 
-alt="Nodejs" style="vertical-align:top margin:6px 4px" height="22"></code>
-
-</p>
 
 <p align="center" style="display:block;">
 <a href="https://github.com/Arihant416">
