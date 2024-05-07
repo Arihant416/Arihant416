@@ -2,11 +2,11 @@
 
 [![Twitter Follow](https://img.shields.io/twitter/follow/Arihant2302?color=1DA1F2&logo=twitter&style=for-the-badge)](https://twitter.com/intent/follow?original_referer=https%3A%2F%2Fgithub.com%2FArihant2302&screen_name=Arihant2302)
 
-[<img align="left" style="margin-right:10px; background: white; padding:2px" alt="blogposts" width="22px" src="https://raw.githubusercontent.com/iconic/open-iconic/master/svg/globe.svg" />](https://arihant.hashnode.dev)
-[<img align="left" style="margin-right:10px; background: white; padding:2px"  alt="Arihant | Github" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/github.svg" />](https://github.com/Arihant416)
-[<img align="left" style="margin-right:10px; background: white; padding:2px"  alt="codeSTACKr | Twitter" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/twitter.svg" />](twitter.com/Arihant2302)
-[<img align="left" style="margin-right:10px; background: white; padding:2px"  alt="codeSTACKr | LinkedIn" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/linkedin.svg" />](linkedin.com/in/arihant416)
-[<img align="left" style="margin-right:10px; background: white; padding:2px"  alt="codeSTACKr | Instagram" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/hackerrank.svg" />](https://hackerrank.com/arihantjain416)
+[<img align="left" style="margin-right:10px;  padding:2px" alt="blogposts" width="22px" src="https://raw.githubusercontent.com/iconic/open-iconic/master/svg/globe.svg" />](https://arihant.hashnode.dev)
+[<img align="left" style="margin-right:10px;  padding:2px"  alt="Arihant | Github" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/github.svg" />](https://github.com/Arihant416)
+[<img align="left" style="margin-right:10px;  padding:2px"  alt="codeSTACKr | Twitter" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/twitter.svg" />](twitter.com/Arihant2302)
+[<img align="left" style="margin-right:10px;  padding:2px"  alt="codeSTACKr | LinkedIn" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/linkedin.svg" />](linkedin.com/in/arihant416)
+[<img align="left" style="margin-right:10px;  padding:2px"  alt="codeSTACKr | Instagram" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/hackerrank.svg" />](https://hackerrank.com/arihantjain416)
 <br/>
 
 ## <em>About me</em>
