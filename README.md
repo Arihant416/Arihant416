@@ -4,7 +4,7 @@
 
 [Hashnode](https://arihant.hashnode.dev) |
 [Hackerrank](https://hackerrank.com/arihantjain416) |
-[Twitter](twitter.com/Arihant2302) |
+[Twitter](https://twitter.com/Arihant2302) |
 [LinkedIn](linkedin.com/in/arihant416)
 <br/>
 
