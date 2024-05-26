@@ -33,13 +33,10 @@
 - 📫 Find me on: Any of the above platforms,🔝. Let's build together 💖
 
 
-
-<p align="center" style="display:block;">
-<a href="https://github.com/Arihant416">
-  <img align="center" style="margin: 20px;" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Arihant416&theme=dark" />
-  <img align="center" src="https://github-readme-stats.vercel.app/api?username=Arihant416&show_icons=true&theme=dark" alt="Arihant's github stats"/>
-</a></p>
-
+### 📊 GitHub Stats:
+![](https://github-readme-stats.vercel.app/api?username=Arihant416&theme=merko&hide_border=false&include_all_commits=true&count_private=true)<br/>
+![](https://github-readme-streak-stats.herokuapp.com/?user=Arihant416&theme=merko&hide_border=false)<br/>
+![](https://github-readme-stats.vercel.app/api/top-langs/?username=Arihant416&theme=merko&hide_border=false&include_all_commits=true&count_private=true&layout=compact)
 ---
 
 <p align="center" style="font-family:monospace; font-weight:bolder; bottom:0">Looking forward to connecting with y'all :)</p>
