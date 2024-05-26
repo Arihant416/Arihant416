@@ -1,17 +1,19 @@
-# Hi there, I'm <i>Arihant</i> 👋
+# Hello, I'm <i>Arihant</i> 👋
 
-[![Twitter Follow](https://img.shields.io/twitter/follow/Arihant2302?color=1DA1F2&logo=twitter&style=for-the-badge)](https://twitter.com/intent/follow?original_referer=https%3A%2F%2Fgithub.com%2FArihant2302&screen_name=Arihant2302)
+[![Twitter Follow](https://img.shields.io/twitter/follow/Arihant2302?style=for-the-badge&logo=x&logoColor=white&logoSize=auto&labelColor=black&color=black&link=https%3A%2F%2Ftwitter.com%2FArihant2302)](https://twitter.com/Arihant2302)
 
-[Hashnode](https://arihant.hashnode.dev) |
-[Hackerrank](https://hackerrank.com/arihantjain416) |
-[Twitter](https://twitter.com/Arihant2302) |
-[LinkedIn](linkedin.com/in/arihant416)
-<br/>
+[![Linkedin Follow](https://img.shields.io/twitter/follow/arihant416?style=for-the-badge&logo=linkedin&logoColor=blue&logoSize=auto&labelColor=skyblue&color=skyblue&link=https%3A%2F%2Flinkedin.com%2Fin%2Farihant416)](https://linkedin.com/in/arihant416)
 
-## <em>About me</em>
+[![HackerRank Follow](https://img.shields.io/twitter/follow/arihantjain416?style=for-the-badge&logo=hackerrank&logoSize=large&color=black&link=https%3A%2F%2Fhackerrank.com%2Farihantjain416)](https://hackerrank.com/arihantjain416)
 
-- 😌Currently contributing as a Senior Member of Technical Team at Perfios, where I'm engaged in crafting pretty cool APIs. 
-- Over the past 3 years, I've delved deep into web development, honing my expertise in both back-end and front-end technologies.
+[![HackerEarth Follow](https://img.shields.io/twitter/follow/arihantjain416?style=for-the-badge&logo=Hackerearth&logoSize=large&label=HackerEarth%3A%20Arihant416&link=https%3A%2F%2Fwww.hackerearth.com%2F%40arihant416)](https://www.hackerearth.com/@arihant416)
+
+[![Hashnode Follow](https://img.shields.io/twitter/follow/arihantjain416?style=for-the-badge&logo=hashnode&logoSize=large&label=Hashnode%3A%20arihant&labelColor=blue&color=blue&link=https%3A%2F%2Farihant.hashnode.dev)](https://arihant.hashnode.dev)
+
+
+## <em>Here's some info about me</em>
+
+> *😌 Currently, I'm engaged in crafting pretty cool APIs as a Senior Member of Technical Team at Perfios. Over the past 3 years, I've delved deep into web development, honing my expertise in both back-end and front-end technologies.*
 
 ### <em>Here's a breakdown of my technical inclination<em>
 - Front-end technologies: JavaScript (including Angular, React.js, TypeScript), HTML, and CSS. I also have experience with popular frameworks like Bootstrap, Material UI and Materialize CSS.
@@ -34,7 +36,7 @@
 
 <p align="center" style="display:block;">
 <a href="https://github.com/Arihant416">
-  <img align="center" style="margin: 20px;" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Arihant416&theme=light" />
+  <img align="center" style="margin: 20px;" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Arihant416&theme=dark" />
   <img align="center" src="https://github-readme-stats.vercel.app/api?username=Arihant416&show_icons=true&theme=dark" alt="Arihant's github stats"/>
 </a></p>
 
