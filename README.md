@@ -1,42 +1,48 @@
-# Hello, I'm <i>Arihant</i> 👋
+# **<em>Hi, I'm `Arihant`</em>**
 
-[![Twitter Follow](https://img.shields.io/twitter/follow/Arihant2302?style=for-the-badge&logo=x&logoColor=white&logoSize=auto&labelColor=black&color=black&link=https%3A%2F%2Ftwitter.com%2FArihant2302)](https://twitter.com/Arihant2302)
+## <em>👋 About Me </em>
 
-[![Linkedin Follow](https://img.shields.io/twitter/follow/arihant416?style=for-the-badge&logo=linkedin&logoColor=blue&logoSize=auto&labelColor=skyblue&color=skyblue&link=https%3A%2F%2Flinkedin.com%2Fin%2Farihant416)](https://linkedin.com/in/arihant416)
+Hi there! I'm **Arihant Jain**, a passionate **Software Engineer** with over **3 years of experience** in designing and building robust back-end systems and dynamic front-end applications. 🚀  
 
-[![HackerRank Follow](https://img.shields.io/twitter/follow/arihantjain416?style=for-the-badge&logo=hackerrank&logoSize=large&color=black&link=https%3A%2F%2Fhackerrank.com%2Farihantjain416)](https://hackerrank.com/arihantjain416)
+🌟 **What I Do**  
 
-[![HackerEarth Follow](https://img.shields.io/twitter/follow/arihantjain416?style=for-the-badge&logo=Hackerearth&logoSize=large&label=HackerEarth%3A%20Arihant416&link=https%3A%2F%2Fwww.hackerearth.com%2F%40arihant416)](https://www.hackerearth.com/@arihant416)
+- 💻 Engineer and scale APIs processing over **1M+ daily requests** with a 99.9% uptime.  
+  
+- ⚙️ Expertise in **Python**, and **JavaScript**, with a love for solving complex backend challenges.  
 
-[![Hashnode Follow](https://img.shields.io/twitter/follow/arihantjain416?style=for-the-badge&logo=hashnode&logoSize=large&label=Hashnode%3A%20arihant&labelColor=blue&color=blue&link=https%3A%2F%2Farihant.hashnode.dev)](https://arihant.hashnode.dev)
+- 🌐 Create intuitive front-end applications with **Angular** to enhance user experience.  
 
+🌱 **Currently Exploring**  
 
-## <em>Here's some info about me</em>
+- Advanced **AWS services** to optimize cloud-based architectures.  
 
-> *😌 Currently, I'm engaged in crafting pretty cool APIs as a Senior Member of Technical Team at Perfios. Over the past 3 years, I've delved deep into web development, honing my expertise in both back-end and front-end technologies.*
+- Optimizing **MongoDB** queries for faster data retrieval.  
+  
+- Learning and diving deep into Machine Learning lately (starting 2025);
 
-### <em>Here's a breakdown of my technical inclination<em>
-- Front-end technologies: JavaScript (including Angular, React.js, TypeScript), HTML, and CSS. I also have experience with popular frameworks like Bootstrap, Material UI and Materialize CSS.
+- Mentoring aspiring developers through [**Topmate**](https://topmate.io/arihant), sharing whatever I know and boosting confidence.  
 
-- Back-end Stack: I've worked extensively with Python, MongoDB, Node.js, Express and am familiar with PostgreSQL, MySQL to build robust back-end APIs.
+🎸 **Beyond Code**  
 
-- Cloud Technologies: I'm familiar with Azure DevOps and have hands-on experience with AWS Compute services such as Lambda, ECS, CloudFormation, EC2 and S3, Docker. 
+When I'm not coding, you'll find me:  
 
-- I have a moderately solid foundation in data structures and algorithms, with expertise in C++.
+- 🎶 Strumming my **guitar** or singing my favorite tunes.
 
-- Architectural design: I've utilized Low-Level Design (LLD) and High-Level Design (HLD) methodologies to create scalable and efficient systems.
+- 📺 Binge-watching classics like **One Piece**, **Naruto**, **Hunter x Hunter** and more.  
 
-- 💥Passionate about computer science, open source, web-development, singing and anime(One Piece is real)
+- 🌍 Exploring ways to forge meaningful connections and help others grow.  
 
-- 🔭I’m currently working on learning System Design techniques and technologies like AWS, Selenium(For Web Automation), Serverless Frameworks, Python, MongoDB and alot more. 
+📫 **Let's Connect**
 
-- 📫 Find me on: Any of the above platforms,🔝. Let's build together 💖
+I'm always open to collaborating on exciting projects, brainstorming ideas, or just geeking out about tech and anime. Feel free to reach out!  
 
+Let's build together 💖
 
-### 📊 GitHub Stats:
-![](https://github-readme-stats.vercel.app/api?username=Arihant416&theme=merko&hide_border=false&include_all_commits=true&count_private=true)<br/>
+### 📊 GitHub Stats
+
+![](https://github-readme-stats.vercel.app/api?username=Arihant416&theme=merko&hide_border=false&include_all_commits=true&count_private=false)<br/>
 ![](https://github-readme-streak-stats.herokuapp.com/?user=Arihant416&theme=merko&hide_border=false)<br/>
-![](https://github-readme-stats.vercel.app/api/top-langs/?username=Arihant416&theme=merko&hide_border=false&include_all_commits=true&count_private=true&layout=compact)
+![](https://github-readme-stats.vercel.app/api/top-langs/?username=Arihant416&theme=merko&hide_border=false&include_all_commits=true&count_private=false&layout=compact)
 ---
 
 <p align="center" style="font-family:monospace; font-weight:bolder; bottom:0">Looking forward to connecting with y'all :)</p>
