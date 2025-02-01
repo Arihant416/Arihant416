@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom'; // No need for BrowserRouter import here
+import { Route, Routes , Navigate} from 'react-router-dom'; // No need for BrowserRouter import here
 import Header from './components/Header';
 import Footer from './components/Footer';
 import About from './components/About';
@@ -19,6 +19,7 @@ function App() {
 				<Route path='/projects' element={<Projects />} />
 				<Route path='/skills' element={<Skills />} />
 				<Route path='/contact' element={<Contact />} />
+				<Route path='*' element={<Navigate to='/' replace />} />
 			</Routes>
 			<Footer />
 		</div>
