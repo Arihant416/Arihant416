@@ -12,48 +12,57 @@ const Home = () => {
 			{/* Main Content */}
 			<div className='max-w-4xl mx-auto w-full'>
 				{/* Name */}
-				<motion.h1
+				<motion.h6
 					initial={{ opacity: 0, scale: 0.9 }}
 					animate={{ opacity: 1, scale: 1 }}
 					transition={{ duration: 1, ease: 'easeOut' }}
-					className='text-5xl sm:text-7xl font-extrabold text-white mb-6'
+					className='text-2xl xs:text-4xl font-extrabold text-white mb-6 text-center md:text-3xl'
 				>
 					<span className='text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400'>
-						Arihant Jain
+						Hello!!
 					</span>
-					<span className='ml-4 wave-animation'>👋</span>
-				</motion.h1>
+					<motion.span
+						className='ml-4 wave-animation'
+						animate={{ rotate: [0, 15, 0] }}
+						transition={{ duration: 0.5, repeat: Infinity, ease: 'easeInOut' }}
+					>
+						👋
+					</motion.span>
+				</motion.h6>
 
-				{/* Tagline */}
 				<motion.p
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 1, delay: 0.3, ease: 'easeOut' }}
-					className='text-xl sm:text-2xl text-gray-300 max-w-2xl mx-auto leading-relaxed'
+					className='text-xl sm:text-2xl text-gray-300 max-w-2xl mx-auto leading-relaxed text-center md:text-lg'
 				>
-					<span className='font-medium text-blue-300'>Software Engineer</span>{' '}
+					<span className='font-medium text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400'>
+						I'm Arihant,{' '}
+					</span>
+					<span className='font-medium text-blue-300'>a Software Engineer</span>{' '}
 					specializing in{' '}
-					<span className='font-medium text-purple-300'>API Design</span> and{' '}
-					<span className='font-medium text-blue-300'>Web Development</span>,
-					crafting scalable and efficient digital solutions.
+					<span className='font-medium text-purple-300'>APIs</span> and{' '}
+					<span className='font-medium text-blue-300'>
+						high-performance web solutions
+					</span>
+					.
 				</motion.p>
-
 				{/* Call to Action */}
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 1, delay: 0.6, ease: 'easeOut' }}
+					transition={{ duration: 1, delay: 0.9, ease: 'easeOut' }}
 					className='mt-8 flex flex-col sm:flex-row gap-4 justify-center'
 				>
 					<Link
 						to='/projects'
-						className='px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg shadow-lg hover:shadow-blue-500/30 transition-all duration-300 text-lg font-semibold hover:scale-105'
+						className='w-auto sm:max-w-xs px-6 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg shadow-lg hover:shadow-blue-500/30 transition-all duration-300 text-sm sm:text-lg font-semibold hover:scale-105 hover:translate-y-[-2px]'
 					>
 						View My Work
 					</Link>
 					<Link
 						to='/contact'
-						className='px-8 py-3 border-2 border-blue-400/50 text-white rounded-lg shadow-lg hover:shadow-blue-500/20 transition-all duration-300 text-lg font-semibold hover:scale-105 hover:border-blue-400 hover:bg-blue-500/10'
+						className='w-auto sm:max-w-xs px-6 py-2 border-2 border-blue-400/50 text-white rounded-lg shadow-lg hover:shadow-blue-500/20 transition-all duration-300 text-sm sm:text-lg font-semibold hover:scale-105 hover:border-blue-400 hover:bg-blue-500/10 hover:translate-y-[-2px]'
 					>
 						Get in Touch
 					</Link>
