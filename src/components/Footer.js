@@ -1,4 +1,6 @@
 import { motion } from 'framer-motion';
+import { FaReact } from 'react-icons/fa';
+import { SiTailwindcss } from 'react-icons/si';
 
 export default function Footer() {
 	return (
@@ -188,8 +190,10 @@ export default function Footer() {
 					<p className='text-xs text-gray-400'>
 						&copy; {new Date().getFullYear()} Arihant Jain
 						<br />
-						Built with React & Tailwind CSS <br />{' '}
-						<small>ChatGPT + Deepseek</small>
+						<span className='flex items-center justify-center gap-1 text-xs'>
+							<FaReact className='text-sm align-middle text-blue-500' /> +
+							<SiTailwindcss className='text-sm align-middle text-indigo-400' />
+						</span>
 					</p>
 				</div>
 			</div>
