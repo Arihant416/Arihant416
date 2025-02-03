@@ -28,8 +28,8 @@ const Contact = () => {
 		setError(false);
 
 		const formData = {
-			name: formRef.current.from_name.value,
-			email: formRef.current.from_email.value,
+			from_name: formRef.current.from_name.value,
+			from_email: formRef.current.from_email.value,
 			message: formRef.current.message.value,
 		};
 
@@ -38,7 +38,7 @@ const Contact = () => {
 			const timeoutId = setTimeout(() => controller.abort(), 5000);
 
 			const response = await fetch(
-				`https://portfolio-email-sender-7uf8.onrender.com/contact`,
+				'https://email-worker.arihantjain416.workers.dev',
 				{
 					method: 'POST',
 					headers: { 'Content-Type': 'application/json' },
@@ -48,10 +48,18 @@ const Contact = () => {
 			);
 
 			clearTimeout(timeoutId);
-			const data = await response.json();
+
+			// Handle both JSON and plain text responses
+			let data;
+			try {
+				data = await response.json(); // Try parsing as JSON
+			} catch (jsonError) {
+				const text = await response.text(); // Fallback to plain text
+				data = { message: text }; // Wrap plain text in an object
+			}
 
 			if (response.ok) {
-				setMessage('Message sent successfully! 🎉');
+				setMessage(data.message || 'Message sent successfully! 🎉');
 				formRef.current.reset();
 			} else {
 				setMessage(
