@@ -1,5 +1,6 @@
 import React from 'react';
-import { Route, Routes , Navigate} from 'react-router-dom'; // No need for BrowserRouter import here
+import { Route, Routes, Navigate } from 'react-router-dom';
+import { motion } from 'framer-motion'; // Import framer-motion
 import Header from './components/Header';
 import Footer from './components/Footer';
 import About from './components/About';
@@ -14,11 +15,66 @@ function App() {
 		<div className='bg-gray-900/80 backdrop-blur-md border-b border-gray-700 min-h-screen text-white'>
 			<Header />
 			<Routes>
-				<Route path='/' element={<Home />} />
-				<Route path='/about' element={<About />} />
-				<Route path='/projects' element={<Projects />} />
-				<Route path='/skills' element={<Skills />} />
-				<Route path='/contact' element={<Contact />} />
+				<Route
+					path='/'
+					element={
+						<motion.div
+							initial={{ opacity: 0 }}
+							animate={{ opacity: 1 }}
+							transition={{ duration: 0.5 }}
+						>
+							<Home />
+						</motion.div>
+					}
+				/>
+				<Route
+					path='/about'
+					element={
+						<motion.div
+							initial={{ opacity: 0 }}
+							animate={{ opacity: 1 }}
+							transition={{ duration: 0.5 }}
+						>
+							<About />
+						</motion.div>
+					}
+				/>
+				<Route
+					path='/projects'
+					element={
+						<motion.div
+							initial={{ opacity: 0 }}
+							animate={{ opacity: 1 }}
+							transition={{ duration: 0.5 }}
+						>
+							<Projects />
+						</motion.div>
+					}
+				/>
+				<Route
+					path='/skills'
+					element={
+						<motion.div
+							initial={{ opacity: 0 }}
+							animate={{ opacity: 1 }}
+							transition={{ duration: 0.5 }}
+						>
+							<Skills />
+						</motion.div>
+					}
+				/>
+				<Route
+					path='/contact'
+					element={
+						<motion.div
+							initial={{ opacity: 0 }}
+							animate={{ opacity: 1 }}
+							transition={{ duration: 0.5 }}
+						>
+							<Contact />
+						</motion.div>
+					}
+				/>
 				<Route path='*' element={<Navigate to='/' replace />} />
 			</Routes>
 			<Footer />

@@ -28,19 +28,19 @@ export default function Navbar() {
 								<DisclosureButton className='p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 transition-all'>
 									<motion.div
 										animate={open ? { rotate: 45, y: 5 } : { rotate: 0, y: 0 }}
-										transition={{ duration: 0.3, ease: 'easeInOut' }}
+										transition={{ duration: 0.5, ease: 'easeInOut' }}
 										className='w-6 h-0.5 bg-gray-300'
 									/>
 									<motion.div
 										animate={open ? { opacity: 0 } : { opacity: 1 }}
-										transition={{ duration: 0.2 }}
+										// transition={{ duration: 0.5 }}
 										className='w-6 h-0.5 bg-gray-300 my-1'
 									/>
 									<motion.div
 										animate={
 											open ? { rotate: -45, y: -5 } : { rotate: 0, y: 0 }
 										}
-										transition={{ duration: 0.3, ease: 'easeInOut' }}
+										transition={{ duration: 0.5, ease: 'easeInOut' }}
 										className='w-6 h-0.5 bg-gray-300'
 									/>
 								</DisclosureButton>
@@ -51,7 +51,7 @@ export default function Navbar() {
 								<img
 									src='https://media.licdn.com/dms/image/v2/D5603AQExB920yxvi1Q/profile-displayphoto-shrink_100_100/B56ZQl0EPbGsAU-/0/1735801197441?e=1743638400&v=beta&t=Kk_6daMKirGutx8F0WAAK5RGZoPKsJwskLe-eipCxN4'
 									alt='Arihant'
-									className='h-10 w-10 rounded-full'
+									className='h-12 w-12 rounded-full'
 								/>
 							</div>
 
@@ -62,10 +62,10 @@ export default function Navbar() {
 										<Link
 											key={item.name}
 											to={item.href}
-											className={`px-4 py-2 rounded-md text-lg font-medium transition-all ${
+											className={`px-4 py-2 rounded-md text-lg font-medium transition-all duration-300 ease-in-out transform ${
 												location.pathname === item.href
-													? 'bg-blue-500 bg-opacity-40 text-white' // **Subtle Transparent Blue**
-													: 'text-gray-300 hover:bg-gray-700 hover:text-white'
+													? 'scale-105 text-purple-500'
+													: 'text-gray-300 hover:text-purple-400'
 											}`}
 										>
 											{item.name}
@@ -90,10 +90,10 @@ export default function Navbar() {
 									key={item.name}
 									as={Link}
 									to={item.href}
-									className={`block px-3 py-2 rounded-md text-lg font-medium transition-all ${
+									className={`block px-3 py-2 rounded-md text-lg font-medium transition-all duration-300 ease-in-out transform ${
 										location.pathname === item.href
-											? 'bg-blue-500 bg-opacity-40 text-white' // **Subtle Transparent Blue**
-											: 'text-gray-300 hover:bg-gray-700 hover:text-white'
+											? 'scale-105 text-purple-500'
+											: 'text-gray-300 hover:text-purple-400'
 									}`}
 								>
 									{item.name}
