@@ -49,7 +49,7 @@ export default function Navbar() {
 							{/* Logo */}
 							<div className='flex flex-1 items-center justify-center sm:justify-start'>
 								<img
-									src='https://media.licdn.com/dms/image/v2/D5603AQExB920yxvi1Q/profile-displayphoto-shrink_100_100/B56ZQl0EPbGsAU-/0/1735801197441?e=1743638400&v=beta&t=Kk_6daMKirGutx8F0WAAK5RGZoPKsJwskLe-eipCxN4'
+									src='https://media.licdn.com/dms/image/v2/D5603AQHVgVgVFIBJcA/profile-displayphoto-shrink_200_200/B56ZTqVjgiHoAY-/0/1739098307087?e=1744848000&v=beta&t=BrWoji4iE2h0jxQcVgb_5oiEXK6PuP3Ws5xVhika8Ds'
 									alt='Arihant'
 									className='h-12 w-12 rounded-full'
 								/>
