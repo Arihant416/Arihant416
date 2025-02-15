@@ -35,7 +35,7 @@ const Contact = () => {
 
 		try {
 			const controller = new AbortController();
-			const timeoutId = setTimeout(() => controller.abort(), 5000);
+			const timeoutId = setTimeout(() => controller.abort(), 8500);
 
 			const response = await fetch(
 				'https://email-worker.arihantjain416.workers.dev',
