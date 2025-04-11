@@ -84,7 +84,7 @@ const Contact = () => {
 			initial={{ opacity: 0, y: -50 }}
 			animate={{ opacity: 1, y: 0 }}
 			transition={{ duration: 1, ease: 'easeOut' }}
-			className='flex-1 flex flex-col items-center justify-center bg-gradient-to-b from-gray-900 to-gray-800 text-white px-6 sm:px-10 py-12'
+			className='min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-900 to-gray-800 text-white px-6 sm:px-10 py-16'
 		>
 			<div className='max-w-2xl w-full mx-auto relative'>
 				<motion.h1
