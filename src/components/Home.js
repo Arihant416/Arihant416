@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { ReactTyped } from 'react-typed';
 
 const Home = () => {
 	return (
@@ -18,51 +19,53 @@ const Home = () => {
 					transition={{ duration: 1, ease: 'easeOut' }}
 					className='text-2xl xs:text-4xl font-extrabold text-white mb-6 text-center md:text-3xl'
 				>
-					<span className='text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400'>
+					<span className='text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-violet-500'>
 						Hello!!
 					</span>
-					<motion.span
-						className='ml-4 wave-animation'
-						animate={{ rotate: [0, 15, 0] }}
-						transition={{ duration: 0.5, repeat: Infinity, ease: 'easeInOut' }}
-					>
-						👋
-					</motion.span>
 				</motion.h6>
 
 				<motion.p
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 1, delay: 0.3, ease: 'easeOut' }}
-					className='text-xl sm:text-2xl text-gray-300 max-w-2xl mx-auto leading-relaxed text-center md:text-lg'
+					className='text-xl sm:text-2xl md:text-3xl text-gray-300 max-w-2xl mx-auto leading-relaxed text-center md:text-lg font-semibold'
 				>
-					<span className='font-medium text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400'>
+					<span className='font-medium text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-violet-500'>
 						I'm Arihant,{' '}
 					</span>
 					<span className='font-medium text-blue-300'>a Software Engineer</span>{' '}
 					specializing in{' '}
-					<span className='font-medium text-purple-300'>APIs</span> and{' '}
-					<span className='font-medium text-blue-300'>
-						high-performance web solutions
-					</span>
-					.
+					<ReactTyped
+						strings={[
+							'Web Development.',
+							'building scalable and reliable systems.',
+							'engineering cloud-native applications',
+							'Python, AWS, Java and Machine-Learning',
+						]}
+						typeSpeed={50}
+						backSpeed={30}
+						loop
+						className='font-medium text-violet-300'
+					/>
 				</motion.p>
+
 				{/* Call to Action */}
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 1, delay: 0.9, ease: 'easeOut' }}
-					className='mt-8 flex flex-col sm:flex-row gap-4 justify-center'
+					className='mt-8 flex flex-col sm:flex-row gap-6 justify-center' // Increased gap from 4 to 6
 				>
+					{/* Button 1 */}
 					<Link
 						to='/projects'
-						className='w-auto sm:max-w-xs px-6 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg shadow-lg hover:shadow-blue-500/30 transition-all duration-300 text-sm sm:text-lg font-semibold hover:scale-105 hover:translate-y-[-2px]'
+						className='w-auto sm:max-w-xs px-6 py-2 bg-gradient-to-r from-indigo-500 to-violet-500 text-white rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 text-sm sm:text-lg font-semibold hover:scale-105 hover:translate-y-[-2px]'
 					>
 						View My Work
 					</Link>
 					<Link
 						to='/contact'
-						className='w-auto sm:max-w-xs px-6 py-2 border-2 border-blue-400/50 text-white rounded-lg shadow-lg hover:shadow-blue-500/20 transition-all duration-300 text-sm sm:text-lg font-semibold hover:scale-105 hover:border-blue-400 hover:bg-blue-500/10 hover:translate-y-[-2px]'
+						className='w-auto sm:max-w-xs px-6 py-2 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-lg shadow-lg hover:shadow-teal-500/30 transition-all duration-300 text-sm sm:text-lg font-semibold hover:scale-105 hover:bg-teal-700/10 hover:translate-y-[-2px]'
 					>
 						Get in Touch
 					</Link>
@@ -76,8 +79,8 @@ const Home = () => {
 				transition={{ duration: 1, delay: 1.2, ease: 'easeOut' }}
 				className='absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2'
 			>
-				<span className='text-gray-400 text-sm'>Scroll down</span>
-				<div className='w-6 h-10 border-2 border-blue-400/50 rounded-full relative'>
+				<span className='text-gray-400 text-xs sm:text-sm'>Scroll down</span>
+				<div className='w-5 h-8 border-2 border-blue-400/50 rounded-full relative'>
 					<motion.div
 						animate={{ y: [0, 12], opacity: [1, 0] }}
 						transition={{

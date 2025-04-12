@@ -5,6 +5,8 @@ import {
 } from '@headlessui/react';
 import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import me from '../assets/me.jpg'; // Importing the locally stored image
 
 const navigation = [
 	{ name: 'Home', href: '/' },
@@ -16,16 +18,36 @@ const navigation = [
 
 export default function Navbar() {
 	const location = useLocation();
+	const [isScrolled, setIsScrolled] = useState(false);
+
+	useEffect(() => {
+		const handleScroll = () => {
+			setIsScrolled(window.scrollY > 50);
+		};
+		window.addEventListener('scroll', handleScroll);
+		return () => window.removeEventListener('scroll', handleScroll);
+	}, []);
 
 	return (
-		<Disclosure as='nav' className='bg-gray-900 shadow-lg'>
+		<Disclosure
+			as='nav'
+			className={`${
+				isScrolled
+					? 'bg-gray-900 shadow-lg'
+					: 'bg-gradient-to-r from-gray-800 via-gray-900 to-black'
+			} sticky top-0 z-50 transition-colors duration-300`}
+		>
 			{({ open }) => (
 				<>
 					<div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
 						<div className='relative flex h-16 items-center justify-between'>
 							{/* Mobile Menu Button */}
 							<div className='absolute inset-y-0 left-0 flex items-center sm:hidden'>
-								<DisclosureButton className='p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 transition-all'>
+								<DisclosureButton
+									aria-expanded={open}
+									aria-label='Toggle navigation menu'
+									className='p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 transition-all'
+								>
 									<motion.div
 										animate={open ? { rotate: 45, y: 5 } : { rotate: 0, y: 0 }}
 										transition={{ duration: 0.5, ease: 'easeInOut' }}
@@ -33,7 +55,6 @@ export default function Navbar() {
 									/>
 									<motion.div
 										animate={open ? { opacity: 0 } : { opacity: 1 }}
-										// transition={{ duration: 0.5 }}
 										className='w-6 h-0.5 bg-gray-300 my-1'
 									/>
 									<motion.div
@@ -49,9 +70,9 @@ export default function Navbar() {
 							{/* Logo */}
 							<div className='flex flex-1 items-center justify-center sm:justify-start'>
 								<img
-									src='https://media.licdn.com/dms/image/v2/D5603AQGVnOOgB_Nh5g/profile-displayphoto-shrink_200_200/B56ZWkcwi8GUAY-/0/1742220759712?e=1748476800&v=beta&t=29TZU0phluzD2J2fDhUbLzMsZ4f86ERNYxoOmEnZYAE'
+									src={me}
 									alt='Arihant'
-									className='h-12 w-12 rounded-full'
+									className='h-12 w-12 rounded-full hover:scale-105 transition-transform duration-300'
 								/>
 							</div>
 
@@ -62,13 +83,20 @@ export default function Navbar() {
 										<Link
 											key={item.name}
 											to={item.href}
-											className={`px-4 py-2 rounded-md text-lg font-medium transition-all duration-300 ease-in-out transform ${
+											className={`px-4 py-2 rounded-md text-lg font-medium transition-all duration-300 ease-in-out transform relative group ${
 												location.pathname === item.href
 													? 'scale-105 text-purple-500'
-													: 'text-gray-300 hover:text-purple-400'
+													: 'text-gray-300'
 											}`}
 										>
-											{item.name}
+											{item.name.split('').map((letter, index) => (
+												<span
+													key={index}
+													className='inline-block transition-colors duration-300 group-hover:text-purple-400'
+												>
+													{letter}
+												</span>
+											))}
 										</Link>
 									))}
 								</div>
@@ -87,6 +115,8 @@ export default function Navbar() {
 						>
 							{navigation.map((item) => (
 								<DisclosureButton
+									aria-expanded={open}
+									aria-label='Toggle Navigation Menu'
 									key={item.name}
 									as={Link}
 									to={item.href}
