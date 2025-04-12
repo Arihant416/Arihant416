@@ -14,16 +14,16 @@ export default function Footer() {
 						transition={{ duration: 0.8 }}
 						className='text-center md:text-left'
 					>
-						<h3 className='text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 mb-2'>
+						<h3 className='text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 mb-2'>
 							Arihant Jain
 						</h3>
-						<p className='text-gray-400 text-sm max-w-xs'>
+						<p className='text-gray-400 text-sm sm:text-base max-w-xs md:max-w-md mx-auto md:mx-0'>
 							<i>Full Stack Developer & Tech Enthusiast</i>
 						</p>
 					</motion.div>
 
 					{/* Social Links */}
-					<div className='flex flex-col items-center gap-6'>
+					<div className='flex flex-col items-center gap-8 md:gap-6 md:flex-row'>
 						<div className='flex space-x-6'>
 							{/* LinkedIn Icon */}
 							<motion.a
@@ -36,7 +36,7 @@ export default function Footer() {
 								className='text-gray-400 hover:text-blue-400 transition-colors'
 							>
 								<span className='sr-only'>LinkedIn</span>
-								<svg className='w-6 h-6' viewBox='0 0 24 24' aria-hidden='true'>
+								<svg className='w-7 h-7' viewBox='0 0 24 24' aria-hidden='true'>
 									<defs>
 										<linearGradient
 											id='linkedin-gradient'
@@ -67,7 +67,7 @@ export default function Footer() {
 								className='text-gray-400 hover:text-purple-400 transition-colors'
 							>
 								<span className='sr-only'>GitHub</span>
-								<svg className='w-6 h-6' viewBox='0 0 24 24' aria-hidden='true'>
+								<svg className='w-7 h-7' viewBox='0 0 24 24' aria-hidden='true'>
 									<defs>
 										<linearGradient
 											id='github-gradient'
@@ -89,18 +89,18 @@ export default function Footer() {
 								</svg>
 							</motion.a>
 
-							{/* Twitter/X Icon */}
+							{/* Twitter Icon */}
 							<motion.a
 								whileHover={{ scale: 1.1 }}
 								whileTap={{ scale: 0.9 }}
 								href='https://x.com/Arihant2302'
 								target='_blank'
-								aria-label='Twitter/X'
+								aria-label='Twitter'
 								rel='noopener noreferrer'
 								className='text-gray-400 hover:text-blue-400 transition-colors'
 							>
-								<span className='sr-only'>Twitter/X</span>
-								<svg className='w-6 h-6' viewBox='0 0 24 24' aria-hidden='true'>
+								<span className='sr-only'>Twitter</span>
+								<svg className='w-7 h-7' viewBox='0 0 24 24' aria-hidden='true'>
 									<defs>
 										<linearGradient
 											id='twitter-gradient'
@@ -131,7 +131,7 @@ export default function Footer() {
 								className='text-gray-400 hover:text-blue-400 transition-colors'
 							>
 								<span className='sr-only'>Instagram</span>
-								<svg className='w-6 h-6' viewBox='0 0 24 24' aria-hidden='true'>
+								<svg className='w-7 h-7' viewBox='0 0 24 24' aria-hidden='true'>
 									<defs>
 										<linearGradient
 											id='instagram-gradient'
@@ -149,52 +149,25 @@ export default function Footer() {
 									</defs>
 									<path
 										fill='url(#instagram-gradient)'
-										d='M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z'
+										d='M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.645.07-4.849.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.28.058 1.688.072 4.947.072 3.26 0 3.667-.014 4.948-.072 4.358-.2 6.78-2.618 6.98-6.98.059-1.281.072-1.689.072-4.948 0-3.26-.014-3.667-.072-4.948-.2-4.358-2.618-6.78-6.98-6.98-1.281-.058-1.689-.072-4.948-.072zm0 7.62c-2.317 0-4.199 1.883-4.199 4.199 0 2.316 1.883 4.199 4.199 4.199 2.316 0 4.199-1.883 4.199-4.199 0-2.316-1.883-4.199-4.199-4.199zm0 6.798c-1.493 0-2.699-1.205-2.699-2.699 0-1.493 1.205-2.699 2.699-2.699 1.493 0 2.699 1.205 2.699 2.699 0 1.494-1.205 2.699-2.699 2.699zm6.646-7.703c-.402 0-.73-.328-.73-.73 0-.402.328-.73.73-.73.402 0 .73.328.73.73 0 .402-.328.73-.73.73z'
 									/>
 								</svg>
 							</motion.a>
 						</div>
-						{/* Resume Button */}
-						<motion.a
-							whileHover={{ scale: 1.03 }}
-							whileTap={{ scale: 0.97 }}
-							href='https://drive.google.com/file/d/1mKAQWTNsPJ4QGJrd0Tw2BQaaYSI3UMaD/view?usp=drive_link'
-							download
-							target='_blank'
-							aria-label='View Resume'
-							rel='noopener noreferrer'
-							className='flex items-center gap-2 px-4 py-2 bg-gray-800 rounded-md hover:bg-gray-700 transition-colors text-sm border border-gray-700 group'
-						>
-							<svg
-								className='w-5 h-5 text-gray-300 group-hover:text-blue-400 transition-colors'
-								fill='none'
-								stroke='currentColor'
-								viewBox='0 0 24 24'
-							>
-								<path
-									strokeLinecap='round'
-									strokeLinejoin='round'
-									strokeWidth={2}
-									d='M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4'
-								/>
-							</svg>
-							<span className='text-gray-300 group-hover:text-blue-400 transition-colors'>
-								View Resume
-							</span>
-						</motion.a>
 					</div>
-				</div>
 
-				{/* Copyright */}
-				<div className='mt-12 border-t border-gray-700 pt-8 text-center'>
-					<p className='text-xs text-gray-400'>
-						&copy; {new Date().getFullYear()} Arihant Jain
-						<br />
-						<span className='flex items-center justify-center gap-1 text-xs'>
-							<FaReact className='text-sm align-middle text-blue-500' /> +
-							<SiTailwindcss className='text-sm align-middle text-indigo-400' />
-						</span>
-					</p>
+					{/* Right Section */}
+					<motion.div
+						initial={{ opacity: 0, y: 20 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.8 }}
+						className='text-center mt-8 md:mt-0'
+					>
+						<p className='text-gray-500 text-sm'>
+							&copy; {new Date().getFullYear()} Arihant Jain. All rights
+							reserved.
+						</p>
+					</motion.div>
 				</div>
 			</div>
 		</footer>

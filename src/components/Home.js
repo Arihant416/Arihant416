@@ -8,90 +8,81 @@ const Home = () => {
 			initial={{ opacity: 0, y: -50 }}
 			animate={{ opacity: 1, y: 0 }}
 			transition={{ duration: 1, ease: 'easeOut' }}
-			className='min-h-screen flex-1 flex flex-col items-center justify-center text-center bg-gradient-to-b from-gray-900 to-gray-800 text-white px-6 sm:px-10 py-12'
+			className='min-h-screen flex-1 flex flex-col items-center justify-center text-center bg-gradient-to-b from-[#0f0c29] via-[#302b63] to-[#24243e] text-white px-6 sm:px-10 py-12'
 		>
-			{/* Main Content */}
 			<div className='max-w-4xl mx-auto w-full'>
-				{/* Name */}
-				<motion.h6
-					initial={{ opacity: 0, scale: 0.9 }}
-					animate={{ opacity: 1, scale: 1 }}
-					transition={{ duration: 1, ease: 'easeOut' }}
-					className='text-2xl xs:text-4xl font-extrabold text-white mb-6 text-center md:text-3xl'
-				>
-					<span className='text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-violet-500'>
-						Hello!!
-					</span>
-				</motion.h6>
+				{/* Minimal Header */}
+				<motion.h1 className='text-3xl sm:text-5xl font-extrabold text-white text-center mb-4 drop-shadow-[0_0_4px_rgba(139,92,246,0.5)] drop-shadow-[0_0_20px_rgba(99,102,241,0.3)]'>
+					Hey, I’m Arihant.
+				</motion.h1>
 
 				<motion.p
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 1, delay: 0.3, ease: 'easeOut' }}
-					className='text-xl sm:text-2xl md:text-3xl text-gray-300 max-w-2xl mx-auto leading-relaxed text-center md:text-lg font-semibold'
+					transition={{ duration: 1, delay: 0.2, ease: 'easeOut' }}
+					className='text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto text-center mb-6 leading-relaxed'
 				>
-					<span className='font-medium text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-violet-500'>
-						I'm Arihant,{' '}
-					</span>
-					<span className='font-medium text-blue-300'>a Software Engineer</span>{' '}
-					specializing in{' '}
-					<ReactTyped
-						strings={[
-							'Web Development.',
-							'building scalable and reliable systems.',
-							'engineering cloud-native applications',
-							'Python, AWS, Java and Machine-Learning',
-						]}
-						typeSpeed={50}
-						backSpeed={30}
-						loop
-						className='font-medium text-violet-300'
-					/>
+					Senior Software Engineer working on high-scale systems and
+					cloud-native architecture.
 				</motion.p>
 
-				{/* Call to Action */}
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 1, delay: 0.9, ease: 'easeOut' }}
-					className='mt-8 flex flex-col sm:flex-row gap-6 justify-center' // Increased gap from 4 to 6
+					transition={{ duration: 1, delay: 0.4, ease: 'easeOut' }}
+					className='text-md sm:text-lg md:text-xl text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-300 animate-pulse max-w-2xl mx-auto text-center font-semibold mb-6 tracking-wide'
 				>
-					{/* Button 1 */}
+					<ReactTyped
+						strings={[
+							'Building highly scaled distributed APIs @Perfios',
+							'Exploring Java, Machine Learning and MLOps',
+							'Mentoring developers & scaling backend infra..',
+							'Enthusiastic about system design...',
+						]}
+						typeSpeed={30}
+						backSpeed={30}
+						loop
+					/>
+				</motion.div>
+
+				<motion.p
+					initial={{ opacity: 0, y: 10 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 1, delay: 0.6 }}
+					className='text-sm text-gray-400 text-center'
+				>
+					Focused on backend architecture & scale.
+				</motion.p>
+
+				{/* CTA Buttons */}
+				<motion.div
+					initial={{ opacity: 0, y: 20 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 1, delay: 0.8, ease: 'easeOut' }}
+					className='mt-10 flex flex-col sm:flex-row gap-4 justify-center transition-transform duration-300 ease-in-out'
+				>
 					<Link
 						to='/projects'
-						className='w-auto sm:max-w-xs px-6 py-2 bg-gradient-to-r from-indigo-500 to-violet-500 text-white rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 text-sm sm:text-lg font-semibold hover:scale-105 hover:translate-y-[-2px]'
+						aria-label='View Projects'
+						role='button'
+						className='bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-400 hover:to-purple-500 hover:scale-105 hover:brightness-110 px-6 py-3 rounded-xl text-white font-semibold text-sm sm:text-lg shadow-lg hover:shadow-purple-500/30 transition-all duration-300'
 					>
-						View My Work
+						View Projects
 					</Link>
+
 					<Link
 						to='/contact'
-						className='w-auto sm:max-w-xs px-6 py-2 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-lg shadow-lg hover:shadow-teal-500/30 transition-all duration-300 text-sm sm:text-lg font-semibold hover:scale-105 hover:bg-teal-700/10 hover:translate-y-[-2px]'
+						aria-label='Contact Me'
+						role='button'
+						className='bg-transparent border border-indigo-400 hover:bg-indigo-600/10 hover:scale-105 hover:brightness-110 px-6 py-3 rounded-xl text-white font-semibold text-sm sm:text-lg shadow hover:shadow-indigo-500/20 transition-all duration-300'
 					>
-						Get in Touch
+						Contact
 					</Link>
 				</motion.div>
-			</div>
 
-			{/* Scroll Indicator (Optional) */}
-			<motion.div
-				initial={{ opacity: 0, y: 20 }}
-				animate={{ opacity: 1, y: 0 }}
-				transition={{ duration: 1, delay: 1.2, ease: 'easeOut' }}
-				className='absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2'
-			>
-				<span className='text-gray-400 text-xs sm:text-sm'>Scroll down</span>
-				<div className='w-5 h-8 border-2 border-blue-400/50 rounded-full relative'>
-					<motion.div
-						animate={{ y: [0, 12], opacity: [1, 0] }}
-						transition={{
-							duration: 1.5,
-							repeat: Infinity,
-							ease: 'easeInOut',
-						}}
-						className='w-1 h-2 bg-blue-400 rounded-full absolute top-2 left-1/2 -translate-x-1/2'
-					/>
-				</div>
-			</motion.div>
+				{/* Optional Visual Divider */}
+				<div className='mt-16 w-full h-1 bg-gradient-to-r from-transparent via-indigo-500 to-transparent rounded-full blur-sm opacity-40'></div>
+			</div>
 		</motion.section>
 	);
 };
