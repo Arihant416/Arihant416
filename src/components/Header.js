@@ -72,7 +72,8 @@ export default function Navbar() {
 								<img
 									src={me}
 									alt='Arihant'
-									className='h-10 w-10 rounded-full hover:scale-105 transition-transform duration-300 shadow-lg'
+									loading='lazy'
+									className='h-12 w-12 rounded-full hover:scale-105 transition-transform duration-300'
 								/>
 							</div>
 
