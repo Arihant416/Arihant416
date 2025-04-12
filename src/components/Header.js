@@ -46,23 +46,23 @@ export default function Navbar() {
 								<DisclosureButton
 									aria-expanded={open}
 									aria-label='Toggle navigation menu'
-									className='p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 transition-all'
+									className='p-2 rounded-md text-white hover:text-purple-400 hover:bg-gray-700 transition-all'
 								>
 									<motion.div
 										animate={open ? { rotate: 45, y: 5 } : { rotate: 0, y: 0 }}
 										transition={{ duration: 0.5, ease: 'easeInOut' }}
-										className='w-6 h-0.5 bg-gray-300'
+										className='w-6 h-0.5 bg-white'
 									/>
 									<motion.div
 										animate={open ? { opacity: 0 } : { opacity: 1 }}
-										className='w-6 h-0.5 bg-gray-300 my-1'
+										className='w-6 h-0.5 bg-white my-1'
 									/>
 									<motion.div
 										animate={
 											open ? { rotate: -45, y: -5 } : { rotate: 0, y: 0 }
 										}
 										transition={{ duration: 0.5, ease: 'easeInOut' }}
-										className='w-6 h-0.5 bg-gray-300'
+										className='w-6 h-0.5 bg-white'
 									/>
 								</DisclosureButton>
 							</div>
