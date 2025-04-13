@@ -83,13 +83,13 @@ const Skills = () => {
 			initial={{ opacity: 0, y: -50 }}
 			animate={{ opacity: 1, y: 0 }}
 			transition={{ duration: 1, ease: 'easeOut' }}
-			className='min-h-screen flex flex-col items-center justify-center text-center bg-gradient-to-b from-gray-900 to-gray-800 text-white px-4 sm:px-6 lg:px-10 pb-20 pt-10'
+			className='min-h-screen flex flex-col items-center justify-center text-center bg-gradient-to-b from-[#0f0c29] via-[#302b63] to-[#24243e] text-white px-4 sm:px-6 lg:px-10 pb-20 pt-10'
 		>
 			<motion.h1
 				initial={{ opacity: 0, scale: 0.9 }}
 				animate={{ opacity: 1, scale: 1 }}
 				transition={{ duration: 1, ease: 'easeOut' }}
-				className='text-4xl sm:text-5xl font-semibold text-white mb-6'
+				className='text-5xl sm:text-6xl font-semibold mb-6 bg-gradient-to-r from-indigo-300 to-purple-400 bg-clip-text text-transparent'
 			>
 				My Skills
 			</motion.h1>

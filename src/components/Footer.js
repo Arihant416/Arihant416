@@ -14,10 +14,10 @@ export default function Footer() {
 						transition={{ duration: 0.8 }}
 						className='text-center md:text-left'
 					>
-						<h3 className='text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 mb-2'>
+						<h3 className='text-3xl sm:text-4xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-500 mb-2'>
 							Arihant Jain
 						</h3>
-						<p className='text-gray-400 text-sm sm:text-base max-w-xs md:max-w-md mx-auto md:mx-0'>
+						<p className='text-gray-300 text-sm sm:text-base max-w-xs md:max-w-md mx-auto md:mx-0'>
 							<i>Full Stack Developer & Tech Enthusiast</i>
 						</p>
 					</motion.div>
