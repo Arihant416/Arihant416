@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ReactTyped } from 'react-typed';
 import { LazyMotion, domAnimation, m } from 'framer-motion';
+import Testimonials from './Testimonials';
 
 const Home = () => {
 	return (
@@ -12,7 +13,7 @@ const Home = () => {
 				className='min-h-screen flex flex-col items-center justify-center text-center bg-gradient-to-b from-[#0f0c29] via-[#302b63] to-[#24243e] text-white px-6 sm:px-10 py-16'
 			>
 				<div className='max-w-4xl w-full'>
-					<m.h1 className='text-5xl sm:text-6xl font-bold mb-6 drop-shadow-md bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-500'>
+					<m.h1 className='text-4xl sm:text-5xl md:text-6xl font-extrabold mb-8 drop-shadow-lg bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-500'>
 						Hey, I’m Arihant.
 					</m.h1>
 
@@ -73,6 +74,9 @@ const Home = () => {
 							Contact
 						</Link>
 					</m.div>
+
+					{/* Move Testimonials Section Here */}
+					<Testimonials />
 
 					<div className='mt-16 w-full h-1 bg-gradient-to-r from-transparent via-indigo-500 to-transparent rounded-full blur-sm opacity-40'></div>
 				</div>
