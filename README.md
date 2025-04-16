@@ -1,70 +1,84 @@
-# Getting Started with Create React App
+# <em>Hi, I'm <code>Arihant</code> 👋</em>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p><em>Just geeking out every now and then.</em></p>
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 👨‍💻 About Me
 
-### `yarn start`
+Result-driven, passionate **Software Engineer** with over **4 years of experience** designing resilient backend systems and dynamic frontend applications. 🚀
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+🌟 **What I Do**
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- 💻 Engineer and scale APIs processing over **1M+ daily requests** with 99.9% uptime.
+- ⚙️ Skilled in **Python**, **JavaScript**, and **Node.js** — solving distributed system challenges is my jam.
+- 🌐 Crafting user-centric frontend interfaces with **Angular**, **React**, and Tailwind CSS.
+- ☁️ Working with **AWS**, **Docker**, **Celery**, **Redis**, and more to build microservices that just *work*.
 
-### `yarn test`
+🌱 **Currently Exploring**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Advanced **AWS services** to refine serverless architectures.
+- Query optimization and caching in **MongoDB** and **Redis**.
+- Diving deep into **Machine Learning** and AI — hands-on learning in progress.
+- Mentoring devs via [**Topmate**](https://topmate.io/arihant) to help them grow and succeed.
 
-### `yarn build`
+🎸 **Beyond Code**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- 🎶 Strumming my guitar, vibing with music.
+- 📺 Anime lover – binging **One Piece**, **Naruto**, **HxH**, and more.
+- 🤝 Always looking to connect, share, learn, and build cool stuff together.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🛠️ Tech Stack
 
-### `yarn eject`
+<p align="left">
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black" />
+  <img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/Node.js-339933?style=flat&logo=nodedotjs&logoColor=white" />
+  <img src="https://img.shields.io/badge/Angular-DD0031?style=flat&logo=angular&logoColor=white" />
+  <img src="https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB" />
+  <img src="https://img.shields.io/badge/FastAPI-009688?style=flat&logo=fastapi&logoColor=white" />
+  <img src="https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white" />
+  <img src="https://img.shields.io/badge/AWS-232F3E?style=flat&logo=amazon-aws&logoColor=white" />
+  <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=flat&logo=mongodb&logoColor=white" />
+  <img src="https://img.shields.io/badge/Redis-DC382D?style=flat&logo=redis&logoColor=white" />
+  <img src="https://img.shields.io/badge/Celery-37814A?style=flat&logo=celery&logoColor=white" />
+</p>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🚀 Featured Projects
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- 🔍 [**GitDevFinder**](https://gitdevfinder416.netlify.app/) – GitHub dev search platform with real-time API & pagination.
+- 🧪 **Code Runner** – A fault-tolerant, sandboxed Python runner using Docker, Celery & SQLite.
+- 🌐 [**My Portfolio**](https://arihant416.vercel.app) – Personal site built with React, Framer Motion, and Tailwind CSS.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## 📊 GitHub Stats
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=Arihant416&theme=merko&show_icons=true" />
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=Arihant416&theme=merko" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Arihant416&theme=merko&layout=compact" />
+</p>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+## 📫 Let's Connect
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<p align="center">
+  <a href="https://linkedin.com/in/arihant416" target="_blank"><img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-blue?style=flat&logo=linkedin"></a>
+  <a href="https://github.com/Arihant416" target="_blank"><img alt="GitHub" src="https://img.shields.io/badge/GitHub-black?style=flat&logo=github"></a>
+  <a href="https://leetcode.com/u/Arihant416" target="_blank"><img alt="LeetCode" src="https://img.shields.io/badge/LeetCode-FFA116?style=flat&logo=leetcode"></a>
+  <a href="https://arihant416.vercel.app" target="_blank"><img alt="Portfolio" src="https://img.shields.io/badge/Portfolio-24292E?style=flat&logo=vercel"></a>
+  <a href="https://arihant.hashnode.dev" target="_blank"><img alt="Blog" src="https://img.shields.io/badge/Blog-2962FF?style=flat&logo=hashnode"></a>
+  <a href="mailto:arihantjain416@gmail.com"><img alt="Email" src="https://img.shields.io/badge/Email-D14836?style=flat&logo=gmail&logoColor=white"></a>
+</p>
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<p align="center"><i>“First, solve the problem. Then, write the code.”</i></p>
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<p align="center" style="font-weight: bold;">Looking forward to connecting with y'all :)</p>
