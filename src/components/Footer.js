@@ -165,6 +165,15 @@ export default function Footer() {
 							&copy; {new Date().getFullYear()} Arihant Jain. All rights
 							reserved.
 						</p>
+						<a
+							href='https://arihant416.github.io/resume/index.pdf'
+							target='_blank'
+							rel='noopener noreferrer'
+							className='inline-block px-6 py-2 mt-4 text-sm font-semibold text-white bg-gradient-to-r from-green-400 via-teal-500 to-blue-500 rounded-full hover:bg-gradient-to-l hover:from-green-500 hover:via-teal-600 hover:to-blue-600 transition-all duration-100 shadow-lg'
+							style={{ fontFamily: "'Poppins', sans-serif", color: 'white' }}
+						>
+							View My Resume
+						</a>
 					</motion.div>
 				</div>
 			</div>
