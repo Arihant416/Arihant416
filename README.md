@@ -60,7 +60,7 @@ Result-driven, passionate **Software Engineer** with over **4 years of experienc
 
 <p align="center">
   <img src="https://github-readme-stats.vercel.app/api?username=Arihant416&theme=merko&show_icons=true" />
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=Arihant416&theme=merko" />
+<!--   <img src="https://github-readme-streak-stats.herokuapp.com/?user=Arihant416&theme=merko" /> -->
   <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Arihant416&theme=merko&layout=compact" />
 </p>
 
