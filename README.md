@@ -26,7 +26,7 @@ Result-driven, passionate **Software Engineer** with over **4 years of experienc
 
 - 🎶 Strumming my guitar, vibing with music.
 - 📺 Anime lover – binging **One Piece**, **Naruto**, **HxH**, and more.
-- 🤝 Always looking to connect, share, learn, and build cool stuff together.
+- 🤝 Always looking to connect, share, learn, and build cool stuff.
 
 ---
 
@@ -65,6 +65,10 @@ Result-driven, passionate **Software Engineer** with over **4 years of experienc
 </p>
 
 ---
+#### 📄 Resume
+
+- 📥 [Download PDF](https://github.com/Arihant416/Arihant-Jain-Resume/raw/main/index.pdf)  
+- 🌐 [View Online](https://arihant416.github.io/Arihant-Jain-Resume)
 
 ## 📫 Let's Connect
 
