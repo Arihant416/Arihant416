@@ -67,8 +67,8 @@ Result-driven, passionate **Software Engineer** with over **4 years of experienc
 ---
 #### 📄 Resume
 
-- 📥 [Download PDF](https://github.com/Arihant416/Arihant-Jain-Resume/raw/main/index.pdf)  
-- 🌐 [View Online](https://arihant416.github.io/Arihant-Jain-Resume)
+- 📥 [Download PDF](https://github.com/Arihant416/resume/raw/main/index.pdf)  
+- 🌐 [View Online](https://arihant416.github.io/resume/index.pdf)
 
 ## 📫 Let's Connect
 
