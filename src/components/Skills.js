@@ -83,7 +83,7 @@ const Skills = () => {
 			initial={{ opacity: 0, y: -50 }}
 			animate={{ opacity: 1, y: 0 }}
 			transition={{ duration: 1, ease: 'easeOut' }}
-			className='min-h-screen flex flex-col items-center justify-center text-center bg-gradient-to-b from-[#0f0c29] via-[#302b63] to-[#24243e] text-white px-4 sm:px-6 lg:px-10 pb-20 pt-10'
+			className='min-h-screen flex flex-col items-center justify-center text-center bg-gradient-to-b from-[#050505] via-[#111111] to-[#0a0a0a] text-white px-4 sm:px-6 lg:px-10 pb-20 pt-10'
 		>
 			<motion.h1
 				initial={{ opacity: 0, scale: 0.9 }}
@@ -98,14 +98,14 @@ const Skills = () => {
 				initial={{ opacity: 0, y: 20 }}
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ duration: 1, delay: 0.3, ease: 'easeOut' }}
-				className='text-lg sm:text-xl text-gray-300 mb-10'
+				className='text-lg sm:text-xl text-gray-200 mb-10'
 			>
 				Here’s a list of the technologies I’ve worked with:
 			</motion.p>
 
 			{/* Programming Languages */}
 			<div className='w-full max-w-6xl'>
-				<h2 className='text-2xl sm:text-3xl text-white font-medium mb-6'>
+				<h2 className='text-2xl sm:text-3xl text-gray-100 font-medium mb-6'>
 					Programming Languages
 				</h2>
 				<div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6'>
@@ -113,12 +113,14 @@ const Skills = () => {
 						<motion.div
 							key={index}
 							whileHover={{ scale: 1.05 }}
-							className={`p-4 sm:p-6 text-center rounded-lg shadow-xl transition-all transform hover:shadow-2xl ${skill.color}`}
+							className={`p-4 sm:p-6 text-center rounded-lg shadow-xl transition-all transform hover:shadow-2xl backdrop-blur-sm ${skill.color} bg-opacity-20 hover:bg-opacity-30`}
 						>
-							<div className='text-3xl sm:text-4xl mb-3 sm:mb-4 text-white'>
+							<div className='text-3xl sm:text-4xl mb-3 sm:mb-4 text-gray-100'>
 								{skill.icon}
 							</div>
-							<div className='text-sm sm:text-lg font-medium'>{skill.name}</div>
+							<div className='text-sm sm:text-lg font-medium text-gray-200'>
+								{skill.name}
+							</div>
 						</motion.div>
 					))}
 				</div>
@@ -126,7 +128,7 @@ const Skills = () => {
 
 			{/* CS Fundamentals */}
 			<div className='w-full max-w-6xl mt-10'>
-				<h2 className='text-2xl sm:text-3xl text-white font-medium mb-6'>
+				<h2 className='text-2xl sm:text-3xl text-gray-100 font-medium mb-6'>
 					CS Fundamentals
 				</h2>
 				<div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6'>
@@ -134,9 +136,9 @@ const Skills = () => {
 						<motion.div
 							key={index}
 							whileHover={{ scale: 1.05 }}
-							className={`p-4 sm:p-6 text-center rounded-lg shadow-xl transition-all transform hover:shadow-2xl ${skill.color}`}
+							className={`p-4 sm:p-6 text-center rounded-lg shadow-xl transition-all transform hover:shadow-2xl backdrop-blur-sm ${skill.color} bg-opacity-20 hover:bg-opacity-30`}
 						>
-							<div className='text-sm sm:text-lg font-medium text-white'>
+							<div className='text-sm sm:text-lg font-medium text-gray-200'>
 								{skill.name}
 							</div>
 						</motion.div>
@@ -146,7 +148,7 @@ const Skills = () => {
 
 			{/* Frameworks and Libraries */}
 			<div className='w-full max-w-6xl mt-10'>
-				<h2 className='text-2xl sm:text-3xl text-white font-medium mb-6'>
+				<h2 className='text-2xl sm:text-3xl text-gray-100 font-medium mb-6'>
 					Frameworks and Libraries
 				</h2>
 				<div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6'>
@@ -154,12 +156,14 @@ const Skills = () => {
 						<motion.div
 							key={index}
 							whileHover={{ scale: 1.05 }}
-							className={`p-4 sm:p-6 text-center rounded-lg shadow-xl transition-all transform hover:shadow-2xl ${skill.color}`}
+							className={`p-4 sm:p-6 text-center rounded-lg shadow-xl transition-all transform hover:shadow-2xl backdrop-blur-sm ${skill.color} bg-opacity-20 hover:bg-opacity-30`}
 						>
-							<div className='text-3xl sm:text-4xl mb-3 sm:mb-4 text-white'>
+							<div className='text-3xl sm:text-4xl mb-3 sm:mb-4 text-gray-100'>
 								{skill.icon}
 							</div>
-							<div className='text-sm sm:text-lg font-medium'>{skill.name}</div>
+							<div className='text-sm sm:text-lg font-medium text-gray-200'>
+								{skill.name}
+							</div>
 						</motion.div>
 					))}
 				</div>
@@ -167,7 +171,7 @@ const Skills = () => {
 
 			{/* Cloud and Databases */}
 			<div className='w-full max-w-6xl mt-10'>
-				<h2 className='text-2xl sm:text-3xl text-white font-medium mb-6'>
+				<h2 className='text-2xl sm:text-3xl text-gray-100 font-medium mb-6'>
 					Cloud and Databases
 				</h2>
 				<div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6'>
@@ -175,12 +179,14 @@ const Skills = () => {
 						<motion.div
 							key={index}
 							whileHover={{ scale: 1.05 }}
-							className={`p-4 sm:p-6 text-center rounded-lg shadow-xl transition-all transform hover:shadow-2xl ${skill.color}`}
+							className={`p-4 sm:p-6 text-center rounded-lg shadow-xl transition-all transform hover:shadow-2xl backdrop-blur-sm ${skill.color} bg-opacity-20 hover:bg-opacity-30`}
 						>
-							<div className='text-3xl sm:text-4xl mb-3 sm:mb-4 text-white'>
+							<div className='text-3xl sm:text-4xl mb-3 sm:mb-4 text-gray-100'>
 								{skill.icon}
 							</div>
-							<div className='text-sm sm:text-lg font-medium'>{skill.name}</div>
+							<div className='text-sm sm:text-lg font-medium text-gray-200'>
+								{skill.name}
+							</div>
 						</motion.div>
 					))}
 				</div>
@@ -188,7 +194,7 @@ const Skills = () => {
 
 			{/* Message Queues */}
 			<div className='w-full max-w-6xl mt-10'>
-				<h2 className='text-2xl sm:text-3xl text-white font-medium mb-6'>
+				<h2 className='text-2xl sm:text-3xl text-gray-100 font-medium mb-6'>
 					Message Queues
 				</h2>
 				<div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6'>
@@ -196,12 +202,14 @@ const Skills = () => {
 						<motion.div
 							key={index}
 							whileHover={{ scale: 1.05 }}
-							className={`p-4 sm:p-6 text-center rounded-lg shadow-xl transition-all transform hover:shadow-2xl ${skill.color}`}
+							className={`p-4 sm:p-6 text-center rounded-lg shadow-xl transition-all transform hover:shadow-2xl backdrop-blur-sm ${skill.color} bg-opacity-20 hover:bg-opacity-30`}
 						>
-							<div className='text-3xl sm:text-4xl mb-3 sm:mb-4 text-white'>
+							<div className='text-3xl sm:text-4xl mb-3 sm:mb-4 text-gray-100'>
 								{skill.icon}
 							</div>
-							<div className='text-sm sm:text-lg font-medium'>{skill.name}</div>
+							<div className='text-sm sm:text-lg font-medium text-gray-200'>
+								{skill.name}
+							</div>
 						</motion.div>
 					))}
 				</div>
@@ -209,7 +217,7 @@ const Skills = () => {
 
 			{/* Others */}
 			<div className='w-full max-w-6xl mt-10'>
-				<h2 className='text-2xl sm:text-3xl text-white font-medium mb-6'>
+				<h2 className='text-2xl sm:text-3xl text-gray-100 font-medium mb-6'>
 					Others
 				</h2>
 				<div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6'>
@@ -217,12 +225,14 @@ const Skills = () => {
 						<motion.div
 							key={index}
 							whileHover={{ scale: 1.05 }}
-							className={`p-4 sm:p-6 text-center rounded-lg shadow-xl transition-all transform hover:shadow-2xl ${skill.color}`}
+							className={`p-4 sm:p-6 text-center rounded-lg shadow-xl transition-all transform hover:shadow-2xl backdrop-blur-sm ${skill.color} bg-opacity-20 hover:bg-opacity-30`}
 						>
-							<div className='text-3xl sm:text-4xl mb-3 sm:mb-4 text-white'>
+							<div className='text-3xl sm:text-4xl mb-3 sm:mb-4 text-gray-100'>
 								{skill.icon}
 							</div>
-							<div className='text-sm sm:text-lg font-medium'>{skill.name}</div>
+							<div className='text-sm sm:text-lg font-medium text-gray-200'>
+								{skill.name}
+							</div>
 						</motion.div>
 					))}
 				</div>

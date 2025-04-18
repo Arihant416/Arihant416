@@ -28,7 +28,7 @@ export default function Navbar() {
 		<nav
 			className={`sticky top-0 z-50 transition-all duration-700 ease-out ${
 				isScrolled
-					? 'bg-gradient-to-b from-[#141019]/90 to-[#23203a]/80'
+					? 'bg-gradient-to-b from-[#050505]/90 to-[#0a0a0a]/80'
 					: 'bg-transparent'
 			} backdrop-blur-md shadow-xl border-0`}
 		>
@@ -39,7 +39,7 @@ export default function Navbar() {
 						<button
 							onClick={() => setOpen(!open)}
 							aria-label='Toggle navigation menu'
-							className='p-2 rounded-md text-gray-300 bg-transparent hover:bg-gray-700/10 focus:outline-none transition-opacity duration-300'
+							className='p-2 rounded-md text-gray-200 bg-transparent hover:bg-gray-800/30 focus:outline-none transition-opacity duration-300'
 						>
 							<motion.div
 								animate={open ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
@@ -92,13 +92,13 @@ export default function Navbar() {
 									to={item.href}
 									className={`px-4 py-2 rounded-md text-sm font-medium transition duration-500 ${
 										location.pathname === item.href
-											? 'text-cyan-200'
-											: 'text-gray-300 hover:text-cyan-100'
+											? 'text-indigo-200'
+											: 'text-gray-200 hover:text-indigo-100'
 									}`}
 								>
 									{item.name}
 									<motion.div
-										className={`absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400/60 rounded transform scale-x-0 ${
+										className={`absolute bottom-0 left-0 w-full h-0.5 bg-indigo-400/60 rounded transform scale-x-0 ${
 											location.pathname === item.href ? 'scale-x-100' : ''
 										}`}
 										transition={{ duration: 0.4 }}
@@ -118,7 +118,7 @@ export default function Navbar() {
 						animate={{ opacity: 1, y: 0 }}
 						exit={{ opacity: 0, y: -20 }}
 						transition={{ duration: 0.4 }}
-						className='sm:hidden px-2 pt-2 pb-3 space-y-1 rounded-b-xl bg-[#18132a]/95 backdrop-blur-md shadow-none'
+						className='sm:hidden px-2 pt-2 pb-3 space-y-1 rounded-b-xl bg-[#050505]/95 backdrop-blur-md shadow-none border-t border-gray-800/50'
 					>
 						{navigation.map((item, idx) => (
 							<motion.div
@@ -135,8 +135,8 @@ export default function Navbar() {
 									to={item.href}
 									className={`block px-4 py-2 rounded-md text-base font-medium transition-all ${
 										location.pathname === item.href
-											? 'text-cyan-200 bg-cyan-900/10'
-											: 'text-gray-300 hover:text-cyan-100 hover:bg-cyan-900/5'
+											? 'text-indigo-200 bg-indigo-900/10'
+											: 'text-gray-200 hover:text-indigo-100 hover:bg-indigo-900/5'
 									}`}
 								>
 									{item.name}

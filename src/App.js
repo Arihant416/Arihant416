@@ -23,7 +23,7 @@ function App() {
 	}, []);
 
 	return (
-		<div className='bg-gray-900/80 backdrop-blur-md border-b border-gray-700 min-h-screen text-white'>
+		<div className='bg-[#050505] backdrop-blur-md border-b border-gray-800 min-h-screen text-white'>
 			<Header />
 			<Suspense
 				fallback={

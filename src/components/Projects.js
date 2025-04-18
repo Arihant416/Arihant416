@@ -149,7 +149,7 @@ const WorkExperience = () => {
 			initial={{ opacity: 0 }}
 			animate={{ opacity: 1 }}
 			transition={{ duration: 1 }}
-			className='min-h-screen w-full flex flex-col items-center px-4 sm:px-6 lg:px-16 py-16 bg-gradient-to-b from-[#0f0c29] via-[#302b63] to-[#24243e] text-white'
+			className='min-h-screen w-full flex flex-col items-center px-4 sm:px-6 lg:px-16 py-16 bg-gradient-to-b from-[#050505] via-[#111111] to-[#0a0a0a] text-white'
 		>
 			<motion.h1
 				initial={{ opacity: 0, y: -20 }}
@@ -168,24 +168,24 @@ const WorkExperience = () => {
 						whileInView={{ opacity: 1, y: 0 }}
 						viewport={{ once: true }}
 						transition={{ duration: 0.8, delay: index * 0.2 }}
-						className={`rounded-2xl p-6 shadow-xl border transition-all bg-gray-800 hover:scale-[1.015] ${
-							job.current ? 'border-blue-500' : 'border-gray-700'
+						className={`rounded-2xl p-6 shadow-xl border transition-all bg-[#0a0a0a]/80 hover:scale-[1.015] ${
+							job.current ? 'border-indigo-500/50' : 'border-gray-800'
 						}`}
 					>
 						<a
 							href={job.companyLink}
 							target='_blank'
 							rel='noopener noreferrer'
-							className='text-xl font-semibold text-blue-400 hover:underline flex items-center gap-2'
+							className='text-xl font-semibold text-indigo-400 hover:text-indigo-300 flex items-center gap-2'
 						>
 							{job.company}
-							<FaLink className='text-blue-300' />
+							<FaLink className='text-indigo-300' />
 						</a>
-						<h3 className='text-2xl font-bold bg-gradient-to-r from-sky-400 to-purple-400 bg-clip-text text-transparent mt-2'>
+						<h3 className='text-2xl font-bold bg-gradient-to-r from-sky-300 to-purple-300 bg-clip-text text-transparent mt-2'>
 							{job.title}
 						</h3>
 						<p className='text-sm text-gray-400 mt-1'>{job.date}</p>
-						<p className='mt-4 text-gray-300'>{job.description}</p>
+						<p className='mt-4 text-gray-200'>{job.description}</p>
 
 						<div className='mt-4 space-y-2'>
 							{job.highlights.map((highlight, i) => (
@@ -193,7 +193,7 @@ const WorkExperience = () => {
 									key={i}
 									className='overflow-x-auto scrollbar-hide flex-shrink-0 text-sm text-gray-300 whitespace-nowrap'
 								>
-									<span className='text-blue-400 mr-2'>•</span>
+									<span className='text-indigo-400 mr-2'>•</span>
 									{highlight}
 								</div>
 							))}
@@ -205,7 +205,7 @@ const WorkExperience = () => {
 								return (
 									<div
 										key={idx}
-										className='flex items-center gap-2 px-2 py-1 text-sm text-gray-300 whitespace-nowrap'
+										className='flex items-center gap-2 px-2 py-1 text-sm text-gray-200 whitespace-nowrap'
 									>
 										<Icon className={`${tech.color} text-lg`} />
 										<span>{tech.name}</span>
@@ -235,7 +235,7 @@ const WorkExperience = () => {
 						whileInView={{ opacity: 1, y: 0 }}
 						viewport={{ once: true }}
 						transition={{ duration: 0.8, delay: index * 0.2 }}
-						className='bg-gray-800 rounded-2xl p-6 shadow-xl hover:scale-[1.02] transition-all'
+						className='bg-[#0a0a0a]/80 rounded-2xl p-6 shadow-xl hover:scale-[1.02] transition-all border border-gray-800'
 					>
 						<a
 							href={project.liveLink}

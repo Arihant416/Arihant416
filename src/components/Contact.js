@@ -84,7 +84,7 @@ const Contact = () => {
 			initial={{ opacity: 0, y: -50 }}
 			animate={{ opacity: 1, y: 0 }}
 			transition={{ duration: 1, ease: 'easeOut' }}
-			className='min-h-screen flex items-center justify-center bg-gradient-to-b from-[#0f0c29] via-[#302b63] to-[#24243e] text-white px-6 sm:px-10 py-16'
+			className='min-h-screen flex items-center justify-center bg-gradient-to-b from-[#050505] via-[#111111] to-[#0a0a0a] text-white px-6 sm:px-10 py-16'
 		>
 			<div className='max-w-2xl w-full mx-auto relative'>
 				<motion.h1
@@ -100,7 +100,7 @@ const Contact = () => {
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 1, delay: 0.3, ease: 'easeOut' }}
-					className='text-lg sm:text-xl text-gray-300 mb-8'
+					className='text-lg sm:text-xl text-gray-200 mb-8'
 				>
 					Have a question or want to work together? Drop me a message below!
 				</motion.p>
@@ -109,7 +109,7 @@ const Contact = () => {
 					<div>
 						<label
 							htmlFor='name'
-							className='block text-sm font-medium text-gray-300'
+							className='block text-sm font-medium text-gray-200'
 						>
 							Name
 						</label>
@@ -119,7 +119,7 @@ const Contact = () => {
 							name='from_name'
 							required
 							disabled={isSubmitting}
-							className='mt-1 block w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-70 disabled:cursor-not-allowed transition-colors'
+							className='mt-1 block w-full px-4 py-3 bg-[#0a0a0a]/80 border border-gray-800 rounded-lg text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 disabled:opacity-70 disabled:cursor-not-allowed transition-colors'
 							placeholder='Your name'
 						/>
 					</div>
@@ -127,7 +127,7 @@ const Contact = () => {
 					<div>
 						<label
 							htmlFor='email'
-							className='block text-sm font-medium text-gray-300'
+							className='block text-sm font-medium text-gray-200'
 						>
 							Email
 						</label>
@@ -137,7 +137,7 @@ const Contact = () => {
 							name='from_email'
 							required
 							disabled={isSubmitting}
-							className='mt-1 block w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-70 disabled:cursor-not-allowed transition-colors'
+							className='mt-1 block w-full px-4 py-3 bg-[#0a0a0a]/80 border border-gray-800 rounded-lg text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 disabled:opacity-70 disabled:cursor-not-allowed transition-colors'
 							placeholder='Your email'
 						/>
 					</div>
@@ -145,7 +145,7 @@ const Contact = () => {
 					<div>
 						<label
 							htmlFor='message'
-							className='block text-sm font-medium text-gray-300'
+							className='block text-sm font-medium text-gray-200'
 						>
 							Message
 						</label>
@@ -155,7 +155,7 @@ const Contact = () => {
 							rows='5'
 							required
 							disabled={isSubmitting}
-							className='mt-1 block w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-70 disabled:cursor-not-allowed transition-colors'
+							className='mt-1 block w-full px-4 py-3 bg-[#0a0a0a]/80 border border-gray-800 rounded-lg text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 disabled:opacity-70 disabled:cursor-not-allowed transition-colors'
 							placeholder='Your message'
 						/>
 					</div>

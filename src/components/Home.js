@@ -10,7 +10,7 @@ const Home = () => {
 				initial={{ opacity: 0, y: -50 }}
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ duration: 1, ease: 'easeOut' }}
-				className='min-h-screen flex flex-col items-center justify-center text-center bg-gradient-to-b from-[#0f0c29] via-[#302b63] to-[#24243e] text-white px-6 sm:px-10 py-16'
+				className='min-h-screen flex flex-col items-center justify-center text-center bg-gradient-to-b from-[#050505] via-[#111111] to-[#0a0a0a] text-white px-6 sm:px-10 py-16'
 			>
 				<div className='max-w-4xl w-full'>
 					<m.h1 className='text-4xl sm:text-5xl md:text-6xl font-extrabold mb-8 drop-shadow-lg bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-500'>

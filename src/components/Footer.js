@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 export default function Footer() {
 	return (
-		<footer className='bg-gray-900/80 backdrop-blur-md border-t border-gray-700'>
+		<footer className='bg-[#050505]/90 backdrop-blur-md border-t border-gray-800'>
 			<div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12'>
 				<div className='flex flex-col md:flex-row justify-between items-center gap-8'>
 					{/* Left Section */}
@@ -15,7 +15,7 @@ export default function Footer() {
 						<h3 className='text-3xl sm:text-4xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-500 mb-2'>
 							Arihant Jain
 						</h3>
-						<p className='text-gray-300 text-sm sm:text-base max-w-xs md:max-w-md mx-auto md:mx-0'>
+						<p className='text-gray-200 text-sm sm:text-base max-w-xs md:max-w-md mx-auto md:mx-0'>
 							<i>Full Stack Developer & Tech Enthusiast</i>
 						</p>
 					</motion.div>
@@ -31,7 +31,7 @@ export default function Footer() {
 								target='_blank'
 								rel='noopener noreferrer'
 								aria-label='LinkedIn'
-								className='text-gray-400 hover:text-blue-400 transition-colors'
+								className='text-gray-400 hover:text-blue-300 transition-colors'
 							>
 								<span className='sr-only'>LinkedIn</span>
 								<svg className='w-7 h-7' viewBox='0 0 24 24' aria-hidden='true'>
@@ -62,7 +62,7 @@ export default function Footer() {
 								target='_blank'
 								rel='noopener noreferrer'
 								aria-label='GitHub'
-								className='text-gray-400 hover:text-purple-400 transition-colors'
+								className='text-gray-400 hover:text-purple-300 transition-colors'
 							>
 								<span className='sr-only'>GitHub</span>
 								<svg className='w-7 h-7' viewBox='0 0 24 24' aria-hidden='true'>
@@ -95,7 +95,7 @@ export default function Footer() {
 								target='_blank'
 								aria-label='Twitter'
 								rel='noopener noreferrer'
-								className='text-gray-400 hover:text-blue-400 transition-colors'
+								className='text-gray-400 hover:text-blue-300 transition-colors'
 							>
 								<span className='sr-only'>Twitter</span>
 								<svg className='w-7 h-7' viewBox='0 0 24 24' aria-hidden='true'>
@@ -126,7 +126,7 @@ export default function Footer() {
 								target='_blank'
 								aria-label='Instagram'
 								rel='noopener noreferrer'
-								className='text-gray-400 hover:text-blue-400 transition-colors'
+								className='text-gray-400 hover:text-pink-300 transition-colors'
 							>
 								<span className='sr-only'>Instagram</span>
 								<svg className='w-7 h-7' viewBox='0 0 24 24' aria-hidden='true'>
@@ -161,7 +161,7 @@ export default function Footer() {
 						transition={{ duration: 0.8 }}
 						className='text-center mt-8 md:mt-0'
 					>
-						<p className='text-gray-500 text-sm'>
+						<p className='text-gray-400 text-sm'>
 							&copy; {new Date().getFullYear()} Arihant Jain. All rights
 							reserved.
 						</p>
@@ -169,7 +169,7 @@ export default function Footer() {
 							href='https://arihant416.github.io/resume/index.pdf'
 							target='_blank'
 							rel='noopener noreferrer'
-							className='inline-block px-6 py-2 mt-4 text-sm font-semibold text-white bg-gradient-to-r from-green-400 via-teal-500 to-blue-500 rounded-full hover:bg-gradient-to-l hover:from-green-500 hover:via-teal-600 hover:to-blue-600 transition-all duration-100 shadow-lg'
+							className='inline-block px-6 py-2 mt-4 text-sm font-semibold text-white bg-gradient-to-r from-indigo-500 via-purple-500 to-indigo-600 rounded-full hover:bg-gradient-to-l hover:from-indigo-600 hover:via-purple-600 hover:to-indigo-700 transition-all duration-100 shadow-lg'
 							style={{ fontFamily: "'Poppins', sans-serif", color: 'white' }}
 						>
 							View My Resume

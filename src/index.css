@@ -5,14 +5,14 @@
 @tailwind utilities;
 
 :root {
-	--color-primary: #4f46e5; /* Indigo */
+	--color-primary: #6366f1; /* Adjusted Indigo */
 	--color-secondary: #9333ea; /* Purple */
 	--color-accent: #22d3ee; /* Cyan */
-	--color-bg: #0f0c29; /* Dark gradient start */
-	--color-bg-secondary: #302b63; /* Dark gradient middle */
-	--color-bg-accent: #24243e; /* Dark gradient end */
-	--color-text-primary: #ffffff; /* White */
-	--color-text-secondary: #d1d5db; /* Gray */
+	--color-bg: #050505; /* Darker black gradient start */
+	--color-bg-secondary: #111111; /* Darker black gradient middle */
+	--color-bg-accent: #0a0a0a; /* Darker black gradient end */
+	--color-text-primary: #f3f4f6; /* Slightly off-white for better eye comfort */
+	--color-text-secondary: #9ca3af; /* Adjusted gray for better contrast */
 }
 
 /* Apply Poppins for headings and Montserrat for body text */
