@@ -67,6 +67,12 @@ const testimonials = [
 		linkedin: 'https://www.linkedin.com/in/vaibhav-jaiswal-2388a2157',
 		avatarUrl: 'https://api.dicebear.com/7.x/thumbs/svg?seed=VaibhavJaiswal',
 	},
+	{
+		name: 'Haseeb Qureshi',
+		testimonial: "I worked with Arihant for three years in the same technical team and always admired his reliability, problem-solving skills, and collaborative nature. He’s a solid engineer and a great teammate.",
+		linkedin: "https://www.linkedin.com/in/haseebqureshi1",
+		avatarUrl: "https://media.licdn.com/dms/image/v2/D5603AQFvV2SfZOEukg/profile-displayphoto-shrink_100_100/B56ZdgW8tkH8AU-/0/1749668320044?e=1756944000&v=beta&t=2zgjV554n-s5Apkg4xnDPpormE84HdLrW5mUy3DyFzg"
+	},
 ];
 
 const TestimonialCard = ({
