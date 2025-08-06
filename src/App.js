@@ -1,8 +1,11 @@
 import React, { Suspense, lazy, useEffect } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+
 import Header from './components/Header';
 import Footer from './components/Footer';
+import ThemeToggleFab from './components/ThemeToggleFab';
+import { getInitialTheme, setTheme } from './theme';
 import './index.css';
 
 // Lazy load components
@@ -20,10 +23,13 @@ function App() {
 		import('./components/Skills');
 		import('./components/Contact');
 		import('./components/Home');
+		// Set initial theme
+		setTheme(getInitialTheme());
 	}, []);
 
 	return (
-		<div className='bg-[#050505] backdrop-blur-md border-b border-gray-800 min-h-screen text-white'>
+		<div className='relative min-h-screen font-body bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark transition-colors duration-500'>
+			{/* <ParticlesBackground /> Only show on Home page */}
 			<Header />
 			<Suspense
 				fallback={
@@ -97,6 +103,7 @@ function App() {
 				</Routes>
 			</Suspense>
 			<Footer />
+			<ThemeToggleFab />
 		</div>
 	);
 }

@@ -51,16 +51,35 @@ const WorkExperience = () => {
 				{ name: 'Redis', icon: SiRedis, color: 'text-red-600' },
 				{ name: 'Python', icon: FaPython, color: 'text-blue-400' },
 				{ name: 'Serverless', icon: SiServerless, color: 'text-orange-500' },
-				{ name: 'Selenium', icon: SiSelenium, color: 'text-green-500' },
-				{ name: 'Celery', icon: SiCelery, color: 'text-green-500' },
-				{ name: 'Fast API', icon: SiFastapi, color: 'text-blue-400' },
-				{ name: 'Gunicorn', icon: SiGunicorn, color: 'text-green-500' },
-				{ name: 'Java', icon: FaJava, color: 'text-red-500' },
+				{ name: 'Selenium', icon: SiSelenium, color: 'text-green-600' },
+				{ name: 'Celery', icon: SiCelery, color: 'text-green-700' },
+				{ name: 'Fast API', icon: SiFastapi, color: 'text-teal-500' },
+				{ name: 'Gunicorn', icon: SiGunicorn, color: 'text-gray-700' },
+				{ name: 'Java', icon: FaJava, color: 'text-orange-700' },
 				{ name: 'Git', icon: FaGitAlt, color: 'text-orange-600' },
 				{ name: 'Kubernetes', icon: SiKubernetes, color: 'text-blue-500' },
+				{
+					name: 'Go',
+					icon: (props) => (
+						<svg
+							viewBox='0 0 48 48'
+							fill='none'
+							xmlns='http://www.w3.org/2000/svg'
+							className={props.className}
+							style={props.style}
+						>
+							<circle cx='24' cy='24' r='24' fill='#00ADD8' />
+							<path
+								d='M33.5 32c-1.5 0-2.5-1-2.5-2.5s1-2.5 2.5-2.5 2.5 1 2.5 2.5-1 2.5-2.5 2.5zm-19 0c-1.5 0-2.5-1-2.5-2.5s1-2.5 2.5-2.5 2.5 1 2.5 2.5-1 2.5-2.5 2.5zM24 12c-6.6 0-12 5.4-12 12 0 2.2.6 4.2 1.7 6h20.6c1.1-1.8 1.7-3.8 1.7-6 0-6.6-5.4-12-12-12zm0 2c5.5 0 10 4.5 10 10 0 1.7-.4 3.3-1.2 4.7-.2.3-.5.3-.7.1-.3-.2-.3-.5-.1-.7.7-1.2 1-2.6 1-4.1 0-5.5-4.5-10-10-10s-10 4.5-10 10c0 1.5.3 2.9 1 4.1.2.3.2.6-.1.7-.3.2-.6.2-.7-.1C14.4 27.3 14 25.7 14 24c0-5.5 4.5-10 10-10z'
+								fill='#fff'
+							/>
+						</svg>
+					),
+					color: 'text-cyan-500',
+				},
 			],
 			current: true,
-			color: 'border-blue-600', // Highlight current role with a border
+			color: 'border-primary-light dark:border-primary-dark',
 		},
 		{
 			title: 'Software Engineer 1',
@@ -146,74 +165,79 @@ const WorkExperience = () => {
 
 	return (
 		<motion.section
-			initial={{ opacity: 0 }}
-			animate={{ opacity: 1 }}
-			transition={{ duration: 1 }}
-			className='min-h-screen w-full flex flex-col items-center px-4 sm:px-6 lg:px-16 py-16 bg-gradient-to-b from-[#050505] via-[#111111] to-[#0a0a0a] text-white'
+			initial={{ opacity: 0, y: 40 }}
+			animate={{ opacity: 1, y: 0 }}
+			transition={{ duration: 0.8, ease: 'easeOut' }}
+			className='min-h-screen w-full flex flex-col items-center px-2 sm:px-6 lg:px-16 py-12 bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark transition-colors duration-500'
 		>
 			<motion.h1
-				initial={{ opacity: 0, y: -20 }}
-				animate={{ opacity: 1, y: 0 }}
-				transition={{ duration: 0.8 }}
-				className='text-5xl sm:text-6xl font-bold text-center mb-14 bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent'
+				initial={{ opacity: 0, scale: 0.92 }}
+				animate={{ opacity: 1, scale: 1 }}
+				transition={{ duration: 0.8, ease: 'easeOut' }}
+				className='text-5xl sm:text-6xl font-extrabold text-center mb-10 bg-gradient-to-r from-primary-light to-primary-dark bg-clip-text text-transparent drop-shadow-lg'
 			>
 				Work Experience
 			</motion.h1>
 
-			<div className='w-full max-w-6xl flex flex-col gap-12'>
+			<div className='w-full max-w-6xl flex flex-col gap-8'>
 				{workExperience.map((job, index) => (
-					<motion.div
+					<div
 						key={index}
-						initial={{ opacity: 0, y: 30 }}
-						whileInView={{ opacity: 1, y: 0 }}
-						viewport={{ once: true }}
-						transition={{ duration: 0.8, delay: index * 0.2 }}
-						className={`rounded-2xl p-6 shadow-xl border transition-all bg-[#0a0a0a]/80 hover:scale-[1.015] ${
-							job.current ? 'border-indigo-500/50' : 'border-gray-800'
+						className={`rounded-xl border border-muted-light dark:border-muted-dark p-5 sm:p-7 bg-white/80 dark:bg-background-dark/80 ${
+							job.current
+								? 'border-primary-light dark:border-primary-dark shadow-2xl'
+								: ''
 						}`}
 					>
 						<a
 							href={job.companyLink}
 							target='_blank'
 							rel='noopener noreferrer'
-							className='text-xl font-semibold text-indigo-400 hover:text-indigo-300 flex items-center gap-2'
+							className='text-lg sm:text-xl font-bold text-primary-light dark:text-primary-dark hover:underline flex items-center gap-2 mb-1'
 						>
 							{job.company}
 							<FaLink className='text-indigo-300' />
 						</a>
-						<h3 className='text-2xl font-bold bg-gradient-to-r from-sky-300 to-purple-300 bg-clip-text text-transparent mt-2'>
-							{job.title}
-						</h3>
-						<p className='text-sm text-gray-400 mt-1'>{job.date}</p>
-						<p className='mt-4 text-gray-200'>{job.description}</p>
-
-						<div className='mt-4 space-y-2'>
-							{job.highlights.map((highlight, i) => (
-								<div
-									key={i}
-									className='overflow-x-auto scrollbar-hide flex-shrink-0 text-sm text-gray-300 whitespace-nowrap'
-								>
-									<span className='text-indigo-400 mr-2'>•</span>
-									{highlight}
-								</div>
-							))}
+						<div className='flex flex-col sm:flex-row sm:items-center sm:justify-between mt-1 mb-1 gap-1'>
+							<h3 className='text-lg sm:text-xl font-extrabold tracking-tight text-gray-900 dark:text-pink-300 transition-colors duration-300'>
+								{job.title}
+							</h3>
+							<p className='text-sm sm:text-base font-bold text-indigo-600 dark:text-yellow-300 sm:mb-0 sm:ml-4 sm:text-right transition-colors duration-300'>
+								{job.date}
+							</p>
 						</div>
-
-						<div className='mt-6 overflow-x-auto flex gap-3 scrollbar-hide'>
+						<p className='mt-1 text-base sm:text-lg font-bold text-text-light dark:text-text-dark leading-relaxed sm:leading-normal transition-colors duration-300'>
+							{job.description}
+						</p>
+						<ul className='mt-3 space-y-1 text-left'>
+							{job.highlights.map((highlight, i) => (
+								<li
+									key={i}
+									className='flex items-start gap-2 text-sm sm:text-base font-semibold text-text-light dark:text-text-dark transition-colors duration-300'
+								>
+									<span className='text-primary-light dark:text-primary-dark mt-1'>
+										•
+									</span>
+									<span>{highlight}</span>
+								</li>
+							))}
+						</ul>
+						<div className='mt-4 flex flex-wrap gap-2'>
 							{job.techStack.map((tech, idx) => {
 								const Icon = tech.icon;
 								return (
 									<div
 										key={idx}
-										className='flex items-center gap-2 px-2 py-1 text-sm text-gray-200 whitespace-nowrap'
+										className={`flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold shadow-md border border-gray-200 dark:border-gray-700 ${tech.color} bg-white/80 dark:bg-background-dark/80 hover:shadow-lg transition-all duration-200`}
+										style={{ boxShadow: '0 2px 8px 0 rgba(80,80,180,0.10)' }}
 									>
-										<Icon className={`${tech.color} text-lg`} />
-										<span>{tech.name}</span>
+										<Icon className={`text-lg ${tech.color}`} />
+										<span className='hidden sm:inline'>{tech.name}</span>
 									</div>
 								);
 							})}
 						</div>
-					</motion.div>
+					</div>
 				))}
 			</div>
 
@@ -222,46 +246,45 @@ const WorkExperience = () => {
 				whileInView={{ opacity: 1, y: 0 }}
 				viewport={{ once: true }}
 				transition={{ duration: 0.8 }}
-				className='text-4xl font-bold mt-24 mb-12 text-center bg-gradient-to-r from-fuchsia-400 to-cyan-400 bg-clip-text text-transparent'
+				className='text-4xl font-extrabold mt-24 mb-10 text-center bg-gradient-to-r from-primary-light to-primary-dark bg-clip-text text-transparent drop-shadow-lg'
 			>
 				Projects
 			</motion.h2>
 
-			<div className='w-full max-w-6xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8'>
+			<div className='w-full max-w-6xl flex flex-col gap-6 mt-10'>
 				{projects.map((project, index) => (
-					<motion.div
+					<div
 						key={index}
-						initial={{ opacity: 0, y: 30 }}
-						whileInView={{ opacity: 1, y: 0 }}
-						viewport={{ once: true }}
-						transition={{ duration: 0.8, delay: index * 0.2 }}
-						className='bg-[#0a0a0a]/80 rounded-2xl p-6 shadow-xl hover:scale-[1.02] transition-all border border-gray-800'
+						className='rounded-xl border border-muted-light dark:border-muted-dark p-4 sm:p-5 bg-white/90 dark:bg-background-dark/90 shadow-sm'
 					>
 						<a
 							href={project.liveLink}
 							target='_blank'
 							rel='noopener noreferrer'
-							className='text-2xl font-semibold text-purple-300 hover:text-blue-400 flex items-center gap-2 mb-2'
+							className='text-lg sm:text-2xl font-bold text-orange-500 dark:text-orange-300 hover:underline flex items-center gap-2 mb-1'
 						>
 							{project.name}
 							<FaLink className='text-emerald-400' />
 						</a>
-						<p className='text-base text-gray-300'>{project.description}</p>
-						<div className='mt-4 flex flex-wrap gap-3'>
+						<p className='text-base sm:text-lg font-bold text-gray-800 dark:text-white mb-3'>
+							{project.description}
+						</p>
+						<div className='flex gap-2 mt-2 overflow-x-auto whitespace-nowrap no-scrollbar'>
 							{project.techStack.map((tech, idx) => {
 								const Icon = tech.icon;
 								return (
 									<div
 										key={idx}
-										className='flex items-center gap-2 bg-gray-700 px-2 py-1 rounded-full text-sm'
+										className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold shadow-md border border-gray-200 dark:border-gray-700 ${tech.color} bg-white/80 dark:bg-background-dark/80 hover:shadow-lg transition-all duration-200`}
+										style={{ boxShadow: '0 2px 8px 0 rgba(80,80,180,0.10)' }}
 									>
-										<Icon className={`${tech.color} text-lg`} />
-										<span className='text-gray-300'>{tech.name}</span>
+										<Icon className='text-lg' />
+										<span className='hidden sm:inline'>{tech.name}</span>
 									</div>
 								);
 							})}
 						</div>
-					</motion.div>
+					</div>
 				))}
 			</div>
 		</motion.section>

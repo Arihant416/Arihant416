@@ -2,25 +2,7 @@ import { motion } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
 
 const Contact = () => {
-	const formRef = useRef();
-	const [isSubmitting, setIsSubmitting] = useState(false);
-	const [message, setMessage] = useState('');
-	const [error, setError] = useState(false);
-
-	// Handle browser/tab closure attempts during submission
-	useEffect(() => {
-		const handleBeforeUnload = (e) => {
-			if (isSubmitting) {
-				e.preventDefault();
-				e.returnValue =
-					'Your message is being sent. Are you sure you want to leave?';
-			}
-		};
-
-		window.addEventListener('beforeunload', handleBeforeUnload);
-		return () => window.removeEventListener('beforeunload', handleBeforeUnload);
-	}, [isSubmitting]);
-
+	// Handles form submission
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setIsSubmitting(true);
@@ -78,20 +60,25 @@ const Contact = () => {
 
 		setIsSubmitting(false);
 	};
+	const formRef = useRef();
+	const [isSubmitting, setIsSubmitting] = useState(false);
+	const [message, setMessage] = useState('');
+	const [error, setError] = useState(false);
+	// ...existing code...
 
 	return (
 		<motion.section
 			initial={{ opacity: 0, y: -50 }}
 			animate={{ opacity: 1, y: 0 }}
 			transition={{ duration: 1, ease: 'easeOut' }}
-			className='min-h-screen flex items-center justify-center bg-gradient-to-b from-[#050505] via-[#111111] to-[#0a0a0a] text-white px-6 sm:px-10 py-16'
+			className='min-h-screen flex items-center justify-center bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark px-6 sm:px-10 py-16 transition-colors duration-500'
 		>
 			<div className='max-w-2xl w-full mx-auto relative'>
 				<motion.h1
 					initial={{ opacity: 0, scale: 0.9 }}
 					animate={{ opacity: 1, scale: 1 }}
 					transition={{ duration: 1, ease: 'easeOut' }}
-					className='text-5xl sm:text-6xl font-extrabold text-center bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-500 mb-6'
+					className='text-5xl sm:text-6xl font-extrabold text-center bg-clip-text text-transparent bg-gradient-to-r from-primary-light to-primary-dark mb-6'
 				>
 					Let’s Connect
 				</motion.h1>
@@ -100,7 +87,7 @@ const Contact = () => {
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 1, delay: 0.3, ease: 'easeOut' }}
-					className='text-lg sm:text-xl text-gray-200 mb-8'
+					className='text-lg sm:text-xl text-muted-light dark:text-muted-dark mb-8'
 				>
 					Have a question or want to work together? Drop me a message below!
 				</motion.p>
@@ -109,7 +96,7 @@ const Contact = () => {
 					<div>
 						<label
 							htmlFor='name'
-							className='block text-sm font-medium text-gray-200'
+							className='block text-sm font-medium text-text-light dark:text-text-dark'
 						>
 							Name
 						</label>
@@ -119,7 +106,7 @@ const Contact = () => {
 							name='from_name'
 							required
 							disabled={isSubmitting}
-							className='mt-1 block w-full px-4 py-3 bg-[#0a0a0a]/80 border border-gray-800 rounded-lg text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 disabled:opacity-70 disabled:cursor-not-allowed transition-colors'
+							className='mt-1 block w-full px-4 py-3 bg-background-light/80 dark:bg-background-dark/80 border border-muted-light dark:border-muted-dark rounded-lg text-text-light dark:text-text-dark placeholder-muted-light dark:placeholder-muted-dark focus:outline-none focus:ring-2 focus:ring-primary-light/50 dark:focus:ring-primary-dark/50 disabled:opacity-70 disabled:cursor-not-allowed transition-colors'
 							placeholder='Your name'
 						/>
 					</div>
@@ -127,7 +114,7 @@ const Contact = () => {
 					<div>
 						<label
 							htmlFor='email'
-							className='block text-sm font-medium text-gray-200'
+							className='block text-sm font-medium text-text-light dark:text-text-dark'
 						>
 							Email
 						</label>
@@ -137,7 +124,7 @@ const Contact = () => {
 							name='from_email'
 							required
 							disabled={isSubmitting}
-							className='mt-1 block w-full px-4 py-3 bg-[#0a0a0a]/80 border border-gray-800 rounded-lg text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 disabled:opacity-70 disabled:cursor-not-allowed transition-colors'
+							className='mt-1 block w-full px-4 py-3 bg-background-light/80 dark:bg-background-dark/80 border border-muted-light dark:border-muted-dark rounded-lg text-text-light dark:text-text-dark placeholder-muted-light dark:placeholder-muted-dark focus:outline-none focus:ring-2 focus:ring-primary-light/50 dark:focus:ring-primary-dark/50 disabled:opacity-70 disabled:cursor-not-allowed transition-colors'
 							placeholder='Your email'
 						/>
 					</div>
@@ -145,7 +132,7 @@ const Contact = () => {
 					<div>
 						<label
 							htmlFor='message'
-							className='block text-sm font-medium text-gray-200'
+							className='block text-sm font-medium text-text-light dark:text-text-dark'
 						>
 							Message
 						</label>
@@ -155,7 +142,7 @@ const Contact = () => {
 							rows='5'
 							required
 							disabled={isSubmitting}
-							className='mt-1 block w-full px-4 py-3 bg-[#0a0a0a]/80 border border-gray-800 rounded-lg text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 disabled:opacity-70 disabled:cursor-not-allowed transition-colors'
+							className='mt-1 block w-full px-4 py-3 bg-background-light/80 dark:bg-background-dark/80 border border-muted-light dark:border-muted-dark rounded-lg text-text-light dark:text-text-dark placeholder-muted-light dark:placeholder-muted-dark focus:outline-none focus:ring-2 focus:ring-primary-light/50 dark:focus:ring-primary-dark/50 disabled:opacity-70 disabled:cursor-not-allowed transition-colors'
 							placeholder='Your message'
 						/>
 					</div>
@@ -164,7 +151,7 @@ const Contact = () => {
 						<button
 							type='submit'
 							disabled={isSubmitting}
-							className='w-full px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg shadow-lg hover:shadow-blue-500/30 transition-all duration-300 text-lg font-semibold hover:scale-105 flex justify-center items-center disabled:opacity-70 disabled:hover:scale-100 disabled:cursor-not-allowed'
+							className='w-full px-6 py-3 bg-gradient-to-r from-primary-light to-primary-dark text-white rounded-lg shadow-lg hover:shadow-primary-light/30 dark:hover:shadow-primary-dark/30 transition-all duration-300 text-lg font-semibold hover:scale-105 flex justify-center items-center disabled:opacity-70 disabled:hover:scale-100 disabled:cursor-not-allowed'
 						>
 							{isSubmitting ? (
 								<svg
@@ -196,15 +183,17 @@ const Contact = () => {
 							<motion.div
 								initial={{ opacity: 0, y: 10 }}
 								animate={{ opacity: 1, y: 0 }}
-								className={`p-4 rounded-lg border ${
+								className={`p-4 rounded-lg border shadow-md ${
 									error
-										? 'bg-red-900/30 border-red-400'
-										: 'bg-green-900/30 border-green-400'
+										? 'bg-red-100 dark:bg-red-900/60 border-red-400'
+										: 'bg-green-100 dark:bg-green-900/60 border-green-400'
 								}`}
 							>
 								<p
-									className={`text-center ${
-										error ? 'text-red-300' : 'text-green-300'
+									className={`text-center font-semibold ${
+										error
+											? 'text-red-700 dark:text-red-200'
+											: 'text-green-700 dark:text-green-200'
 									}`}
 								>
 									{message}
@@ -213,7 +202,7 @@ const Contact = () => {
 									<div className='mt-3 flex justify-center'>
 										<button
 											onClick={handleSubmit}
-											className='text-sm px-4 py-2 rounded-md bg-red-800/30 text-red-300 hover:bg-red-800/40 transition-colors'
+											className='text-sm px-4 py-2 rounded-md bg-red-200 dark:bg-red-800/40 text-red-800 dark:text-red-200 hover:bg-red-300 dark:hover:bg-red-800/60 transition-colors font-semibold'
 										>
 											Retry Send
 										</button>
