@@ -1,7 +1,8 @@
+import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
-import { useEffect, useState } from 'react';
 import me from '../assets/me.jpg';
+import { getInitialTheme, setTheme } from '../theme';
 
 const navigation = [
 	{ name: 'Home', href: '/' },
@@ -11,10 +12,11 @@ const navigation = [
 	{ name: 'Contact', href: '/contact' },
 ];
 
-export default function Navbar() {
+export default function Header() {
 	const location = useLocation();
 	const [isScrolled, setIsScrolled] = useState(false);
-	const [open, setOpen] = useState(false);
+	const [menuOpen, setMenuOpen] = useState(false);
+	const [theme, setThemeState] = useState(getInitialTheme());
 
 	useEffect(() => {
 		const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -22,39 +24,54 @@ export default function Navbar() {
 		return () => window.removeEventListener('scroll', handleScroll);
 	}, []);
 
-	useEffect(() => setOpen(false), [location.pathname]);
+	useEffect(() => setMenuOpen(false), [location.pathname]);
+
+	// Theme toggle handler
+	const toggleTheme = () => {
+		const newTheme = theme === 'dark' ? 'light' : 'dark';
+		setTheme(newTheme);
+		setThemeState(newTheme);
+	};
 
 	return (
 		<nav
-			className={`sticky top-0 z-50 transition-all duration-700 ease-out ${
-				isScrolled
-					? 'bg-gradient-to-b from-[#050505]/90 to-[#0a0a0a]/80'
-					: 'bg-transparent'
-			} backdrop-blur-md shadow-xl border-0`}
+			className={`sticky top-0 z-50 transition-all duration-700 ease-out
+			   ${
+						isScrolled
+							? 'bg-background-light/90 dark:bg-background-dark/90'
+							: 'bg-background-light/70 dark:bg-background-dark/70'
+					}
+			   backdrop-blur-md shadow-xl border-0`}
 		>
 			<div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
 				<div className='relative flex h-16 md:h-20 items-center justify-between'>
 					{/* Mobile Toggle */}
 					<div className='absolute inset-y-0 left-0 flex items-center sm:hidden'>
 						<button
-							onClick={() => setOpen(!open)}
+							onClick={() => setMenuOpen(!menuOpen)}
 							aria-label='Toggle navigation menu'
-							className='p-2 rounded-md text-gray-200 bg-transparent hover:bg-gray-800/30 focus:outline-none transition-opacity duration-300'
+							className={`p-2 rounded-md bg-transparent focus:outline-none transition-opacity duration-300 flex flex-col justify-center items-center h-10 w-10 ${
+								menuOpen
+									? 'text-gray-700 dark:text-gray-100'
+									: 'text-gray-400 dark:text-gray-200'
+							}`}
 						>
-							<motion.div
-								animate={open ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
-								transition={{ duration: 0.7 }}
-								className='w-7 h-0.5 bg-gray-400'
+							<motion.span
+								animate={menuOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
+								transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+								className='block w-7 h-0.5 bg-gray-400'
 							/>
-							<motion.div
-								animate={open ? { opacity: 0 } : { opacity: 1 }}
-								transition={{ duration: 0.5 }}
-								className='w-7 h-0.5 bg-gray-400 my-1'
+							<motion.span
+								animate={menuOpen ? { opacity: 0 } : { opacity: 1 }}
+								transition={{ duration: 0.3 }}
+								className='block w-7 h-0.5 bg-gray-400 my-1'
 							/>
-							<motion.div
-								animate={open ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
-								transition={{ duration: 0.7 }}
-								className='w-7 h-0.5 bg-gray-400'
+							<motion.span
+								animate={
+									menuOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }
+								}
+								transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+								className='block w-7 h-0.5 bg-gray-400'
 							/>
 						</button>
 					</div>
@@ -65,18 +82,18 @@ export default function Navbar() {
 							initial={{ opacity: 0, scale: 0.92 }}
 							animate={{ opacity: 1, scale: 1 }}
 							transition={{ duration: 1, ease: [0.77, 0, 0.175, 1] }}
-							className='rounded-full bg-gradient-to-br from-[#23203a]/70 to-[#18132a]/90 p-1 border border-[#23203a]/30'
+							className='rounded-full p-1 bg-white dark:bg-background-dark/80 border border-muted-light dark:border-muted-dark'
 						>
 							<img
 								src={me}
 								alt='Arihant'
-								className='h-10 w-10 md:h-14 md:w-14 rounded-full object-center'
+								className='h-10 w-10 md:h-14 md:w-14 rounded-full object-center shadow-md'
 							/>
 						</motion.div>
 					</div>
 
-					{/* Desktop Nav */}
-					<div className='hidden sm:flex items-center space-x-6'>
+					{/* Desktop Nav + Theme Toggle */}
+					<div className='hidden sm:flex items-center space-x-8'>
 						{navigation.map((item, idx) => (
 							<motion.div
 								key={item.name}
@@ -90,11 +107,13 @@ export default function Navbar() {
 							>
 								<Link
 									to={item.href}
-									className={`px-4 py-2 rounded-md text-sm font-medium transition duration-500 ${
-										location.pathname === item.href
-											? 'text-indigo-200'
-											: 'text-gray-200 hover:text-indigo-100'
-									}`}
+									className={`px-5 py-2 rounded-md text-lg font-semibold tracking-wide transition duration-500 
+								${
+									location.pathname === item.href
+										? 'text-primary-light dark:text-primary-dark'
+										: 'text-text-light dark:text-text-dark hover:text-primary-light dark:hover:text-primary-dark'
+								}
+							`}
 								>
 									{item.name}
 									<motion.div
@@ -112,13 +131,13 @@ export default function Navbar() {
 
 			{/* Mobile Nav */}
 			<AnimatePresence>
-				{open && (
+				{menuOpen && (
 					<motion.div
 						initial={{ opacity: 0, y: -20 }}
 						animate={{ opacity: 1, y: 0 }}
 						exit={{ opacity: 0, y: -20 }}
 						transition={{ duration: 0.4 }}
-						className='sm:hidden px-2 pt-2 pb-3 space-y-1 rounded-b-xl bg-[#050505]/95 backdrop-blur-md shadow-none border-t border-gray-800/50'
+						className='sm:hidden px-2 pt-2 pb-3 space-y-1 rounded-b-xl bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md shadow-lg border-t border-gray-200 dark:border-gray-700'
 					>
 						{navigation.map((item, idx) => (
 							<motion.div
@@ -133,10 +152,10 @@ export default function Navbar() {
 							>
 								<Link
 									to={item.href}
-									className={`block px-4 py-2 rounded-md text-base font-medium transition-all ${
+									className={`block px-5 py-3 rounded-md text-lg font-semibold tracking-wide transition-all ${
 										location.pathname === item.href
-											? 'text-indigo-200 bg-indigo-900/10'
-											: 'text-gray-200 hover:text-indigo-100 hover:bg-indigo-900/5'
+											? 'text-primary-light dark:text-primary-dark'
+											: 'text-text-light dark:text-text-dark hover:text-primary-light dark:hover:text-primary-dark'
 									}`}
 								>
 									{item.name}

@@ -69,9 +69,11 @@ const testimonials = [
 	},
 	{
 		name: 'Haseeb Qureshi',
-		testimonial: "I worked with Arihant for three years in the same technical team and always admired his reliability, problem-solving skills, and collaborative nature. He’s a solid engineer and a great teammate.",
-		linkedin: "https://www.linkedin.com/in/haseebqureshi1",
-		avatarUrl: "https://media.licdn.com/dms/image/v2/D5603AQFvV2SfZOEukg/profile-displayphoto-shrink_100_100/B56ZdgW8tkH8AU-/0/1749668320044?e=1756944000&v=beta&t=2zgjV554n-s5Apkg4xnDPpormE84HdLrW5mUy3DyFzg"
+		testimonial:
+			'I worked with Arihant for three years in the same technical team and always admired his reliability, problem-solving skills, and collaborative nature. He’s a solid engineer and a great teammate.',
+		linkedin: 'https://www.linkedin.com/in/haseebqureshi1',
+		avatarUrl:
+			'https://media.licdn.com/dms/image/v2/D5603AQFvV2SfZOEukg/profile-displayphoto-shrink_100_100/B56ZdgW8tkH8AU-/0/1749668320044?e=1756944000&v=beta&t=2zgjV554n-s5Apkg4xnDPpormE84HdLrW5mUy3DyFzg',
 	},
 ];
 
@@ -108,19 +110,19 @@ const TestimonialCard = ({
 					animation: 'gradientBorder 4s ease infinite',
 				}}
 			>
-				<div className='h-full w-full bg-[#0a0a0a] rounded-xl p-6'>
+				<div className='h-full w-full rounded-xl p-6 bg-background-light dark:bg-background-dark transition-colors duration-500'>
 					<div className='flex items-center mb-4 space-x-4'>
 						<img
 							src={testimonial.avatarUrl}
 							alt={testimonial.name}
-							className='w-12 h-12 rounded-full border border-gray-700 hover:scale-110 transition-transform duration-300 ease-in-out'
+							className='w-12 h-12 rounded-full border border-muted-light dark:border-muted-dark hover:scale-110 transition-transform duration-300 ease-in-out bg-white dark:bg-[#18181b]'
 						/>
-						<p className='text-base sm:text-lg font-bold text-gray-100'>
+						<p className='text-base sm:text-lg font-bold text-text-light dark:text-text-dark'>
 							{testimonial.name}
 						</p>
 					</div>
 					<p
-						className={`text-sm sm:text-base md:text-sm lg:text-base leading-relaxed text-gray-300 transition-all duration-300 ease-in-out ${
+						className={`text-sm sm:text-base md:text-sm lg:text-base leading-relaxed text-muted-light dark:text-muted-dark transition-all duration-300 ease-in-out ${
 							isExpanded ? 'max-h-full' : 'max-h-24 overflow-hidden'
 						}`}
 					>
@@ -131,7 +133,7 @@ const TestimonialCard = ({
 					{!isExpanded && (
 						<button
 							onClick={toggleExpand}
-							className='text-indigo-400 hover:text-indigo-300 font-medium text-sm sm:text-base mt-2 bg-transparent hover:bg-indigo-500/10 border-none cursor-pointer px-3 py-1 rounded-md transition-all duration-200 ease-in-out'
+							className='text-primary-light dark:text-primary-dark hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 font-medium text-sm sm:text-base mt-2 bg-transparent border-none cursor-pointer px-3 py-1 rounded-md transition-all duration-200 ease-in-out'
 						>
 							View More
 						</button>
@@ -140,7 +142,7 @@ const TestimonialCard = ({
 						href={testimonial.linkedin}
 						target='_blank'
 						rel='noopener noreferrer'
-						className='text-indigo-400 hover:text-indigo-300 font-medium text-sm sm:text-base flex justify-center items-center mt-2'
+						className='text-primary-light dark:text-primary-dark font-medium text-sm sm:text-base flex justify-center items-center mt-2 hover:underline'
 					>
 						<svg
 							xmlns='http://www.w3.org/2000/svg'
@@ -194,9 +196,9 @@ const Testimonials = () => {
 	};
 
 	return (
-		<section className='py-16 overflow-hidden'>
+		<section className='py-16 overflow-hidden bg-background-light dark:bg-background-dark transition-colors duration-500'>
 			<div className='max-w-3xl mx-auto text-center'>
-				<h2 className='text-xl sm:text-2xl font-extrabold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-blue-500 to-purple-500 font-mono'>
+				<h2 className='text-xl sm:text-2xl font-extrabold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary-light to-primary-dark font-mono'>
 					Recommendations
 				</h2>
 				<Swiper

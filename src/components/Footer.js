@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 export default function Footer() {
 	return (
-		<footer className='bg-[#050505]/90 backdrop-blur-md border-t border-gray-800'>
+		<footer className='bg-background-light dark:bg-[#050505]/90 backdrop-blur-md border-t border-gray-200 dark:border-gray-800 text-text-light dark:text-text-dark'>
 			<div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12'>
 				<div className='flex flex-col md:flex-row justify-between items-center gap-8'>
 					{/* Left Section */}
@@ -15,7 +15,7 @@ export default function Footer() {
 						<h3 className='text-3xl sm:text-4xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-500 mb-2'>
 							Arihant Jain
 						</h3>
-						<p className='text-gray-200 text-sm sm:text-base max-w-xs md:max-w-md mx-auto md:mx-0'>
+						<p className='text-muted-light dark:text-muted-dark text-sm sm:text-base max-w-xs md:max-w-md mx-auto md:mx-0'>
 							<i>Full Stack Developer & Tech Enthusiast</i>
 						</p>
 					</motion.div>
