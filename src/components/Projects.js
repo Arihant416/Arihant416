@@ -28,6 +28,7 @@ import {
 	SiCss3,
 	SiNetlify,
 } from 'react-icons/si';
+import GoLogo from './GoLogo';
 
 const WorkExperience = () => {
 	const workExperience = [
@@ -60,21 +61,7 @@ const WorkExperience = () => {
 				{ name: 'Kubernetes', icon: SiKubernetes, color: 'text-blue-500' },
 				{
 					name: 'Go',
-					icon: (props) => (
-						<svg
-							viewBox='0 0 48 48'
-							fill='none'
-							xmlns='http://www.w3.org/2000/svg'
-							className={props.className}
-							style={props.style}
-						>
-							<circle cx='24' cy='24' r='24' fill='#00ADD8' />
-							<path
-								d='M33.5 32c-1.5 0-2.5-1-2.5-2.5s1-2.5 2.5-2.5 2.5 1 2.5 2.5-1 2.5-2.5 2.5zm-19 0c-1.5 0-2.5-1-2.5-2.5s1-2.5 2.5-2.5 2.5 1 2.5 2.5-1 2.5-2.5 2.5zM24 12c-6.6 0-12 5.4-12 12 0 2.2.6 4.2 1.7 6h20.6c1.1-1.8 1.7-3.8 1.7-6 0-6.6-5.4-12-12-12zm0 2c5.5 0 10 4.5 10 10 0 1.7-.4 3.3-1.2 4.7-.2.3-.5.3-.7.1-.3-.2-.3-.5-.1-.7.7-1.2 1-2.6 1-4.1 0-5.5-4.5-10-10-10s-10 4.5-10 10c0 1.5.3 2.9 1 4.1.2.3.2.6-.1.7-.3.2-.6.2-.7-.1C14.4 27.3 14 25.7 14 24c0-5.5 4.5-10 10-10z'
-								fill='#fff'
-							/>
-						</svg>
-					),
+					icon: GoLogo,
 					color: 'text-cyan-500',
 				},
 			],
@@ -231,8 +218,14 @@ const WorkExperience = () => {
 										className={`flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold shadow-md border border-gray-200 dark:border-gray-700 ${tech.color} bg-white/80 dark:bg-background-dark/80 hover:shadow-lg transition-all duration-200`}
 										style={{ boxShadow: '0 2px 8px 0 rgba(80,80,180,0.10)' }}
 									>
-										<Icon className={`text-lg ${tech.color}`} />
-										<span className='hidden sm:inline'>{tech.name}</span>
+										{tech.name === 'Go' ? (
+											<Icon className={`w-6 h-6`} />
+										) : (
+											<>
+												<Icon className={`text-lg ${tech.color}`} />
+												<span className='hidden sm:inline'>{tech.name}</span>
+											</>
+										)}
 									</div>
 								);
 							})}
