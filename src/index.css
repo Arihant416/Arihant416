@@ -1,12 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Montserrat:wght@400;500;700&display=swap');
+@import './globals.css';
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/*
-  All typography, color, and button styles are now handled by Tailwind utility classes and the custom theme in tailwind.config.js.
-  Use font-heading for headings and font-body for body text.
-  Use text-primary-light/dark, bg-background-light/dark, etc. for color.
-  Use dark: variants for dark mode support.
-*/
+/* Tailwind utilities remain for layout; color/typography from globals.css */

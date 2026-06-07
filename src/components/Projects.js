@@ -155,56 +155,27 @@ const WorkExperience = () => {
 			initial={{ opacity: 0, y: 40 }}
 			animate={{ opacity: 1, y: 0 }}
 			transition={{ duration: 0.8, ease: 'easeOut' }}
-			className='min-h-screen w-full flex flex-col items-center px-2 sm:px-6 lg:px-16 py-12 bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark transition-colors duration-500'
+			className='work-section'
 		>
-			<motion.h1
-				initial={{ opacity: 0, scale: 0.92 }}
-				animate={{ opacity: 1, scale: 1 }}
-				transition={{ duration: 0.8, ease: 'easeOut' }}
-				className='text-5xl sm:text-6xl font-extrabold text-center mb-10 bg-gradient-to-r from-primary-light to-primary-dark bg-clip-text text-transparent drop-shadow-lg'
-			>
+			<motion.h1 initial={{ opacity: 0, scale: 0.92 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, ease: 'easeOut' }} className='section-title'>
 				Work Experience
 			</motion.h1>
 
 			<div className='w-full max-w-6xl flex flex-col gap-8'>
 				{workExperience.map((job, index) => (
-					<div
-						key={index}
-						className={`rounded-xl border border-muted-light dark:border-muted-dark p-5 sm:p-7 bg-white/80 dark:bg-background-dark/80 ${
-							job.current
-								? 'border-primary-light dark:border-primary-dark shadow-2xl'
-								: ''
-						}`}
-					>
-						<a
-							href={job.companyLink}
-							target='_blank'
-							rel='noopener noreferrer'
-							className='text-lg sm:text-xl font-bold text-primary-light dark:text-primary-dark hover:underline flex items-center gap-2 mb-1'
-						>
-							{job.company}
-							<FaLink className='text-indigo-300' />
+					<div key={index} className={`card ${job.current ? 'current' : ''}`}>
+						<a href={job.companyLink} target='_blank' rel='noopener noreferrer' className='job-company'>
+							{job.company} <FaLink className='mono' />
 						</a>
 						<div className='flex flex-col sm:flex-row sm:items-center sm:justify-between mt-1 mb-1 gap-1'>
-							<h3 className='text-lg sm:text-xl font-extrabold tracking-tight text-gray-900 dark:text-pink-300 transition-colors duration-300'>
-								{job.title}
-							</h3>
-							<p className='text-sm sm:text-base font-bold text-indigo-600 dark:text-yellow-300 sm:mb-0 sm:ml-4 sm:text-right transition-colors duration-300'>
-								{job.date}
-							</p>
+							<h3 className='job-title'>{job.title}</h3>
+							<p className='job-meta'>{job.date}</p>
 						</div>
-						<p className='mt-1 text-base sm:text-lg font-bold text-text-light dark:text-text-dark leading-relaxed sm:leading-normal transition-colors duration-300'>
-							{job.description}
-						</p>
+						<p className='mt-1 job-desc'>{job.description}</p>
 						<ul className='mt-3 space-y-1 text-left'>
 							{job.highlights.map((highlight, i) => (
-								<li
-									key={i}
-									className='flex items-start gap-2 text-sm sm:text-base font-semibold text-text-light dark:text-text-dark transition-colors duration-300'
-								>
-									<span className='text-primary-light dark:text-primary-dark mt-1'>
-										•
-									</span>
+								<li key={i} className='flex items-start gap-2 text-sm sm:text-base'>
+									<span className='mono'>•</span>
 									<span>{highlight}</span>
 								</li>
 							))}
@@ -213,17 +184,13 @@ const WorkExperience = () => {
 							{job.techStack.map((tech, idx) => {
 								const Icon = tech.icon;
 								return (
-									<div
-										key={idx}
-										className={`flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold shadow-md border border-gray-200 dark:border-gray-700 ${tech.color} bg-white/80 dark:bg-background-dark/80 hover:shadow-lg transition-all duration-200`}
-										style={{ boxShadow: '0 2px 8px 0 rgba(80,80,180,0.10)' }}
-									>
+									<div key={idx} className='chip'>
 										{tech.name === 'Go' ? (
 											<Icon className={`w-6 h-6`} />
 										) : (
 											<>
-												<Icon className={`text-lg ${tech.color}`} />
-												<span className='hidden sm:inline'>{tech.name}</span>
+												<Icon className={`text-lg`} />
+												<span className='mono'>{tech.name}</span>
 											</>
 										)}
 									</div>
@@ -234,45 +201,24 @@ const WorkExperience = () => {
 				))}
 			</div>
 
-			<motion.h2
-				initial={{ opacity: 0, y: 20 }}
-				whileInView={{ opacity: 1, y: 0 }}
-				viewport={{ once: true }}
-				transition={{ duration: 0.8 }}
-				className='text-4xl font-extrabold mt-24 mb-10 text-center bg-gradient-to-r from-primary-light to-primary-dark bg-clip-text text-transparent drop-shadow-lg'
-			>
+			<motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className='section-title' style={{marginTop:'3rem'}}>
 				Projects
 			</motion.h2>
 
 			<div className='w-full max-w-6xl flex flex-col gap-6 mt-10'>
 				{projects.map((project, index) => (
-					<div
-						key={index}
-						className='rounded-xl border border-muted-light dark:border-muted-dark p-4 sm:p-5 bg-white/90 dark:bg-background-dark/90 shadow-sm'
-					>
-						<a
-							href={project.liveLink}
-							target='_blank'
-							rel='noopener noreferrer'
-							className='text-lg sm:text-2xl font-bold text-orange-500 dark:text-orange-300 hover:underline flex items-center gap-2 mb-1'
-						>
-							{project.name}
-							<FaLink className='text-emerald-400' />
+					<div key={index} className='project-card'>
+						<a href={project.liveLink} target='_blank' rel='noopener noreferrer' className='job-title'>
+							{project.name} <FaLink />
 						</a>
-						<p className='text-base sm:text-lg font-bold text-gray-800 dark:text-white mb-3'>
-							{project.description}
-						</p>
+						<p className='job-desc'>{project.description}</p>
 						<div className='flex gap-2 mt-2 overflow-x-auto whitespace-nowrap no-scrollbar'>
 							{project.techStack.map((tech, idx) => {
 								const Icon = tech.icon;
 								return (
-									<div
-										key={idx}
-										className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold shadow-md border border-gray-200 dark:border-gray-700 ${tech.color} bg-white/80 dark:bg-background-dark/80 hover:shadow-lg transition-all duration-200`}
-										style={{ boxShadow: '0 2px 8px 0 rgba(80,80,180,0.10)' }}
-									>
+									<div key={idx} className='chip'>
 										<Icon className='text-lg' />
-										<span className='hidden sm:inline'>{tech.name}</span>
+										<span className='mono' style={{marginLeft:6}}>{tech.name}</span>
 									</div>
 								);
 							})}

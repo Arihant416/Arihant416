@@ -112,7 +112,7 @@ const Skills = () => {
 			initial={{ opacity: 0, y: 40 }}
 			animate={{ opacity: 1, y: 0 }}
 			transition={{ duration: 0.8, ease: 'easeOut' }}
-			className='relative flex flex-col items-center justify-center text-center bg-white dark:bg-black text-black dark:text-white px-2 sm:px-6 lg:px-10 py-12 min-h-screen transition-colors duration-500'
+			className='skills-section'
 		>
 			<motion.h1
 				initial={{ opacity: 0, scale: 0.92 }}
@@ -127,7 +127,7 @@ const Skills = () => {
 				initial={{ opacity: 0, y: 20 }}
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-				className='text-lg sm:text-xl text-black dark:text-white mb-12 max-w-2xl mx-auto'
+				className='text-lg sm:text-xl mb-12 max-w-2xl mx-auto'
 			>
 				A showcase of my technical toolkit, frameworks, and engineering
 				strengths.
@@ -135,7 +135,7 @@ const Skills = () => {
 
 			{/* Programming Languages */}
 			<div className='w-full max-w-6xl'>
-				<h2 className='text-2xl sm:text-3xl font-bold mb-6 bg-gradient-to-r from-primary-light to-primary-dark bg-clip-text text-transparent'>
+				<h2 className='section-title'>
 					Programming Languages
 				</h2>
 				<div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6 gap-4 sm:gap-6'>
@@ -158,7 +158,7 @@ const Skills = () => {
 									ease: 'easeInOut',
 									duration: 0.22,
 								}}
-								className='flex flex-col items-center justify-center rounded-2xl border border-muted-light dark:border-muted-dark p-4 sm:p-6 shadow-sm hover:shadow-md transition-all duration-300 bg-white dark:bg-black cursor-pointer relative group'
+								className='skill-card'
 								style={{ overflow: 'visible' }}
 							>
 								<span
@@ -172,21 +172,11 @@ const Skills = () => {
 									}}
 								></span>
 								{skill.icon && (
-									<div
-										className={`text-4xl sm:text-5xl mb-2 sm:mb-3 transition-transform duration-300 group-hover:scale-105 ${
-											colorMap[skill.name]
-										}`}
-									>
+									<div className='text-4xl sm:text-5xl mb-2 sm:mb-3'>
 										{skill.icon}
 									</div>
 								)}
-								<div
-									className={`text-base sm:text-lg font-semibold ${
-										colorMap[skill.name]
-									}`}
-								>
-									{skill.name}
-								</div>
+								<div className='text-base sm:text-lg font-semibold'>{skill.name}</div>
 							</motion.div>
 						);
 					})}
@@ -195,149 +185,77 @@ const Skills = () => {
 
 			{/* CS Fundamentals */}
 			<div className='w-full max-w-6xl mt-12'>
-				<h2 className='text-2xl sm:text-3xl font-bold mb-6 bg-gradient-to-r from-primary-light to-primary-dark bg-clip-text text-transparent'>
+								<h2 className='section-title'>
 					CS Fundamentals
-				</h2>
+								</h2>
 				<div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6 gap-4 sm:gap-6'>
 					{skills.csFundamentals.map((skill, index) => (
-						<motion.div
-							key={index}
-							whileHover={{ scale: 1.08, y: -6 }}
-							className='group p-4 sm:p-6 flex flex-col items-center justify-center rounded-2xl shadow-xl transition-all duration-300 border border-muted-light dark:border-muted-dark hover:shadow-2xl hover:-translate-y-1 bg-white dark:bg-black'
-						>
-							<div
-								className={`text-base sm:text-lg font-semibold tracking-wide ${
-									colorMap[skill.name]
-								}`}
-							>
-								{skill.name}
-							</div>
-						</motion.div>
+												<motion.div key={index} className='skill-card'>
+													<div className='text-base sm:text-lg font-semibold tracking-wide'>
+														{skill.name}
+													</div>
+												</motion.div>
 					))}
 				</div>
 			</div>
 
 			{/* Frameworks and Libraries */}
 			<div className='w-full max-w-6xl mt-12'>
-				<h2 className='text-2xl sm:text-3xl font-bold mb-6 bg-gradient-to-r from-primary-light to-primary-dark bg-clip-text text-transparent'>
+								<h2 className='section-title'>
 					Frameworks & Libraries
-				</h2>
+								</h2>
 				<div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6 gap-4 sm:gap-6'>
-					{skills.frameworksAndLibraries.map((skill, index) => (
-						<motion.div
-							key={index}
-							whileHover={{ scale: 1.08, y: -6 }}
-							className='group p-4 sm:p-6 flex flex-col items-center justify-center rounded-2xl shadow-xl transition-all duration-300 border border-muted-light dark:border-muted-dark hover:shadow-2xl hover:-translate-y-1 bg-white dark:bg-black'
-						>
-							<div
-								className={`text-4xl sm:text-5xl mb-2 sm:mb-3 drop-shadow-lg transition-transform duration-300 group-hover:scale-110 ${
-									colorMap[skill.name]
-								}`}
-							>
-								{skill.icon}
-							</div>
-							<div
-								className={`text-base sm:text-lg font-semibold tracking-wide ${
-									colorMap[skill.name]
-								}`}
-							>
-								{skill.name}
-							</div>
-						</motion.div>
-					))}
+										{skills.frameworksAndLibraries.map((skill, index) => (
+											<motion.div key={index} className='skill-card'>
+												<div className='text-4xl sm:text-5xl mb-2 sm:mb-3'>{skill.icon}</div>
+												<div className='text-base sm:text-lg font-semibold tracking-wide'>{skill.name}</div>
+											</motion.div>
+										))}
 				</div>
 			</div>
 
 			{/* Cloud and Databases */}
 			<div className='w-full max-w-6xl mt-12'>
-				<h2 className='text-2xl sm:text-3xl font-bold mb-6 bg-gradient-to-r from-primary-light to-primary-dark bg-clip-text text-transparent'>
+								<h2 className='section-title'>
 					Cloud & Databases
-				</h2>
+								</h2>
 				<div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6 gap-4 sm:gap-6'>
-					{skills.cloudAndDatabases.map((skill, index) => (
-						<motion.div
-							key={index}
-							whileHover={{ scale: 1.08, y: -6 }}
-							className='group p-4 sm:p-6 flex flex-col items-center justify-center rounded-2xl shadow-xl transition-all duration-300 border border-muted-light dark:border-muted-dark hover:shadow-2xl hover:-translate-y-1 bg-white dark:bg-black'
-						>
-							<div
-								className={`text-4xl sm:text-5xl mb-2 sm:mb-3 drop-shadow-lg transition-transform duration-300 group-hover:scale-110 ${
-									colorMap[skill.name]
-								}`}
-							>
-								{skill.icon}
-							</div>
-							<div
-								className={`text-base sm:text-lg font-semibold tracking-wide ${
-									colorMap[skill.name]
-								}`}
-							>
-								{skill.name}
-							</div>
-						</motion.div>
-					))}
+										{skills.cloudAndDatabases.map((skill, index) => (
+											<motion.div key={index} className='skill-card'>
+												<div className='text-4xl sm:text-5xl mb-2 sm:mb-3'>{skill.icon}</div>
+												<div className='text-base sm:text-lg font-semibold tracking-wide'>{skill.name}</div>
+											</motion.div>
+										))}
 				</div>
 			</div>
 
 			{/* Message Queues */}
 			<div className='w-full max-w-6xl mt-12'>
-				<h2 className='text-2xl sm:text-3xl font-bold mb-6 bg-gradient-to-r from-primary-light to-primary-dark bg-clip-text text-transparent'>
+								<h2 className='section-title'>
 					Message Queues
-				</h2>
+								</h2>
 				<div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6 gap-4 sm:gap-6'>
-					{skills.messageQueues.map((skill, index) => (
-						<motion.div
-							key={index}
-							whileHover={{ scale: 1.08, y: -6 }}
-							className='group p-4 sm:p-6 flex flex-col items-center justify-center rounded-2xl shadow-xl transition-all duration-300 border border-muted-light dark:border-muted-dark hover:shadow-2xl hover:-translate-y-1 bg-white dark:bg-black'
-						>
-							<div
-								className={`text-4xl sm:text-5xl mb-2 sm:mb-3 drop-shadow-lg transition-transform duration-300 group-hover:scale-110 ${
-									colorMap[skill.name]
-								}`}
-							>
-								{skill.icon}
-							</div>
-							<div
-								className={`text-base sm:text-lg font-semibold tracking-wide ${
-									colorMap[skill.name]
-								}`}
-							>
-								{skill.name}
-							</div>
-						</motion.div>
-					))}
+										{skills.messageQueues.map((skill, index) => (
+											<motion.div key={index} className='skill-card'>
+												<div className='text-4xl sm:text-5xl mb-2 sm:mb-3'>{skill.icon}</div>
+												<div className='text-base sm:text-lg font-semibold tracking-wide'>{skill.name}</div>
+											</motion.div>
+										))}
 				</div>
 			</div>
 
 			{/* Others */}
 			<div className='w-full max-w-6xl mt-12'>
-				<h2 className='text-2xl sm:text-3xl font-bold mb-6 bg-gradient-to-r from-primary-light to-primary-dark bg-clip-text text-transparent'>
+								<h2 className='section-title'>
 					Others
-				</h2>
+								</h2>
 				<div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6 gap-4 sm:gap-6'>
-					{skills.others.map((skill, index) => (
-						<motion.div
-							key={index}
-							whileHover={{ scale: 1.08, y: -6 }}
-							className='group p-4 sm:p-6 flex flex-col items-center justify-center rounded-2xl shadow-xl transition-all duration-300 border border-muted-light dark:border-muted-dark hover:shadow-2xl hover:-translate-y-1 bg-white dark:bg-black'
-						>
-							<div
-								className={`text-4xl sm:text-5xl mb-2 sm:mb-3 drop-shadow-lg transition-transform duration-300 group-hover:scale-110 ${
-									colorMap[skill.name]
-								}`}
-							>
-								{skill.icon}
-							</div>
-							<div
-								className={`text-base sm:text-lg font-semibold tracking-wide ${
-									colorMap[skill.name]
-								}`}
-							>
-								{skill.name}
-							</div>
-						</motion.div>
-					))}
+										{skills.others.map((skill, index) => (
+											<motion.div key={index} className='skill-card'>
+												<div className='text-4xl sm:text-5xl mb-2 sm:mb-3'>{skill.icon}</div>
+												<div className='text-base sm:text-lg font-semibold tracking-wide'>{skill.name}</div>
+											</motion.div>
+										))}
 				</div>
 			</div>
 		</motion.section>

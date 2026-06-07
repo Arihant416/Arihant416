@@ -77,85 +77,30 @@ const testimonials = [
 	},
 ];
 
-const TestimonialCard = ({
-	testimonial,
-	isExpanded,
-	toggleExpand,
-	observeRef,
-}) => {
+const TestimonialCard = ({ testimonial, isExpanded, toggleExpand, observeRef }) => {
+
 	return (
-		<>
-			<style>
-				{`
-					@keyframes gradientBorder {
-						0% {
-							background-position: 0% 50%;
-						}
-						50% {
-							background-position: 100% 50%;
-						}
-						100% {
-							background-position: 0% 50%;
-						}
-					}
-				`}
-			</style>
-			<div
-				ref={observeRef}
-				className='max-w-3xl mx-auto p-[2px] rounded-xl relative'
-				style={{
-					background:
-						'linear-gradient(90deg, #4f46e5, #7c3aed, #db2777, #4f46e5)',
-					backgroundSize: '300% 300%',
-					animation: 'gradientBorder 4s ease infinite',
-				}}
-			>
-				<div className='h-full w-full rounded-xl p-6 bg-background-light dark:bg-background-dark transition-colors duration-500'>
-					<div className='flex items-center mb-4 space-x-4'>
-						<img
-							src={testimonial.avatarUrl}
-							alt={testimonial.name}
-							className='w-12 h-12 rounded-full border border-muted-light dark:border-muted-dark hover:scale-110 transition-transform duration-300 ease-in-out bg-white dark:bg-[#18181b]'
-						/>
-						<p className='text-base sm:text-lg font-bold text-text-light dark:text-text-dark'>
-							{testimonial.name}
-						</p>
-					</div>
-					<p
-						className={`text-sm sm:text-base md:text-sm lg:text-base leading-relaxed text-muted-light dark:text-muted-dark transition-all duration-300 ease-in-out ${
-							isExpanded ? 'max-h-full' : 'max-h-24 overflow-hidden'
-						}`}
-					>
-						{isExpanded
-							? testimonial.testimonial
-							: `${testimonial.testimonial.substring(0, 200)}...`}
-					</p>
-					{!isExpanded && (
-						<button
-							onClick={toggleExpand}
-							className='text-primary-light dark:text-primary-dark hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 font-medium text-sm sm:text-base mt-2 bg-transparent border-none cursor-pointer px-3 py-1 rounded-md transition-all duration-200 ease-in-out'
-						>
-							View More
-						</button>
-					)}
-					<a
-						href={testimonial.linkedin}
-						target='_blank'
-						rel='noopener noreferrer'
-						className='text-primary-light dark:text-primary-dark font-medium text-sm sm:text-base flex justify-center items-center mt-2 hover:underline'
-					>
-						<svg
-							xmlns='http://www.w3.org/2000/svg'
-							fill='currentColor'
-							viewBox='0 0 24 24'
-							className='w-5 h-5 mr-1'
-						>
-							<path d='M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.268h-3v-5.604c0-1.337-.026-3.063-1.867-3.063-1.868 0-2.155 1.459-2.155 2.967v5.7h-3v-10h2.881v1.367h.041c.401-.759 1.379-1.559 2.841-1.559 3.039 0 3.6 2.001 3.6 4.604v5.588z' />
-						</svg>
-					</a>
+		<div ref={observeRef} className='max-w-3xl mx-auto card'>
+			<div className='h-full w-full rounded-xl p-6 transition-colors duration-500'>
+				<div className='flex items-center mb-4 space-x-4'>
+					<img src={testimonial.avatarUrl} alt={testimonial.name} className='w-12 h-12 rounded-full border border-muted-light dark:border-muted-dark hover:scale-110 transition-transform duration-300 ease-in-out avatar' />
+					<p className='text-base sm:text-lg font-bold'>{testimonial.name}</p>
 				</div>
+				<p className={`text-sm sm:text-base md:text-sm lg:text-base leading-relaxed text-muted-light transition-all duration-300 ease-in-out ${isExpanded ? 'max-h-full' : 'max-h-24 overflow-hidden'}`}>
+					{isExpanded ? testimonial.testimonial : `${testimonial.testimonial.substring(0, 200)}...`}
+				</p>
+				{!isExpanded && (
+					<button onClick={toggleExpand} className='accent-link font-medium text-sm sm:text-base mt-2 bg-transparent border-none cursor-pointer px-3 py-1 rounded-md transition-all duration-200 ease-in-out'>
+						View More
+					</button>
+				)}
+				<a href={testimonial.linkedin} target='_blank' rel='noopener noreferrer' className='accent-link font-medium text-sm sm:text-base flex justify-center items-center mt-2'>
+					<svg xmlns='http://www.w3.org/2000/svg' fill='currentColor' viewBox='0 0 24 24' className='w-5 h-5 mr-1'>
+						<path d='M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.268h-3v-5.604c0-1.337-.026-3.063-1.867-3.063-1.868 0-2.155 1.459-2.155 2.967v5.7h-3v-10h2.881v1.367h.041c.401-.759 1.379-1.559 2.841-1.559 3.039 0 3.6 2.001 3.6 4.604v5.588z' />
+					</svg>
+				</a>
 			</div>
-		</>
+		</div>
 	);
 };
 
