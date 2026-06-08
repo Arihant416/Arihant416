@@ -9,9 +9,7 @@ export default function Footer() {
             { label: 'GitHub',   href: 'https://github.com/Arihant416'     },
             { label: 'Twitter',  href: 'https://x.com/Arihant2302'         },
           ].map(({ label, href }) => (
-            <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="footer-link">
-              {label}
-            </a>
+            <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="footer-link">{label}</a>
           ))}
         </nav>
       </div>

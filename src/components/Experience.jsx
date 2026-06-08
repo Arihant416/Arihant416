@@ -2,22 +2,19 @@ import { motion } from 'framer-motion';
 import { workExperience, projects } from '../data/experience';
 
 const inView = (delay = 0) => ({
-  initial:     { opacity: 0, y: 18 },
+  initial:     { opacity: 0, y: 20 },
   whileInView: { opacity: 1, y: 0  },
-  viewport:    { once: true, margin: '-50px' },
+  viewport:    { once: true, margin: '-40px' },
   transition:  { duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] },
 });
 
 export default function Experience() {
   return (
-    <div className="section">
+    <div className="section section-border">
 
-      {/* ── Work ── */}
-      <motion.p className="section-label" {...inView(0)}>
-        Work Experience
-      </motion.p>
+      <motion.p className="section-label" {...inView(0)}>Work Experience</motion.p>
 
-      <div className="exp-list">
+      <div className="exp-grid">
         {workExperience.map((job, i) => (
           <motion.div
             key={job.company}
@@ -33,15 +30,10 @@ export default function Experience() {
               </div>
               <span className="exp-date">{job.date}</span>
             </div>
-
             <p className="exp-desc">{job.description}</p>
-
             <ul className="highlight-list">
-              {job.highlights.map(h => (
-                <li key={h} className="highlight-item">{h}</li>
-              ))}
+              {job.highlights.map(h => <li key={h} className="highlight-item">{h}</li>)}
             </ul>
-
             <div className="chip-row">
               {job.chips.map(c => <span key={c} className="chip">{c}</span>)}
             </div>
@@ -49,17 +41,15 @@ export default function Experience() {
         ))}
       </div>
 
-      {/* ── Projects ── */}
-      <motion.p className="section-label" style={{ marginTop: '4rem' }} {...inView(0)}>
+      <motion.p className="section-label" style={{ marginTop: '4.5rem' }} {...inView(0)}>
         Projects
       </motion.p>
 
-      <div className="proj-list">
+      <div className="proj-grid">
         {projects.map((proj, i) => (
           <motion.div key={proj.name} className="proj-card" {...inView(i * 0.07)}>
             <a href={proj.url} target="_blank" rel="noopener noreferrer" className="proj-name">
-              {proj.name}
-              <span style={{ fontSize: '.85rem', color: 'var(--accent)' }}>↗</span>
+              {proj.name} <span style={{ color: 'var(--accent)', fontSize: '.85rem' }}>↗</span>
             </a>
             <p className="proj-desc">{proj.description}</p>
             <div className="chip-row">

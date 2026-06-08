@@ -5,7 +5,7 @@ import {
   SiMongodb, SiRedis, SiCplusplus, SiSelenium, SiPandas,
   SiFastapi, SiMysql, SiRabbitmq, SiLinux, SiPython,
   SiJavascript, SiAmazonsqs, SiCelery, SiJira, SiKubernetes,
-  SiGo, SiServerless, SiScrapy,
+  SiGo, SiServerless, SiApachekafka,
 } from 'react-icons/si';
 
 export const skillCategories = [
@@ -13,9 +13,7 @@ export const skillCategories = [
     title: 'Languages',
     skills: [
       { name: 'Python',     Icon: SiPython,     color: '#3776AB' },
-      { name: 'Go',         Icon: SiGo,          color: '#00ADD8' },
       { name: 'JavaScript', Icon: SiJavascript,  color: '#F7DF1E' },
-      { name: 'Java',       Icon: FaJava,        color: '#E76F00' },
       { name: 'C++',        Icon: SiCplusplus,   color: '#00599C' },
     ],
   },
@@ -24,11 +22,9 @@ export const skillCategories = [
     skills: [
       { name: 'FastAPI',    Icon: SiFastapi,    color: '#009688' },
       { name: 'Node.js',    Icon: FaNode,       color: '#339933' },
-      { name: 'React',      Icon: FaReact,      color: '#61DAFB' },
       { name: 'Angular',    Icon: FaAngular,    color: '#DD0031' },
       { name: 'Selenium',   Icon: SiSelenium,   color: '#43B02A' },
       { name: 'Celery',     Icon: SiCelery,     color: '#37814A' },
-      { name: 'Pandas',     Icon: SiPandas,     color: '#7B3FE4' },
       { name: 'Serverless', Icon: SiServerless, color: '#FD5750' },
     ],
   },
@@ -49,18 +45,14 @@ export const skillCategories = [
       { name: 'SQS',      Icon: SiAmazonsqs, color: '#F29111' },
       { name: 'RabbitMQ', Icon: SiRabbitmq,  color: '#FF6600' },
       { name: 'Linux',    Icon: SiLinux,     color: '#FCC624' },
-      { name: 'Jira',     Icon: SiJira,      color: '#0052CC' },
-      { name: 'Scrapy',   Icon: SiScrapy,    color: '#E74C3C' },
+      { name: 'Kafka',     Icon: SiApachekafka,      color: '#96cc00' },
     ],
   },
   {
     title: 'CS Fundamentals',
     skills: [
       { name: 'System Design',   Icon: null, color: '#9333ea' },
-      { name: 'Distributed Sys', Icon: null, color: '#6366f1' },
-      { name: 'Data Structures', Icon: null, color: '#22d3ee' },
-      { name: 'Algorithms',      Icon: null, color: '#06b6d4' },
-      { name: 'OOP',             Icon: null, color: '#a78bfa' },
+      { name: 'Data Structures & Algorithms', Icon: null, color: '#22d3ee' },
     ],
   },
 ];
