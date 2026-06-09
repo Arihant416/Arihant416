@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { skillCategories } from '../data/skills';
 
 export default function Skills() {
-  // Separate icon-based tech from text-based fundamentals
+  // Extract and flat-map categories cleanly using your exact data structure
   const iconSkills = skillCategories
     .filter(cat => cat.title !== 'CS Fundamentals')
     .flatMap(cat => cat.skills);
@@ -12,6 +12,7 @@ export default function Skills() {
 
   return (
     <div className="section">
+      {/* Child 1: Left Sticky Label Context */}
       <motion.p
         className="section-label"
         initial={{ opacity: 0, y: 14 }}
@@ -22,78 +23,45 @@ export default function Skills() {
         Core Technologies
       </motion.p>
 
-      <div 
-        className="skills-container" 
-        style={{ 
-          display: 'flex', 
-          flexDirection: 'column', 
-          alignItems: 'center', 
-          gap: '4rem', 
-          margin: '3rem 0' 
-        }}
-      >
-        {/* ── 1. The Clean Icon Grid ── */}
-        <div 
-          style={{ 
-            display: 'flex', 
-            flexWrap: 'wrap', 
-            justifyContent: 'center', 
-            gap: '2.5rem', 
-            maxWidth: '650px' 
-          }}
-        >
+      {/* Child 2: Main Right Column Content Wrapper */}
+      <div className="skills-container w-full">
+        {/* Core Tech Grid Matrix */}
+        <div className="skills-icon-grid">
           {iconSkills.map((skill, i) => (
             <motion.div
               key={skill.name}
-              title={skill.name}
+              className="skill-icon-item flex flex-col items-center gap-2"
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-50px' }}
-              transition={{ delay: i * 0.03 }}
-              style={{
-                fontSize: '2.2rem', // Sleek, manageable size
-                color: 'var(--text-muted, #444)', // Very dim initially
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: i * 0.03 }}
               whileHover={{ 
-                scale: 1.15, // Subtle, professional pop (no more 1.5x)
-                color: skill.color, // Color illumination
-                y: -4, // Tiny lift
-                transition: { type: 'spring', stiffness: 400, damping: 12 } 
+                scale: 1.12, 
+                color: skill.color,
+                y: -3,
+                transition: { type: 'spring', stiffness: 400, damping: 12 }
               }}
             >
-              <skill.Icon />
+              <skill.Icon className="w-8 h-8 stroke-[1.5]" />
+              <span className="font-mono text-[10px] uppercase tracking-wider text-muted select-none">
+                {skill.name}
+              </span>
             </motion.div>
           ))}
         </div>
 
-        {/* ── 2. CS Fundamentals (Text Only) ── */}
-        <div 
-          style={{ 
-            display: 'flex', 
-            flexWrap: 'wrap', 
-            justifyContent: 'center', 
-            gap: '2rem' 
-          }}
-        >
+        {/* CS Fundamentals Text Strip */}
+        <div className="skills-fundamentals-row">
           {csFundamentals.map((skill, i) => (
             <motion.span
               key={skill.name}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
+              className="chip text-xs"
+              initial={{ opacity: 0, filter: 'blur(4px)' }}
+              whileInView={{ opacity: 1, filter: 'blur(0px)' }}
               viewport={{ once: true }}
-              transition={{ delay: 0.4 + (i * 0.05) }}
-              style={{
-                fontSize: '0.9rem',
-                fontWeight: 500,
-                color: 'var(--text-secondary, #777)',
-                cursor: 'default'
-              }}
+              transition={{ duration: 0.4, delay: i * 0.04 }}
               whileHover={{ 
-                color: 'var(--text-primary, #fff)', // Just lights up, no movement
+                color: 'var(--text)', 
                 transition: { duration: 0.2 }
               }}
             >

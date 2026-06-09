@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
 
 const NAV = [
@@ -18,32 +19,50 @@ export default function Header() {
   }, []);
 
   return (
-    <nav className={`nav${scrolled ? ' scrolled' : ''}`}>
-      <a href="#" className="nav-logo">AJ</a>
+    <motion.nav 
+      className={`nav ${scrolled ? 'scrolled' : ''}`}
+      initial={{ y: -10, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+    >
+      <a href="#" className="nav-logo font-mono font-medium tracking-tighter hover:text-accent transition-colors duration-300">
+        AJ
+      </a>
 
-      <div className="nav-right">
-        {/* Desktop nav links */}
-        <div className="nav-desktop-links" style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
+      <div className="nav-right flex items-center gap-6 lg:gap-8">
+        {/* Desktop Links Container */}
+        <div className="nav-desktop-links flex items-center gap-8">
           {NAV.map(({ label, href }) => (
-            <a key={href} href={href} className="nav-link">{label}</a>
+            <a 
+              key={href} 
+              href={href} 
+              className="nav-link text-xs font-mono tracking-wider transition-colors duration-300 hover:text-accent relative py-1"
+            >
+              {label}
+            </a>
           ))}
         </div>
 
-        {/* Theme toggle — always visible */}
-        <button className="nav-theme-btn" onClick={toggleTheme} aria-label="Toggle theme">
+        {/* Minimal Circle Theme Trigger */}
+        <button 
+          className="nav-theme-btn w-8 h-8 rounded-full border border-transparent hover:border-border flex items-center justify-center text-base transition-all duration-300 active:scale-95" 
+          onClick={toggleTheme} 
+          aria-label="Toggle theme"
+        >
           {isDark ? '☀︎' : '☽'}
         </button>
 
-        {/* Resume — always visible, replaces hamburger on mobile */}
+        {/* Tactical Call To Action */}
         <a
           href="https://arihant416.github.io/resume/index.pdf"
-          target="_blank" rel="noopener noreferrer"
-          className="btn btn-primary"
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="btn btn-primary font-mono tracking-wider transition-all duration-300"
           style={{ padding: '.4rem 1rem', fontSize: '10.5px' }}
         >
           Resume ↗
         </a>
       </div>
-    </nav>
+    </motion.nav>
   );
 }
