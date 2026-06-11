@@ -506,26 +506,34 @@ main {
 }
 
 .t-quote {
-  font-family: 'Instrument Serif', serif;
-  font-size: var(--fs-h2);
-  line-height: 1.2;
-  color: var(--text);
-  font-style: italic;
+  font-family: cursive;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--text-dim);
+  font-style: normal;
   font-weight: 400;
-  max-width: 42ch;
+  max-width: none;
   margin: 0;
 }
 
 .t-meta {
   display: flex;
+  flex-direction: column; /* Shifts layout from side-by-side to a vertical stack */
+  gap: 0.25rem;           /* Clean, tight spacing between the name line and the role */
+}
+
+.t-identity {
+  display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.45rem;           /* Perfectly weights the logo space right next to the text */
+  width: 100%;
 }
 
 .t-name {
   font-weight: 500;
   color: var(--text);
   margin: 0;
+  line-height: 1.2;
 }
 
 .t-role {
@@ -533,14 +541,20 @@ main {
   font-size: var(--fs-mono);
   color: var(--muted);
   margin: 0;
+  line-height: 1.2;
+}
+.t-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #0077b5;         /* Official LinkedIn Brand Blue */
+  text-decoration: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-.t-link {
-  margin-left: auto;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: var(--fs-mono);
-  color: var(--accent);
-  text-decoration: none;
+.t-link:hover {
+  opacity: 0.85;
+  transform: scale(1.08);
 }
 
 .t-nav {
