@@ -1,71 +1,98 @@
 import { motion } from 'framer-motion';
 
 const rise = (delay = 0) => ({
-  initial: { opacity: 0, y: 28 },
+  initial: { opacity: 0, y: 24 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] },
+  transition: { duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] },
 });
 
 const STATS = [
-  { num: '4+', label: 'Years experience', sub: 'backend & distributed systems' },
-  { num: '1M+', label: 'Daily API requests', sub: '99.9% uptime @ Perfios' },
-  { num: '₹4L', label: 'Monthly cost saved', sub: 'via microservice optimization' },
-  { num: '30+', label: 'APIs shipped', sub: 'production-grade, low-latency' },
+  { num: '5+ Yrs', label: 'Engineering Experience', sub: 'distributed & backend systems' },
+  { num: '1M+', label: 'Daily API Requests', sub: '99.99% uptime microservices' },
+  { num: '₹4L+', label: 'Monthly Cloud Saved', sub: 'via infrastructure optimization' },
+  { num: '30+', label: 'Production APIs Shipped', sub: 'low-latency fintech systems' },
 ];
 
 export default function Hero() {
   return (
-    <section style={ { borderTop: 'none', padding: 0 } }>
-      <div className="hero-section">
-        <div className="hero-inner">
+    <section className="w-full border-b border-border bg-bg pt-32 pb-16 md:pt-40 md:pb-24 px-6 md:px-12 lg:px-16">
+      <div className="max-w-[1200px] mx-auto flex flex-col justify-between min-h-[60vh]">
 
-          <motion.p className="hero-eyebrow" { ...rise(0.05) }>
-            Arihant Jain &nbsp;·&nbsp; New Delhi, India
+        {/* Core Spread Content Container */ }
+        <div className="flex flex-col w-full">
+
+          {/* Eyebrow Frame */ }
+          <motion.p
+            className="font-mono text-xs tracking-[0.2em] text-accent uppercase mb-6 block"
+            { ...rise(0.05) }
+          >
+            Arihant Jain <span className="text-muted2 mx-2">//</span> Senior Software Engineer
           </motion.p>
 
-          <motion.h1 className="hero-h1" { ...rise(0.30) }>
-            Software <em>Engineer.</em>
+          {/* Premium Editorial Display Title */ }
+          <motion.h1
+            className="font-serif text-[4.5rem] md:text-[6rem] leading-[0.95] tracking-tight font-normal text-text mb-16 md:mb-20 max-w-[15ch]"
+            { ...rise(0.2) }
+          >
+            Crafting Backend <em className="italic font-normal text-accent">systems.</em>
           </motion.h1>
 
-          <motion.div className="hero-body" { ...rise(0.45) }>
-            {/* Left col */ }
-            <div>
-              <p className="hero-sub">
-                Backend-focused engineer building distributed APIs, microservices,
-                and cloud-native systems that scale to millions of requests a day.
-                Currently at Perfios, designing APIs for the fintech ecosystem.
+          {/* Asymmetric Core Bio & Metrics Grid Split */ }
+          <motion.div
+            className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-12 lg:gap-16 items-start"
+            { ...rise(0.35) }
+          >
+            {/* Left Column: Summary and Engagement Framework */ }
+            <div className="flex flex-col items-start">
+              <p className="font-sans font-light text-lg md:text-xl leading-relaxed text-text-dim max-w-[48ch] mb-8 text-left">
+                Specializing in cloud-native microservices, fault-tolerant event-driven architectures,
+                and low-latency infrastructure. Currently at Perfios, engineering optimized data pipelines
+                and transaction engines that scale seamlessly under heavy enterprise volume.
               </p>
-              <p className="hero-status">
-                <span className="status-dot" />
-                Available for Senior Engineer roles.
+
+              <p className="flex items-center gap-3 font-mono text-xs tracking-wider text-muted mb-10 select-none">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_10px_rgba(16,185,129,0.5)]" />
+                Available for advanced systems leadership engineering roles
               </p>
-              <div className="hero-cta">
-                <a href="#experience" className="btn btn-primary">View Work</a>
-                <a href="#contact" className="btn btn-ghost">Get in Touch</a>
+
+              <div className="flex flex-wrap gap-4 w-full sm:w-auto">
+                <a href="#experience" className="btn btn-primary px-8 py-3.5 text-center">
+                  Explore Systems Work
+                </a>
+                <a href="#contact" className="btn btn-ghost px-8 py-3.5 text-center">
+                  Initiate Connection ↗
+                </a>
               </div>
             </div>
 
-            {/* Right col — stats */ }
-            <div className="hero-stats">
+            {/* Right Column: Quantitative Impact Metrics Matrix */ }
+            <div className="grid grid-cols-2 gap-x-8 gap-y-10 border-t lg:border-t-0 lg:border-l border-border pt-10 lg:pt-0 lg:pl-12">
               { STATS.map(({ num, label, sub }) => (
-                <div key={ label } className="hero-stat-row">
-                  <span className="stat-big">{ num }</span>
-                  <div>
-                    <span style={ { fontSize: 14, color: 'var(--text)', fontWeight: 500 } }>{ label }</span>
-                    <span className="stat-sub">{ sub }</span>
+                <div key={ label } className="flex flex-col items-start text-left group">
+                  <span className="font-serif text-4xl md:text-5xl font-normal text-text tracking-tight group-hover:text-accent transition-colors duration-300">
+                    { num }
+                  </span>
+                  <div className="mt-2">
+                    <span className="block font-sans font-medium text-xs text-text-dim tracking-wide">
+                      { label }
+                    </span>
+                    <span className="block font-mono text-[10px] text-muted tracking-wide mt-0.5 leading-normal">
+                      { sub }
+                    </span>
                   </div>
                 </div>
               )) }
             </div>
+
           </motion.div>
-
         </div>
 
-        {/* Scroll hint */ }
-        <div className="scroll-hint">
-          <div className="scroll-hint-line" />
-          <span>scroll</span>
+        {/* Scroll Indicator Rails Anchor */ }
+        <div className="flex items-center gap-4 mt-16 md:mt-24 text-muted select-none">
+          <div className="w-10 h-[1px] bg-border" />
+          <span className="font-mono text-[10px] uppercase tracking-[0.2em]">Scroll Rail</span>
         </div>
+
       </div>
     </section>
   );

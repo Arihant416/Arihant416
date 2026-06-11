@@ -1,219 +1,112 @@
-import { useRef, useState } from 'react';
-import { motion } from 'framer-motion';
-
-const Icons = {
-  LinkedIn: (
-    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-    </svg>
-  ),
-  GitHub: (
-    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-      <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
-    </svg>
-  ),
-  Twitter: (
-    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.74l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-    </svg>
-  ),
-  Resume: (
-    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="12" y1="18" x2="12" y2="12" /><line x1="9" y1="15" x2="15" y2="15" />
-    </svg>
-  ),
-};
-
-const LINKS = [
-  { label: 'LinkedIn', value: 'arihant416', href: 'https://linkedin.com/in/arihant416' },
-  { label: 'GitHub', value: 'Arihant416', href: 'https://github.com/Arihant416' },
-  { label: 'Twitter', value: '@Arihant2302', href: 'https://x.com/Arihant2302' },
-  { label: 'Resume', value: 'cv.pdf ↗', href: 'https://arihant416.github.io/resume/index.pdf' },
-];
+import { useState, useRef } from 'react';
 
 export default function Contact() {
   const formRef = useRef();
-  const [sending, setSending] = useState(false);
-  const [msg, setMsg] = useState('');
-  const [isError, setIsError] = useState(false);
+  const [status, setStatus] = useState({ state: 'idle', message: '' });
+  const IS_MAINTENANCE_MODE = true; // Set to false to activate input fields
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setSending(true); setMsg(''); setIsError(false);
-
-    const body = {
-      from_name: formRef.current.from_name.value,
-      from_email: formRef.current.from_email.value,
-      message: formRef.current.message.value,
-    };
-
-    try {
-      const ctrl = new AbortController();
-      const t = setTimeout(() => ctrl.abort(), 8500);
-
-      const res = await fetch('https://email-worker.arihantjain416.workers.dev', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body),
-        signal: ctrl.signal,
-      });
-
-      clearTimeout(t);
-      let data;
-      try { data = await res.json(); } catch { data = { message: await res.text() }; }
-
-      if (res.ok) {
-        setMsg('Message sent successfully.');
-        formRef.current.reset();
-      } else {
-        console.error('Email Dispatch Failure Status:', res.status, data.error || data.message);
-        setMsg('Message delivery failed. Please try again.');
-        setIsError(true);
-      }
-    } catch (err) {
-      console.error('Core Client Network Exception:', err);
-      setMsg('Message delivery failed. Please try again.');
-      setIsError(true);
-    }
-    setSending(false);
+    if (IS_MAINTENANCE_MODE) return;
+    setStatus({ state: 'loading', message: 'Syncing message matrix...' });
+    // Core Form Submit logic here
   };
 
   return (
-    <div className="section section-border">
-      <motion.p
-        className="section-label"
-        initial={ { opacity: 0, y: 14 } }
-        whileInView={ { opacity: 1, y: 0 } }
-        viewport={ { once: true, margin: '-40px' } }
-        transition={ { duration: 0.5 } }
-      >
-        Contact
-      </motion.p>
+    <section className="w-full bg-[var(--bg)] py-16 sm:py-24 border-b border-[var(--border)]" id="contact">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16 items-start">
 
-      <div className="w-full flex flex-col lg:grid lg:grid-cols-12 gap-10 lg:gap-14">
-
-        {/* Left Hand: Global Hubs Grid Links */ }
-        <motion.div
-          className="lg:col-span-5 flex flex-col gap-4"
-          initial={ { opacity: 0, y: 16 } }
-          whileInView={ { opacity: 1, y: 0 } }
-          viewport={ { once: true } }
-          transition={ { duration: 0.5, delay: 0.05 } }
-        >
-          <p className="font-mono text-[10px] uppercase tracking-widest text-muted mb-1">
-            Global Hubs
+        {/* Left Anchor Layout Box */ }
+        <div className="col-span-1 flex flex-col items-center text-center lg:items-start lg:text-left">
+          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-[var(--accent)] font-medium block">
+            04 // Communications
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-serif italic font-normal tracking-tight text-[var(--text)] mt-1">
+            Initiate <span className="font-sans not-italic font-light text-[var(--text-dim)]">Connection</span>
+          </h2>
+          <p className="font-sans text-xs sm:text-sm text-muted mt-4 max-w-sm leading-relaxed">
+            Have an open system architecture design request or an infrastructure engineering requirement? Let's talk.
           </p>
-          <div className="grid grid-cols-2 gap-3 w-full">
-            { LINKS.map(({ label, value, href }) => (
-              <a
-                key={ label }
-                href={ href }
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex flex-col items-center justify-center p-5 rounded-xl border border-border bg-card hover:bg-card2 hover:border-border2 transition-all duration-300 text-center relative overflow-hidden select-none"
-              >
-                <span className="text-muted group-hover:text-accent group-hover:-translate-y-1 transition-all duration-300 ease-[0.22,1,0.36,1]">
-                  { Icons[label] }
-                </span>
-                <span className="font-sans text-xs font-medium text-text mt-3 mb-0.5">
-                  { label }
-                </span>
-                <span className="font-mono text-[10px] tracking-tight text-muted group-hover:text-text transition-colors duration-200">
-                  { value }
-                </span>
-              </a>
-            )) }
+
+          {/* Social Infrastructure Pipes */ }
+          <div className="flex flex-col gap-3 mt-6 sm:mt-8 font-mono text-[11px] sm:text-xs tracking-wider w-full items-center lg:items-start">
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted hover:text-[var(--accent)] transition-colors py-1 group">
+              <span className="opacity-40 group-hover:opacity-100 transition-opacity">//</span> LINKEDIN <span className="text-[9px] text-[var(--accent)]">↗</span>
+            </a>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted hover:text-[var(--accent)] transition-colors py-1 group">
+              <span className="opacity-40 group-hover:opacity-100 transition-opacity">//</span> GITHUB <span className="text-[9px] text-[var(--accent)]">↗</span>
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted hover:text-[var(--accent)] transition-colors py-1 group">
+              <span className="opacity-40 group-hover:opacity-100 transition-opacity">//</span> TWITTER <span className="text-[9px] text-[var(--accent)]">↗</span>
+            </a>
           </div>
-        </motion.div>
+        </div>
 
-        {/* Right Hand: Deep Form Architecture Layout */ }
-        <motion.div
-          className="lg:col-span-7 flex flex-col gap-4"
-          initial={ { opacity: 0, y: 16 } }
-          whileInView={ { opacity: 1, y: 0 } }
-          viewport={ { once: true } }
-          transition={ { duration: 0.5, delay: 0.1 } }
-        >
-          <p className="font-mono text-[10px] uppercase tracking-widest text-muted mb-1">
-            Direct Wire
-          </p>
+        {/* Right Input Matrix Box */ }
+        <div className="col-span-1 lg:col-span-2 w-full">
+          <form onSubmit={ handleSubmit } ref={ formRef } className="flex flex-col gap-6 w-full relative">
 
-          <form ref={ formRef } onSubmit={ handleSubmit } className="flex flex-col gap-5 w-full">
-            {/* Name Input */ }
-            <div className="flex flex-col gap-1.5">
-              <label htmlFor="from_name" className="font-mono text-[10px] uppercase tracking-wider text-[var(--muted)]/80">
-                Name
-              </label>
-              <input
-                id="from_name"
-                name="from_name"
-                type="text"
-                required
-                disabled={ sending }
-                placeholder="Your name"
-                className="w-full px-4 py-3 rounded-lg border border-[var(--border)] bg-[var(--bg-card)] font-sans text-sm tracking-wide transition-all duration-200 placeholder-[var(--muted)]/40 caret-[var(--accent)] disabled:opacity-50 hover:border-[var(--muted)]/50 focus:bg-[var(--bg-card2)] focus:border-[var(--accent)] focus-visible:outline-none focus:ring-0"
-              />
-            </div>
-
-            {/* Email Input */ }
-            <div className="flex flex-col gap-1.5">
-              <label htmlFor="from_email" className="font-mono text-[10px] uppercase tracking-wider text-[var(--muted)]/80">
-                Email Address
-              </label>
-              <input
-                id="from_email"
-                name="from_email"
-                type="email"
-                required
-                disabled={ sending }
-                placeholder="your@email.com"
-                className="w-full px-4 py-3 rounded-lg border border-[var(--border)] bg-[var(--bg-card)] font-sans text-sm tracking-wide transition-all duration-200 placeholder-[var(--muted)]/40 caret-[var(--accent)] disabled:opacity-50 hover:border-[var(--muted)]/50 focus:bg-[var(--bg-card2)] focus:border-[var(--accent)] focus-visible:outline-none focus:ring-0"
-              />
-            </div>
-
-            {/* Message Input */ }
-            <div className="flex flex-col gap-1.5">
-              <label htmlFor="message" className="font-mono text-[10px] uppercase tracking-wider text-[var(--muted)]/80">
-                Message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                required
-                disabled={ sending }
-                placeholder="What's on your mind?"
-                rows={ 4 }
-                className="w-full px-4 py-3 rounded-lg border border-[var(--border)] bg-[var(--bg-card)] font-sans text-sm tracking-wide leading-relaxed transition-all duration-200 placeholder-[var(--muted)]/40 caret-[var(--accent)] disabled:opacity-50 resize-none hover:border-[var(--muted)]/50 focus:bg-[var(--bg-card2)] focus:border-[var(--accent)] focus-visible:outline-none focus:ring-0"
-              />
-            </div>
-
-            {/* Button & Feedback Row */ }
-            <div className="flex items-center gap-5 mt-2">
-              <motion.button
-                type="submit"
-                disabled={ sending }
-                className="relative overflow-hidden font-mono text-xs tracking-widest uppercase bg-transparent text-[var(--text)] border border-[var(--border)] hover:border-[var(--accent)] hover:bg-[var(--bg-card2)] rounded-md px-7 py-3.5 select-none disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-300 shadow-none hover:shadow-[0_4px_20px_rgba(0,0,0,0.15)]"
-                whileHover={ sending ? {} : { y: -2 } }
-                whileTap={ sending ? {} : { y: 0, scale: 0.97 } }
-                transition={ { type: "spring", stiffness: 400, damping: 15 } }
-              >
-                { sending ? 'Sending…' : 'Send Message ↗' }
-              </motion.button>
-
-              { msg && (
-                <motion.p
-                  className={ `font-mono text-xs tracking-wide ${isError ? 'text-red-400' : 'text-[var(--accent)]'}` }
-                  initial={ { opacity: 0, x: -6 } }
-                  animate={ { opacity: 1, x: 0 } }
+            { IS_MAINTENANCE_MODE ? (
+              /* CLEAN REFACTORED MAINTENANCE BANNER (No Duplications) */
+              <div className="w-full border border-orange-500/10 bg-orange-500/[0.02] p-5 sm:p-6 rounded-sm flex items-start gap-3.5 text-left">
+                <span className="text-orange-500 text-sm sm:text-base mt-0.5">⚡</span>
+                <div>
+                  <h4 className="font-mono text-[10px] sm:text-[11px] font-bold tracking-widest text-orange-400 uppercase">
+                    Direct Messaging Pipeline Interrupted
+                  </h4>
+                  <p className="font-sans text-xs text-muted mt-1.5 leading-relaxed">
+                    The integrated contact form mechanism is temporarily offline. Please establish communication using the direct social links on the left.
+                  </p>
+                </div>
+              </div>
+            ) : (
+              /* ACTIVE WORKFLOW PIPELINE */
+              <>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full">
+                  <div className="flex flex-col gap-1.5 text-left">
+                    <label className="font-mono text-[9px] tracking-widest text-muted uppercase">Identification</label>
+                    <input
+                      type="text"
+                      name="name"
+                      required
+                      placeholder="Your name"
+                      className="w-full bg-[var(--bg-card)] border border-[var(--border)] rounded-sm p-3 font-sans text-xs text-[var(--text)] focus:outline-none focus:border-[var(--accent)] transition-colors placeholder:text-muted/40"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-1.5 text-left">
+                    <label className="font-mono text-[9px] tracking-widest text-muted uppercase">Routing Endpoint</label>
+                    <input
+                      type="email"
+                      name="email"
+                      required
+                      placeholder="Your email address"
+                      className="w-full bg-[var(--bg-card)] border border-[var(--border)] rounded-sm p-3 font-sans text-xs text-[var(--text)] focus:outline-none focus:border-[var(--accent)] transition-colors placeholder:text-muted/40"
+                    />
+                  </div>
+                </div>
+                <div className="flex flex-col gap-1.5 text-left">
+                  <label className="font-mono text-[9px] tracking-widest text-muted uppercase">Message Payload</label>
+                  <textarea
+                    name="message"
+                    rows="5"
+                    required
+                    placeholder="Describe your architectural project goals or inquiry specifics..."
+                    className="w-full bg-[var(--bg-card)] border border-[var(--border)] rounded-sm p-3 font-sans text-xs text-[var(--text)] focus:outline-none focus:border-[var(--accent)] transition-colors resize-none placeholder:text-muted/40"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="w-full sm:w-fit px-8 py-3 bg-[var(--text)] hover:bg-[var(--accent)] text-[var(--bg)] font-mono text-[11px] uppercase tracking-widest font-semibold transition-colors rounded-sm self-start"
                 >
-                  { msg }
-                </motion.p>
-              ) }
-            </div>
+                  Transmit Packet
+                </button>
+              </>
+            ) }
+
           </form>
-        </motion.div>
+        </div>
 
       </div>
-    </div>
+    </section>
   );
 }

@@ -1,8 +1,11 @@
+/* ══════════════════════════════════════════
+   WEB TYPOGRAPHY IMPORT MATRIX
+══════════════════════════════════════════ */
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500&family=Geist:wght@300;400;500&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500&family=Geist:wght@300;400;500&display=swap');
 
 /* ══════════════════════════════════════════
    DESIGN TOKENS — DARK (DEFAULT)
@@ -25,16 +28,15 @@
   /* Fluid Layout System */
   --site-max-width: 1200px;
   --section-padding: clamp(4rem, 8vw, 8rem);
-  --sidebar-width: 260px;
+  --sidebar-width: 280px;
 
-  /* Fluid Typography Scale (Perfect Fourth) */
-  --fs-display: clamp(3.25rem, 8vw, 6rem);    /* Massive Hero Serif */
-  --fs-h2: clamp(2rem, 4vw, 3rem);            /* Section Titles */
-  --fs-h3: clamp(1.2rem, 2vw, 1.5rem);        /* Card Titles */
-  --fs-body: clamp(0.95rem, 1vw, 1.05rem);     /* Paragraph Body */
-  --fs-mono: clamp(0.75rem, 0.8vw, 0.825rem);  /* Low-level Meta Code Labels */
+  /* Fluid Typography Scale */
+  --fs-display: clamp(3.25rem, 8vw, 6rem);    
+  --fs-h2: clamp(2rem, 4vw, 3rem);            
+  --fs-h3: clamp(1.2rem, 2vw, 1.5rem);        
+  --fs-body: clamp(0.95rem, 1vw, 1.05rem);     
+  --fs-mono: clamp(0.75rem, 0.8vw, 0.825rem);  
   
-  /* Strict Line Heights */
   --lh-display: 0.95;
   --lh-heading: 1.15;
   --lh-body: 1.6;
@@ -79,9 +81,7 @@ body {
 }
 
 main {
-  max-width: var(--site-max-width);
-  margin: 0 auto;
-  padding: 0 2rem;
+  width: 100%;
 }
 
 /* Custom Minimal Scrollbar */
@@ -103,15 +103,12 @@ main {
    THE ASYMMETRIC GRID SYSTEM (SECTIONS)
 ══════════════════════════════════════════ */
 .section {
+  max-width: var(--site-max-width);
+  margin: 0 auto;
+  padding: var(--section-padding) 1.5rem; /* Tighter padding for mobile screens */
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 2.5rem;
-  padding: var(--section-padding) 0;
-  border-bottom: 1px solid var(--border);
-}
-
-.section-border {
-  border-bottom: 1px solid var(--border);
+  grid-template-columns: 1fr; /* Default to single column stacked layout on mobile */
+  gap: 2rem; /* Clean vertical spacing between title and content */
 }
 
 .section-label {
@@ -123,12 +120,12 @@ main {
   font-weight: 500;
   margin: 0;
 }
-
-/* Desktop Grid Transformation */
+/* Premium Layout Rail Activates Only on Large Screens */
 @media (min-width: 960px) {
   .section {
-    grid-template-columns: var(--sidebar-width) 1fr;
+    grid-template-columns: var(--sidebar-width) 1fr; /* Restores the premium split rail */
     gap: 4rem;
+    padding: var(--section-padding) 2rem;
   }
   
   .section-label {
@@ -141,66 +138,10 @@ main {
 /* ══════════════════════════════════════════
    HEADER & NAVIGATION
 ══════════════════════════════════════════ */
-.nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 70px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 4rem;
-  z-index: 100;
-  transition: background 0.25s ease, border 0.25s ease, backdrop-filter 0.25s ease;
-  border-bottom: 1px solid transparent;
-}
 
-.nav.scrolled {
-  background: var(--nav-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
-}
-
-.nav-logo {
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 500;
-  font-size: 1.1rem;
-  color: var(--text);
-  text-decoration: none;
-  letter-spacing: -0.05em;
-}
-
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 2.5rem;
-}
-
-.nav-link {
-  font-size: var(--fs-mono);
-  font-family: 'JetBrains Mono', monospace;
-  color: var(--text-dim);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
 
 .nav-link:hover {
   color: var(--accent);
-}
-
-.nav-theme-btn {
-  background: none;
-  border: none;
-  color: var(--text-dim);
-  font-size: 1.1rem;
-  cursor: pointer;
-  padding: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .nav-theme-btn:hover {
@@ -211,396 +152,9 @@ main {
 /* ══════════════════════════════════════════
    HERO SECTION UI (EDITORIAL SPREAD)
 ══════════════════════════════════════════ */
-.hero-section {
-  padding-top: clamp(6rem, 10vw, 9rem);
-  padding-bottom: clamp(3rem, 6vw, 5rem);
-  border-bottom: 1px solid var(--border);
-}
 
-.hero-inner {
-  display: flex;
-  flex-direction: column;
-}
-
-.hero-eyebrow {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: var(--fs-mono);
-  color: var(--muted);
-  letter-spacing: 0.05em;
-  margin-bottom: 1.5rem;
-}
-
-.hero-h1 {
-  font-family: 'Instrument Serif', serif;
-  font-size: var(--fs-display);
-  line-height: var(--lh-display);
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  margin-bottom: 4rem;
-}
-
-.hero-h1 em {
-  font-family: 'Instrument Serif', serif;
-  font-style: italic;
-  color: var(--accent);
-}
-
-.hero-body {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 4rem;
-  align-items: flex-start;
-}
-
-.hero-sub {
-  font-size: var(--fs-h3);
-  line-height: 1.45;
-  color: var(--text-dim);
-  font-weight: 300;
-  margin-bottom: 2rem;
-  max-width: 52ch;
-}
-
-.hero-status {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: var(--fs-mono);
-  color: var(--muted);
-  margin-bottom: 2.5rem;
-}
-
-.status-dot {
-  width: 7px;
-  height: 7px;
-  background-color: #4ade80;
-  border-radius: 50%;
-  box-shadow: 0 0 12px #4ade80;
-}
-
-.hero-cta {
-  display: flex;
-  gap: 1rem;
-}
-
-/* Stat Grid Styling */
-.hero-stats {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2.5rem;
-  border-left: 1px solid var(--border);
-  padding-left: 3.5rem;
-}
-
-.hero-stat-row {
-  display: flex;
-  flex-direction: column;
-}
-
-.stat-big {
-  font-family: 'Instrument Serif', serif;
-  font-size: var(--fs-h2);
-  line-height: 1;
-  color: var(--text);
-  margin-bottom: 0.25rem;
-}
-
-.stat-sub {
-  display: block;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: calc(var(--fs-mono) - 1px);
-  color: var(--muted);
-  line-height: 1.4;
-  margin-top: 0.15rem;
-}
-
-/* Scroll Hint */
-.scroll-hint {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-top: 5rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: var(--fs-mono);
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.scroll-hint-line {
-  width: 40px;
-  height: 1px;
-  background-color: var(--muted2);
-}
-
-/* ══════════════════════════════════════════
-   WORK EXPERIENCE & PROJECTS LAYOUT
-══════════════════════════════════════════ */
-.exp-grid {
-  display: flex;
-  flex-direction: column;
-}
-
-.exp-card {
-  padding: 2.5rem 0;
-  border-bottom: 1px solid var(--border-mute);
-}
-
-.exp-card:first-child { padding-top: 0; }
-.exp-card:last-child { border-bottom: none; }
-
-.exp-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-.exp-company {
-  font-size: var(--fs-h3);
-  color: var(--text);
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.2s ease;
-}
-
-.exp-company:hover {
-  color: var(--accent);
-}
-
-.exp-title {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: var(--fs-mono);
-  color: var(--muted);
-  margin-top: 0.25rem;
-}
-
-.exp-date {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: var(--fs-mono);
-  color: var(--muted);
-  white-space: nowrap;
-}
-
-.exp-desc {
-  color: var(--text-dim);
-  max-width: 65ch;
-  margin-bottom: 1rem;
-}
-
-.highlight-list {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 1.5rem 0;
-}
-
-.highlight-item {
-  position: relative;
-  padding-left: 1.25rem;
-  color: var(--text-dim);
-  font-size: calc(var(--fs-body) - 0.02rem);
-  margin-bottom: 0.5rem;
-}
-
-.highlight-item::before {
-  content: "—";
-  position: absolute;
-  left: 0;
-  color: var(--muted);
-}
-
-/* Custom Micro Tags */
-.chip-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.chip {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: calc(var(--fs-mono) - 1px);
-  background: var(--bg-card);
-  color: var(--text-dim);
-  padding: 0.25rem 0.6rem;
-  border: 1px solid var(--border);
-  border-radius: 2px;
-}
-
-/* Projects Sub-Grid Layout */
-.proj-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-}
-
-.proj-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  padding: 2rem;
-  border-radius: 4px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 1.5rem;
-  transition: border-color 0.25s ease, background-color 0.25s ease;
-}
-
-.proj-card:hover {
-  border-color: var(--accent);
-  background: var(--bg-card2);
-}
-
-.proj-name {
-  font-size: var(--fs-h3);
-  color: var(--text);
-  text-decoration: none;
-  font-weight: 500;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.proj-desc {
-  color: var(--text-dim);
-  font-size: calc(var(--fs-body) - 0.02rem);
-  margin: 0;
-}
-
-/* ══════════════════════════════════════════
-   TECH SKILLS CONTAINER UI
-══════════════════════════════════════════ */
-.skills-container {
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
-}
-
-.skills-icon-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2.5rem;
-}
-
-.skill-icon-item {
-  color: var(--muted);
-  cursor: pointer;
-}
-
-.skills-fundamentals-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  border-top: 1px solid var(--border-mute);
-  padding-top: 2rem;
-}
-
-/* ══════════════════════════════════════════
-   RECOMMENDATIONS (TESTIMONIALS)
-══════════════════════════════════════════ */
-.t-wrap {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.t-quote {
-  font-family: cursive;
-  font-size: 0.9rem;
-  line-height: 1.65;
-  color: var(--text-dim);
-  font-style: normal;
-  font-weight: 400;
-  max-width: none;
-  margin: 0;
-}
-
-.t-meta {
-  display: flex;
-  flex-direction: column; /* Shifts layout from side-by-side to a vertical stack */
-  gap: 0.25rem;           /* Clean, tight spacing between the name line and the role */
-}
-
-.t-identity {
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;           /* Perfectly weights the logo space right next to the text */
-  width: 100%;
-}
-
-.t-name {
-  font-weight: 500;
-  color: var(--text);
-  margin: 0;
-  line-height: 1.2;
-}
-
-.t-role {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: var(--fs-mono);
-  color: var(--muted);
-  margin: 0;
-  line-height: 1.2;
-}
-.t-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: #0077b5;         /* Official LinkedIn Brand Blue */
-  text-decoration: none;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-}
-
-.t-link:hover {
-  opacity: 0.85;
-  transform: scale(1.08);
-}
-
-.t-nav {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  margin-top: 3rem;
-}
-
-.t-btn {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  color: var(--text);
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: border-color 0.2s, background 0.2s;
-}
-
-.t-btn:hover {
-  border-color: var(--accent);
-  background: var(--bg-card2);
-}
-
-.t-dots {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.t-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--border);
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.t-dot.active {
-  background: var(--accent);
+.sticky {
+  will-change: transform;
 }
 
 /* ══════════════════════════════════════════
@@ -665,7 +219,6 @@ main {
   font-weight: 500;
 }
 
-/* Premium Technical Form Fields */
 .form-hint {
   font-family: 'JetBrains Mono', monospace;
   font-size: var(--fs-mono);
@@ -749,100 +302,14 @@ textarea.form-input {
 }
 
 /* ══════════════════════════════════════════
-   FOOTER LAYER
+   RESPONSIVE OVERRIDES
 ══════════════════════════════════════════ */
-.site-footer {
-  border-top: 1px solid var(--border);
-  padding: 3rem 0;
-  margin-top: 4rem;
-}
 
-.footer-container {
-  max-width: var(--site-max-width);
-  margin: 0 auto;
-  padding: 0 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-}
-
-.footer-copy {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: var(--fs-mono);
-  color: var(--muted);
-  margin: 0;
-}
-
-.footer-links {
-  display: flex;
-  gap: 2rem;
-}
-
-.footer-link {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: var(--fs-mono);
-  color: var(--muted);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.footer-link:hover {
-  color: var(--accent);
-}
-
-/* ══════════════════════════════════════════
-   STRICT RESPONSIBILITY REFACTOR (NO CONFLICTS)
-══════════════════════════════════════════ */
-@media (max-width: 900px) {
-  .hero-body {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-  
-  .hero-stats {
-    border-left: none;
-    border-top: 1px solid var(--border);
-    padding-left: 0;
-    padding-top: 3rem;
-  }
-
-  .proj-grid {
-    grid-template-columns: 1fr;
-  }
-}
 
 @media (max-width: 640px) {
-  .nav {
-    padding: 0 1.5rem;
-  }
+
   
-  .nav-desktop-links {
-    display: none;
-  }
-  
-  .nav-right {
-    gap: 1.25rem;
-  }
-
-  .hero-section {
-    padding-top: 5rem;
-  }
-
-  .hero-stats {
-    grid-template-columns: 1fr;
-    gap: 1.75rem;
-  }
-
   .contact-link-value {
     font-size: 11px;
-  }
-
-  .footer-container {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-    padding: 0 1.5rem;
   }
 }
