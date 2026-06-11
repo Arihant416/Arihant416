@@ -22,10 +22,10 @@ export const skillCategories = [
     skills: [
       { name: 'FastAPI',    Icon: SiFastapi,    color: '#009688' },
       { name: 'Node.js',    Icon: FaNode,       color: '#339933' },
-      { name: 'Angular',    Icon: FaAngular,    color: '#DD0031' },
-      { name: 'Selenium',   Icon: SiSelenium,   color: '#43B02A' },
+      // { name: 'Angular',    Icon: FaAngular,    color: '#DD0031' },
+      // { name: 'Selenium',   Icon: SiSelenium,   color: '#43B02A' },
       { name: 'Celery',     Icon: SiCelery,     color: '#37814A' },
-      { name: 'Serverless', Icon: SiServerless, color: '#FD5750' },
+      // { name: 'Serverless', Icon: SiServerless, color: '#FD5750' },
     ],
   },
   {
@@ -43,8 +43,8 @@ export const skillCategories = [
     title: 'Messaging & Tools',
     skills: [
       { name: 'SQS',      Icon: SiAmazonsqs, color: '#F29111' },
-      { name: 'RabbitMQ', Icon: SiRabbitmq,  color: '#FF6600' },
-      { name: 'Linux',    Icon: SiLinux,     color: '#FCC624' },
+      // { name: 'RabbitMQ', Icon: SiRabbitmq,  color: '#FF6600' },
+      // { name: 'Linux',    Icon: SiLinux,     color: '#FCC624' },
       { name: 'Kafka',     Icon: SiApachekafka,      color: '#96cc00' },
     ],
   },
