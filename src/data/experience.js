@@ -14,7 +14,7 @@ export const workExperience = [
     chips: ['Python', 'FastAPI', 'Redis', 'AWS Fargate', 'Kafka', 'Playwright']
   },
   {
-    company: 'Karza Technologies (A Perfios Company)',
+    company: 'Karza Technologies (Perfios)',
     title: 'Software Engineer I',
     location: 'Mumbai, IN (Remote)',
     date: 'Oct 2022 – Apr 2024',
