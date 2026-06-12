@@ -52,7 +52,7 @@ export default function Hero() {
 
               <p className="flex items-center gap-3 font-mono text-xs tracking-wider text-muted mb-10 select-none">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_10px_rgba(16,185,129,0.5)]" />
-                Available for advanced systems leadership engineering roles
+                Available for challenging backend roles.
               </p>
 
               <div className="flex flex-wrap gap-4 w-full sm:w-auto">
