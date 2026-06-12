@@ -1,12 +1,315 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Montserrat:wght@400;500;700&display=swap');
+/* ══════════════════════════════════════════
+   WEB TYPOGRAPHY IMPORT MATRIX
+══════════════════════════════════════════ */
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500&family=Geist:wght@300;400;500&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/*
-  All typography, color, and button styles are now handled by Tailwind utility classes and the custom theme in tailwind.config.js.
-  Use font-heading for headings and font-body for body text.
-  Use text-primary-light/dark, bg-background-light/dark, etc. for color.
-  Use dark: variants for dark mode support.
-*/
+/* ══════════════════════════════════════════
+   DESIGN TOKENS — DARK (DEFAULT)
+══════════════════════════════════════════ */
+:root,
+[data-theme="dark"] {
+  --bg: #090909;
+  --bg-card: #111111;
+  --bg-card2: #161616;
+  --text: #f2ede6;
+  --text-dim: #dcd7ce;
+  --muted: #969187;
+  --muted2: #2a2825;
+  --accent: #c9a96e;
+  --accent2: #b8925a;
+  --border: #1c1b18;
+  --border-mute: #141311;
+  --nav-bg: rgba(9, 9, 9, 0.75);
+
+  /* Fluid Layout System */
+  --site-max-width: 1200px;
+  --section-padding: clamp(4rem, 8vw, 8rem);
+  --sidebar-width: 280px;
+
+  /* Fluid Typography Scale */
+  --fs-display: clamp(3.25rem, 8vw, 6rem);    
+  --fs-h2: clamp(2rem, 4vw, 3rem);            
+  --fs-h3: clamp(1.2rem, 2vw, 1.5rem);        
+  --fs-body: clamp(0.95rem, 1vw, 1.05rem);     
+  --fs-mono: clamp(0.75rem, 0.8vw, 0.825rem);  
+  
+  --lh-display: 0.95;
+  --lh-heading: 1.15;
+  --lh-body: 1.6;
+}
+
+/* ══════════════════════════════════════════
+   DESIGN TOKENS — LIGHT
+══════════════════════════════════════════ */
+[data-theme="light"] {
+  --bg: #fafaf8;
+  --bg-card: #f3f2ef;
+  --bg-card2: #eae8e3;
+  --text: #1a1916;
+  --text-dim: #3a3834;
+  --muted: #706c64;
+  --muted2: #e0ded9;
+ --accent: #8a6835;
+  --accent2: #735628;
+  --border: #e6e4df;
+  --border-mute: #f0ede8;
+  --nav-bg: rgba(250, 250, 248, 0.8);
+}
+
+/* ══════════════════════════════════════════
+   GLOBAL BASE & RESET LAYERS
+══════════════════════════════════════════ */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Geist', sans-serif;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+main {
+  width: 100%;
+}
+
+/* Custom Minimal Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted2);
+}
+
+/* ══════════════════════════════════════════
+   THE ASYMMETRIC GRID SYSTEM (SECTIONS)
+══════════════════════════════════════════ */
+.section {
+  max-width: var(--site-max-width);
+  margin: 0 auto;
+  padding: var(--section-padding) 1.5rem; /* Tighter padding for mobile screens */
+  display: grid;
+  grid-template-columns: 1fr; /* Default to single column stacked layout on mobile */
+  gap: 2rem; /* Clean vertical spacing between title and content */
+}
+
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: var(--fs-mono);
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 500;
+  margin: 0;
+}
+/* Premium Layout Rail Activates Only on Large Screens */
+@media (min-width: 960px) {
+  .section {
+    grid-template-columns: var(--sidebar-width) 1fr; /* Restores the premium split rail */
+    gap: 4rem;
+    padding: var(--section-padding) 2rem;
+  }
+  
+  .section-label {
+    position: sticky;
+    top: 120px;
+    height: max-content;
+  }
+}
+
+/* ══════════════════════════════════════════
+   HEADER & NAVIGATION
+══════════════════════════════════════════ */
+
+
+.nav-link:hover {
+  color: var(--accent);
+}
+
+.nav-theme-btn:hover {
+  color: var(--text);
+  transform: scale(1.05);
+}
+
+/* ══════════════════════════════════════════
+   HERO SECTION UI (EDITORIAL SPREAD)
+══════════════════════════════════════════ */
+
+.sticky {
+  will-change: transform;
+}
+
+/* ══════════════════════════════════════════
+   CONTACT FORM & LANDING CONNECT
+══════════════════════════════════════════ */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3.5rem;
+}
+
+@media (min-width: 840px) {
+  .contact-grid {
+    grid-template-columns: 0.9fr 1.1fr;
+  }
+}
+
+.contact-left h3 {
+  font-size: var(--fs-h2);
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+}
+
+.contact-left p {
+  color: var(--text-dim);
+  margin-bottom: 3rem;
+  max-width: 38ch;
+}
+
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.contact-link-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 1rem 1.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  color: var(--text);
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.contact-link-card:hover {
+  border-color: var(--accent);
+  background: var(--bg-card2);
+}
+
+.contact-link-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: var(--fs-mono);
+  color: var(--muted);
+}
+
+.contact-link-value {
+  margin-left: auto;
+  font-weight: 500;
+}
+
+.form-hint {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: var(--fs-mono);
+  color: var(--muted);
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.75rem;
+}
+
+.form-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: var(--fs-mono);
+  color: var(--muted);
+}
+
+.form-input {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.85rem 1rem;
+  border-radius: 3px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-input:focus {
+  border-color: var(--accent);
+}
+
+textarea.form-input {
+  min-height: 140px;
+  resize: vertical;
+}
+
+/* ══════════════════════════════════════════
+   GLOBAL BUTTON SYSTEM
+══════════════════════════════════════════ */
+.btn {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: var(--fs-mono);
+  padding: 0.75rem 1.5rem;
+  border-radius: 3px;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, background 0.2s, border-color 0.2s, color 0.2s;
+  font-weight: 500;
+}
+
+.btn-primary {
+  background: var(--text);
+  color: var(--bg);
+  border: 1px solid var(--text);
+}
+
+.btn-primary:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+}
+
+.btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE OVERRIDES
+══════════════════════════════════════════ */
+
+
+@media (max-width: 640px) {
+
+  
+  .contact-link-value {
+    font-size: 11px;
+  }
+}

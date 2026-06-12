@@ -1,23 +1,18 @@
-// theme.js
-// Utility for toggling dark/light mode and getting current theme
+// theme.js — read/write theme to localStorage + html class
 
 export const getInitialTheme = () => {
-	if (typeof window !== 'undefined' && window.localStorage) {
-		const stored = window.localStorage.getItem('theme');
-		if (stored === 'dark' || stored === 'light') return stored;
-		// System preference
-		if (window.matchMedia('(prefers-color-scheme: dark)').matches)
-			return 'dark';
-	}
-	return 'light';
+  if (typeof window === 'undefined') return 'dark';
+  const stored = window.localStorage.getItem('theme');
+  if (stored === 'dark' || stored === 'light') return stored;
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 };
 
-export const setTheme = (theme) => {
-	if (theme === 'dark') {
-		document.documentElement.classList.add('dark');
-		window.localStorage.setItem('theme', 'dark');
-	} else {
-		document.documentElement.classList.remove('dark');
-		window.localStorage.setItem('theme', 'light');
-	}
+export const applyTheme = (theme) => {
+  const root = document.documentElement;
+  if (theme === 'dark') {
+    root.classList.add('dark');
+  } else {
+    root.classList.remove('dark');
+  }
+  window.localStorage.setItem('theme', theme);
 };
