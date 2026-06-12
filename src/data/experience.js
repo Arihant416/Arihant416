@@ -44,15 +44,15 @@ export const workExperience = [
 
 export const projects = [
   {
-    name: 'Adaptive Identity Routing Engine',
-    description: 'An intelligent backend gateway featuring dynamic circuit breakers and fail-open socket routing. Engineered to preserve platform stability and bypass primary data vendor bottlenecks seamlessly.',
-    chips: ['Python', 'FastAPI', 'Redis', 'Docker'],
-    url: 'https://github.com/Arihant416'
+    name: 'GitDev Finder',
+    url: 'https://gitdevfinder416.netlify.app/',
+    description: 'A discovery hub for open-source developers. Aggregates and filters active repositories based on developer language stacks, simplifying how engineers locate and contribute to global codebases.',
+    chips: ['React', 'Node.js', 'MongoDB', 'Netlify API'],
   },
   {
-    name: 'Event-Driven Webhook Auditor',
-    description: 'A highly isolated asynchronous message ingestion pipeline engineered to track financial ledger entries, eliminating transaction dropouts to increase reconciliation accuracy by 25%.',
-    chips: ['Node.js', 'RabbitMQ', 'MongoDB', 'AWS SQS'],
-    url: 'https://github.com/Arihant416'
+    name: 'FXFlow',
+    url: 'https://wild-iris-sing.glitch.me/',
+    description: 'A lightweight financial utility delivering real-time currency calculations. Optimized for zero-dependency client performance, processing multi-currency exchange rates instantaneously via live API state integration.',
+    chips: ['JavaScript', 'HTML5', 'CSS3', 'REST APIs'],
   }
 ];
