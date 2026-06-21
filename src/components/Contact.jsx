@@ -12,7 +12,7 @@ export default function Contact() {
         {/* Left Anchor Layout Box */ }
         <div className="col-span-1 flex flex-col items-center text-center lg:items-start lg:text-left">
           <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-[var(--accent)] font-medium block">
-            04 // Communications
+            05 // Communications
           </span>
           <h2 className="text-2xl sm:text-3xl font-serif italic font-normal tracking-tight text-[var(--text)] mt-1">
             Initiate <span className="font-sans not-italic font-light text-[var(--text-dim)]">Connection</span>

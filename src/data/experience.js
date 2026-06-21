@@ -44,6 +44,12 @@ export const workExperience = [
 
 export const projects = [
   {
+    name: 'Distributed Quota-Metering Engine',
+    url: 'https://github.com/Arihant416/quota-meter', // Replace with real repo link if public
+    description: 'A horizontally scalable, low-latency quota enforcement engine built to handle high-concurrency API tracking. Mitigates TOCTOU race conditions by executing token-bucket deduction and idempotency validation atomically inside single-shotted Redis Lua scripts.',
+    chips: ['FastAPI', 'Redis Lua', 'MongoDB', 'Docker Compose', 'Asynchronous Python'],
+  },
+  {
     name: 'GitDev Finder',
     url: 'https://gitdevfinder416.netlify.app/',
     description: 'A discovery hub for open-source developers. Aggregates and filters active repositories based on developer language stacks, simplifying how engineers locate and contribute to global codebases.',
