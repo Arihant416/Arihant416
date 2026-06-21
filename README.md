@@ -15,7 +15,7 @@ Senior Software Engineer specializing in backend infrastructure, distributed sys
 ## 📈 Engineering Impact
 
 - **Scale:** Engineered microservices handling **5M+ daily API requests** while maintaining **99.99% uptime**.
-- **Cost Reduction:** Built an in-house identity routing pipeline at Perfios, saving **₹6.5 Crore ($780K+ USD) annually** by cutting third-party vendor dependencies.
+- **Cost Reduction:** Saved **₹6.5 Crore ($780K+ USD) in FY 24-26** by devising in-house solutions for the identity-verification platform at Perfios; cutting third-party vendor dependencies.
 - **Latency Optimization:** Re-architected legacy processing engines, dropping P99 latencies by **85% (from 40s down to 6s)** using distributed worker pools.
 - **Reliability:** Set up Active-Passive multi-region disaster recovery for international banking connections.
 
