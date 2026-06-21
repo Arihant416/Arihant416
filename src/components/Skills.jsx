@@ -19,7 +19,7 @@ export default function Skills() {
       {/* Column 1: Left Sticky Label Panel */ }
       <div className="col-span-1 text-center lg:text-left">
         <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent font-medium block">
-          02 // Competencies
+          03 // Competencies
         </span>
         <h2 className="text-3xl font-serif italic font-normal tracking-tight text-text mt-1">
           Technical <span className="font-sans not-italic font-light text-text-dim">Stack</span>
