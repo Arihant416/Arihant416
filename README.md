@@ -1,88 +1,46 @@
-# <em>Hi, I'm <code>Arihant</code> 👋</em>
+# Arihant Jain
 
-<p><em>Just geeking out every now and then.</em></p>
-
----
-
-## 👨‍💻 About Me
-
-Result-driven, passionate **Software Engineer** with over **4 years of experience** designing resilient backend systems and dynamic frontend applications. 🚀
-
-🌟 **What I Do**
-
-- 💻 Engineer and scale APIs processing over **1M+ daily requests** with 99.9% uptime.
-- ⚙️ Skilled in **Python**, **JavaScript**, and **Node.js** — solving distributed system challenges is my jam.
-- 🌐 Crafting user-centric frontend interfaces with **Angular**, **React**, and Tailwind CSS.
-- ☁️ Working with **AWS**, **Docker**, **Celery**, **Redis**, and more to build microservices that just *work*.
-
-🌱 **Currently Exploring**
-
-- Advanced **AWS services** to refine serverless architectures.
-- Query optimization and caching in **MongoDB** and **Redis**.
-- Diving deep into **Machine Learning** and AI — hands-on learning in progress.
-- Mentoring devs via [**Topmate**](https://topmate.io/arihant) to help them grow and succeed.
-
-🎸 **Beyond Code**
-
-- 🎶 Strumming my guitar, vibing with music.
-- 📺 Anime lover – binging **One Piece**, **Naruto**, **HxH**, and more.
-- 🤝 Always looking to connect, share, learn, and build cool stuff.
+Senior Software Engineer specializing in backend infrastructure, distributed systems, and database optimization.
 
 ---
 
 ## 🛠️ Tech Stack
 
-<p align="left">
-  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black" />
-  <img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white" />
-  <img src="https://img.shields.io/badge/Node.js-339933?style=flat&logo=nodedotjs&logoColor=white" />
-  <img src="https://img.shields.io/badge/Angular-DD0031?style=flat&logo=angular&logoColor=white" />
-  <img src="https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB" />
-  <img src="https://img.shields.io/badge/FastAPI-009688?style=flat&logo=fastapi&logoColor=white" />
-  <img src="https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white" />
-  <img src="https://img.shields.io/badge/AWS-232F3E?style=flat&logo=amazon-aws&logoColor=white" />
-  <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=flat&logo=mongodb&logoColor=white" />
-  <img src="https://img.shields.io/badge/Redis-DC382D?style=flat&logo=redis&logoColor=white" />
-  <img src="https://img.shields.io/badge/Celery-37814A?style=flat&logo=celery&logoColor=white" />
-</p>
+- **Languages:** Python (FastAPI), Node.js, TypeScript
+- **Infrastructure:** AWS (Fargate, ECS, SQS), Docker, Linux
+- **Databases & Messaging:** Redis, Kafka, Celery, MongoDB, RabbitMQ
 
 ---
 
-## 🚀 Featured Projects
+## 📈 Engineering Impact
 
-- 🔍 [**GitDevFinder**](https://gitdevfinder416.netlify.app/) – GitHub dev search platform with real-time API & pagination.
-- 🧪 **Code Runner** – A fault-tolerant, sandboxed Python runner using Docker, Celery & SQLite.
-- 🌐 [**My Portfolio**](https://arihant416.vercel.app) – Personal site built with React, Framer Motion, and Tailwind CSS.
-
----
-
-## 📊 GitHub Stats
-
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=Arihant416&theme=merko&show_icons=true" />
-<!--   <img src="https://github-readme-streak-stats.herokuapp.com/?user=Arihant416&theme=merko" /> -->
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Arihant416&theme=merko&layout=compact" />
-</p>
-
----
-#### 📄 Resume
-
-- 📥 [Download PDF](https://github.com/Arihant416/resume/raw/main/index.pdf)  
-- 🌐 [View Online](https://arihant416.github.io/resume/index.pdf)
-
-## 📫 Let's Connect
-
-<p align="center">
-  <a href="https://linkedin.com/in/arihant416" target="_blank"><img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-blue?style=flat&logo=linkedin"></a>
-  <a href="https://github.com/Arihant416" target="_blank"><img alt="GitHub" src="https://img.shields.io/badge/GitHub-black?style=flat&logo=github"></a>
-  <a href="https://leetcode.com/u/Arihant416" target="_blank"><img alt="LeetCode" src="https://img.shields.io/badge/LeetCode-FFA116?style=flat&logo=leetcode"></a>
-  <a href="https://arihant416.vercel.app" target="_blank"><img alt="Portfolio" src="https://img.shields.io/badge/Portfolio-24292E?style=flat&logo=vercel"></a>
-  <a href="https://arihant.hashnode.dev" target="_blank"><img alt="Blog" src="https://img.shields.io/badge/Blog-2962FF?style=flat&logo=hashnode"></a>
-  <a href="mailto:arihantjain416@gmail.com"><img alt="Email" src="https://img.shields.io/badge/Email-D14836?style=flat&logo=gmail&logoColor=white"></a>
-</p>
+- **Scale:** Engineered microservices handling **5M+ daily API requests** while maintaining **99.99% uptime**.
+- **Cost Reduction:** Built an in-house identity routing pipeline at Perfios, saving **₹6.5 Crore ($780K+ USD) annually** by cutting third-party vendor dependencies.
+- **Latency Optimization:** Re-architected legacy processing engines, dropping P99 latencies by **85% (from 40s down to 6s)** using distributed worker pools.
+- **Reliability:** Set up Active-Passive multi-region disaster recovery for international banking connections.
 
 ---
 
-<p align="center"><i>“First, solve the problem. Then, write the code.”</i></p>
+## 🚀 Projects
 
-<p align="center" style="font-weight: bold;">Looking forward to connecting with y'all :)</p>
+### ⚡ [Distributed Quota-Metering Engine](https://github.com/Arihant416/quota-meter)
+
+A system designed to enforce monthly API usage limits for multi-tenant applications without breaking under heavy traffic.
+
+- **Race Conditions:** Handled potential data races by executing token deductions and validation checks atomically using **Redis Lua scripts**.
+- **Failures & Retries:** Implemented a deduct-then-refund flow with custom transactional loops to ensure accurate tracking even if an upstream network request drops mid-way.
+
+### 🔍 [GitDev Finder](https://gitdevfinder416.netlify.app/)
+
+A tool to find active open-source developers by filtering public repositories based on language stacks and contribution data.
+
+### 🌐 [Systems Portfolio](https://arihant416.vercel.app)
+
+A clean, minimal portfolio built with React and Tailwind CSS to display my production metrics and project history.
+
+---
+
+## 🤝 Connect
+
+- **Profiles:** [LinkedIn](https://linkedin.com/in/arihant416) | [Portfolio](https://arihant416.vercel.app) | [Technical Blog](https://arihant.hashnode.dev)
+- **Email:** <arihantjain416@gmail.com>
