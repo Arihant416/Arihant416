@@ -15,10 +15,10 @@ export default function Contact() {
             05 // Communications
           </span>
           <h2 className="text-2xl sm:text-3xl font-serif italic font-normal tracking-tight text-[var(--text)] mt-1">
-            Initiate <span className="font-sans not-italic font-light text-[var(--text-dim)]">Connection</span>
+            Start <span className="font-sans not-italic font-light text-[var(--text-dim)]">Conversation</span>
           </h2>
           <p className="font-sans text-xs sm:text-sm text-muted mt-4 max-w-sm leading-relaxed">
-            Have an open system architecture design request or an infrastructure engineering requirement? Let's talk.
+            Need backend architecture, API scaling, or reliability work? Let's talk.
           </p>
 
           {/* Social Infrastructure Pipes */ }
@@ -29,9 +29,9 @@ export default function Contact() {
                 href={ href }
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-muted hover:text-[var(--accent)] transition-colors py-1 group"
+                className="flex min-h-11 items-center gap-2 text-muted hover:text-[var(--accent)] transition-colors py-1 group focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--accent)] rounded-sm"
               >
-                <span className="opacity-40 group-hover:opacity-100 transition-opacity">//</span>
+                <span className="opacity-40 group-hover:opacity-100 transition-opacity">{ '//' }</span>
                 { label.toUpperCase() }
                 <span className="text-[9px] text-[var(--accent)]">↗</span>
               </a>
@@ -44,21 +44,21 @@ export default function Contact() {
 
           <div className="w-full border border-[var(--border)] bg-[var(--bg-card)] p-8 sm:p-12 rounded-sm flex flex-col items-center lg:items-start gap-6">
             <span className="font-mono text-[10px] uppercase tracking-widest text-muted">
-              Direct Line
+              Direct Email
             </span>
 
             <h3 className="text-2xl sm:text-3xl font-serif italic font-normal text-[var(--text)] leading-snug">
-              Let's build something <span className="font-sans not-italic font-light text-[var(--accent)]">reliable.</span>
+              Let's discuss something <span className="font-sans not-italic font-light text-[var(--accent)]">reliable.</span>
             </h3>
 
             <p className="font-sans text-sm text-muted leading-relaxed max-w-md">
-              Drop a message!!<br></br>
+              Send a note directly to my inbox.<br></br>
               I usually respond within 24–48 hours.
             </p>
 
             <a
-              href="mailto:arihantjain416@gmail.com?subject=Let's%20Connect"
-              className="inline-flex items-center gap-3 px-8 py-3.5 bg-[var(--text)] hover:bg-[var(--accent)] text-[var(--bg)] font-mono text-[11px] uppercase tracking-widest font-semibold transition-colors rounded-sm"
+              href="mailto:arihantjain416@gmail.com?subject=Backend%20Engineering%20Opportunity"
+              className="inline-flex min-h-11 items-center gap-3 px-8 py-3.5 bg-[var(--text)] hover:bg-[var(--accent)] text-[var(--bg)] font-mono text-[11px] uppercase tracking-widest font-semibold transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--accent)]"
             >
               Send an Email ↗
             </a>
@@ -70,7 +70,7 @@ export default function Contact() {
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
               Open to collaborate
             </span>
-            <span className="text-border hidden sm:inline">//</span>
+            <span className="text-border hidden sm:inline">{ '//' }</span>
             <span>Remotely</span>
           </div>
 

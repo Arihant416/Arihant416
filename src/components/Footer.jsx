@@ -30,7 +30,7 @@ export default function Footer() {
         {/* Left Side: Editorial Typography Context */ }
         <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-muted select-none">
           © { new Date().getFullYear() } Arihant Jain
-          <span className="text-border mx-3">//</span>
+          <span className="text-border mx-3">{ '//' }</span>
           New Delhi, India
         </p>
 
@@ -42,7 +42,7 @@ export default function Footer() {
               href={ href }
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted hover:text-accent transition-colors duration-300 ease-out p-1 block transform hover:scale-105"
+              className="text-muted hover:text-accent transition-colors duration-300 ease-out p-1 inline-flex min-h-11 min-w-11 items-center justify-center transform hover:scale-105 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-sm"
               aria-label={ label }
             >
               { Icons[label] }

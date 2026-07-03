@@ -19,7 +19,7 @@ export default function App() {
         <section id="experience"><Experience /></section>
         <section id="skills"><Skills /></section>
         <section id="recommendations"><Testimonials /></section>
-        <section id="contact"><Contact /></section>
+        <Contact />
       </main>
       <Footer />
     </ThemeProvider>
