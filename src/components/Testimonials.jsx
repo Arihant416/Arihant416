@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { testimonials } from '../data/testimonials';
 
 export default function Testimonials() {
   const [idx, setIdx] = useState(0);
   const [dir, setDir] = useState(1);
+  const shouldReduceMotion = useReducedMotion();
   const total = testimonials.length;
   const go = (i, d) => { setDir(d); setIdx(i); };
   const prev = () => go((idx - 1 + total) % total, -1);
@@ -33,14 +34,14 @@ export default function Testimonials() {
               key={ idx }
               custom={ dir }
               variants={ {
-                enter: d => ({ opacity: 0, y: d * 12 }),
+                enter: d => shouldReduceMotion ? { opacity: 0 } : ({ opacity: 0, y: d * 12 }),
                 center: { opacity: 1, y: 0 },
-                exit: d => ({ opacity: 0, y: d * -12 }),
+                exit: d => shouldReduceMotion ? { opacity: 0 } : ({ opacity: 0, y: d * -12 }),
               } }
-              initial="enter"
+              initial={ shouldReduceMotion ? false : "enter" }
               animate="center"
               exit="exit"
-              transition={ { duration: 0.3, ease: [0.25, 1, 0.5, 1] } }
+              transition={ shouldReduceMotion ? { duration: 0 } : { duration: 0.3, ease: [0.25, 1, 0.5, 1] } }
               className="w-full flex flex-col gap-4 sm:gap-6 text-left"
             >
               {/* Premium Book-Spread Serifs for Quotes - Responsive text adjustments */ }
@@ -60,7 +61,7 @@ export default function Testimonials() {
                     href={ t.linkedin }
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-muted hover:text-[var(--accent)] transition-colors duration-200 p-0.5"
+                    className="inline-flex min-h-11 min-w-11 items-center justify-center text-muted hover:text-[var(--accent)] transition-colors duration-200 p-0.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--accent)] rounded-sm"
                     aria-label={ `View ${t.name}'s LinkedIn profile` }
                   >
                     <svg viewBox="0 0 24 24" width="12" height="12" className="sm:w-[13px] sm:h-[13px]" fill="currentColor">
@@ -81,13 +82,13 @@ export default function Testimonials() {
           <div className="flex items-center gap-4 sm:gap-6">
             <button
               onClick={ prev }
-              className="font-mono text-[9px] sm:text-[10px] md:text-[11px] uppercase tracking-widest text-muted hover:text-[var(--text)] transition-colors focus:outline-none"
+              className="min-h-11 px-2 font-mono text-[9px] sm:text-[10px] md:text-[11px] uppercase tracking-widest text-muted hover:text-[var(--text)] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--accent)] rounded-sm"
             >
               &lt; PREV
             </button>
             <button
               onClick={ next }
-              className="font-mono text-[9px] sm:text-[10px] md:text-[11px] uppercase tracking-widest text-muted hover:text-[var(--text)] transition-colors focus:outline-none"
+              className="min-h-11 px-2 font-mono text-[9px] sm:text-[10px] md:text-[11px] uppercase tracking-widest text-muted hover:text-[var(--text)] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--accent)] rounded-sm"
             >
               NEXT &gt;
             </button>
@@ -98,10 +99,12 @@ export default function Testimonials() {
             { testimonials.map((_, i) => (
               <button
                 key={ i }
-                className={ `h-[2px] flex-grow transition-all duration-300 focus:outline-none ${i === idx ? 'bg-[var(--accent)]' : 'bg-[var(--border)]'}` }
+                className="h-11 flex-grow flex items-center rounded-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--accent)]"
                 onClick={ () => go(i, i > idx ? 1 : -1) }
                 aria-label={ `Go to testimonial ${i + 1}` }
-              />
+              >
+                <span className={ `block h-[2px] w-full transition-all duration-300 ${i === idx ? 'bg-[var(--accent)]' : 'bg-[var(--border)]'}` } />
+              </button>
             )) }
           </div>
 

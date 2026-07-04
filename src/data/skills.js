@@ -1,11 +1,9 @@
 import {
-  FaNode, FaAws, FaReact, FaAngular, FaJava, FaPython, FaDocker,
+  FaNode, FaAws, FaDocker,
 } from 'react-icons/fa';
 import {
-  SiMongodb, SiRedis, SiCplusplus, SiSelenium, SiPandas,
-  SiFastapi, SiMysql, SiRabbitmq, SiLinux, SiPython,
-  SiJavascript, SiAmazonsqs, SiCelery, SiJira, SiKubernetes,
-  SiGo, SiServerless, SiApachekafka,
+  SiMongodb, SiRedis, SiCplusplus, SiFastapi, SiMysql, SiPython,
+  SiJavascript, SiAmazonsqs, SiCelery, SiKubernetes, SiApachekafka,
 } from 'react-icons/si';
 
 export const skillCategories = [

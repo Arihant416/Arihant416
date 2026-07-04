@@ -1,6 +1,6 @@
 # Arihant Jain
 
-Senior Software Engineer specializing in backend infrastructure, distributed systems, and database optimization.
+Senior Backend Engineer specializing in backend infrastructure, distributed systems, and database optimization.
 
 ---
 

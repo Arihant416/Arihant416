@@ -1,11 +1,12 @@
 import { useRef, useState, useEffect } from 'react';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { motion, useScroll, useTransform, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { workExperience, projects } from '../data/experience';
 
 export default function Experience() {
   const scrollContainerRef = useRef(null);
   const [expandedMobileJobs, setExpandedMobileJobs] = useState({});
   const [activeIdx, setActiveIdx] = useState(0);
+  const shouldReduceMotion = useReducedMotion();
 
   // 1. FIX: Added explicit "start start" to "end end" offsets 
   // Tracks progress strictly while the container is actively pinning/docked
@@ -37,7 +38,7 @@ export default function Experience() {
     <div className="w-full relative">
 
       {/* 🖥️ DESKTOP VIEW: APPLE-STYLE FIXED TRACK WITH MODERNIZED TOKENS */ }
-      <div ref={ scrollContainerRef } className="hidden lg:block relative h-[350vh] w-full bg-bg">
+      <div ref={ scrollContainerRef } className="hidden lg:block relative h-[285vh] w-full bg-bg">
         <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-center">
 
           <div className="max-w-[1200px] mx-auto w-full px-12 xl:px-24 grid grid-cols-3 gap-16 items-center">
@@ -66,8 +67,8 @@ export default function Experience() {
               </div>
 
               <div className="flex items-center gap-2.5 text-[9px] font-mono text-muted tracking-[0.15em] opacity-40">
-                <span>SCROLL TO TRAVERSE</span>
-                <span className="animate-bounce">↓</span>
+                <span>SCROLL WORK HISTORY</span>
+                <span className={ shouldReduceMotion ? '' : 'animate-bounce' }>↓</span>
               </div>
             </div>
 
@@ -76,10 +77,10 @@ export default function Experience() {
               <AnimatePresence mode="wait">
                 <motion.div
                   key={ activeIdx }
-                  initial={ { opacity: 0, y: 10 } }
+                  initial={ shouldReduceMotion ? false : { opacity: 0, y: 10 } }
                   animate={ { opacity: 1, y: 0 } }
-                  exit={ { opacity: 0, y: -10 } }
-                  transition={ { duration: 0.25, ease: [0.25, 1, 0.5, 1] } }
+                  exit={ shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: -10 } }
+                  transition={ shouldReduceMotion ? { duration: 0 } : { duration: 0.25, ease: [0.25, 1, 0.5, 1] } }
                   className="w-full flex flex-col justify-between"
                 >
                   <div>
@@ -89,7 +90,7 @@ export default function Experience() {
                           { workExperience[activeIdx].date }
                         </span>
                         { workExperience[activeIdx].date.includes('Present') && (
-                          <span className="inline-flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-wider bg-accent/10 text-accent px-2 py-0.5 rounded border border-accent/20 animate-pulse">
+                          <span className={ `inline-flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-wider bg-accent/10 text-accent px-2 py-0.5 rounded border border-accent/20 ${shouldReduceMotion ? '' : 'animate-pulse'}` }>
                             <span className="w-1 h-1 rounded-full bg-accent" />
                             Active Runtime
                           </span>
@@ -174,10 +175,10 @@ export default function Experience() {
                     { !isExpanded ? (
                       <motion.p
                         key="short-desc"
-                        initial={ { opacity: 0, y: -4 } }
+                        initial={ shouldReduceMotion ? false : { opacity: 0, y: -4 } }
                         animate={ { opacity: 1, y: 0 } }
-                        exit={ { opacity: 0, y: -4 } }
-                        transition={ { duration: 0.15 } }
+                        exit={ shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: -4 } }
+                        transition={ shouldReduceMotion ? { duration: 0 } : { duration: 0.15 } }
                         className="text-sm font-sans text-text-dim leading-relaxed font-light"
                       >
                         { job.shortDesc }
@@ -185,10 +186,10 @@ export default function Experience() {
                     ) : (
                       <motion.div
                         key="long-bullets"
-                        initial={ { opacity: 0, y: 4 } }
+                        initial={ shouldReduceMotion ? false : { opacity: 0, y: 4 } }
                         animate={ { opacity: 1, y: 0 } }
-                        exit={ { opacity: 0, y: 4 } }
-                        transition={ { duration: 0.2 } }
+                        exit={ shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 4 } }
+                        transition={ shouldReduceMotion ? { duration: 0 } : { duration: 0.2 } }
                       >
                         <ul className="space-y-3.5 pl-0.5">
                           { job.bullets.map((bullet, bIdx) => (
@@ -205,7 +206,7 @@ export default function Experience() {
 
                 <button
                   onClick={ () => toggleMobileJob(idx) }
-                  className="text-left w-fit font-mono text-[10px] uppercase tracking-widest font-medium text-accent flex items-center gap-1 focus:outline-none pt-1"
+                  className="text-left w-fit min-h-11 font-mono text-[10px] uppercase tracking-widest font-medium text-accent flex items-center gap-1 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-sm pt-1"
                 >
                   <span>{ isExpanded ? '// Collapse View ↑' : '// Read Metrics ↓' }</span>
                 </button>
@@ -242,17 +243,17 @@ export default function Experience() {
               <motion.div
                 key={ proj.name }
                 className="bg-bg-card border border-border hover:border-accent p-6 lg:p-8 rounded-xl flex flex-col justify-between transition-all duration-300 group"
-                initial={ { opacity: 0, y: 16 } }
+                initial={ shouldReduceMotion ? false : { opacity: 0, y: 16 } }
                 whileInView={ { opacity: 1, y: 0 } }
                 viewport={ { once: true, margin: '-40px' } }
-                transition={ { duration: 0.5, delay: i * 0.05 } }
+                transition={ shouldReduceMotion ? { duration: 0 } : { duration: 0.5, delay: i * 0.05 } }
               >
                 <div className="flex flex-col gap-3">
                   <a
                     href={ proj.url }
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-lg font-sans font-medium tracking-tight text-text hover:text-accent transition-colors flex items-center gap-1.5"
+                    className="min-h-11 text-lg font-sans font-medium tracking-tight text-text hover:text-accent transition-colors flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-sm"
                   >
                     { proj.name }
                     <span className="transition-transform duration-300 inline-block group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-accent text-sm">

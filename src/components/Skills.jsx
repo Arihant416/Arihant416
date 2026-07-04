@@ -1,7 +1,9 @@
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { skillCategories } from '../data/skills';
 
 export default function Skills() {
+  const shouldReduceMotion = useReducedMotion();
+
   // 1. Extract non-fundamental skills for the marquee track
   const iconSkills = skillCategories
     .filter(cat => cat.title !== 'CS Fundamentals')
@@ -30,11 +32,11 @@ export default function Skills() {
       <div className="w-full flex flex-col gap-16 overflow-hidden lg:pl-4">
 
         {/* INFINITE RUNTIME MARQUEE TRACK */ }
-        <div className="relative w-full overflow-hidden py-4 before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-20 before:bg-gradient-to-r before:from-bg before:to-transparent after:absolute after:right-0 after:top-0 after:z-10 after:h-full after:w-20 after:bg-gradient-to-l after:from-bg after:to-transparent">
+        <div className="relative w-full overflow-hidden py-4 before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-10 before:bg-gradient-to-r before:from-bg before:to-transparent after:absolute after:right-0 after:top-0 after:z-10 after:h-full after:w-10 after:bg-gradient-to-l after:from-bg after:to-transparent sm:before:w-20 sm:after:w-20">
           <motion.div
-            className="flex gap-12 w-max items-center"
-            animate={ { x: ["0%", "-50%"] } }
-            transition={ {
+            className="flex gap-8 sm:gap-12 w-max items-center"
+            animate={ shouldReduceMotion ? { x: '0%' } : { x: ["0%", "-50%"] } }
+            transition={ shouldReduceMotion ? { duration: 0 } : {
               ease: "linear",
               duration: 24, // Subtle, readable crawl speed
               repeat: Infinity,
@@ -53,7 +55,7 @@ export default function Skills() {
                 <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-text font-normal">
                   { skill.name }
                 </span>
-                <span className="text-border font-mono text-[10px] ml-4 select-none">//</span>
+                <span className="text-border font-mono text-[10px] ml-4 select-none">{ '//' }</span>
               </div>
             )) }
           </motion.div>
@@ -70,10 +72,10 @@ export default function Skills() {
             { csFundamentals.map((skill, i) => (
               <motion.div
                 key={ skill.name }
-                initial={ { opacity: 0, y: 8 } }
+                initial={ shouldReduceMotion ? false : { opacity: 0, y: 8 } }
                 whileInView={ { opacity: 1, y: 0 } }
                 viewport={ { once: true } }
-                transition={ { duration: 0.4, delay: i * 0.04 } }
+                transition={ shouldReduceMotion ? { duration: 0 } : { duration: 0.4, delay: i * 0.04 } }
                 className="flex items-center gap-2.5 group cursor-default"
               >
                 <span className="w-1 h-1 rounded-full bg-border group-hover:bg-accent transition-colors duration-300" />
