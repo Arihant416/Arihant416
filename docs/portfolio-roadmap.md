@@ -16,6 +16,7 @@ Editorial, systems-focused, restrained, premium, dark/light theme, subtle motion
 - Responsive polish
 - Dependency cleanup
 - SEO/deployment readiness
+- CRA to Vite migration
 
 ## Do Not Change Without Approval
 
@@ -24,12 +25,11 @@ Editorial, systems-focused, restrained, premium, dark/light theme, subtle motion
 - Public metrics
 - Overall visual identity
 - Framer Motion architecture
-- CRA/Vite tooling
+- Vite tooling
 
 ## Pending
 
 - Project copy polish
 - Final visual review
-- CRA to Vite migration
 - Custom domain readiness
 - Case-study depth
