@@ -249,17 +249,30 @@ export default function Experience() {
                 transition={ shouldReduceMotion ? { duration: 0 } : { duration: 0.5, delay: i * 0.05 } }
               >
                 <div className="flex flex-col gap-3">
-                  <a
-                    href={ proj.url }
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="min-h-11 text-lg font-sans font-medium tracking-tight text-text hover:text-accent transition-colors flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-sm"
-                  >
-                    { proj.name }
-                    <span className="transition-transform duration-300 inline-block group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-accent text-sm">
-                      ↗
-                    </span>
-                  </a>
+                  { proj.url ? (
+                    <a
+                      href={ proj.url }
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="min-h-11 text-lg font-sans font-medium tracking-tight text-text hover:text-accent transition-colors flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-sm"
+                    >
+                      { proj.name }
+                      <span className="transition-transform duration-300 inline-block group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-accent text-sm">
+                        ↗
+                      </span>
+                    </a>
+                  ) : (
+                    <div className="min-h-11 flex flex-wrap items-center gap-2">
+                      <h3 className="text-lg font-sans font-medium tracking-tight text-text">
+                        { proj.name }
+                      </h3>
+                      { proj.status && (
+                        <span className="font-mono text-[9px] uppercase tracking-wider bg-bg/50 text-muted px-2 py-0.5 rounded border border-border">
+                          { proj.status }
+                        </span>
+                      ) }
+                    </div>
+                  ) }
                   <p className="text-sm font-sans text-muted leading-relaxed font-light text-left">
                     { proj.description }
                   </p>
