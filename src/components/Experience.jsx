@@ -47,7 +47,7 @@ export default function Experience() {
             <div className="col-span-1 flex flex-col h-[380px] justify-between border-r border-border pr-10">
               <div>
                 <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent font-medium">
-                  01 // Systems Architecture
+                  01 // Backend Experience
                 </span>
                 <h2 className="text-4xl font-serif italic font-normal tracking-tight text-text mt-2">
                   Engineering <span className="font-sans not-italic font-light text-text-dim">History</span>
@@ -92,7 +92,7 @@ export default function Experience() {
                         { workExperience[activeIdx].date.includes('Present') && (
                           <span className={ `inline-flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-wider bg-accent/10 text-accent px-2 py-0.5 rounded border border-accent/20 ${shouldReduceMotion ? '' : 'animate-pulse'}` }>
                             <span className="w-1 h-1 rounded-full bg-accent" />
-                            Active Runtime
+                            Current Role
                           </span>
                         ) }
                       </div>
@@ -208,7 +208,7 @@ export default function Experience() {
                   onClick={ () => toggleMobileJob(idx) }
                   className="text-left w-fit min-h-11 font-mono text-[10px] uppercase tracking-widest font-medium text-accent flex items-center gap-1 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-sm pt-1"
                 >
-                  <span>{ isExpanded ? '// Collapse View ↑' : '// Read Metrics ↓' }</span>
+                  <span>{ isExpanded ? '// Collapse View ↑' : '// Read Impact ↓' }</span>
                 </button>
 
                 { job.chips && (
@@ -232,10 +232,10 @@ export default function Experience() {
         <div className="max-w-[1200px] mx-auto px-6 lg:px-12">
 
           <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent font-semibold block mb-2">
-            02 // Production Artifacts
+            02 // Backend Project Work
           </span>
           <h2 className="text-3xl font-serif italic text-text mb-12">
-            Featured <span className="font-sans not-italic font-light text-text-dim">Systems</span>
+            Featured <span className="font-sans not-italic font-light text-text-dim">Projects</span>
           </h2>
 
           <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">

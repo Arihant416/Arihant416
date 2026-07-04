@@ -25,18 +25,18 @@ Senior Backend Engineer specializing in backend infrastructure, distributed syst
 
 ### ⚡ [Distributed Quota-Metering Engine](https://github.com/Arihant416/quota-meter)
 
-A system designed to enforce monthly API usage limits for multi-tenant applications without breaking under heavy traffic.
+A backend service for enforcing monthly API usage limits in multi-tenant products without losing accuracy under concurrent traffic.
 
-- **Race Conditions:** Handled potential data races by executing token deductions and validation checks atomically using **Redis Lua scripts**.
-- **Failures & Retries:** Implemented a deduct-then-refund flow with custom transactional loops to ensure accurate tracking even if an upstream network request drops mid-way.
+- **Race Conditions:** Keeps token deduction and idempotency validation atomic with **Redis Lua scripts**.
+- **Failures & Retries:** Uses a deduct-then-refund flow so quota state can recover when upstream requests fail mid-flight.
 
 ### 🔍 [GitDev Finder](https://gitdevfinder416.netlify.app/)
 
-A tool to find active open-source developers by filtering public repositories based on language stacks and contribution data.
+A developer discovery tool for filtering public repository/profile data by language stack and activity, useful for faster engineering research and candidate discovery.
 
 ### 🌐 [Systems Portfolio](https://arihant416.vercel.app)
 
-A clean, minimal portfolio built with React and Tailwind CSS to display my production metrics and project history.
+A focused React and Tailwind portfolio built to communicate backend impact, production metrics, project history, and direct hiring/freelance contact paths.
 
 ---
 

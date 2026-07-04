@@ -92,7 +92,7 @@ export default function Hero() {
         {/* Scroll Indicator Rails Anchor */ }
         <div className="flex items-center gap-4 mt-16 md:mt-24 text-muted select-none">
           <div className="w-10 h-[1px] bg-border" />
-          <span className="font-mono text-[10px] uppercase tracking-[0.2em]">Scroll Rail</span>
+          <span className="font-mono text-[10px] uppercase tracking-[0.2em]">Work History</span>
         </div>
 
       </div>

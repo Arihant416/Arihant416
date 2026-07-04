@@ -46,20 +46,20 @@ export const projects = [
   {
     name: 'Distributed Quota-Metering Engine',
     url: 'https://github.com/Arihant416/quota-meter', // Replace with real repo link if public
-    description: 'A horizontally scalable, low-latency quota enforcement engine built to handle high-concurrency API tracking. Mitigates TOCTOU race conditions by executing token-bucket deduction and idempotency validation atomically inside single-shotted Redis Lua scripts.',
+    description: 'Backend service for multi-tenant API products where usage limits must stay accurate under concurrent traffic. It pairs FastAPI with Redis Lua token-bucket checks and MongoDB state so quota deduction, idempotency validation, and rollback logic stay deterministic.',
     chips: ['FastAPI', 'Redis Lua', 'MongoDB', 'Docker Compose', 'Asynchronous Python'],
   },
   {
     name: 'GitDev Finder',
     url: 'https://gitdevfinder416.netlify.app/',
-    description: 'A discovery hub for open-source developers. Aggregates and filters active repositories based on developer language stacks, simplifying how engineers locate and contribute to global codebases.',
+    description: 'Developer discovery app that turns repository and profile data into searchable views by language stack and activity. It demonstrates API integration, filtering workflows, and deployable full-stack product polish for teams that need faster engineering discovery.',
     chips: ['React', 'Node.js', 'MongoDB', 'Netlify API'],
   },
   {
     name: 'FXFlow',
     url: null,
     status: 'Demo archived',
-    description: 'A lightweight financial utility delivering real-time currency calculations. Optimized for zero-dependency client performance, processing multi-currency exchange rates instantaneously via live API state integration.',
+    description: 'Archived finance utility that consumes exchange-rate APIs and keeps currency calculations responsive in the browser. It demonstrates clean API-state handling, error-aware UI flows, and lightweight delivery for small client tools.',
     chips: ['JavaScript', 'HTML5', 'CSS3', 'REST APIs'],
   }
 ];
