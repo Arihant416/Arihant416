@@ -57,7 +57,8 @@ export const projects = [
   },
   {
     name: 'FXFlow',
-    url: 'https://wild-iris-sing.glitch.me/',
+    url: null,
+    status: 'Demo archived',
     description: 'A lightweight financial utility delivering real-time currency calculations. Optimized for zero-dependency client performance, processing multi-currency exchange rates instantaneously via live API state integration.',
     chips: ['JavaScript', 'HTML5', 'CSS3', 'REST APIs'],
   }
