@@ -18,7 +18,7 @@ export default function Contact() {
             Start <span className="font-sans not-italic font-light text-[var(--text-dim)]">Conversation</span>
           </h2>
           <p className="font-sans text-xs sm:text-sm text-muted mt-4 max-w-sm leading-relaxed">
-            Need backend architecture, API scaling, or reliability work? Let's talk.
+            Working on backend systems, API reliability, source orchestration, or cost-aware platform decisions? Let's talk.
           </p>
 
           {/* Social Infrastructure Pipes */ }
@@ -52,8 +52,8 @@ export default function Contact() {
             </h3>
 
             <p className="font-sans text-sm text-muted leading-relaxed max-w-md">
-              Send a note directly to my inbox.<br></br>
-              I usually respond within 24–48 hours.
+              Send a note with the system, scale, or reliability problem you are thinking through.<br></br>
+              I usually respond within 24-48 hours.
             </p>
 
             <a

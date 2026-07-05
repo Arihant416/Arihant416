@@ -1,21 +1,21 @@
 export const testimonials = [
   {
     name: 'Haseeb Qureshi',
-    role: 'SSE @ Akamai — Former teammate at Karza (3+ Years)',
+    role: 'SSE @ Akamai — Former teammate at Perfios (3+ Years)',
     quote: "I worked with Arihant for three years in the same technical team and always admired his reliability, problem-solving skills, and collaborative nature. He’s a solid engineer and a great teammate.",
     linkedin: 'https://www.linkedin.com/in/haseebqureshi1',
     avatar: 'https://api.dicebear.com/7.x/thumbs/svg?seed=HaseebQureshi',
   },
   {
     name: 'Shantanu Sharma',
-    role: 'SSE @ Securly (ex-JPMorgan) — Former Senior at Karza',
+    role: 'SSE @ Securly (ex-JPMorgan) — Former Senior at Perfios',
     quote: "Arihant is a hard-working individual, always keen to take on challenges and never shies away from experimental learning. His energy reflects on the team, and he literally lives up to the phrase 'Work hard, Play hard!'. It has always been great working with him, and I am sure he is going to be an asset to whichever team he joins.",
     linkedin: 'https://www.linkedin.com/in/shantanusharma95',
     avatar: 'https://api.dicebear.com/7.x/thumbs/svg?seed=ShantanuSharma',
   },
   {
     name: 'Sanket Kamta',
-    role: 'Senior Software Engineer @ Karza (Perfios)',
+    role: 'Senior Software Engineer @ Perfios',
     quote: "I highly recommend Arihant Jain as an exceptional Python Developer with advanced expertise in AWS. His technical skills are top-notch, consistently delivering efficient and innovative solutions. Arihant is a fantastic team player, always communicating effectively and contributing positively to group dynamics. His eagerness to learn and explore new technologies further amplifies his value, driving both personal and team success. Arihant’s dedication and enthusiasm make him an invaluable asset to any project.",
     linkedin: 'https://www.linkedin.com/in/sanketkamta',
     avatar: 'https://api.dicebear.com/7.x/thumbs/svg?seed=SanketKamta',

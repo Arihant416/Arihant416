@@ -7,10 +7,10 @@ const rise = (delay = 0, shouldReduceMotion = false) => ({
 });
 
 const STATS = [
-  { num: '5+ Yrs', label: 'Engineering Experience', sub: 'distributed & backend systems' },
-  { num: '5M+', label: 'Daily API Requests', sub: '99.99% uptime microservices' },
-  { num: '₹4L+', label: 'Monthly Cloud Saved', sub: 'via infrastructure optimization' },
-  { num: '30+', label: 'Production APIs Shipped', sub: 'low-latency fintech systems' },
+  { num: '5M+', label: 'Daily API Requests', sub: 'across critical API suites' },
+  { num: '~70%', label: 'P99 Latency Reduction', sub: 'across multiple APIs' },
+  { num: '$700K+', label: 'Annualized Savings', sub: 'through cost-aware architecture' },
+  { num: '30', label: 'APIs Designed', sub: 'from scratch for production' },
 ];
 
 export default function Hero() {
@@ -47,14 +47,15 @@ export default function Hero() {
             {/* Left Column: Summary and Engagement Framework */ }
             <div className="flex flex-col items-start">
               <p className="font-sans font-light text-lg md:text-xl leading-relaxed text-text-dim max-w-[48ch] mb-8 text-left">
-                Specializing in cloud-native microservices, fault-tolerant event-driven architectures,
-                and low-latency infrastructure. Currently at Perfios, engineering optimized data pipelines
-                and transaction engines that scale seamlessly under heavy enterprise volume.
+                I build production backend systems where architecture decisions show up in latency,
+                reliability, and cost. At Perfios, I work across high-throughput API suites, source
+                orchestration, Redis/Celery/Fargate pipelines, and disaster-recovery paths serving
+                5M+ daily requests.
               </p>
 
               <p className="flex items-center gap-3 font-mono text-xs tracking-wider text-muted mb-10 select-none">
                 <span className={ `w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)] ${shouldReduceMotion ? '' : 'animate-pulse'}` } />
-                Available for challenging backend roles.
+                Focused on production backend systems and cost-aware reliability work.
               </p>
 
               <div className="flex flex-wrap gap-4 w-full sm:w-auto">
