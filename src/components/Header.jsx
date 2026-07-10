@@ -29,7 +29,7 @@ export default function Header() {
       }`}
     >
       <motion.nav
-        className={`mx-auto flex h-16 w-full max-w-[1320px] items-center justify-between gap-3 rounded-[1.35rem] border px-3 shadow-[var(--panel-shadow)] transition-all duration-300 sm:px-4 ${
+        className={`mx-auto flex h-14 w-full max-w-[1320px] items-center justify-between gap-3 rounded-[1.2rem] border px-3 shadow-[var(--panel-shadow)] transition-all duration-300 sm:h-16 sm:rounded-[1.35rem] sm:px-4 ${
           scrolled
             ? 'border-border bg-card/95'
             : 'border-border/70 bg-card/75 backdrop-blur-xl'
@@ -40,7 +40,7 @@ export default function Header() {
       >
         <a
           href="#top"
-          className="group inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-border bg-bg px-3 font-mono text-xs font-bold text-text transition-colors duration-200 hover:border-accent hover:text-accent focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent"
+          className="group inline-flex min-h-10 min-w-10 items-center justify-center rounded-full border border-border bg-bg px-3 font-mono text-[11px] font-bold text-text transition-colors duration-200 hover:border-accent hover:text-accent focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent sm:min-h-11 sm:min-w-11 sm:text-xs"
           aria-label="Back to top"
         >
           AJ
@@ -92,7 +92,7 @@ export default function Header() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Open resume"
-            className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-accent bg-accent px-3.5 font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-bg transition-all duration-200 hover:bg-text hover:border-text focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent sm:px-4"
+            className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full border border-accent bg-accent px-3.5 font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-bg transition-all duration-200 hover:bg-text hover:border-text focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent sm:min-h-11 sm:px-4"
           >
             <FiFileText aria-hidden="true" />
             <span className="hidden sm:inline">Resume</span>

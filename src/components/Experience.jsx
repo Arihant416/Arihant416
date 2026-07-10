@@ -26,7 +26,7 @@ function ExperienceCard({ job, shouldReduceMotion }) {
   return (
     <motion.article
       key={job.company}
-      className="console-panel rounded-[1.7rem] p-6 sm:p-8 lg:p-10"
+      className="console-panel rounded-[1.45rem] p-5 sm:rounded-[1.7rem] sm:p-8 lg:p-10"
       initial={shouldReduceMotion ? false : { opacity: 0, y: 18 }}
       animate={{ opacity: 1, y: 0 }}
       exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: -14 }}
@@ -35,7 +35,7 @@ function ExperienceCard({ job, shouldReduceMotion }) {
       <div className="mb-8 flex flex-col gap-4 border-b border-border pb-6 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <p className="mono-label text-accent">{job.date}</p>
-          <h3 className="mt-3 text-2xl font-light leading-tight text-text md:text-3xl">
+          <h3 className="mt-3 text-xl font-light leading-tight text-text sm:text-2xl md:text-3xl">
             {job.title}
             <span className="mx-2 font-serif italic text-accent">at</span>
             <span className="font-semibold">{job.company}</span>
@@ -55,7 +55,7 @@ function ExperienceCard({ job, shouldReduceMotion }) {
 
       <ul className="space-y-4">
         {job.bullets.map((bullet) => (
-          <li key={bullet} className="grid grid-cols-[auto_1fr] gap-3 text-sm leading-relaxed text-text-dim md:text-[15px]">
+          <li key={bullet} className="grid grid-cols-[auto_1fr] gap-3 text-[13px] leading-relaxed text-text-dim sm:text-sm md:text-[15px]">
             <span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_12px_var(--ring)]" />
             <span>{bullet}</span>
           </li>
@@ -149,10 +149,10 @@ export default function Experience() {
         </div>
       </div>
 
-      <div className="block border-b border-border bg-bg px-4 py-16 sm:px-6 lg:hidden">
+      <div className="block border-b border-border bg-bg px-3 py-14 sm:px-6 sm:py-16 lg:hidden">
         <div className="mx-auto max-w-3xl">
           <span className="section-kicker">01 Professional Journey</span>
-          <h2 className="mt-4 text-3xl font-light leading-tight text-text">
+          <h2 className="mt-4 text-2xl font-light leading-tight text-text sm:text-3xl">
             Engineering <span className="font-serif italic text-accent">History</span>
           </h2>
 
@@ -162,7 +162,7 @@ export default function Experience() {
               return (
                 <motion.article
                   key={`${job.company}-mobile`}
-                  className="console-panel rounded-[1.35rem] p-5"
+                  className="console-panel rounded-[1.25rem] p-4 sm:rounded-[1.35rem] sm:p-5"
                   {...itemIn(idx, shouldReduceMotion)}
                 >
                   <div className="flex flex-col gap-3">
@@ -176,7 +176,7 @@ export default function Experience() {
                       )}
                     </div>
 
-                    <h3 className="text-lg font-semibold leading-snug text-text">
+                    <h3 className="text-base font-semibold leading-snug text-text sm:text-lg">
                       {job.title}
                       <span className="block font-serif font-normal italic text-muted">with {job.company}</span>
                     </h3>
@@ -191,7 +191,7 @@ export default function Experience() {
                           animate={{ opacity: 1, y: 0 }}
                           exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: -4 }}
                           transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.15 }}
-                          className="text-sm leading-relaxed text-text-dim"
+                          className="text-[13px] leading-relaxed text-text-dim sm:text-sm"
                         >
                           {job.shortDesc}
                         </motion.p>
@@ -205,7 +205,7 @@ export default function Experience() {
                           className="space-y-3"
                         >
                           {job.bullets.map((bullet) => (
-                            <li key={bullet} className="grid grid-cols-[auto_1fr] gap-3 text-sm leading-relaxed text-text-dim">
+                            <li key={bullet} className="grid grid-cols-[auto_1fr] gap-3 text-[13px] leading-relaxed text-text-dim sm:text-sm">
                               <span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent" />
                               <span>{bullet}</span>
                             </li>
@@ -232,12 +232,12 @@ export default function Experience() {
         </div>
       </div>
 
-      <div className="w-full border-b border-border bg-bg px-4 py-20 sm:px-6 lg:px-8" id="projects">
+      <div className="w-full border-b border-border bg-bg px-3 py-16 sm:px-6 sm:py-20 lg:px-8" id="projects">
         <div className="mx-auto max-w-[1320px]">
           <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <span className="section-kicker">02 Backend Project Work</span>
-              <h2 className="mt-4 text-3xl font-light leading-tight text-text md:text-4xl">
+              <h2 className="mt-4 text-2xl font-light leading-tight text-text sm:text-3xl md:text-4xl">
                 Featured <span className="font-serif italic text-accent">Projects</span>
               </h2>
             </div>
@@ -247,7 +247,7 @@ export default function Experience() {
             {projects.map((proj, index) => (
               <motion.article
                 key={proj.name}
-                className="console-panel flex min-h-[320px] flex-col justify-between rounded-[1.5rem] p-6"
+                className="console-panel flex min-h-[260px] flex-col justify-between rounded-[1.25rem] p-5 sm:min-h-[320px] sm:rounded-[1.5rem] sm:p-6"
                 {...itemIn(index, shouldReduceMotion)}
               >
                 <div>
@@ -257,7 +257,7 @@ export default function Experience() {
                         href={proj.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex min-h-11 items-center gap-2 rounded-sm text-xl font-semibold leading-tight text-text transition-colors duration-200 hover:text-accent focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent"
+                        className="inline-flex min-h-10 items-center gap-2 rounded-sm text-lg font-semibold leading-tight text-text transition-colors duration-200 hover:text-accent focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent sm:min-h-11 sm:text-xl"
                       >
                         {proj.name}
                         <span className="font-mono text-xs text-accent" aria-hidden="true">
@@ -266,13 +266,13 @@ export default function Experience() {
                       </a>
                     ) : (
                       <div>
-                        <h3 className="text-xl font-semibold leading-tight text-text">{proj.name}</h3>
+                        <h3 className="text-lg font-semibold leading-tight text-text sm:text-xl">{proj.name}</h3>
                         {proj.status && <span className="console-tag mt-3">{proj.status}</span>}
                       </div>
                     )}
                     <span className="mono-label text-muted">0{index + 1}</span>
                   </div>
-                  <p className="text-sm leading-relaxed text-text-dim">{proj.description}</p>
+                  <p className="text-[13px] leading-relaxed text-text-dim sm:text-sm">{proj.description}</p>
                 </div>
 
                 <div className="mt-8 border-t border-border pt-5">

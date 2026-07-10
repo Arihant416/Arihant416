@@ -75,11 +75,11 @@
 
 @media (max-width: 767px) {
   :root {
-    --section-padding: 4.5rem;
-    --fs-display: 3.65rem;
-    --fs-h2: 2.1rem;
-    --fs-h3: 1.2rem;
-    --fs-body: 0.98rem;
+    --section-padding: 3.75rem;
+    --fs-display: 3.05rem;
+    --fs-h2: 1.85rem;
+    --fs-h3: 1.08rem;
+    --fs-body: 0.94rem;
   }
 }
 
@@ -331,5 +331,8 @@ main {
 @media (max-width: 640px) {
   .btn {
     width: 100%;
+    min-height: 2.7rem;
+    padding: 0.7rem 1rem;
+    font-size: 0.62rem;
   }
 }

@@ -8,14 +8,14 @@ const SOCIALS = [
 
 export default function Contact() {
   return (
-    <section className="w-full border-b border-border bg-bg px-4 py-20 sm:px-6 lg:px-8" id="contact">
+    <section className="w-full border-b border-border bg-bg px-3 py-16 sm:px-6 sm:py-20 lg:px-8" id="contact">
       <div className="mx-auto grid max-w-[1320px] grid-cols-1 gap-8 lg:grid-cols-[0.9fr_1.4fr] lg:gap-10">
-        <div className="console-panel rounded-[1.7rem] p-6 sm:p-8">
+        <div className="console-panel rounded-[1.35rem] p-5 sm:rounded-[1.7rem] sm:p-8">
           <span className="section-kicker">05 Communications</span>
-          <h2 className="mt-4 text-3xl font-light leading-tight text-text">
+          <h2 className="mt-4 text-2xl font-light leading-tight text-text sm:text-3xl">
             Start <span className="font-serif italic text-accent">Conversation</span>
           </h2>
-          <p className="mt-5 max-w-md text-sm leading-relaxed text-muted">
+          <p className="mt-5 max-w-md text-[13px] leading-relaxed text-muted sm:text-sm">
             Working on backend systems, API reliability, source orchestration, or cost-aware platform decisions? Let's talk.
           </p>
 
@@ -26,7 +26,7 @@ export default function Contact() {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex min-h-12 items-center justify-between rounded-2xl border border-border bg-bg/70 px-4 font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-muted transition-colors duration-200 hover:border-accent hover:text-text focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent"
+                className="group flex min-h-11 items-center justify-between rounded-xl border border-border bg-bg/70 px-4 font-mono text-[10px] font-semibold uppercase tracking-[0.12em] text-muted transition-colors duration-200 hover:border-accent hover:text-text focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent sm:min-h-12 sm:rounded-2xl sm:text-[11px]"
               >
                 <span>{label}</span>
                 <FiExternalLink className="text-accent" aria-hidden="true" />
@@ -35,19 +35,19 @@ export default function Contact() {
           </div>
         </div>
 
-        <div className="console-panel flex min-h-[360px] flex-col justify-between rounded-[1.7rem] p-6 sm:p-8 lg:p-10">
+        <div className="console-panel flex min-h-0 flex-col justify-between rounded-[1.35rem] p-5 sm:min-h-[360px] sm:rounded-[1.7rem] sm:p-8 lg:p-10">
           <div>
             <span className="console-tag">
               <FiMail aria-hidden="true" />
               Direct Email
             </span>
 
-            <h3 className="mt-8 max-w-2xl text-4xl font-light leading-tight text-text md:text-5xl">
+            <h3 className="mt-7 max-w-2xl text-[2rem] font-light leading-tight text-text sm:mt-8 sm:text-4xl md:text-5xl">
               Let's discuss something{' '}
               <span className="font-serif italic text-accent">reliable.</span>
             </h3>
 
-            <p className="mt-6 max-w-lg text-sm leading-relaxed text-muted">
+            <p className="mt-5 max-w-lg text-[13px] leading-relaxed text-muted sm:mt-6 sm:text-sm">
               Send a note with the system, scale, or reliability problem you are thinking through.<br />
               I usually respond within 24-48 hours.
             </p>

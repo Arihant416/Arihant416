@@ -18,12 +18,12 @@ export default function Testimonials() {
     <div className="section border-b border-border bg-bg" id="testimonials">
       <div className="col-span-1">
         <span className="section-kicker">04 Endorsements</span>
-        <h2 className="mt-4 text-3xl font-light leading-tight text-text">
+        <h2 className="mt-4 text-2xl font-light leading-tight text-text sm:text-3xl">
           Trusted <span className="font-serif italic text-accent">Peer Review</span>
         </h2>
       </div>
 
-      <div className="console-panel min-h-[380px] rounded-[1.7rem] p-5 sm:p-8">
+      <div className="console-panel min-h-[320px] rounded-[1.35rem] p-4 sm:min-h-[380px] sm:rounded-[1.7rem] sm:p-8">
         <div className="mb-6 flex flex-wrap items-center justify-between gap-4 border-b border-border pb-5">
           <div className="flex items-center gap-3">
             <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-border bg-card2 font-mono text-sm font-bold text-accent">
@@ -31,7 +31,7 @@ export default function Testimonials() {
             </span>
             <div>
               <p className="font-semibold text-text">{t.name}</p>
-              <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.12em] text-muted">{t.role}</p>
+              <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.12em] text-muted sm:text-[10px]">{t.role}</p>
             </div>
           </div>
 
@@ -47,7 +47,7 @@ export default function Testimonials() {
           </a>
         </div>
 
-        <div className="relative flex min-h-[210px] items-center">
+        <div className="relative flex min-h-[180px] items-center sm:min-h-[210px]">
           <AnimatePresence mode="wait" custom={dir}>
             <motion.blockquote
               key={idx}
@@ -63,7 +63,7 @@ export default function Testimonials() {
               transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
               className="w-full"
             >
-              <p className="max-w-4xl text-xl font-light leading-relaxed text-text-dim sm:text-2xl lg:text-3xl">
+              <p className="max-w-4xl text-base font-light leading-relaxed text-text-dim sm:text-xl md:text-2xl lg:text-3xl">
                 <span className="mr-2 font-serif text-accent">"</span>
                 {t.quote}
                 <span className="ml-2 font-serif text-accent">"</span>
