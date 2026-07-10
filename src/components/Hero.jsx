@@ -124,11 +124,6 @@ export default function Hero() {
               </div>
             </motion.div>
           </div>
-
-          <div className="mt-10 flex items-center gap-4 border-t border-border pt-5 text-muted">
-            <div className="h-px w-10 bg-border" />
-            <span className="font-mono text-[10px] uppercase tracking-[0.18em]">Work History</span>
-          </div>
         </motion.div>
       </div>
     </section>
