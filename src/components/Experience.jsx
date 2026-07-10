@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
-import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
+import { useState } from 'react';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { projects, workExperience } from '../data/experience';
 
 const itemIn = (index = 0, shouldReduceMotion = false) => ({
@@ -22,74 +22,132 @@ function ChipList({ chips }) {
   );
 }
 
-function ExperienceCard({ job, shouldReduceMotion }) {
+function CareerTimeline({ shouldReduceMotion }) {
+  return (
+    <div className="mt-8 hidden rounded-[1.15rem] border border-border bg-card/40 p-2 md:grid md:grid-cols-3 md:gap-2 lg:mt-10">
+      {workExperience.map((job, index) => {
+        const isCurrent = job.date.includes('Present');
+
+        return (
+          <motion.div
+            key={`${job.company}-${index}-timeline`}
+            className={`rounded-[0.95rem] px-4 py-3 transition-colors duration-300 ${
+              isCurrent ? 'bg-card2 text-text shadow-[0_0_22px_var(--ring)]' : 'text-muted hover:bg-card'
+            }`}
+            {...itemIn(index, shouldReduceMotion)}
+          >
+            <div className="flex items-center gap-3">
+              <span className={`h-2.5 w-2.5 rounded-full ${isCurrent ? 'bg-accent shadow-[0_0_14px_var(--ring)]' : 'bg-border'}`} />
+              <span className={isCurrent ? 'mono-label text-accent' : 'mono-label text-muted'}>0{index + 1}</span>
+              {isCurrent && (
+                <span className="console-tag ml-auto hidden lg:inline-flex">
+                  <span className="status-dot" />
+                  Active
+                </span>
+              )}
+            </div>
+            <p className="mt-4 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-text">{job.company}</p>
+            <p className="mt-1 text-xs text-muted">{job.date}</p>
+          </motion.div>
+        );
+      })}
+    </div>
+  );
+}
+
+function ExperienceCard({ job, index, isExpanded, onToggle, shouldReduceMotion }) {
+  const isCurrent = job.date.includes('Present');
+
   return (
     <motion.article
-      key={job.company}
-      className="console-panel rounded-[1.45rem] p-5 sm:rounded-[1.7rem] sm:p-8 lg:p-10"
-      initial={shouldReduceMotion ? false : { opacity: 0, y: 18 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: -14 }}
-      transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+      className={`console-panel rounded-[1.2rem] p-4 sm:rounded-[1.45rem] sm:p-6 lg:p-7 ${
+        isCurrent ? 'border-accent/60' : ''
+      }`}
+      {...itemIn(index, shouldReduceMotion)}
     >
-      <div className="mb-8 flex flex-col gap-4 border-b border-border pb-6 sm:flex-row sm:items-start sm:justify-between">
-        <div>
-          <p className="mono-label text-accent">{job.date}</p>
-          <h3 className="mt-3 text-xl font-light leading-tight text-text sm:text-2xl md:text-3xl">
-            {job.title}
-            <span className="mx-2 font-serif italic text-accent">at</span>
-            <span className="font-semibold">{job.company}</span>
-          </h3>
-          <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.14em] text-muted">
+      <div className="grid gap-5 lg:grid-cols-[170px_minmax(0,1fr)]">
+        <div className="border-b border-border pb-5 lg:border-b-0 lg:border-r lg:pb-0 lg:pr-6">
+          <div className="flex items-center gap-3 lg:block">
+            <span className="mono-label text-accent">0{index + 1}</span>
+            <div className="h-px flex-1 bg-border lg:my-5 lg:h-16 lg:w-px lg:flex-none" />
+            <span className="mono-label text-muted">{job.date}</span>
+          </div>
+          <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.14em] text-muted lg:mt-6">
             {job.location}
           </p>
         </div>
 
-        {job.date.includes('Present') && (
-          <span className="console-tag w-fit">
-            <span className={`status-dot ${shouldReduceMotion ? '' : 'animate-pulse'}`} />
-            Current role
-          </span>
-        )}
-      </div>
+        <div className="min-w-0">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+            <div>
+              <h3 className="text-xl font-light leading-tight text-text sm:text-2xl">
+                {job.title}
+                <span className="mx-2 font-serif italic text-accent">at</span>
+                <span className="font-semibold">{job.company}</span>
+              </h3>
+              <p className="mt-4 max-w-3xl text-[13px] leading-relaxed text-text-dim sm:text-sm">
+                {job.shortDesc}
+              </p>
+            </div>
 
-      <ul className="space-y-4">
-        {job.bullets.map((bullet) => (
-          <li key={bullet} className="grid grid-cols-[auto_1fr] gap-3 text-[13px] leading-relaxed text-text-dim sm:text-sm md:text-[15px]">
-            <span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_12px_var(--ring)]" />
-            <span>{bullet}</span>
-          </li>
-        ))}
-      </ul>
+            {isCurrent && (
+              <span className="console-tag w-fit shrink-0">
+                <span className={`status-dot ${shouldReduceMotion ? '' : 'animate-pulse'}`} />
+                Current role
+              </span>
+            )}
+          </div>
 
-      <div className="mt-8 border-t border-border pt-5">
-        <ChipList chips={job.chips} />
+          <ul className="mt-6 hidden columns-1 gap-x-8 space-y-3 lg:block xl:columns-2">
+            {job.bullets.map((bullet) => (
+              <li key={bullet} className="mb-3 grid break-inside-avoid grid-cols-[auto_1fr] gap-3 text-[13px] leading-relaxed text-text-dim">
+                <span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_12px_var(--ring)]" />
+                <span>{bullet}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div className="lg:hidden">
+            <AnimatePresence mode="wait">
+              {isExpanded && (
+                <motion.ul
+                  key="mobile-bullets"
+                  initial={shouldReduceMotion ? false : { opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: -6 }}
+                  transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.18 }}
+                  className="mt-5 space-y-3"
+                >
+                  {job.bullets.map((bullet) => (
+                    <li key={bullet} className="grid grid-cols-[auto_1fr] gap-3 text-[13px] leading-relaxed text-text-dim sm:text-sm">
+                      <span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent" />
+                      <span>{bullet}</span>
+                    </li>
+                  ))}
+                </motion.ul>
+              )}
+            </AnimatePresence>
+
+            <button
+              onClick={onToggle}
+              className="mt-5 inline-flex min-h-11 items-center rounded-full border border-border px-4 font-mono text-[10px] font-semibold uppercase tracking-[0.12em] text-accent transition-colors duration-200 hover:border-accent hover:text-text focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent"
+            >
+              {isExpanded ? 'Collapse View' : 'Read Impact'}
+            </button>
+          </div>
+
+          <div className="mt-6 border-t border-border pt-5">
+            <ChipList chips={job.chips} />
+          </div>
+        </div>
       </div>
     </motion.article>
   );
 }
 
 export default function Experience() {
-  const scrollContainerRef = useRef(null);
   const [expandedMobileJobs, setExpandedMobileJobs] = useState({});
-  const [activeIdx, setActiveIdx] = useState(0);
   const shouldReduceMotion = useReducedMotion();
-
-  const { scrollYProgress } = useScroll({
-    target: scrollContainerRef,
-    offset: ['start start', 'end end'],
-  });
-
-  const totalJobs = workExperience.length;
-  const activeIndexTransform = useTransform(scrollYProgress, [0, 1], [0, totalJobs - 0.01]);
-
-  useEffect(() => {
-    const unsubscribe = activeIndexTransform.on('change', (latest) => {
-      const calculatedIndex = Math.min(totalJobs - 1, Math.max(0, Math.floor(latest)));
-      setActiveIdx((current) => (current === calculatedIndex ? current : calculatedIndex));
-    });
-    return () => unsubscribe();
-  }, [activeIndexTransform, totalJobs]);
 
   const toggleMobileJob = (index) => {
     setExpandedMobileJobs((prev) => ({ ...prev, [index]: !prev[index] }));
@@ -97,144 +155,37 @@ export default function Experience() {
 
   return (
     <div className="relative w-full">
-      <div ref={scrollContainerRef} className="hidden h-[255vh] w-full border-b border-border bg-bg lg:block">
-        <div className="sticky top-0 flex h-screen w-full items-center overflow-hidden">
-          <div className="mx-auto grid w-full max-w-[1320px] grid-cols-[320px_minmax(0,1fr)] items-center gap-10 px-8 xl:px-12">
-            <aside className="console-panel rounded-[1.7rem] p-6">
+      <div className="w-full border-b border-border bg-bg px-3 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
+        <div className="mx-auto max-w-[1320px]">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
               <span className="section-kicker">01 Backend Experience</span>
-              <h2 className="mt-5 text-4xl font-light leading-tight text-text">
+              <h2 className="mt-4 text-2xl font-light leading-tight text-text sm:text-3xl md:text-4xl">
                 Engineering <span className="font-serif italic text-accent">History</span>
               </h2>
-
-              <div className="mt-10 space-y-4">
-                {workExperience.map((job, idx) => (
-                  <div key={job.company} className="grid grid-cols-[auto_1fr] items-center gap-4">
-                    <span
-                      className={`h-10 w-[3px] rounded-full transition-colors duration-300 ${
-                        idx === activeIdx ? 'bg-accent shadow-[0_0_18px_var(--ring)]' : 'bg-border'
-                      }`}
-                    />
-                    <div>
-                      <p
-                        className={`font-mono text-[10px] font-semibold uppercase tracking-[0.14em] transition-colors duration-300 ${
-                          idx === activeIdx ? 'text-text' : 'text-muted'
-                        }`}
-                      >
-                        {job.company}
-                      </p>
-                      <p className="mt-1 text-xs text-muted">{job.date}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-10 flex items-center gap-3 border-t border-border pt-5 text-muted">
-                <span className="mono-label">Scroll work history</span>
-                <span className={shouldReduceMotion ? '' : 'animate-bounce'} aria-hidden="true">
-                  v
-                </span>
-              </div>
-            </aside>
-
-            <div className="min-w-0">
-              <AnimatePresence mode="wait">
-                <ExperienceCard
-                  key={workExperience[activeIdx].company}
-                  job={workExperience[activeIdx]}
-                  shouldReduceMotion={shouldReduceMotion}
-                />
-              </AnimatePresence>
             </div>
           </div>
-        </div>
-      </div>
 
-      <div className="block border-b border-border bg-bg px-3 py-14 sm:px-6 sm:py-16 lg:hidden">
-        <div className="mx-auto max-w-3xl">
-          <span className="section-kicker">01 Professional Journey</span>
-          <h2 className="mt-4 text-2xl font-light leading-tight text-text sm:text-3xl">
-            Engineering <span className="font-serif italic text-accent">History</span>
-          </h2>
+          <CareerTimeline shouldReduceMotion={shouldReduceMotion} />
 
-          <div className="mt-10 flex flex-col gap-5">
-            {workExperience.map((job, idx) => {
-              const isExpanded = expandedMobileJobs[idx];
-              return (
-                <motion.article
-                  key={`${job.company}-mobile`}
-                  className="console-panel rounded-[1.25rem] p-4 sm:rounded-[1.35rem] sm:p-5"
-                  {...itemIn(idx, shouldReduceMotion)}
-                >
-                  <div className="flex flex-col gap-3">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <span className="mono-label text-accent">{job.date}</span>
-                      {job.date.includes('Present') && (
-                        <span className="console-tag">
-                          <span className="status-dot" />
-                          Active
-                        </span>
-                      )}
-                    </div>
-
-                    <h3 className="text-base font-semibold leading-snug text-text sm:text-lg">
-                      {job.title}
-                      <span className="block font-serif font-normal italic text-muted">with {job.company}</span>
-                    </h3>
-                  </div>
-
-                  <div className="mt-5">
-                    <AnimatePresence mode="wait">
-                      {!isExpanded ? (
-                        <motion.p
-                          key="short-desc"
-                          initial={shouldReduceMotion ? false : { opacity: 0, y: -4 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: -4 }}
-                          transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.15 }}
-                          className="text-[13px] leading-relaxed text-text-dim sm:text-sm"
-                        >
-                          {job.shortDesc}
-                        </motion.p>
-                      ) : (
-                        <motion.ul
-                          key="long-bullets"
-                          initial={shouldReduceMotion ? false : { opacity: 0, y: 4 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 4 }}
-                          transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.2 }}
-                          className="space-y-3"
-                        >
-                          {job.bullets.map((bullet) => (
-                            <li key={bullet} className="grid grid-cols-[auto_1fr] gap-3 text-[13px] leading-relaxed text-text-dim sm:text-sm">
-                              <span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent" />
-                              <span>{bullet}</span>
-                            </li>
-                          ))}
-                        </motion.ul>
-                      )}
-                    </AnimatePresence>
-                  </div>
-
-                  <button
-                    onClick={() => toggleMobileJob(idx)}
-                    className="mt-5 inline-flex min-h-11 items-center rounded-full border border-border px-4 font-mono text-[10px] font-semibold uppercase tracking-[0.12em] text-accent transition-colors duration-200 hover:border-accent hover:text-text focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent"
-                  >
-                    {isExpanded ? 'Collapse View' : 'Read Impact'}
-                  </button>
-
-                  <div className="mt-5">
-                    <ChipList chips={job.chips} />
-                  </div>
-                </motion.article>
-              );
-            })}
+          <div className="mt-7 grid gap-4 lg:mt-8">
+            {workExperience.map((job, index) => (
+              <ExperienceCard
+                key={`${job.company}-${index}`}
+                job={job}
+                index={index}
+                isExpanded={Boolean(expandedMobileJobs[index])}
+                onToggle={() => toggleMobileJob(index)}
+                shouldReduceMotion={shouldReduceMotion}
+              />
+            ))}
           </div>
         </div>
       </div>
 
-      <div className="w-full border-b border-border bg-bg px-3 py-16 sm:px-6 sm:py-20 lg:px-8" id="projects">
+      <div className="w-full border-b border-border bg-bg px-3 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20" id="projects">
         <div className="mx-auto max-w-[1320px]">
-          <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between lg:mb-10">
             <div>
               <span className="section-kicker">02 Backend Project Work</span>
               <h2 className="mt-4 text-2xl font-light leading-tight text-text sm:text-3xl md:text-4xl">
@@ -243,15 +194,20 @@ export default function Experience() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
-            {projects.map((proj, index) => (
+          <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+            {projects.map((proj, index) => {
+              const isFlagship = index === 0;
+
+              return (
               <motion.article
                 key={proj.name}
-                className="console-panel flex min-h-[260px] flex-col justify-between rounded-[1.25rem] p-5 sm:min-h-[320px] sm:rounded-[1.5rem] sm:p-6"
+                className={`console-panel flex flex-col justify-between rounded-[1.2rem] p-5 sm:rounded-[1.45rem] sm:p-6 ${
+                  isFlagship ? 'min-h-[260px] border-accent/55 lg:col-span-2 lg:min-h-[250px]' : 'min-h-[230px] sm:min-h-[260px]'
+                }`}
                 {...itemIn(index, shouldReduceMotion)}
               >
                 <div>
-                  <div className="mb-5 flex items-start justify-between gap-4">
+                  <div className="mb-5 flex flex-wrap items-start justify-between gap-4">
                     {proj.url ? (
                       <a
                         href={proj.url}
@@ -270,16 +226,22 @@ export default function Experience() {
                         {proj.status && <span className="console-tag mt-3">{proj.status}</span>}
                       </div>
                     )}
-                    <span className="mono-label text-muted">0{index + 1}</span>
+                    <div className="flex items-center gap-2">
+                      {isFlagship && <span className="console-tag">Flagship</span>}
+                      <span className="mono-label text-muted">0{index + 1}</span>
+                    </div>
                   </div>
-                  <p className="text-[13px] leading-relaxed text-text-dim sm:text-sm">{proj.description}</p>
+                  <p className={`text-[13px] leading-relaxed text-text-dim sm:text-sm ${isFlagship ? 'max-w-4xl' : ''}`}>
+                    {proj.description}
+                  </p>
                 </div>
 
                 <div className="mt-8 border-t border-border pt-5">
                   <ChipList chips={proj.chips} />
                 </div>
               </motion.article>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
