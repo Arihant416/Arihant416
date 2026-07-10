@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { FiFileText, FiMoon, FiSun } from 'react-icons/fi';
+import { FiFileText, FiMenu, FiMoon, FiSun, FiX } from 'react-icons/fi';
 import { useTheme } from '../context/ThemeContext';
 
 const NAV = [
@@ -12,8 +12,11 @@ const NAV = [
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [hoveredIdx, setHoveredIdx] = useState(null);
+  const [activeHref, setActiveHref] = useState(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { isDark, toggleTheme } = useTheme();
   const shouldReduceMotion = useReducedMotion();
+  const highlightedIdx = hoveredIdx ?? NAV.findIndex(({ href }) => href === activeHref);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 16);
@@ -22,6 +25,47 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    let animationFrame = null;
+
+    const updateActiveSection = () => {
+      if (animationFrame) return;
+
+      animationFrame = window.requestAnimationFrame(() => {
+        const triggerLine = window.innerHeight * 0.42;
+        const nextActive = NAV.reduce((currentHref, { href }) => {
+          const section = document.querySelector(href);
+          if (!section) return currentHref;
+          return section.getBoundingClientRect().top <= triggerLine ? href : currentHref;
+        }, null);
+
+        setActiveHref(nextActive);
+        animationFrame = null;
+      });
+    };
+
+    window.addEventListener('scroll', updateActiveSection, { passive: true });
+    window.addEventListener('resize', updateActiveSection);
+    updateActiveSection();
+
+    return () => {
+      window.removeEventListener('scroll', updateActiveSection);
+      window.removeEventListener('resize', updateActiveSection);
+      if (animationFrame) window.cancelAnimationFrame(animationFrame);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!mobileMenuOpen) return undefined;
+
+    const closeOnEscape = (event) => {
+      if (event.key === 'Escape') setMobileMenuOpen(false);
+    };
+
+    window.addEventListener('keydown', closeOnEscape);
+    return () => window.removeEventListener('keydown', closeOnEscape);
+  }, [mobileMenuOpen]);
+
   return (
     <div
       className={`fixed left-0 right-0 top-0 z-[100] px-3 pt-3 transition-colors duration-300 sm:px-5 lg:px-8 ${
@@ -29,7 +73,7 @@ export default function Header() {
       }`}
     >
       <motion.nav
-        className={`mx-auto flex h-14 w-full max-w-[1320px] items-center justify-between gap-3 rounded-[1.2rem] border px-3 shadow-[var(--panel-shadow)] transition-all duration-300 sm:h-16 sm:rounded-[1.35rem] sm:px-4 ${
+        className={`mx-auto flex h-14 w-full max-w-[1320px] items-center justify-between gap-3 rounded-[1.2rem] border px-3 shadow-[var(--nav-shadow)] transition-all duration-300 sm:h-16 sm:rounded-[1.35rem] sm:px-4 ${
           scrolled
             ? 'border-border bg-card/95'
             : 'border-border/70 bg-card/75 backdrop-blur-xl'
@@ -51,15 +95,18 @@ export default function Header() {
             <a
               key={href}
               href={href}
-              className="relative z-10 inline-flex min-h-10 items-center rounded-full px-4 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-muted transition-colors duration-200 hover:text-text focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent"
+              className={`relative z-10 inline-flex min-h-10 items-center rounded-full px-4 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent ${
+                activeHref === href ? 'text-text' : 'text-muted hover:text-text'
+              }`}
+              aria-current={activeHref === href ? 'location' : undefined}
               onMouseEnter={() => setHoveredIdx(idx)}
               onMouseLeave={() => setHoveredIdx(null)}
             >
               {label}
-              {hoveredIdx === idx && (
+              {highlightedIdx === idx && (
                 <motion.span
-                  layoutId="navHoverPill"
-                  className="absolute inset-0 z-[-1] rounded-full border border-border bg-card2"
+                  layoutId="navHighlightPill"
+                  className="absolute inset-0 z-[-1] rounded-full border border-border bg-card2 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]"
                   transition={shouldReduceMotion ? { duration: 0 } : { type: 'spring', stiffness: 420, damping: 34 }}
                 />
               )}
@@ -68,6 +115,16 @@ export default function Header() {
         </div>
 
         <div className="flex items-center justify-end gap-2">
+          <button
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-bg text-muted transition-colors duration-200 hover:border-accent hover:text-text focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent sm:hidden"
+            onClick={() => setMobileMenuOpen((isOpen) => !isOpen)}
+            aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-navigation"
+          >
+            {mobileMenuOpen ? <FiX aria-hidden="true" /> : <FiMenu aria-hidden="true" />}
+          </button>
+
           <button
             className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-bg text-muted transition-colors duration-200 hover:border-accent hover:text-text focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent"
             onClick={toggleTheme}
@@ -99,6 +156,39 @@ export default function Header() {
           </a>
         </div>
       </motion.nav>
+
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            id="mobile-navigation"
+            className="mx-auto mt-2 w-full max-w-[1320px] rounded-[1.1rem] border border-border bg-card/95 p-1.5 shadow-[var(--nav-shadow)] backdrop-blur-xl sm:hidden"
+            initial={shouldReduceMotion ? false : { y: -8, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={shouldReduceMotion ? { opacity: 0 } : { y: -8, opacity: 0 }}
+            transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className="grid grid-cols-3 gap-1">
+              {NAV.map(({ label, href }) => {
+                const isActive = activeHref === href;
+
+                return (
+                  <a
+                    key={href}
+                    href={href}
+                    className={`relative inline-flex min-h-10 items-center justify-center rounded-[0.85rem] px-2 font-mono text-[10px] font-semibold uppercase tracking-[0.12em] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent ${
+                      isActive ? 'bg-card2 text-text' : 'text-muted hover:bg-bg hover:text-text'
+                    }`}
+                    aria-current={isActive ? 'location' : undefined}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {label}
+                  </a>
+                );
+              })}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

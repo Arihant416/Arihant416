@@ -19,6 +19,7 @@
   --ring: rgba(142, 230, 177, 0.5);
   --grid-line: rgba(142, 230, 177, 0.055);
   --panel-shadow: 0 24px 80px rgba(0, 0, 0, 0.32);
+  --nav-shadow: 0 16px 46px rgba(0, 0, 0, 0.20);
   --accent-glow: 0 0 42px rgba(142, 230, 177, 0.12);
 
   --site-max-width: 1240px;
@@ -52,6 +53,7 @@
   --ring: rgba(8, 127, 91, 0.32);
   --grid-line: rgba(8, 127, 91, 0.08);
   --panel-shadow: 0 24px 70px rgba(43, 56, 42, 0.12);
+  --nav-shadow: 0 16px 42px rgba(43, 56, 42, 0.10);
   --accent-glow: 0 0 36px rgba(8, 127, 91, 0.10);
 }
 
