@@ -103,7 +103,6 @@ html {
 }
 
 body {
-  min-width: 320px;
   background:
     linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
     linear-gradient(180deg, var(--grid-line) 1px, transparent 1px),
@@ -225,6 +224,7 @@ main {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
+  white-space: nowrap;
   min-height: 1.75rem;
   border: 1px solid var(--border);
   border-radius: 999px;
@@ -313,8 +313,92 @@ main {
   text-transform: uppercase;
 }
 
+.testimonial-stage {
+  position: relative;
+  overflow: hidden;
+  padding-block: 0.75rem 1rem;
+}
+
+.testimonial-section {
+  gap: 1rem;
+  padding-top: 3.25rem;
+  padding-bottom: 3.75rem;
+}
+
+.testimonial-active-frame {
+  position: relative;
+  z-index: 20;
+  width: 100%;
+  margin-inline: auto;
+}
+
+.testimonial-preview-card {
+  position: absolute;
+  top: 3rem;
+  display: none;
+}
+
+.testimonial-preview-left {
+  left: 0;
+}
+
+.testimonial-preview-right {
+  right: 0;
+}
+
 .sticky {
   will-change: transform;
+}
+
+@media (min-width: 640px) {
+  .testimonial-stage {
+    padding-inline: 0.5rem;
+  }
+
+  .testimonial-active-frame {
+    width: 75%;
+  }
+
+  .testimonial-preview-card {
+    display: block;
+    width: 42%;
+    max-width: 430px;
+  }
+}
+
+@media (min-width: 768px) {
+  .testimonial-active-frame {
+    width: 66.666%;
+  }
+
+  .testimonial-preview-card {
+    width: 38%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .testimonial-stage {
+    padding-inline: 0;
+  }
+
+  .testimonial-active-frame {
+    width: 56%;
+  }
+
+  .testimonial-preview-card {
+    top: 3.25rem;
+    width: 34%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .testimonial-active-frame {
+    width: 50%;
+  }
+
+  .testimonial-preview-card {
+    width: 32%;
+  }
 }
 
 @media (min-width: 960px) {
@@ -323,6 +407,17 @@ main {
     gap: 4.5rem;
     padding-left: 2rem;
     padding-right: 2rem;
+  }
+
+  .testimonial-section {
+    column-gap: 3rem;
+    row-gap: 1rem;
+    padding-top: 4.25rem;
+    padding-bottom: 5rem;
+  }
+
+  .section-kicker {
+    white-space: nowrap;
   }
 
   .section-label {
