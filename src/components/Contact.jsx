@@ -9,7 +9,7 @@ const SOCIALS = [
 export default function Contact() {
   return (
     <section className="w-full border-b border-border bg-bg px-3 py-16 sm:px-6 sm:py-20 lg:px-8" id="contact">
-      <div className="mx-auto grid max-w-[1320px] grid-cols-1 gap-8 lg:grid-cols-[0.9fr_1.4fr] lg:gap-10">
+      <div className="mx-auto grid max-w-[1320px] grid-cols-1 gap-8 min-[960px]:grid-cols-[0.9fr_1.4fr] min-[960px]:gap-8 lg:gap-10">
         <div className="console-panel rounded-[1.35rem] p-5 sm:rounded-[1.7rem] sm:p-8">
           <span className="section-kicker">05 Communications</span>
           <h2 className="mt-4 text-2xl font-light leading-tight text-text sm:text-3xl">

@@ -5,7 +5,9 @@ import { useTheme } from '../context/ThemeContext';
 
 const NAV = [
   { label: 'Work', href: '#experience' },
+  { label: 'Projects', href: '#projects' },
   { label: 'Skills', href: '#skills' },
+  { label: 'Reviews', href: '#testimonials' },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -90,7 +92,7 @@ export default function Header() {
           AJ
         </a>
 
-        <div className="hidden items-center rounded-full border border-border bg-bg/70 p-1 sm:flex">
+        <div className="hidden items-center rounded-full border border-border bg-bg/70 p-1 md:flex">
           {NAV.map(({ label, href }, idx) => (
             <a
               key={href}
@@ -116,13 +118,25 @@ export default function Header() {
 
         <div className="flex items-center justify-end gap-2">
           <button
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-bg text-muted transition-colors duration-200 hover:border-accent hover:text-text focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent sm:hidden"
+            type="button"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-bg text-muted transition-colors duration-200 hover:border-accent hover:text-text focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent md:hidden"
             onClick={() => setMobileMenuOpen((isOpen) => !isOpen)}
-            aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-label={mobileMenuOpen ? 'Close navigation' : 'Open navigation'}
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-navigation"
           >
-            {mobileMenuOpen ? <FiX aria-hidden="true" /> : <FiMenu aria-hidden="true" />}
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.span
+                key={mobileMenuOpen ? 'close' : 'menu'}
+                initial={shouldReduceMotion ? false : { opacity: 0, rotate: -12, scale: 0.9 }}
+                animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, rotate: 12, scale: 0.9 }}
+                transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.16 }}
+                className="inline-flex"
+              >
+                {mobileMenuOpen ? <FiX aria-hidden="true" /> : <FiMenu aria-hidden="true" />}
+              </motion.span>
+            </AnimatePresence>
           </button>
 
           <button
@@ -161,31 +175,27 @@ export default function Header() {
         {mobileMenuOpen && (
           <motion.div
             id="mobile-navigation"
-            className="mx-auto mt-2 w-full max-w-[1320px] rounded-[1.1rem] border border-border bg-card/95 p-1.5 shadow-[var(--nav-shadow)] backdrop-blur-xl sm:hidden"
-            initial={shouldReduceMotion ? false : { y: -8, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={shouldReduceMotion ? { opacity: 0 } : { y: -8, opacity: 0 }}
-            transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
+            className="mx-auto mt-2 grid w-full max-w-[1320px] grid-cols-2 gap-2 rounded-[1.2rem] border border-border bg-card p-2 shadow-[var(--nav-shadow)] backdrop-blur-2xl md:hidden"
+            initial={shouldReduceMotion ? false : { opacity: 0, y: -8, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: -6, scale: 0.98 }}
+            transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="grid grid-cols-3 gap-1">
-              {NAV.map(({ label, href }) => {
-                const isActive = activeHref === href;
-
-                return (
-                  <a
-                    key={href}
-                    href={href}
-                    className={`relative inline-flex min-h-10 items-center justify-center rounded-[0.85rem] px-2 font-mono text-[10px] font-semibold uppercase tracking-[0.12em] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent ${
-                      isActive ? 'bg-card2 text-text' : 'text-muted hover:bg-bg hover:text-text'
-                    }`}
-                    aria-current={isActive ? 'location' : undefined}
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {label}
-                  </a>
-                );
-              })}
-            </div>
+            {NAV.map(({ label, href }, index) => (
+              <a
+                key={href}
+                href={href}
+                onClick={() => setMobileMenuOpen(false)}
+                aria-current={activeHref === href ? 'location' : undefined}
+                className={`inline-flex min-h-11 items-center justify-center rounded-xl border border-border bg-bg/75 px-3 font-mono text-[10px] font-semibold uppercase tracking-[0.12em] text-muted transition-colors duration-200 hover:border-accent hover:text-text focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent ${
+                  activeHref === href ? 'border-accent bg-card2 text-text' : ''
+                } ${
+                  index === NAV.length - 1 ? 'col-span-2' : ''
+                }`}
+              >
+                {label}
+              </a>
+            ))}
           </motion.div>
         )}
       </AnimatePresence>
