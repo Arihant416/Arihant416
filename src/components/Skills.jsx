@@ -13,7 +13,7 @@ export default function Skills() {
         </h2>
       </div>
 
-      <div className="grid w-full grid-cols-1 gap-4 lg:grid-cols-2">
+      <div className="grid w-full grid-cols-1 gap-4 min-[960px]:grid-cols-2">
         {skillCategories.map((category, categoryIndex) => (
           <motion.article
             key={category.title}

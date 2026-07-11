@@ -65,14 +65,14 @@ function ExperienceCard({ job, index, isExpanded, onToggle, shouldReduceMotion }
       }`}
       {...itemIn(index, shouldReduceMotion)}
     >
-      <div className="grid gap-5 lg:grid-cols-[170px_minmax(0,1fr)]">
-        <div className="border-b border-border pb-5 lg:border-b-0 lg:border-r lg:pb-0 lg:pr-6">
-          <div className="flex items-center gap-3 lg:block">
+      <div className="grid gap-5 min-[960px]:grid-cols-[170px_minmax(0,1fr)]">
+        <div className="border-b border-border pb-5 min-[960px]:border-b-0 min-[960px]:border-r min-[960px]:pb-0 min-[960px]:pr-6">
+          <div className="flex items-center gap-3 min-[960px]:block">
             <span className="mono-label text-accent">0{index + 1}</span>
-            <div className="h-px flex-1 bg-border lg:my-5 lg:h-16 lg:w-px lg:flex-none" />
+            <div className="h-px flex-1 bg-border min-[960px]:my-5 min-[960px]:h-16 min-[960px]:w-px min-[960px]:flex-none" />
             <span className="mono-label text-muted">{job.date}</span>
           </div>
-          <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.14em] text-muted lg:mt-6">
+          <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.14em] text-muted min-[960px]:mt-6">
             {job.location}
           </p>
         </div>
@@ -98,7 +98,7 @@ function ExperienceCard({ job, index, isExpanded, onToggle, shouldReduceMotion }
             )}
           </div>
 
-          <ul className="mt-6 hidden columns-1 gap-x-8 space-y-3 lg:block xl:columns-2">
+          <ul className="mt-6 hidden columns-1 gap-x-8 space-y-3 min-[960px]:block xl:columns-2">
             {job.bullets.map((bullet) => (
               <li key={bullet} className="mb-3 grid break-inside-avoid grid-cols-[auto_1fr] gap-3 text-[13px] leading-relaxed text-text-dim">
                 <span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_12px_var(--ring)]" />
@@ -107,7 +107,7 @@ function ExperienceCard({ job, index, isExpanded, onToggle, shouldReduceMotion }
             ))}
           </ul>
 
-          <div className="lg:hidden">
+          <div className="min-[960px]:hidden">
             <AnimatePresence mode="wait">
               {isExpanded && (
                 <motion.ul
@@ -194,7 +194,7 @@ export default function Experience() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+          <div className="grid grid-cols-1 gap-4 min-[960px]:grid-cols-2">
             {projects.map((proj, index) => {
               const isFlagship = index === 0;
 
@@ -202,7 +202,7 @@ export default function Experience() {
               <motion.article
                 key={proj.name}
                 className={`console-panel flex flex-col justify-between rounded-[1.2rem] p-5 sm:rounded-[1.45rem] sm:p-6 ${
-                  isFlagship ? 'min-h-[260px] border-accent/55 lg:col-span-2 lg:min-h-[250px]' : 'min-h-[230px] sm:min-h-[260px]'
+                  isFlagship ? 'min-h-[260px] border-accent/55 min-[960px]:col-span-2 min-[960px]:min-h-[250px]' : 'min-h-[230px] sm:min-h-[260px]'
                 }`}
                 {...itemIn(index, shouldReduceMotion)}
               >

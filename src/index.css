@@ -403,8 +403,8 @@ main {
 
 @media (min-width: 960px) {
   .section {
-    grid-template-columns: var(--sidebar-width) 1fr;
-    gap: 4.5rem;
+    grid-template-columns: clamp(210px, 20vw, var(--sidebar-width)) minmax(0, 1fr);
+    gap: clamp(3rem, 5vw, 4.5rem);
     padding-left: 2rem;
     padding-right: 2rem;
   }

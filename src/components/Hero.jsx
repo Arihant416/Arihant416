@@ -35,7 +35,7 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 gap-7 sm:gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12 xl:gap-16">
+          <div className="grid grid-cols-1 gap-7 sm:gap-10 min-[960px]:grid-cols-[1.05fr_0.95fr] min-[960px]:gap-10 xl:gap-16">
             <div className="flex flex-col justify-between">
               <div>
                 <motion.h1
@@ -78,7 +78,7 @@ export default function Hero() {
             </div>
 
             <motion.div
-              className="grid gap-3 sm:gap-4 lg:grid-rows-[auto_1fr]"
+              className="grid gap-3 sm:gap-4 min-[960px]:grid-rows-[auto_1fr]"
               {...rise(0.28, shouldReduceMotion)}
             >
               <div className="hidden rounded-[1.4rem] border border-border bg-bg/70 p-4 sm:block">
