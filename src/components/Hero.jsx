@@ -13,8 +13,6 @@ const STATS = [
   { num: '30', label: 'APIs Designed', sub: 'from scratch for production' },
 ];
 
-const SIGNALS = ['API scale', 'Reliability', 'Source orchestration', 'DR paths'];
-
 export default function Hero() {
   const shouldReduceMotion = useReducedMotion();
 
@@ -57,14 +55,7 @@ export default function Hero() {
                 </motion.p>
               </div>
 
-              <motion.div className="mt-6 flex flex-col gap-5 sm:mt-8 sm:gap-7" {...rise(0.32, shouldReduceMotion)}>
-                <p className="flex items-start gap-3 text-[10px] leading-relaxed text-muted sm:items-center sm:text-xs">
-                  <span className={`status-dot mt-1 sm:mt-0 ${shouldReduceMotion ? '' : 'animate-pulse'}`} />
-                  <span className="font-mono uppercase tracking-[0.12em]">
-                    Focused on production backend systems and cost-aware reliability work.
-                  </span>
-                </p>
-
+              <motion.div className="mt-7 sm:mt-9" {...rise(0.32, shouldReduceMotion)}>
                 <div className="flex flex-col gap-3 sm:flex-row">
                   <a href="#experience" className="btn btn-primary">
                     Explore Systems Work
@@ -78,26 +69,9 @@ export default function Hero() {
             </div>
 
             <motion.div
-              className="grid gap-3 sm:gap-4 min-[960px]:grid-rows-[auto_1fr]"
+              className="grid content-center gap-3 sm:gap-4 min-[960px]:self-center"
               {...rise(0.28, shouldReduceMotion)}
             >
-              <div className="hidden rounded-[1.4rem] border border-border bg-bg/70 p-4 sm:block">
-                <div className="mb-4 flex items-center justify-between gap-3">
-                  <span className="mono-label text-muted">System Signals</span>
-                  <span className="h-px flex-1 bg-border" />
-                </div>
-                <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-                  {SIGNALS.map((signal) => (
-                    <div key={signal} className="flex min-h-10 items-center gap-3 rounded-xl border border-border bg-card px-3 sm:min-h-11">
-                      <span className="status-dot" />
-                      <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.12em] text-text-dim">
-                        {signal}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
               <div className="grid grid-cols-2 gap-2 sm:gap-3">
                 {STATS.map(({ num, label, sub }, index) => (
                   <motion.div

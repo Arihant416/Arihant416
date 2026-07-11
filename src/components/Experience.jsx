@@ -22,39 +22,6 @@ function ChipList({ chips }) {
   );
 }
 
-function CareerTimeline({ shouldReduceMotion }) {
-  return (
-    <div className="mt-8 hidden rounded-[1.15rem] border border-border bg-card/40 p-2 md:grid md:grid-cols-3 md:gap-2 lg:mt-10">
-      {workExperience.map((job, index) => {
-        const isCurrent = job.date.includes('Present');
-
-        return (
-          <motion.div
-            key={`${job.company}-${index}-timeline`}
-            className={`rounded-[0.95rem] px-4 py-3 transition-colors duration-300 ${
-              isCurrent ? 'bg-card2 text-text shadow-[0_0_22px_var(--ring)]' : 'text-muted hover:bg-card'
-            }`}
-            {...itemIn(index, shouldReduceMotion)}
-          >
-            <div className="flex items-center gap-3">
-              <span className={`h-2.5 w-2.5 rounded-full ${isCurrent ? 'bg-accent shadow-[0_0_14px_var(--ring)]' : 'bg-border'}`} />
-              <span className={isCurrent ? 'mono-label text-accent' : 'mono-label text-muted'}>0{index + 1}</span>
-              {isCurrent && (
-                <span className="console-tag ml-auto hidden lg:inline-flex">
-                  <span className="status-dot" />
-                  Active
-                </span>
-              )}
-            </div>
-            <p className="mt-4 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-text">{job.company}</p>
-            <p className="mt-1 text-xs text-muted">{job.date}</p>
-          </motion.div>
-        );
-      })}
-    </div>
-  );
-}
-
 function ExperienceCard({ job, index, isExpanded, onToggle, shouldReduceMotion }) {
   const isCurrent = job.date.includes('Present');
 
@@ -166,9 +133,7 @@ export default function Experience() {
             </div>
           </div>
 
-          <CareerTimeline shouldReduceMotion={shouldReduceMotion} />
-
-          <div className="mt-7 grid gap-4 lg:mt-8">
+          <div className="mt-8 grid gap-4 lg:mt-10">
             {workExperience.map((job, index) => (
               <ExperienceCard
                 key={`${job.company}-${index}`}
@@ -216,7 +181,7 @@ export default function Experience() {
                         className="inline-flex min-h-10 items-center gap-2 rounded-sm text-lg font-semibold leading-tight text-text transition-colors duration-200 hover:text-accent focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent sm:min-h-11 sm:text-xl"
                       >
                         {proj.name}
-                        <span className="font-mono text-xs text-accent" aria-hidden="true">
+                        <span className="shrink-0 whitespace-nowrap font-mono text-xs text-accent" aria-hidden="true">
                           -&gt;
                         </span>
                       </a>

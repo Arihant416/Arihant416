@@ -17,7 +17,9 @@ export default function Skills() {
         {skillCategories.map((category, categoryIndex) => (
           <motion.article
             key={category.title}
-            className="console-panel rounded-[1.15rem] p-3 sm:rounded-[1.5rem] sm:p-6"
+            className={`console-panel self-start rounded-[1.15rem] p-3 sm:rounded-[1.5rem] sm:p-6 ${
+              categoryIndex === skillCategories.length - 1 ? 'min-[960px]:col-span-2' : ''
+            }`}
             initial={shouldReduceMotion ? false : { opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-30px' }}
