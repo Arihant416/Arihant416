@@ -2,64 +2,70 @@ export const workExperience = [
   {
     company: 'Perfios',
     title: 'Senior Software Engineer',
-    location: 'New Delhi, IN',
+    location: 'New Delhi, IN (Hybrid)',
     date: 'Apr 2024 - Present',
-    shortDesc: 'Designing high-throughput backend systems for identity APIs, source orchestration, reliability guardrails, and multi-region DR across 5M+ daily requests.',
-    bullets: [
-      'Built Celery/Redis/Fargate controlled worker pipelines for constrained in-house sources, raising in-house serving from ~35% to 82% and contributing to $700K+ annualized savings.',
-      'Separated Redis-backed rate-limit decisioning from core business logic through guard-style dependencies, enabling deliberate fail-open behavior for critical KYC flows during Redis instability.',
-      'Reworked high-volume response paths and worker execution to reduce P99 latency by ~70% across multiple APIs while keeping request handling predictable under load.',
-      'Owned DR testing, deployment, monitoring, incident handling, and CI/CD setup for regional API paths supporting 5M+ daily requests.'
+    current: true,
+    summary: 'I lead backend and platform work across identity and KYC systems where reliability, cost, and operational clarity have direct business consequences. My scope spans regional recovery, asynchronous processing, source orchestration, service modernization, delivery tooling, and production ownership across API suites serving more than five million requests a day.',
+    selectedOutcome: 'Since moving into the senior role, caching, source-strengthening, and architecture initiatives I led have delivered more than $700K in cumulative savings.',
+    outcomes: [
+      { value: '5M+', label: 'daily requests supported' },
+      { value: '$700K+', label: 'cumulative savings since Apr 2024' },
+      { value: '245 / 260', label: 'APIs containerized' },
     ],
-    chips: ['Python', 'FastAPI', 'Redis', 'AWS Fargate', 'Kafka', 'Playwright']
+    chips: ['Python', 'AWS', 'Redis', 'Celery', 'Fargate', 'Playwright', 'CI/CD'],
   },
   {
-    company: 'Perfios',
+    company: 'Karza Technologies',
+    companyContext: 'Merged into Perfios',
     title: 'Software Engineer I',
     location: 'Mumbai, IN (Remote)',
     date: 'Oct 2022 - Apr 2024',
-    shortDesc: 'Designed 30 APIs from scratch and maintained/operated 200+ APIs across TotalKYC, Data Science, and VideoKYC integrations.',
-    bullets: [
-      'Designed and shipped 30 APIs from scratch across TotalKYC workflows, with patterns for validation, error handling, observability, and client-ready integration.',
-      'Maintained and operated 200+ APIs across TotalKYC, Data Science, and VideoKYC integrations, balancing reliability work with cross-team delivery.',
-      'Built data ingestion and public-source integration APIs for high-volume KYC flows while keeping response contracts stable for enterprise clients.',
-      'Migrated Celery worker pipelines onto AWS Fargate and tightened webhook/accounting flows, reducing operational overhead while keeping asynchronous processing predictable.'
+    summary: 'This is where backend engineering became my primary craft. I designed more than 30 production APIs and helped operate a much wider KYC estate, working across data ingestion, integrations, performance, billing accuracy, and high-volume request paths.',
+    selectedOutcome: 'I moved a session-sensitive integration from concurrent Lambda execution to a controlled Redis-backed Celery worker on Fargate. Serializing the critical session path tripled throughput, enabled vendor retirement, and saved more than $230K over two years.',
+    outcomes: [
+      { value: '30+', label: 'production APIs designed' },
+      { value: '200+', label: 'APIs maintained and operated' },
+      { value: '3x', label: 'throughput on a constrained workflow' },
     ],
-    chips: ['Python', 'Celery', 'AWS ECS', 'Fargate', 'AWS SQS', 'Webhooks']
+    chips: ['FastAPI', 'Redis', 'Celery', 'AWS Lambda', 'Fargate', 'MongoDB'],
   },
   {
     company: 'InTimeTec',
     title: 'Software Engineer',
     location: 'Jaipur, IN',
     date: 'Mar 2021 - Sep 2022',
-    shortDesc: 'Started in product/web engineering through a 0-to-1 enterprise migration, then moved deeper into backend through API security, debugging, scale, and thread-safety problems.',
-    bullets: [
-      'Led a 0-to-1 Angular migration from a legacy .NET desktop application to a modular web platform across 9 modules, earning early client trust as an early-career engineer.',
-      'Scaled an early backend API from 20 to 50 supported users by making request handling thread-safe and easier to debug under load.',
-      'Improved CI/CD release flow and component regression coverage with standardized pipelines, Karma, and Jasmine suites.'
+    summary: 'I began in product and web engineering, taking a legacy desktop workflow into a modular web platform. The work gave me early client ownership and a practical view of how interface decisions, release quality, and backend behavior meet in a real product.',
+    selectedOutcome: 'A request-processing problem became the turning point: securing and making an early API thread-safe helped it grow from roughly 20 to 50 supported users, and drew me deeper into debugging, scale, and backend reliability.',
+    outcomes: [
+      { value: '0 → 1', label: 'enterprise web migration' },
+      { value: '9', label: 'product modules delivered' },
+      { value: '20 → 50', label: 'users supported by an early API' },
     ],
-    chips: ['JavaScript', 'React', 'Angular', 'CI/CD', 'Karma', 'Jasmine']
-  }
+    chips: ['Angular', 'React', 'JavaScript', 'API security', 'CI/CD', 'Testing'],
+  },
 ];
 
 export const projects = [
   {
     name: 'Distributed Quota-Metering Engine',
-    url: 'https://github.com/Arihant416/quota-meter', // Replace with real repo link if public
-    description: 'Backend service for multi-tenant API products where usage limits must stay accurate under concurrent traffic. It pairs FastAPI with Redis Lua token-bucket checks and MongoDB state so quota deduction, idempotency validation, and rollback logic stay deterministic.',
-    chips: ['FastAPI', 'Redis Lua', 'MongoDB', 'Docker Compose', 'Asynchronous Python'],
+    url: 'https://github.com/Arihant416/quota-meter',
+    kind: 'Independent systems project',
+    description: 'A prepaid usage-metering service for multi-tenant APIs, built around atomicity rather than optimistic accounting. FastAPI handles the contract, Redis Lua performs concurrency-safe quota deduction and refund, and MongoDB persists plans, balances, and idempotency records.',
+    outcome: 'Load-tested with 10,000 simulated consume requests and zero over-serving; retries using the same idempotency key were charged once.',
+    chips: ['FastAPI', 'Redis Lua', 'MongoDB', 'Docker Compose', 'Async Python'],
   },
   {
     name: 'GitDev Finder',
     url: 'https://gitdevfinder416.netlify.app/',
-    description: 'Developer discovery app that turns repository and profile data into searchable views by language stack and activity. It demonstrates API integration, filtering workflows, and deployable full-stack product polish for teams that need faster engineering discovery.',
+    kind: 'Earlier product build',
+    description: 'A developer-discovery product that turns repository and profile data into searchable views by language and activity.',
     chips: ['React', 'Node.js', 'MongoDB', 'Netlify API'],
   },
   {
     name: 'FXFlow',
     url: null,
-    status: 'Demo archived',
-    description: 'Archived finance utility that consumes exchange-rate APIs and keeps currency calculations responsive in the browser. It demonstrates clean API-state handling, error-aware UI flows, and lightweight delivery for small client tools.',
-    chips: ['JavaScript', 'HTML5', 'CSS3', 'REST APIs'],
-  }
+    kind: 'Archived product build',
+    description: 'A lightweight currency utility focused on clear API-state handling, errors, and responsive browser interactions.',
+    chips: ['JavaScript', 'REST APIs', 'HTML', 'CSS'],
+  },
 ];

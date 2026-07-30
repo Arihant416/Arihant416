@@ -1,65 +1,86 @@
 import { motion, useReducedMotion } from 'framer-motion';
-import { skillCategories } from '../data/skills';
+import { capabilityGroups, engineeringPrinciples } from '../data/skills';
+
+const EASE = [0.22, 1, 0.36, 1];
 
 export default function Skills() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <div className="section border-b border-border bg-bg">
-      <div className="col-span-1">
-        <span className="section-kicker">03 Competencies</span>
-        <h2 className="mt-4 text-2xl font-light leading-tight text-text sm:text-3xl">
-          Technical <span className="font-serif italic text-accent">Stack</span>
-        </h2>
-      </div>
-
-      <div className="grid w-full grid-cols-1 gap-4 min-[960px]:grid-cols-2">
-        {skillCategories.map((category, categoryIndex) => (
-          <motion.article
-            key={category.title}
-            className={`console-panel self-start rounded-[1.15rem] p-3 sm:rounded-[1.5rem] sm:p-6 ${
-              categoryIndex === skillCategories.length - 1 ? 'min-[960px]:col-span-2' : ''
-            }`}
+    <div className="capabilities-band border-b border-border" id="skills-content">
+      <div className="mx-auto max-w-[1320px] px-4 py-[var(--section-padding)] sm:px-6 lg:px-8">
+        <div className="grid gap-10 lg:grid-cols-[0.68fr_1.32fr] lg:gap-16">
+          <motion.div
+            className="lg:sticky lg:top-28 lg:h-max"
             initial={shouldReduceMotion ? false : { opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-30px' }}
-            transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.42, delay: categoryIndex * 0.05, ease: [0.22, 1, 0.36, 1] }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.55, ease: EASE }}
           >
-            <div className="mb-4 flex items-center justify-between gap-3 border-b border-border pb-3 sm:mb-6 sm:pb-4">
-              <h3 className="font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-text sm:text-[11px]">
-                {category.title}
-              </h3>
-              <span className="mono-label text-muted">{String(categoryIndex + 1).padStart(2, '0')}</span>
-            </div>
+            <span className="section-kicker">Capabilities, not a checklist</span>
+            <h2 className="display-type mt-5 text-[var(--fs-h2)] leading-[var(--lh-heading)] text-text">
+              The tools change.
+              <em className="block text-accent">The engineering judgment compounds.</em>
+            </h2>
+            <p className="mt-6 max-w-lg text-sm leading-7 text-text-dim sm:text-[15px]">
+              My strongest work sits where backend design, production reliability, and business
+              constraints meet. I choose languages and infrastructure around the problem rather
+              than treating a framework as the identity.
+            </p>
 
-            <div className="grid grid-cols-2 gap-2 sm:gap-3">
-              {category.skills.map((skill, index) => {
-                const Icon = skill.Icon;
-                return (
-                  <motion.div
-                    key={skill.name}
-                    className="group flex min-h-[3rem] items-center gap-2 rounded-xl border border-border bg-bg/70 px-2 py-2 transition-colors duration-200 hover:border-accent sm:min-h-[4rem] sm:gap-3 sm:rounded-2xl sm:px-4 sm:py-3"
-                    initial={shouldReduceMotion ? false : { opacity: 0, y: 8 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.34, delay: categoryIndex * 0.04 + index * 0.03 }}
-                  >
-                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-border bg-card2 sm:h-10 sm:w-10 sm:rounded-xl">
-                      {Icon ? (
-                        <Icon className="h-4 w-4 sm:h-5 sm:w-5" style={{ color: skill.color }} aria-hidden="true" />
-                      ) : (
-                        <span className="status-dot" />
-                      )}
-                    </span>
-                    <span className="min-w-0 text-[12px] font-semibold leading-snug text-text-dim transition-colors duration-200 group-hover:text-text sm:text-sm">
-                      {skill.name}
-                    </span>
-                  </motion.div>
-                );
-              })}
+            <div className="mt-8 border-l border-border pl-5">
+              <p className="font-mono text-[10px] text-muted">Working principles</p>
+              <ul className="mt-4 space-y-3">
+                {engineeringPrinciples.map((principle) => (
+                  <li key={principle} className="flex items-center gap-3 text-xs font-semibold text-text-dim sm:text-sm">
+                    <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent2" />
+                    {principle}
+                  </li>
+                ))}
+              </ul>
             </div>
-          </motion.article>
-        ))}
+          </motion.div>
+
+          <div className="capability-deck">
+            {capabilityGroups.map((group, groupIndex) => (
+              <motion.article
+                key={group.title}
+                className="capability-layer"
+                initial={shouldReduceMotion ? false : { opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-50px' }}
+                transition={
+                  shouldReduceMotion
+                    ? { duration: 0 }
+                    : { duration: 0.56, delay: groupIndex * 0.07, ease: EASE }
+                }
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="font-mono text-[10px] text-accent">{group.number}</p>
+                    <h3 className="mt-3 text-xl font-semibold text-text sm:text-2xl">{group.title}</h3>
+                  </div>
+                  <span className="capability-proof">{group.proof}</span>
+                </div>
+
+                <p className="mt-5 max-w-2xl text-[13px] leading-6 text-text-dim sm:text-sm sm:leading-7">
+                  {group.description}
+                </p>
+
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {group.skills.map(({ name, Icon }) => (
+                    <span key={name} className="skill-token">
+                      <span className="skill-token-icon">
+                        {Icon ? <Icon aria-hidden="true" /> : <span className="h-1.5 w-1.5 rounded-full bg-accent3" />}
+                      </span>
+                      {name}
+                    </span>
+                  ))}
+                </div>
+              </motion.article>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );

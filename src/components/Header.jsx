@@ -1,27 +1,27 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { FiFileText, FiMenu, FiMoon, FiSun, FiX } from 'react-icons/fi';
+import { FiArrowUpRight, FiMenu, FiMoon, FiSun, FiX } from 'react-icons/fi';
 import { useTheme } from '../context/ThemeContext';
 
 const NAV = [
-  { label: 'Work', href: '#experience' },
+  { label: 'Experience', href: '#experience' },
   { label: 'Projects', href: '#projects' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Reviews', href: '#testimonials' },
+  { label: 'Capabilities', href: '#skills' },
+  { label: 'Recommendations', href: '#testimonials' },
   { label: 'Contact', href: '#contact' },
 ];
 
+const EASE = [0.22, 1, 0.36, 1];
+
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
-  const [hoveredIdx, setHoveredIdx] = useState(null);
   const [activeHref, setActiveHref] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { isDark, toggleTheme } = useTheme();
   const shouldReduceMotion = useReducedMotion();
-  const highlightedIdx = hoveredIdx ?? NAV.findIndex(({ href }) => href === activeHref);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 16);
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
@@ -34,7 +34,7 @@ export default function Header() {
       if (animationFrame) return;
 
       animationFrame = window.requestAnimationFrame(() => {
-        const triggerLine = window.innerHeight * 0.42;
+        const triggerLine = window.innerHeight * 0.4;
         const nextActive = NAV.reduce((currentHref, { href }) => {
           const section = document.querySelector(href);
           if (!section) return currentHref;
@@ -69,57 +69,59 @@ export default function Header() {
   }, [mobileMenuOpen]);
 
   return (
-    <div
-      className={`fixed left-0 right-0 top-0 z-[100] px-3 pt-3 transition-colors duration-300 sm:px-5 lg:px-8 ${
-        scrolled ? 'bg-[var(--nav-bg)] backdrop-blur-2xl' : 'bg-transparent'
-      }`}
-    >
+    <header className="pointer-events-none fixed inset-x-0 top-0 z-[100] px-3 pt-3 sm:px-5 lg:px-8">
       <motion.nav
-        className={`mx-auto flex h-14 w-full max-w-[1320px] items-center justify-between gap-3 rounded-[1.2rem] border px-3 shadow-[var(--nav-shadow)] transition-all duration-300 sm:h-16 sm:rounded-[1.35rem] sm:px-4 ${
-          scrolled
-            ? 'border-border bg-card/95'
-            : 'border-border/70 bg-card/75 backdrop-blur-xl'
+        className={`glass-surface pointer-events-auto mx-auto flex h-14 w-full max-w-[1320px] items-center justify-between gap-3 px-2.5 transition-all duration-300 sm:h-16 sm:px-3 ${
+          scrolled ? 'shadow-[var(--panel-shadow)]' : 'shadow-[var(--panel-shadow-soft)]'
         }`}
-        initial={shouldReduceMotion ? false : { y: -18, opacity: 0 }}
+        initial={shouldReduceMotion ? false : { y: -14, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.52, ease: EASE }}
+        aria-label="Primary navigation"
       >
         <a
           href="#top"
-          className="group inline-flex min-h-10 min-w-10 items-center justify-center rounded-full border border-border bg-bg px-3 font-mono text-[11px] font-bold text-text transition-colors duration-200 hover:border-accent hover:text-accent focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent sm:min-h-11 sm:min-w-11 sm:text-xs"
-          aria-label="Back to top"
+          className="group flex min-h-10 min-w-0 items-center gap-2.5 rounded-md px-2 text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent sm:gap-3"
+          aria-label="Arihant Jain, back to top"
         >
-          AJ
+          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-border bg-card2 font-serif text-sm text-accent shadow-[var(--inset-light)] sm:h-9 sm:w-9">
+            AJ
+          </span>
+          <span className="hidden min-w-0 sm:block">
+            <span className="block truncate text-[12px] font-semibold leading-none text-text">Arihant Jain</span>
+            <span className="mt-1 block truncate text-[9px] leading-none text-muted">Backend systems engineer</span>
+          </span>
         </a>
 
-        <div className="hidden items-center rounded-full border border-border bg-bg/70 p-1 md:flex">
-          {NAV.map(({ label, href }, idx) => (
-            <a
-              key={href}
-              href={href}
-              className={`relative z-10 inline-flex min-h-10 items-center rounded-full px-4 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent ${
-                activeHref === href ? 'text-text' : 'text-muted hover:text-text'
-              }`}
-              aria-current={activeHref === href ? 'location' : undefined}
-              onMouseEnter={() => setHoveredIdx(idx)}
-              onMouseLeave={() => setHoveredIdx(null)}
-            >
-              {label}
-              {highlightedIdx === idx && (
-                <motion.span
-                  layoutId="navHighlightPill"
-                  className="absolute inset-0 z-[-1] rounded-full border border-border bg-card2 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]"
-                  transition={shouldReduceMotion ? { duration: 0 } : { type: 'spring', stiffness: 420, damping: 34 }}
-                />
-              )}
-            </a>
-          ))}
+        <div className="hidden h-full items-center md:flex">
+          {NAV.map(({ label, href }) => {
+            const isActive = activeHref === href;
+            return (
+              <a
+                key={href}
+                href={href}
+                className={`relative inline-flex h-full items-center px-3 text-[10px] font-semibold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent lg:px-4 lg:text-[11px] ${
+                  isActive ? 'text-text' : 'text-muted hover:text-text'
+                }`}
+                aria-current={isActive ? 'location' : undefined}
+              >
+                {label}
+                {isActive && (
+                  <motion.span
+                    layoutId="activeNavigationLine"
+                    className="absolute inset-x-3 bottom-0 h-0.5 bg-accent lg:inset-x-4"
+                    transition={shouldReduceMotion ? { duration: 0 } : { type: 'spring', stiffness: 420, damping: 36 }}
+                  />
+                )}
+              </a>
+            );
+          })}
         </div>
 
-        <div className="flex items-center justify-end gap-2">
+        <div className="flex items-center gap-1.5">
           <button
             type="button"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-bg text-muted transition-colors duration-200 hover:border-accent hover:text-text focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent md:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border bg-card2 text-muted transition-colors duration-200 hover:border-accent hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent md:hidden"
             onClick={() => setMobileMenuOpen((isOpen) => !isOpen)}
             aria-label={mobileMenuOpen ? 'Close navigation' : 'Open navigation'}
             aria-expanded={mobileMenuOpen}
@@ -128,9 +130,9 @@ export default function Header() {
             <AnimatePresence mode="wait" initial={false}>
               <motion.span
                 key={mobileMenuOpen ? 'close' : 'menu'}
-                initial={shouldReduceMotion ? false : { opacity: 0, rotate: -12, scale: 0.9 }}
-                animate={{ opacity: 1, rotate: 0, scale: 1 }}
-                exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, rotate: 12, scale: 0.9 }}
+                initial={shouldReduceMotion ? false : { opacity: 0, rotate: -10 }}
+                animate={{ opacity: 1, rotate: 0 }}
+                exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, rotate: 10 }}
                 transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.16 }}
                 className="inline-flex"
               >
@@ -140,17 +142,18 @@ export default function Header() {
           </button>
 
           <button
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-bg text-muted transition-colors duration-200 hover:border-accent hover:text-text focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent"
+            type="button"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border bg-card2 text-muted transition-colors duration-200 hover:border-accent hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             onClick={toggleTheme}
-            aria-label="Toggle theme"
+            aria-label={isDark ? 'Use light theme' : 'Use dark theme'}
           >
             <AnimatePresence mode="wait" initial={false}>
               <motion.span
                 key={isDark ? 'dark' : 'light'}
-                initial={shouldReduceMotion ? false : { y: 8, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={shouldReduceMotion ? { opacity: 0 } : { y: -8, opacity: 0 }}
-                transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.18 }}
+                initial={shouldReduceMotion ? false : { opacity: 0, y: 5 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: -5 }}
+                transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.16 }}
                 className="inline-flex"
               >
                 {isDark ? <FiSun aria-hidden="true" /> : <FiMoon aria-hidden="true" />}
@@ -162,11 +165,10 @@ export default function Header() {
             href="https://arihant416.github.io/resume/index.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Open resume"
-            className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full border border-accent bg-accent px-3.5 font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-bg transition-all duration-200 hover:bg-text hover:border-text focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent sm:min-h-11 sm:px-4"
+            className="inline-flex min-h-10 items-center justify-center gap-2 rounded-md border border-accent bg-accent px-3 text-[10px] font-bold text-[#11131b] transition-all duration-200 hover:-translate-y-px hover:border-text hover:bg-text hover:text-bg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent sm:px-3.5 sm:text-[11px]"
           >
-            <FiFileText aria-hidden="true" />
             <span className="hidden sm:inline">Resume</span>
+            <FiArrowUpRight aria-hidden="true" />
           </a>
         </div>
       </motion.nav>
@@ -175,30 +177,31 @@ export default function Header() {
         {mobileMenuOpen && (
           <motion.div
             id="mobile-navigation"
-            className="mx-auto mt-2 grid w-full max-w-[1320px] grid-cols-2 gap-2 rounded-[1.2rem] border border-border bg-card p-2 shadow-[var(--nav-shadow)] backdrop-blur-2xl md:hidden"
-            initial={shouldReduceMotion ? false : { opacity: 0, y: -8, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: -6, scale: 0.98 }}
-            transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="glass-surface pointer-events-auto mx-auto mt-2 grid w-full max-w-[1320px] grid-cols-1 gap-px overflow-hidden bg-border p-px md:hidden"
+            initial={shouldReduceMotion ? false : { opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: -6 }}
+            transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.2, ease: EASE }}
           >
-            {NAV.map(({ label, href }, index) => (
+            {NAV.map(({ label, href }) => (
               <a
                 key={href}
                 href={href}
                 onClick={() => setMobileMenuOpen(false)}
                 aria-current={activeHref === href ? 'location' : undefined}
-                className={`inline-flex min-h-11 items-center justify-center rounded-xl border border-border bg-bg/75 px-3 font-mono text-[10px] font-semibold uppercase tracking-[0.12em] text-muted transition-colors duration-200 hover:border-accent hover:text-text focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent ${
-                  activeHref === href ? 'border-accent bg-card2 text-text' : ''
-                } ${
-                  index === NAV.length - 1 ? 'col-span-2' : ''
+                className={`flex min-h-11 items-center justify-between bg-card px-4 text-[11px] font-semibold text-muted transition-colors duration-200 hover:bg-card2 hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent ${
+                  activeHref === href ? 'text-text' : ''
                 }`}
               >
                 {label}
+                <span className="font-mono text-[9px] text-accent" aria-hidden="true">
+                  0{NAV.findIndex((item) => item.href === href) + 1}
+                </span>
               </a>
             ))}
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </header>
   );
 }

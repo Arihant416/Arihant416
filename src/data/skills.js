@@ -1,56 +1,74 @@
+import { FaAws, FaDocker, FaNode } from 'react-icons/fa';
 import {
-  FaNode, FaAws, FaDocker,
-} from 'react-icons/fa';
-import {
-  SiMongodb, SiRedis, SiCplusplus, SiFastapi, SiMysql, SiPython,
-  SiJavascript, SiAmazonsqs, SiCelery, SiKubernetes, SiApachekafka,
+  SiAmazonsqs,
+  SiApachekafka,
+  SiCelery,
+  SiFastapi,
+  SiJavascript,
+  SiMongodb,
+  SiMysql,
+  SiPython,
+  SiRedis,
 } from 'react-icons/si';
 
-export const skillCategories = [
+export const capabilityGroups = [
   {
-    title: 'Languages',
+    number: '01',
+    title: 'Backend architecture',
+    description: 'Designing clear API contracts, predictable failure paths, and services that remain understandable as traffic and teams grow.',
+    proof: '30+ production APIs designed and shipped',
     skills: [
-      { name: 'Python',     Icon: SiPython,     color: '#3776AB' },
-      { name: 'JavaScript', Icon: SiJavascript,  color: '#F7DF1E' },
-      { name: 'C++',        Icon: SiCplusplus,   color: '#00599C' },
+      { name: 'Python', Icon: SiPython },
+      { name: 'FastAPI', Icon: SiFastapi },
+      { name: 'JavaScript', Icon: SiJavascript },
+      { name: 'Node.js', Icon: FaNode },
+      { name: 'System design', Icon: null },
     ],
   },
   {
-    title: 'Frameworks & Libraries',
+    number: '02',
+    title: 'Distributed execution',
+    description: 'Controlling concurrency, retries, idempotency, quotas, and asynchronous work without losing operational clarity.',
+    proof: '3x throughput on a constrained source workflow',
     skills: [
-      { name: 'FastAPI',    Icon: SiFastapi,    color: '#009688' },
-      { name: 'Node.js',    Icon: FaNode,       color: '#339933' },
-      // { name: 'Angular',    Icon: FaAngular,    color: '#DD0031' },
-      // { name: 'Selenium',   Icon: SiSelenium,   color: '#43B02A' },
-      { name: 'Celery',     Icon: SiCelery,     color: '#37814A' },
-      // { name: 'Serverless', Icon: SiServerless, color: '#FD5750' },
+      { name: 'Celery', Icon: SiCelery },
+      { name: 'Redis', Icon: SiRedis },
+      { name: 'SQS', Icon: SiAmazonsqs },
+      { name: 'Kafka', Icon: SiApachekafka },
+      { name: 'Rate limiting', Icon: null },
     ],
   },
   {
-    title: 'Cloud & Databases',
+    number: '03',
+    title: 'Cloud and delivery',
+    description: 'Taking services from design to deployment with containerized runtimes, repeatable delivery, and regional recovery paths.',
+    proof: '245 of 260 APIs containerized',
     skills: [
-      { name: 'AWS',     Icon: FaAws,        color: '#FF9900' },
-      { name: 'Docker',  Icon: FaDocker,     color: '#2496ED' },
-      { name: 'K8s',     Icon: SiKubernetes, color: '#326CE5' },
-      { name: 'MongoDB', Icon: SiMongodb,    color: '#47A248' },
-      { name: 'Redis',   Icon: SiRedis,      color: '#DC382D' },
-      { name: 'MySQL',   Icon: SiMysql,      color: '#00758F' },
+      { name: 'AWS', Icon: FaAws },
+      { name: 'Lambda', Icon: FaAws },
+      { name: 'ECS / Fargate', Icon: FaAws },
+      { name: 'Docker', Icon: FaDocker },
+      { name: 'CI/CD', Icon: null },
     ],
   },
   {
-    title: 'Messaging & Tools',
+    number: '04',
+    title: 'Data and reliability',
+    description: 'Using caching, storage, observability, testing, and explicit degradation paths to keep critical flows dependable.',
+    proof: '5M+ daily requests across critical API suites',
     skills: [
-      { name: 'SQS',      Icon: SiAmazonsqs, color: '#F29111' },
-      // { name: 'RabbitMQ', Icon: SiRabbitmq,  color: '#FF6600' },
-      // { name: 'Linux',    Icon: SiLinux,     color: '#FCC624' },
-      { name: 'Kafka',     Icon: SiApachekafka,      color: '#96cc00' },
+      { name: 'MongoDB', Icon: SiMongodb },
+      { name: 'MySQL', Icon: SiMysql },
+      { name: 'Redis caching', Icon: SiRedis },
+      { name: 'Playwright', Icon: null },
+      { name: 'Observability', Icon: null },
     ],
   },
-  {
-    title: 'CS Fundamentals',
-    skills: [
-      { name: 'System Design',   Icon: null, color: '#9333ea' },
-      { name: 'Data Structures & Algorithms', Icon: null, color: '#22d3ee' },
-    ],
-  },
+];
+
+export const engineeringPrinciples = [
+  'Design for failure',
+  'Measure before tuning',
+  'Treat cost as an architecture input',
+  'Own delivery and recovery',
 ];
