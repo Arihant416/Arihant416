@@ -1,56 +1,60 @@
+import { FaAws, FaDocker, FaNode } from 'react-icons/fa';
 import {
-  FaNode, FaAws, FaDocker,
-} from 'react-icons/fa';
-import {
-  SiMongodb, SiRedis, SiCplusplus, SiFastapi, SiMysql, SiPython,
-  SiJavascript, SiAmazonsqs, SiCelery, SiKubernetes, SiApachekafka,
+  SiAmazonsqs,
+  SiApachekafka,
+  SiCelery,
+  SiFastapi,
+  SiJavascript,
+  SiMongodb,
+  SiMysql,
+  SiPython,
+  SiRedis,
 } from 'react-icons/si';
 
 export const skillCategories = [
   {
-    title: 'Languages',
+    title: 'Languages and APIs',
+    description: 'Service contracts, validation, error handling, and maintainable API boundaries.',
     skills: [
-      { name: 'Python',     Icon: SiPython,     color: '#3776AB' },
-      { name: 'JavaScript', Icon: SiJavascript,  color: '#F7DF1E' },
-      { name: 'C++',        Icon: SiCplusplus,   color: '#00599C' },
+      { name: 'Python', Icon: SiPython },
+      { name: 'JavaScript', Icon: SiJavascript },
+      { name: 'FastAPI', Icon: SiFastapi },
+      { name: 'Node.js', Icon: FaNode },
+      { name: 'REST API design', Icon: null },
     ],
   },
   {
-    title: 'Frameworks & Libraries',
+    title: 'Distributed execution',
+    description: 'Asynchronous work, concurrency control, idempotency, quotas, retries, and rate limits.',
     skills: [
-      { name: 'FastAPI',    Icon: SiFastapi,    color: '#009688' },
-      { name: 'Node.js',    Icon: FaNode,       color: '#339933' },
-      // { name: 'Angular',    Icon: FaAngular,    color: '#DD0031' },
-      // { name: 'Selenium',   Icon: SiSelenium,   color: '#43B02A' },
-      { name: 'Celery',     Icon: SiCelery,     color: '#37814A' },
-      // { name: 'Serverless', Icon: SiServerless, color: '#FD5750' },
+      { name: 'Celery', Icon: SiCelery },
+      { name: 'Redis', Icon: SiRedis },
+      { name: 'Amazon SQS', Icon: SiAmazonsqs },
+      { name: 'Kafka', Icon: SiApachekafka },
+      { name: 'Lua scripting', Icon: null },
     ],
   },
   {
-    title: 'Cloud & Databases',
+    title: 'Cloud and delivery',
+    description: 'Repeatable deployments, containerized runtimes, regional recovery, and delivery controls.',
     skills: [
-      { name: 'AWS',     Icon: FaAws,        color: '#FF9900' },
-      { name: 'Docker',  Icon: FaDocker,     color: '#2496ED' },
-      { name: 'K8s',     Icon: SiKubernetes, color: '#326CE5' },
-      { name: 'MongoDB', Icon: SiMongodb,    color: '#47A248' },
-      { name: 'Redis',   Icon: SiRedis,      color: '#DC382D' },
-      { name: 'MySQL',   Icon: SiMysql,      color: '#00758F' },
+      { name: 'AWS Lambda', Icon: FaAws },
+      { name: 'ECS / Fargate', Icon: FaAws },
+      { name: 'Docker', Icon: FaDocker },
+      { name: 'GitLab CI/CD', Icon: null },
+      { name: 'SAST workflows', Icon: null },
     ],
   },
   {
-    title: 'Messaging & Tools',
+    title: 'Data and reliability',
+    description: 'Storage, caching, observability, testing, degradation paths, and incident response.',
     skills: [
-      { name: 'SQS',      Icon: SiAmazonsqs, color: '#F29111' },
-      // { name: 'RabbitMQ', Icon: SiRabbitmq,  color: '#FF6600' },
-      // { name: 'Linux',    Icon: SiLinux,     color: '#FCC624' },
-      { name: 'Kafka',     Icon: SiApachekafka,      color: '#96cc00' },
-    ],
-  },
-  {
-    title: 'CS Fundamentals',
-    skills: [
-      { name: 'System Design',   Icon: null, color: '#9333ea' },
-      { name: 'Data Structures & Algorithms', Icon: null, color: '#22d3ee' },
+      { name: 'MongoDB', Icon: SiMongodb },
+      { name: 'MySQL', Icon: SiMysql },
+      { name: 'Redis caching', Icon: SiRedis },
+      { name: 'Playwright', Icon: null },
+      { name: 'Pytest', Icon: null },
+      { name: 'Observability', Icon: null },
     ],
   },
 ];

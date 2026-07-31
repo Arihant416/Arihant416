@@ -1,48 +1,44 @@
-import { useState, useEffect } from 'react';
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { FiFileText, FiMenu, FiMoon, FiSun, FiX } from 'react-icons/fi';
+import { useEffect, useRef, useState } from 'react';
+import { FiArrowUpRight, FiMenu, FiMoon, FiSun, FiX } from 'react-icons/fi';
 import { useTheme } from '../context/ThemeContext';
 
-const NAV = [
-  { label: 'Work', href: '#experience' },
+const NAV_ITEMS = [
+  { label: 'Experience', href: '#experience' },
+  { label: 'Impact', href: '#impact' },
   { label: 'Projects', href: '#projects' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Reviews', href: '#testimonials' },
+  { label: 'Stack', href: '#skills' },
+  { label: 'Recommendations', href: '#testimonials' },
   { label: 'Contact', href: '#contact' },
 ];
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
-  const [hoveredIdx, setHoveredIdx] = useState(null);
   const [activeHref, setActiveHref] = useState(null);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef(null);
+  const menuButtonRef = useRef(null);
   const { isDark, toggleTheme } = useTheme();
-  const shouldReduceMotion = useReducedMotion();
-  const highlightedIdx = hoveredIdx ?? NAV.findIndex(({ href }) => href === activeHref);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 16);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+    const updateScrolled = () => setScrolled(window.scrollY > 12);
+    window.addEventListener('scroll', updateScrolled, { passive: true });
+    updateScrolled();
+    return () => window.removeEventListener('scroll', updateScrolled);
   }, []);
 
   useEffect(() => {
-    let animationFrame = null;
+    let frame = null;
 
     const updateActiveSection = () => {
-      if (animationFrame) return;
-
-      animationFrame = window.requestAnimationFrame(() => {
-        const triggerLine = window.innerHeight * 0.42;
-        const nextActive = NAV.reduce((currentHref, { href }) => {
-          const section = document.querySelector(href);
-          if (!section) return currentHref;
-          return section.getBoundingClientRect().top <= triggerLine ? href : currentHref;
+      if (frame) return;
+      frame = window.requestAnimationFrame(() => {
+        const trigger = window.innerHeight * 0.4;
+        const current = NAV_ITEMS.reduce((match, item) => {
+          const section = document.querySelector(item.href);
+          return section && section.getBoundingClientRect().top <= trigger ? item.href : match;
         }, null);
-
-        setActiveHref(nextActive);
-        animationFrame = null;
+        setActiveHref(current);
+        frame = null;
       });
     };
 
@@ -53,152 +49,133 @@ export default function Header() {
     return () => {
       window.removeEventListener('scroll', updateActiveSection);
       window.removeEventListener('resize', updateActiveSection);
-      if (animationFrame) window.cancelAnimationFrame(animationFrame);
+      if (frame) window.cancelAnimationFrame(frame);
     };
   }, []);
 
   useEffect(() => {
-    if (!mobileMenuOpen) return undefined;
+    if (!menuOpen) return undefined;
 
-    const closeOnEscape = (event) => {
-      if (event.key === 'Escape') setMobileMenuOpen(false);
+    const menu = menuRef.current;
+    const focusable = Array.from(
+      menu.querySelectorAll('a[href], button:not([disabled])')
+    );
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    const previousOverflow = document.body.style.overflow;
+
+    document.body.style.overflow = 'hidden';
+    first?.focus();
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        setMenuOpen(false);
+        return;
+      }
+
+      if (event.key !== 'Tab' || focusable.length === 0) return;
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
     };
 
-    window.addEventListener('keydown', closeOnEscape);
-    return () => window.removeEventListener('keydown', closeOnEscape);
-  }, [mobileMenuOpen]);
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = previousOverflow;
+      menuButtonRef.current?.focus();
+    };
+  }, [menuOpen]);
+
+  const closeMenu = () => setMenuOpen(false);
 
   return (
-    <div
-      className={`fixed left-0 right-0 top-0 z-[100] px-3 pt-3 transition-colors duration-300 sm:px-5 lg:px-8 ${
-        scrolled ? 'bg-[var(--nav-bg)] backdrop-blur-2xl' : 'bg-transparent'
-      }`}
-    >
-      <motion.nav
-        className={`mx-auto flex h-14 w-full max-w-[1320px] items-center justify-between gap-3 rounded-[1.2rem] border px-3 shadow-[var(--nav-shadow)] transition-all duration-300 sm:h-16 sm:rounded-[1.35rem] sm:px-4 ${
-          scrolled
-            ? 'border-border bg-card/95'
-            : 'border-border/70 bg-card/75 backdrop-blur-xl'
-        }`}
-        initial={shouldReduceMotion ? false : { y: -18, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+    <header className={`site-header ${scrolled ? 'is-scrolled' : ''}`}>
+      <nav
+        className="site-nav"
+        aria-label="Primary navigation"
       >
         <a
           href="#top"
-          className="group inline-flex min-h-10 min-w-10 items-center justify-center rounded-full border border-border bg-bg px-3 font-mono text-[11px] font-bold text-text transition-colors duration-200 hover:border-accent hover:text-accent focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent sm:min-h-11 sm:min-w-11 sm:text-xs"
-          aria-label="Back to top"
+          className="brand-link"
+          aria-label="AJ, Arihant Jain, Senior Backend Engineer, back to top"
         >
-          AJ
+          <span className="brand-mark">AJ</span>
+          <span className="brand-copy">
+            <strong>Arihant Jain</strong>
+            <small>Senior Backend Engineer</small>
+          </span>
         </a>
 
-        <div className="hidden items-center rounded-full border border-border bg-bg/70 p-1 md:flex">
-          {NAV.map(({ label, href }, idx) => (
+        <div className="desktop-nav">
+          {NAV_ITEMS.map((item) => (
             <a
-              key={href}
-              href={href}
-              className={`relative z-10 inline-flex min-h-10 items-center rounded-full px-4 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent ${
-                activeHref === href ? 'text-text' : 'text-muted hover:text-text'
-              }`}
-              aria-current={activeHref === href ? 'location' : undefined}
-              onMouseEnter={() => setHoveredIdx(idx)}
-              onMouseLeave={() => setHoveredIdx(null)}
+              key={item.href}
+              href={item.href}
+              className={activeHref === item.href ? 'is-active' : ''}
+              aria-current={activeHref === item.href ? 'location' : undefined}
             >
-              {label}
-              {highlightedIdx === idx && (
-                <motion.span
-                  layoutId="navHighlightPill"
-                  className="absolute inset-0 z-[-1] rounded-full border border-border bg-card2 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]"
-                  transition={shouldReduceMotion ? { duration: 0 } : { type: 'spring', stiffness: 420, damping: 34 }}
-                />
-              )}
+              {item.label}
             </a>
           ))}
         </div>
 
-        <div className="flex items-center justify-end gap-2">
+        <div className="nav-actions">
           <button
+            ref={menuButtonRef}
             type="button"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-bg text-muted transition-colors duration-200 hover:border-accent hover:text-text focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent md:hidden"
-            onClick={() => setMobileMenuOpen((isOpen) => !isOpen)}
-            aria-label={mobileMenuOpen ? 'Close navigation' : 'Open navigation'}
-            aria-expanded={mobileMenuOpen}
+            className="icon-button mobile-menu-button"
+            onClick={() => setMenuOpen((open) => !open)}
+            aria-label={menuOpen ? 'Close navigation' : 'Open navigation'}
+            aria-expanded={menuOpen}
             aria-controls="mobile-navigation"
           >
-            <AnimatePresence mode="wait" initial={false}>
-              <motion.span
-                key={mobileMenuOpen ? 'close' : 'menu'}
-                initial={shouldReduceMotion ? false : { opacity: 0, rotate: -12, scale: 0.9 }}
-                animate={{ opacity: 1, rotate: 0, scale: 1 }}
-                exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, rotate: 12, scale: 0.9 }}
-                transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.16 }}
-                className="inline-flex"
-              >
-                {mobileMenuOpen ? <FiX aria-hidden="true" /> : <FiMenu aria-hidden="true" />}
-              </motion.span>
-            </AnimatePresence>
+            {menuOpen ? <FiX aria-hidden="true" /> : <FiMenu aria-hidden="true" />}
           </button>
 
-          <button
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-bg text-muted transition-colors duration-200 hover:border-accent hover:text-text focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent"
-            onClick={toggleTheme}
-            aria-label="Toggle theme"
-          >
-            <AnimatePresence mode="wait" initial={false}>
-              <motion.span
-                key={isDark ? 'dark' : 'light'}
-                initial={shouldReduceMotion ? false : { y: 8, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={shouldReduceMotion ? { opacity: 0 } : { y: -8, opacity: 0 }}
-                transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.18 }}
-                className="inline-flex"
-              >
-                {isDark ? <FiSun aria-hidden="true" /> : <FiMoon aria-hidden="true" />}
-              </motion.span>
-            </AnimatePresence>
+          <button type="button" className="icon-button" onClick={toggleTheme} aria-label="Toggle theme">
+            {isDark ? <FiSun aria-hidden="true" /> : <FiMoon aria-hidden="true" />}
           </button>
 
           <a
             href="https://arihant416.github.io/resume/index.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Open resume"
-            className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full border border-accent bg-accent px-3.5 font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-bg transition-all duration-200 hover:bg-text hover:border-text focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent sm:min-h-11 sm:px-4"
+            className="resume-link"
           >
-            <FiFileText aria-hidden="true" />
-            <span className="hidden sm:inline">Resume</span>
+            Resume
+            <FiArrowUpRight aria-hidden="true" />
           </a>
         </div>
-      </motion.nav>
+      </nav>
 
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
+      {menuOpen && (
+          <div
+            ref={menuRef}
             id="mobile-navigation"
-            className="mx-auto mt-2 grid w-full max-w-[1320px] grid-cols-2 gap-2 rounded-[1.2rem] border border-border bg-card p-2 shadow-[var(--nav-shadow)] backdrop-blur-2xl md:hidden"
-            initial={shouldReduceMotion ? false : { opacity: 0, y: -8, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: -6, scale: 0.98 }}
-            transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="mobile-navigation"
           >
-            {NAV.map(({ label, href }, index) => (
+            {NAV_ITEMS.map((item, index) => (
               <a
-                key={href}
-                href={href}
-                onClick={() => setMobileMenuOpen(false)}
-                aria-current={activeHref === href ? 'location' : undefined}
-                className={`inline-flex min-h-11 items-center justify-center rounded-xl border border-border bg-bg/75 px-3 font-mono text-[10px] font-semibold uppercase tracking-[0.12em] text-muted transition-colors duration-200 hover:border-accent hover:text-text focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent ${
-                  activeHref === href ? 'border-accent bg-card2 text-text' : ''
-                } ${
-                  index === NAV.length - 1 ? 'col-span-2' : ''
-                }`}
+                key={item.href}
+                href={item.href}
+                onClick={closeMenu}
+                className={activeHref === item.href ? 'is-active' : ''}
+                aria-current={activeHref === item.href ? 'location' : undefined}
               >
-                {label}
+                <span>{item.label}</span>
+                <span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
               </a>
             ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
+          </div>
+      )}
+    </header>
   );
 }

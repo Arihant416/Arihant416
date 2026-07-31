@@ -1,14 +1,10 @@
-import React from 'react';
+import { lazy, Suspense } from 'react';
 import { ThemeProvider } from './context/ThemeContext';
-
 import Header from './components/Header';
 import Hero from './components/Hero';
-import Experience from './components/Experience';
-import Skills from './components/Skills';
-import Testimonials from './components/Testimonials';
-import Contact from './components/Contact';
 import Footer from './components/Footer';
 
+const PortfolioSections = lazy(() => import('./components/PortfolioSections'));
 
 export default function App() {
   return (
@@ -16,10 +12,9 @@ export default function App() {
       <Header />
       <main>
         <Hero />
-        <section id="experience"><Experience /></section>
-        <section id="skills"><Skills /></section>
-        <section id="recommendations"><Testimonials /></section>
-        <Contact />
+        <Suspense fallback={<div className="sections-loading" aria-label="Loading portfolio evidence" />}>
+          <PortfolioSections />
+        </Suspense>
       </main>
       <Footer />
     </ThemeProvider>

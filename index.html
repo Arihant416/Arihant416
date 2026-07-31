@@ -1,19 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark" data-theme="dark">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="theme-color" content="#000000" />
+		<meta name="theme-color" content="#0b0b0a" />
+		<script>
+			(function () {
+				var theme = 'dark';
+				try {
+					var stored = window.localStorage.getItem('theme');
+					theme = stored === 'dark' || stored === 'light'
+						? stored
+						: window.matchMedia('(prefers-color-scheme: light)').matches
+							? 'light'
+							: 'dark';
+				} catch (error) {
+					theme = 'dark';
+				}
+				document.documentElement.dataset.theme = theme;
+				document.documentElement.classList.toggle('dark', theme === 'dark');
+				document.documentElement.style.colorScheme = theme;
+			})();
+		</script>
 		<meta
 			name="description"
-			content="Arihant | Senior Backend Engineer with 5+ years building high-scale distributed systems, microservices, and low-latency fintech infrastructure."
+			content="Arihant Jain is a Senior Backend Engineer building production fintech and KYC systems that serve 5M+ daily API requests, with experience in reliability, modernization, and cost optimization."
 		/>
-		<!-- OpenGraph things -->
+		<!-- Open Graph -->
 		<meta property="og:title" content="Arihant | Senior Backend Engineer" />
 		<meta
 			property="og:description"
-			content="Designing high-performance backend systems and cloud-native infrastructure. 5+ years of expertise in distributed systems, microservices, and API architecture."
+			content="Production fintech and KYC systems serving 5M+ daily API requests, with evidence across distributed execution, reliability, modernization, and cost."
 		/>
 		<meta property="og:url" content="https://arihant416.vercel.app/" />
 		<meta property="og:site_name" content="Arihant Jain Portfolio" />
@@ -32,7 +50,7 @@
 		<meta name="twitter:title" content="Arihant | Senior Backend Engineer" />
 		<meta
 			name="twitter:description"
-			content="5+ years building scalable backend systems and cloud-native fintech infrastructure."
+			content="Senior Backend Engineer building reliable fintech and KYC systems that serve 5M+ daily API requests."
 		/>
 		<meta
 			name="twitter:image"
@@ -59,7 +77,15 @@
 		<link
 			rel="stylesheet"
 			href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500&family=Geist:wght@300;400;500&display=swap"
+			media="print"
+			onload="this.media='all'"
 		/>
+		<noscript>
+			<link
+				rel="stylesheet"
+				href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500&family=Geist:wght@300;400;500&display=swap"
+			/>
+		</noscript>
 
 		<!-- Canonical URL -->
 		<link rel="canonical" href="https://arihant416.vercel.app/" />
@@ -90,10 +116,9 @@
 					"Kafka",
 					"Microservices",
 					"Distributed Systems",
-					"Docker",
-					"Kubernetes"
+					"Docker"
 				],
-				"description": "5+ years of experience designing high-traffic backend systems and distributed fintech infrastructure.",
+				"description": "Senior Backend Engineer building production fintech and KYC systems that serve 5M+ daily API requests.",
 				"address": {
 					"@type": "PostalAddress",
 					"addressLocality": "New Delhi",

@@ -15,9 +15,9 @@ Senior Backend Engineer focused on production API systems, source orchestration,
 ## Engineering Impact
 
 - **Scale:** Operate backend systems handling **5M+ daily API requests** across critical identity and KYC flows.
-- **Latency:** Reduced P99 latency by **~70% across multiple APIs** by reworking high-volume response paths and worker execution.
-- **Ownership:** Designed **30 APIs from scratch** and maintained/operated **200+ APIs** across TotalKYC, Data Science, and VideoKYC integrations.
-- **Cost:** Contributed to **$700K+ annualized savings** through in-house serving improvements, source orchestration, and vendor dependency reduction.
+- **Latency:** Reduced P99 latency from **8s to 5s** on re-engineered legacy KYC paths, alongside broader latency work across production APIs.
+- **Ownership:** Designed **30+ APIs from scratch** and maintained/operated **200+ APIs** across TotalKYC, Data Science, and VideoKYC integrations.
+- **Cost:** Delivered **$700K+ in cumulative savings since April 2024** through in-house serving improvements, source orchestration, and vendor dependency reduction.
 - **Reliability:** Owned DR testing, deployment, monitoring, incident handling, and CI/CD setup for regional API paths.
 
 ---

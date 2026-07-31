@@ -6,7 +6,7 @@ Senior Backend Engineer focused on production API systems, Python/FastAPI, AWS, 
 
 ## Design Direction
 
-Backend-console inspired, systems-focused, restrained, premium, dark/light theme, technical mono accents, subtle motion.
+Quiet editorial and documentation-inspired, with proof-first storytelling, restrained dark/light themes, bronze accents, technical mono labels, serif emphasis, and subtle motion.
 
 ## Completed Work
 
@@ -21,21 +21,25 @@ Backend-console inspired, systems-focused, restrained, premium, dark/light theme
 - Production QA pass
 - Backend narrative and impact-copy refinement
 - Backend-console visual revamp
+- Design-spec rebuild with centralized evidence metrics
+- Proof-focused impact comparisons
 
 ## Approved Public Metrics
 
 - 5M+ daily API requests across APIs
-- ~70% P99 latency reduction across multiple APIs
-- 30 APIs designed from scratch
+- P99 latency reduced from 8s to 5s on re-engineered legacy KYC paths
+- 30+ APIs designed from scratch
 - 200+ APIs maintained/operated
-- $700K+ annualized savings
+- $700K+ cumulative savings since April 2024
+- $230K+ vendor-retirement savings over two years
+- In-house serving increased from 35% to 82% for a constrained source
 
 ## Do Not Change Without Approval
 
 - Testimonial quote text
 - Factual job titles
 - Public metrics
-- Backend-console inspired visual identity
+- Quiet editorial, proof-first visual identity
 - Framer Motion architecture
 - Vite tooling
 - Vercel deployment config
@@ -44,4 +48,5 @@ Backend-console inspired, systems-focused, restrained, premium, dark/light theme
 
 - Custom domain readiness
 - Case-study depth
+- Production release and cross-device QA of the design-spec rebuild
 - Optional technical blog visibility
