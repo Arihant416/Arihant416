@@ -86,21 +86,14 @@ export const metrics = {
   },
 };
 
-export const heroMetrics = [
-  metrics.dailyRequests,
-  metrics.cumulativeSavings,
-  metrics.apisContainerized,
-  metrics.apisDesigned,
-];
-
 export const latencyChartData = [
   { name: 'Before', seconds: metrics.p99Latency.before },
   { name: 'After', seconds: metrics.p99Latency.after },
 ];
 
 export const savingsChartData = [
-  { name: 'Senior-role initiatives', thousands: metrics.cumulativeSavings.value },
-  { name: 'Constrained-source program', thousands: metrics.vendorRetirementSavings.value },
+  { name: 'Since Apr 2024', thousands: metrics.cumulativeSavings.value },
+  { name: 'Earlier vendor removal', thousands: metrics.vendorRetirementSavings.value },
 ];
 
 export const sourceServingChartData = [

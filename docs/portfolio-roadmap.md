@@ -2,11 +2,11 @@
 
 ## Current Positioning
 
-Senior Backend Engineer focused on production API systems, Python/FastAPI, AWS, Redis, Celery, source orchestration, reliability guardrails, distributed systems, API performance, and cost-aware backend architecture.
+Senior Backend Engineer building reliable fintech and KYC systems at scale, with a focus on API performance, recovery, modernization, and operating cost.
 
 ## Design Direction
 
-Quiet editorial and documentation-inspired, with proof-first storytelling, restrained dark/light themes, bronze accents, technical mono labels, serif emphasis, and subtle motion.
+Production-trace inspired, wide and responsive, with restrained light/dark themes, blue and coral accents, plain language, and subtle motion.
 
 ## Completed Work
 
@@ -23,6 +23,8 @@ Quiet editorial and documentation-inspired, with proof-first storytelling, restr
 - Backend-console visual revamp
 - Design-spec rebuild with centralized evidence metrics
 - Proof-focused impact comparisons
+- Production-trace visual rebuild with simplified content
+- Cross-device visual, interaction, contrast, and overflow QA
 
 ## Approved Public Metrics
 
@@ -39,7 +41,7 @@ Quiet editorial and documentation-inspired, with proof-first storytelling, restr
 - Testimonial quote text
 - Factual job titles
 - Public metrics
-- Quiet editorial, proof-first visual identity
+- Production-trace visual identity
 - Framer Motion architecture
 - Vite tooling
 - Vercel deployment config
@@ -48,5 +50,5 @@ Quiet editorial and documentation-inspired, with proof-first storytelling, restr
 
 - Custom domain readiness
 - Case-study depth
-- Production release and cross-device QA of the design-spec rebuild
+- User review and production release of the production-trace rebuild
 - Optional technical blog visibility

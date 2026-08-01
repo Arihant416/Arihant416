@@ -60,9 +60,9 @@ export default function Impact() {
           viewport={{ once: true, margin: '-60px' }}
           transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.52, ease: EASE }}
         >
-          <p className="section-kicker">02 / Impact, in numbers</p>
-          <h2>Proof that is easier to <em>inspect.</em></h2>
-          <p>Three measured changes, shown without combining unlike units or implying additive savings.</p>
+          <p className="section-kicker">Impact</p>
+          <h2>Selected outcomes.</h2>
+          <p>Measured results from production work.</p>
         </motion.div>
 
         <div className="impact-grid">
@@ -87,10 +87,10 @@ export default function Impact() {
           <article className="chart-panel chart-panel-wide">
             <header>
               <div>
-                <span className="chart-label">Cost impact / USD thousands</span>
+                <span className="chart-label">Cumulative savings</span>
                 <h3>{metrics.cumulativeSavings.display}</h3>
               </div>
-              <p>Cumulative senior-role initiatives and a separately identified earlier program.</p>
+              <p>Delivered since April 2024.</p>
             </header>
             <MetricBars
               ariaLabel="Cost savings in thousands of US dollars"
@@ -105,10 +105,10 @@ export default function Impact() {
           <article className="chart-panel">
             <header>
               <div>
-                <span className="chart-label">In-house serving</span>
+                <span className="chart-label">Requests handled internally</span>
                 <h3>{metrics.sourceServing.display}</h3>
               </div>
-              <p>{metrics.sourceServing.context}; throughput increased {metrics.sourceServing.multiplier}x.</p>
+              <p>{metrics.sourceServing.multiplier}x throughput after redesigning request handling.</p>
             </header>
             <MetricBars
               ariaLabel="In-house request serving ratio before and after source orchestration"

@@ -11,11 +11,11 @@ export default function Contact() {
     <section id="contact" className="contact-section">
       <div className="contact-inner">
         <div>
-          <p className="section-kicker">06 · Contact</p>
-          <h2>Discuss a backend or platform <em>problem.</em></h2>
+          <p className="section-kicker">Contact</p>
+          <h2>Get in touch.</h2>
           <p>
-            I’m interested in senior engineering work involving production APIs, distributed
-            execution, reliability, modernization, and cost-aware architecture.
+            Open to senior backend and platform roles, focused freelance work, and useful
+            technical conversations.
           </p>
         </div>
 
