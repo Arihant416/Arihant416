@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { FiArrowLeft, FiArrowRight, FiArrowUpRight } from 'react-icons/fi';
 import { testimonials } from '../data/testimonials';
@@ -12,16 +12,33 @@ const displayText = (text) => text
 
 export default function Testimonials() {
   const trackRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
   const shouldReduceMotion = useReducedMotion();
 
   const moveTrack = (direction) => {
     const track = trackRef.current;
     if (!track) return;
 
+    const cards = Array.from(track.children);
+    const step = cards.length > 1
+      ? cards[1].offsetLeft - cards[0].offsetLeft
+      : track.clientWidth;
+
     track.scrollBy({
-      left: direction * Math.max(track.clientWidth * 0.82, 320),
+      left: direction * step,
       behavior: shouldReduceMotion ? 'auto' : 'smooth',
     });
+  };
+
+  const updateActiveIndex = () => {
+    const track = trackRef.current;
+    if (!track || track.children.length < 2) return;
+
+    const step = track.children[1].offsetLeft - track.children[0].offsetLeft;
+    setActiveIndex(Math.min(
+      testimonials.length - 1,
+      Math.max(0, Math.round(track.scrollLeft / step))
+    ));
   };
 
   return (
@@ -38,10 +55,23 @@ export default function Testimonials() {
             Perfios, Karza Technologies, and InTimeTec.
           </p>
           <div className="recommendation-controls" aria-label="Recommendation navigation">
-            <button type="button" onClick={() => moveTrack(-1)} aria-label="Previous recommendations">
+            <span aria-hidden="true">
+              {String(activeIndex + 1).padStart(2, '0')} / {String(testimonials.length).padStart(2, '0')}
+            </span>
+            <button
+              type="button"
+              onClick={() => moveTrack(-1)}
+              aria-label="Previous recommendation"
+              disabled={activeIndex === 0}
+            >
               <FiArrowLeft aria-hidden="true" />
             </button>
-            <button type="button" onClick={() => moveTrack(1)} aria-label="Next recommendations">
+            <button
+              type="button"
+              onClick={() => moveTrack(1)}
+              aria-label="Next recommendation"
+              disabled={activeIndex === testimonials.length - 1}
+            >
               <FiArrowRight aria-hidden="true" />
             </button>
           </div>
@@ -53,6 +83,7 @@ export default function Testimonials() {
           ref={trackRef}
           className="recommendation-track"
           aria-label="Peer recommendations"
+          onScroll={updateActiveIndex}
         >
           {testimonials.map((testimonial, index) => (
             <motion.article

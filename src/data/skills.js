@@ -4,15 +4,15 @@ export const skillCategories = [
     skills: ['Python', 'FastAPI', 'REST APIs', 'Node.js'],
   },
   {
-    title: 'Cloud',
-    skills: ['AWS Lambda', 'ECS / Fargate', 'Docker', 'Multi-region systems'],
+    title: 'AWS and infrastructure',
+    skills: ['AWS', 'EC2', 'ECS', 'ECR', 'Lambda', 'Fargate', 'IAM', 'S3', 'CloudFormation', 'Docker'],
   },
   {
-    title: 'Data and background work',
-    skills: ['Redis', 'Celery', 'MongoDB', 'MySQL'],
+    title: 'Data and background processing',
+    skills: ['Redis', 'Celery', 'Kafka', 'MongoDB', 'MySQL'],
   },
   {
-    title: 'Delivery and quality',
-    skills: ['GitLab CI/CD', 'Pytest', 'Playwright', 'Monitoring'],
+    title: 'Observability, automation and testing',
+    skills: ['EventBridge', 'Playwright', 'GitLab CI/CD', 'Pytest', 'AWS CloudWatch'],
   },
 ];

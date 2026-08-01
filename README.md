@@ -7,9 +7,9 @@ Senior Backend Engineer building reliable fintech and KYC systems at scale, with
 ## Tech Stack
 
 - **Backend:** Python, FastAPI, REST APIs, Node.js
-- **Cloud:** AWS Lambda, ECS/Fargate, Docker
-- **Data & Background Work:** Redis, Celery, MongoDB, MySQL
-- **Delivery & Quality:** GitLab CI/CD, Pytest, Playwright, monitoring
+- **AWS & Infrastructure:** EC2, ECS, ECR, Lambda, Fargate, IAM, S3, CloudFormation, Docker
+- **Data & Background Processing:** Redis, Celery, Kafka, MongoDB, MySQL
+- **Observability, Automation & Testing:** EventBridge, CloudWatch, GitLab CI/CD, Pytest, Playwright
 
 ---
 

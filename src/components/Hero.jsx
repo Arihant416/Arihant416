@@ -41,7 +41,7 @@ export default function Hero() {
         <div className="hero-intro">
           <div className="hero-copy">
             <p className="eyebrow">
-              Arihant Jain / Senior Backend Engineer
+              Backend Engineering Enthusiast
             </p>
 
             <h1>Crafting reliable backend systems.</h1>

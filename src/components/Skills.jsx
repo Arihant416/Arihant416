@@ -1,8 +1,14 @@
 import { motion, useReducedMotion } from 'framer-motion';
-import { FiActivity, FiCode, FiGlobe, FiMonitor } from 'react-icons/fi';
+import { FiCode, FiLayers, FiMonitor, FiPackage, FiRepeat } from 'react-icons/fi';
 import {
+  SiAmazoncloudwatch,
+  SiAmazonec2,
   SiAmazonecs,
-  SiAwslambda,
+  SiAmazoniam,
+  SiAmazons3,
+  SiAmazonwebservices,
+  SiApachekafka,
+  SiAwsfargate,
   SiCelery,
   SiDocker,
   SiFastapi,
@@ -13,6 +19,7 @@ import {
   SiPytest,
   SiPython,
   SiRedis,
+  SiAwslambda,
 } from 'react-icons/si';
 import { skillCategories } from '../data/skills';
 
@@ -22,18 +29,26 @@ const skillIcons = {
   FastAPI: SiFastapi,
   'REST APIs': FiCode,
   'Node.js': SiNodedotjs,
-  'AWS Lambda': SiAwslambda,
-  'ECS / Fargate': SiAmazonecs,
+  AWS: SiAmazonwebservices,
+  EC2: SiAmazonec2,
+  ECS: SiAmazonecs,
+  ECR: FiPackage,
+  Lambda: SiAwslambda,
+  Fargate: SiAwsfargate,
+  IAM: SiAmazoniam,
+  S3: SiAmazons3,
+  CloudFormation: FiLayers,
   Docker: SiDocker,
-  'Multi-region systems': FiGlobe,
   Redis: SiRedis,
   Celery: SiCelery,
+  Kafka: SiApachekafka,
   MongoDB: SiMongodb,
   MySQL: SiMysql,
+  EventBridge: FiRepeat,
   'GitLab CI/CD': SiGitlab,
   Pytest: SiPytest,
   Playwright: FiMonitor,
-  Monitoring: FiActivity,
+  'AWS CloudWatch': SiAmazoncloudwatch,
 };
 
 export default function Skills() {

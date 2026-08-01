@@ -105,13 +105,9 @@ export default function Header() {
         <a
           href="#top"
           className="brand-link"
-          aria-label="AJ, Arihant Jain, Senior Backend Engineer, back to top"
+          aria-label="Back to top"
         >
           <span className="brand-mark">AJ</span>
-          <span className="brand-copy">
-            <strong>Arihant Jain</strong>
-            <small>Senior Backend Engineer</small>
-          </span>
         </a>
 
         <div className="desktop-nav">
