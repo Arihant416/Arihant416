@@ -15,7 +15,7 @@ function Identity({ testimonial, compact = false }) {
     <div className="flex min-w-0 items-center gap-3">
       <span
         className={`flex shrink-0 items-center justify-center border border-border bg-card2 font-mono font-bold text-accent ${
-          compact ? 'h-9 w-9 rounded-xl text-[10px]' : 'h-12 w-12 rounded-2xl text-sm'
+          compact ? 'h-9 w-9 rounded-md text-[10px]' : 'h-12 w-12 rounded-md text-sm'
         }`}
       >
         {initials(testimonial.name)}
@@ -38,7 +38,7 @@ function ActiveCard({ testimonial, shouldReduceMotion, direction }) {
       <motion.article
         key={testimonial.name}
         custom={direction}
-        className="console-panel rounded-[1.45rem] border-accent/55 p-5 shadow-[0_30px_80px_rgba(0,0,0,0.24)] sm:rounded-[1.8rem] sm:p-6 lg:p-7 xl:p-8"
+        className="console-panel rounded-[0.8rem] border-accent/55 p-5 shadow-[0_30px_80px_rgba(0,0,0,0.24)] sm:p-6 lg:p-7 xl:p-8"
         initial={shouldReduceMotion ? false : { opacity: 0, x: direction * 34, y: 14, scale: 0.97 }}
         animate={{ opacity: 1, x: 0, y: 0, scale: 1 }}
         exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, x: direction * -28, y: -8, scale: 0.98 }}
@@ -77,7 +77,7 @@ function PreviewCard({ testimonial, side, onClick, shouldReduceMotion }) {
     <motion.button
       type="button"
       onClick={onClick}
-      className={`testimonial-preview-card group rounded-[1.25rem] border border-border bg-card/70 p-4 text-left opacity-55 shadow-[0_20px_60px_rgba(0,0,0,0.16)] blur-[0.2px] transition duration-200 hover:opacity-85 hover:blur-0 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent ${
+      className={`testimonial-preview-card group rounded-[0.75rem] border border-border bg-card/70 p-4 text-left opacity-55 shadow-[0_20px_60px_rgba(0,0,0,0.16)] blur-[0.2px] transition duration-200 hover:opacity-85 hover:blur-0 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent ${
         isLeft ? 'testimonial-preview-left' : 'testimonial-preview-right'
       }`}
       initial={shouldReduceMotion ? false : { opacity: 0, y: 28, scale: 0.9 }}
@@ -131,16 +131,7 @@ export default function Testimonials() {
   return (
     <div className="section testimonial-section border-b border-border bg-bg" id="testimonials">
       <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between min-[960px]:flex-col min-[960px]:items-start min-[960px]:justify-start">
-        <div>
-          <span className="section-kicker">04 Endorsements</span>
-          <h2 className="mt-4 text-2xl font-light leading-tight text-text sm:text-3xl">
-            Trusted <span className="font-serif italic text-accent">Peer Review</span>
-          </h2>
-          <div className="mt-5 flex flex-wrap gap-2">
-            <span className="console-tag">{total} LinkedIn notes</span>
-            <span className="console-tag">Peer written</span>
-          </div>
-        </div>
+        <h2 className="section-kicker section-numbered-title">04 Recommendations</h2>
 
         <div className="flex items-center gap-3">
           <ArrowButton label="Previous testimonial" onClick={goPrevious}>

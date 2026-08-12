@@ -1,104 +1,73 @@
+import { lazy, Suspense } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
+import { FiArrowDownRight, FiArrowUpRight } from 'react-icons/fi';
 
-const rise = (delay = 0, shouldReduceMotion = false) => ({
-  initial: shouldReduceMotion ? false : { opacity: 0, y: 22 },
-  animate: { opacity: 1, y: 0 },
-  transition: shouldReduceMotion ? { duration: 0 } : { duration: 0.64, delay, ease: [0.22, 1, 0.36, 1] },
-});
+const SpatialScene = lazy(() => import('./SpatialScene'));
 
-const STATS = [
-  { num: '5M+', label: 'Daily API Requests', sub: 'across critical API suites' },
-  { num: '~70%', label: 'P99 Latency Reduction', sub: 'across multiple APIs' },
-  { num: '$700K+', label: 'Annualized Savings', sub: 'through cost-aware architecture' },
-  { num: '30', label: 'APIs Designed', sub: 'from scratch for production' },
+const proof = [
+  { value: '5M+', label: 'requests each day' },
+  { value: '30+', label: 'APIs designed' },
+  { value: '$700K+', label: 'saved since Apr 2024' },
 ];
 
+const reveal = (delay, reduceMotion) => ({
+  initial: reduceMotion ? false : { opacity: 0, y: 18 },
+  animate: { opacity: 1, y: 0 },
+  transition: reduceMotion ? { duration: 0 } : { duration: 0.62, delay, ease: [0.22, 1, 0.36, 1] },
+});
+
 export default function Hero() {
-  const shouldReduceMotion = useReducedMotion();
+  const reduceMotion = useReducedMotion();
 
   return (
-    <section id="top" className="relative w-full overflow-hidden border-b border-border px-3 pb-10 pt-24 sm:px-6 sm:pb-16 md:pt-32 lg:px-8">
-      <div className="mx-auto flex min-h-0 w-full max-w-[1320px] items-center md:min-h-[calc(100vh-7rem)]">
-        <motion.div
-          className="console-panel w-full rounded-[1.45rem] p-4 sm:rounded-[2rem] sm:p-6 lg:p-8 xl:p-10"
-          {...rise(0.04, shouldReduceMotion)}
-        >
-          <div className="mb-6 flex flex-wrap items-center justify-between gap-3 border-b border-border pb-4 sm:mb-8">
-            <p className="section-kicker">
-              Arihant Jain <span className="text-muted">Senior Backend Engineer</span>
-            </p>
-            <div className="console-tag">
-              <span className={`status-dot ${shouldReduceMotion ? '' : 'animate-pulse'}`} />
-              Production systems
-            </div>
-          </div>
+    <section id="top" className="spatial-hero">
+      <Suspense fallback={<div className="spatial-scene-loading" aria-hidden="true" />}>
+        <SpatialScene reduceMotion={reduceMotion} />
+      </Suspense>
 
-          <div className="grid grid-cols-1 gap-7 sm:gap-10 min-[960px]:grid-cols-[1.05fr_0.95fr] min-[960px]:gap-10 xl:gap-16">
-            <div className="flex flex-col justify-between">
-              <div>
-                <motion.h1
-                  className="max-w-[12ch] font-sans text-[2.65rem] font-light leading-[0.96] text-text sm:text-[4.25rem] md:text-[5.6rem] lg:text-[6.4rem]"
-                  {...rise(0.12, shouldReduceMotion)}
-                >
-                  Crafting Backend{' '}
-                  <em className="font-serif font-normal italic text-accent">systems.</em>
-                </motion.h1>
+      <div className="spatial-hero-shade" aria-hidden="true" />
 
-                <motion.p
-                  className="mt-5 max-w-[58ch] text-[13px] leading-relaxed text-text-dim sm:mt-6 sm:text-base md:mt-8 md:text-lg"
-                  {...rise(0.22, shouldReduceMotion)}
-                >
-                  I build production backend systems where architecture decisions show up in latency,
-                  reliability, and cost. At Perfios, I work across high-throughput API suites, source
-                  orchestration, Redis/Celery/Fargate pipelines, and disaster-recovery paths serving
-                  5M+ daily requests.
-                </motion.p>
-              </div>
+      <div className="spatial-hero-content">
+        <motion.p className="spatial-identity" {...reveal(0.05, reduceMotion)}>
+          Arihant Jain <span>Senior Software Engineer</span>
+        </motion.p>
 
-              <motion.div className="mt-7 sm:mt-9" {...rise(0.32, shouldReduceMotion)}>
-                <div className="flex flex-col gap-3 sm:flex-row">
-                  <a href="#experience" className="btn btn-primary">
-                    Explore Systems Work
-                  </a>
-                  <a href="#contact" className="btn btn-ghost">
-                    Discuss Backend Work
-                    <span aria-hidden="true">-&gt;</span>
-                  </a>
-                </div>
-              </motion.div>
-            </div>
+        <div className="spatial-hero-copy">
+          <motion.h1 {...reveal(0.12, reduceMotion)}>
+            I build reliable backend systems.
+          </motion.h1>
 
-            <motion.div
-              className="grid content-center gap-3 sm:gap-4 min-[960px]:self-center"
-              {...rise(0.28, shouldReduceMotion)}
+          <motion.p className="spatial-hero-intro" {...reveal(0.2, reduceMotion)}>
+            I work on fintech and KYC platforms at Perfios. I focus on dependable
+            APIs, clear decisions, and sensible operating costs.
+          </motion.p>
+
+          <motion.div className="spatial-hero-actions" {...reveal(0.28, reduceMotion)}>
+            <a href="#experience" className="spatial-action spatial-action-primary">
+              View my work
+              <FiArrowDownRight aria-hidden="true" />
+            </a>
+            <a
+              href="https://arihant416.github.io/resume/index.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="spatial-action spatial-action-secondary"
             >
-              <div className="grid grid-cols-2 gap-2 sm:gap-3">
-                {STATS.map(({ num, label, sub }, index) => (
-                  <motion.div
-                    key={label}
-                    className="group rounded-[1rem] border border-border bg-bg/80 p-3 transition-colors duration-200 hover:border-accent sm:rounded-[1.35rem] sm:p-5"
-                    initial={shouldReduceMotion ? false : { opacity: 0, y: 14 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.45, delay: 0.36 + index * 0.05 }}
-                  >
-                    <span className="block font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-muted">
-                      0{index + 1}
-                    </span>
-                    <span className="mt-2 block font-sans text-2xl font-light leading-none text-text transition-colors duration-200 group-hover:text-accent sm:mt-3 sm:text-4xl md:mt-4 md:text-5xl">
-                      {num}
-                    </span>
-                    <span className="mt-2 block text-[11px] font-semibold leading-snug text-text-dim sm:mt-3 sm:text-sm">
-                      {label}
-                    </span>
-                    <span className="mt-1 hidden font-mono text-[10px] uppercase tracking-[0.08em] text-muted sm:block">
-                      {sub}
-                    </span>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
+              Resume
+              <FiArrowUpRight aria-hidden="true" />
+            </a>
+          </motion.div>
+        </div>
+
+        <motion.dl className="spatial-proof" {...reveal(0.36, reduceMotion)}>
+          {proof.map(({ value, label }) => (
+            <div key={label}>
+              <dt>{value}</dt>
+              <dd>{label}</dd>
+            </div>
+          ))}
+        </motion.dl>
+
       </div>
     </section>
   );

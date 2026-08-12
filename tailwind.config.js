@@ -25,10 +25,9 @@ module.exports = {
         'border-mute': 'var(--border-mute)',
       },
       fontFamily: {
-        // Enforces your premium editorial font families natively
-        sans: ['Geist', 'sans-serif'],
+        sans: ['Host Grotesk', 'sans-serif'],
         serif: ['Instrument Serif', 'serif'],
-        mono: ['JetBrains Mono', 'monospace'],
+        mono: ['IBM Plex Mono', 'monospace'],
       },
     },
   },

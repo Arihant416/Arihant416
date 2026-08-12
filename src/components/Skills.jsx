@@ -6,18 +6,13 @@ export default function Skills() {
 
   return (
     <div className="section border-b border-border bg-bg">
-      <div className="col-span-1">
-        <span className="section-kicker">03 Competencies</span>
-        <h2 className="mt-4 text-2xl font-light leading-tight text-text sm:text-3xl">
-          Technical <span className="font-serif italic text-accent">Stack</span>
-        </h2>
-      </div>
+      <h2 className="section-kicker section-numbered-title">03 Skills</h2>
 
       <div className="grid w-full grid-cols-1 gap-4 min-[960px]:grid-cols-2">
         {skillCategories.map((category, categoryIndex) => (
           <motion.article
             key={category.title}
-            className={`console-panel self-start rounded-[1.15rem] p-3 sm:rounded-[1.5rem] sm:p-6 ${
+            className={`console-panel self-start rounded-[0.8rem] p-3 sm:p-6 ${
               categoryIndex === skillCategories.length - 1 ? 'min-[960px]:col-span-2' : ''
             }`}
             initial={shouldReduceMotion ? false : { opacity: 0, y: 16 }}
@@ -32,19 +27,19 @@ export default function Skills() {
               <span className="mono-label text-muted">{String(categoryIndex + 1).padStart(2, '0')}</span>
             </div>
 
-            <div className="grid grid-cols-2 gap-2 sm:gap-3">
+            <div className="grid grid-cols-1 gap-2 min-[360px]:grid-cols-2 sm:gap-3">
               {category.skills.map((skill, index) => {
                 const Icon = skill.Icon;
                 return (
                   <motion.div
                     key={skill.name}
-                    className="group flex min-h-[3rem] items-center gap-2 rounded-xl border border-border bg-bg/70 px-2 py-2 transition-colors duration-200 hover:border-accent sm:min-h-[4rem] sm:gap-3 sm:rounded-2xl sm:px-4 sm:py-3"
+                    className="group flex min-h-[3rem] items-center gap-2 rounded-md border border-border bg-bg/70 px-2 py-2 transition-colors duration-200 hover:border-accent sm:min-h-[4rem] sm:gap-3 sm:px-4 sm:py-3"
                     initial={shouldReduceMotion ? false : { opacity: 0, y: 8 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.34, delay: categoryIndex * 0.04 + index * 0.03 }}
                   >
-                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-border bg-card2 sm:h-10 sm:w-10 sm:rounded-xl">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-border bg-card2 sm:h-10 sm:w-10">
                       {Icon ? (
                         <Icon className="h-4 w-4 sm:h-5 sm:w-5" style={{ color: skill.color }} aria-hidden="true" />
                       ) : (

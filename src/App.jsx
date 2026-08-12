@@ -6,7 +6,6 @@ import Hero from './components/Hero';
 import Experience from './components/Experience';
 import Skills from './components/Skills';
 import Testimonials from './components/Testimonials';
-import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 
@@ -19,7 +18,6 @@ export default function App() {
         <section id="experience"><Experience /></section>
         <section id="skills"><Skills /></section>
         <section id="recommendations"><Testimonials /></section>
-        <Contact />
       </main>
       <Footer />
     </ThemeProvider>
