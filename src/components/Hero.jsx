@@ -8,7 +8,7 @@ const SpatialScene = lazy(() => import('./SpatialScene'));
 const proof = [
   { value: '5M+', label: 'requests each day' },
   { value: '30+', label: 'APIs designed' },
-  { value: '$700K+', label: 'saved since Apr 2024' },
+  { value: '$700K+', label: 'saved since 2024' },
 ];
 
 const reveal = (delay, reduceMotion) => ({
