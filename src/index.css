@@ -804,6 +804,22 @@ main {
   align-items: end;
 }
 
+@media (max-width: 1023px) {
+  .site-footer-main {
+    justify-items: center;
+    text-align: center;
+  }
+
+  .site-footer-invite,
+  .site-footer-connect {
+    justify-items: center;
+  }
+
+  .site-footer-socials {
+    justify-content: center;
+  }
+}
+
 .site-footer-invite h2 {
   max-width: 36rem;
   margin: 1.2rem 0 0;
@@ -937,14 +953,22 @@ main {
   }
 }
 
+@media (max-width: 1023px) {
+  .site-footer-bottom {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
 @media (max-width: 480px) {
   .project-proof dd {
     font-size: 0.62rem;
   }
 
   .site-footer-bottom {
-    align-items: flex-start;
+    align-items: center;
     flex-direction: column;
+    text-align: center;
   }
 }
 
@@ -1164,20 +1188,13 @@ main {
   opacity: 0.42;
 }
 
-.spatial-illustration-wrap {
-  position: absolute;
-  right: clamp(-2.5rem, 1vw, 1rem);
-  bottom: clamp(2rem, 5vh, 4.5rem);
+.spatial-visual {
+  position: relative;
   z-index: 1;
-  width: clamp(40rem, 49vw, 57rem);
-  max-width: 62%;
+  width: min(100%, 49rem);
+  align-self: end;
+  justify-self: end;
   pointer-events: none;
-  transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: transform;
-}
-
-.spatial-illustration-wrap.is-greeting {
-  transform: translate3d(0, -0.35rem, 0);
 }
 
 .spatial-illustration {
@@ -1186,14 +1203,15 @@ main {
   height: auto;
   opacity: 0;
   filter: saturate(0.78) brightness(0.8) contrast(1.08) drop-shadow(0 2.4rem 4rem rgba(0, 0, 0, 0.24));
-  transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0.45rem, 0) scale(0.985);
   transform-origin: 62% 70%;
-  transition: opacity 520ms ease, filter 260ms ease;
+  transition: opacity 520ms ease, filter 260ms ease, transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform;
 }
 
-.spatial-scene.is-ready .spatial-illustration {
+.spatial-visual.is-loaded .spatial-illustration {
   opacity: 0.88;
+  transform: translate3d(0, 0, 0) scale(1);
 }
 
 .spatial-person-hotspot {
@@ -1245,13 +1263,15 @@ main {
 }
 
 .spatial-person-hotspot:hover span,
-.spatial-illustration-wrap.is-greeting .spatial-person-hotspot span {
+.spatial-visual.is-greeting .spatial-person-hotspot span {
   opacity: 1;
   transform: translate3d(0, 0, 0) scale(1);
 }
 
-.spatial-illustration-wrap.is-greeting .spatial-illustration {
+.spatial-visual:hover .spatial-illustration,
+.spatial-visual.is-greeting .spatial-illustration {
   filter: saturate(0.9) brightness(0.86) contrast(1.08) drop-shadow(0 2.4rem 4rem rgba(0, 0, 0, 0.24));
+  transform: translate3d(0, -0.35rem, 0) scale(1.008);
 }
 
 .spatial-person-hotspot:focus-visible {
@@ -1266,19 +1286,18 @@ main {
   filter: saturate(0.76) brightness(0.98) contrast(0.96) drop-shadow(0 2rem 3.5rem rgba(37, 45, 58, 0.14));
 }
 
-[data-theme="light"] .spatial-scene.is-ready .spatial-illustration {
+[data-theme="light"] .spatial-visual.is-loaded .spatial-illustration {
   opacity: 0.94;
 }
 
-[data-theme="light"] .spatial-illustration-wrap.is-greeting .spatial-illustration {
+[data-theme="light"] .spatial-visual:hover .spatial-illustration,
+[data-theme="light"] .spatial-visual.is-greeting .spatial-illustration {
   filter: saturate(0.86) brightness(1.01) contrast(0.98) drop-shadow(0 2rem 3.5rem rgba(37, 45, 58, 0.14));
 }
 
 @media (min-width: 1600px) {
-  .spatial-illustration-wrap {
-    right: clamp(1rem, 3vw, 5rem);
-    width: clamp(40rem, 42vw, 48rem);
-    max-width: 52%;
+  .spatial-visual {
+    width: min(43vw, 47rem);
   }
 }
 
@@ -1297,8 +1316,16 @@ main {
   width: min(100%, 1760px);
   min-height: 100svh;
   margin: 0 auto;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: auto minmax(0, 1fr) auto;
   padding: clamp(6.5rem, 12vh, 9rem) clamp(1.25rem, 4vw, 4.5rem) clamp(2rem, 4vh, 3.5rem);
+}
+
+.spatial-hero-main {
+  display: grid;
+  min-height: 0;
+  align-items: center;
+  grid-template-columns: minmax(0, 1.08fr) minmax(23rem, 0.92fr);
+  gap: clamp(1.5rem, 3vw, 4.5rem);
 }
 
 .spatial-identity {
@@ -1371,7 +1398,11 @@ main {
   font-size: 0.84rem;
   font-weight: 600;
   text-decoration: none;
-  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.spatial-action svg {
+  transition: transform 180ms ease;
 }
 
 .spatial-action-primary {
@@ -1383,6 +1414,8 @@ main {
 .spatial-action-primary:hover {
   border-color: var(--text);
   background: var(--text);
+  box-shadow: 0 0.8rem 1.8rem color-mix(in srgb, var(--accent) 16%, transparent);
+  transform: translateY(-2px);
 }
 
 .spatial-action-secondary {
@@ -1391,28 +1424,37 @@ main {
 
 .spatial-action-secondary:hover {
   border-color: var(--accent2);
+  transform: translateY(-2px);
+}
+
+.spatial-action:hover svg {
+  transform: translateX(2px);
 }
 
 .spatial-proof {
   position: relative;
   z-index: 2;
-  display: flex;
-  width: min(100%, 44rem);
+  display: grid;
+  width: 100%;
   align-items: end;
-  gap: 0;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   margin: 0;
+  border-top: 1px solid var(--border);
 }
 
 .spatial-proof div {
   min-width: 0;
-  flex: 1;
-  border-top: 1px solid var(--border);
-  padding: 1rem clamp(0.75rem, 2vw, 1.5rem) 0 0;
+  padding: 1rem clamp(0.75rem, 2vw, 1.5rem) 0.25rem 0;
+  transition: background-color 180ms ease;
 }
 
 .spatial-proof div + div {
   border-left: 1px solid var(--border);
   padding-left: clamp(0.75rem, 2vw, 1.5rem);
+}
+
+.spatial-proof div:hover {
+  background: color-mix(in srgb, var(--accent) 4%, transparent);
 }
 
 .spatial-proof dt {
@@ -1478,16 +1520,28 @@ main {
     padding-top: 6.4rem;
   }
 
-  .spatial-hero-copy {
-    align-self: start;
-    padding-top: clamp(4.75rem, 9vh, 6rem);
+  .spatial-hero-main {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
   }
 
-  .spatial-illustration-wrap {
-    right: -9%;
-    bottom: 3.75rem;
-    width: 82%;
-    max-width: none;
+  .spatial-hero-copy {
+    align-self: start;
+    padding: clamp(3rem, 7vh, 5rem) 0 1.5rem;
+  }
+
+  .spatial-visual {
+    width: min(72vw, 38rem);
+    justify-self: center;
+  }
+
+  .spatial-proof {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-top: 0;
+  }
+
+  .spatial-proof div {
+    padding-top: 0.7rem;
   }
 
 }
@@ -1507,12 +1561,12 @@ main {
   }
 
   .spatial-hero {
-    min-height: max(100svh, 55rem);
+    min-height: 100svh;
   }
 
   .spatial-hero-content {
-    min-height: max(100svh, 55rem);
-    grid-template-rows: auto auto 1fr;
+    min-height: 100svh;
+    grid-template-rows: auto auto auto;
     padding: 5.6rem 1.25rem 1.5rem;
   }
 
@@ -1524,23 +1578,25 @@ main {
   }
 
   .spatial-identity {
-    flex-wrap: wrap;
-    gap: 0.55rem 0.75rem;
-    font-size: 0.64rem;
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+    font-size: 0.6rem;
+    white-space: nowrap;
   }
 
   .spatial-identity::before {
-    width: 1.8rem;
+    width: 1.25rem;
+    flex: 0 0 auto;
   }
 
   .spatial-identity span {
-    width: 100%;
-    padding-left: 2.55rem;
+    width: auto;
+    padding-left: 0;
   }
 
   .spatial-hero-copy {
     align-self: start;
-    padding: 2.1rem 0 1.75rem;
+    padding: 2.1rem 0 1rem;
   }
 
   .spatial-hero h1 {
@@ -1567,13 +1623,12 @@ main {
 
   .spatial-proof {
     width: 100%;
-    align-self: end;
-    margin-bottom: 0;
+    margin-top: 0.65rem;
     background: var(--bg);
   }
 
   .spatial-proof div {
-    padding-top: 0.85rem;
+    padding-top: 0.7rem;
   }
 
   .spatial-proof dt {
@@ -1583,12 +1638,12 @@ main {
   .spatial-proof dd {
     font-size: 0.68rem;
     line-height: 1.35;
+    white-space: nowrap;
   }
 
-  .spatial-illustration-wrap {
-    right: -19%;
-    bottom: 6.25rem;
-    width: 128%;
+  .spatial-visual {
+    width: min(112%, 32rem);
+    margin: 0 auto -0.25rem;
   }
 
 }
@@ -1623,23 +1678,26 @@ main {
     font-size: 0.62rem;
   }
 
-  .spatial-illustration-wrap {
-    right: -23%;
-    bottom: 6.5rem;
-    width: 138%;
+  .spatial-visual {
+    width: min(108%, 29rem);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .spatial-scene canvas,
   .spatial-scene-fallback,
-  .spatial-illustration-wrap,
+  .spatial-visual,
   .spatial-illustration,
+  .spatial-action,
+  .spatial-action svg,
+  .spatial-proof div,
   .spatial-person-hotspot span {
     transition: none;
   }
 
-  .spatial-illustration-wrap.is-greeting {
+  .spatial-visual:hover .spatial-illustration,
+  .spatial-visual.is-greeting .spatial-illustration,
+  .spatial-action:hover {
     transform: none;
   }
 }

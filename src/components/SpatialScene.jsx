@@ -5,17 +5,14 @@ import { useTheme } from '../context/ThemeContext';
 export default function SpatialScene({ reduceMotion = false }) {
   const containerRef = useRef(null);
   const canvasRef = useRef(null);
-  const illustrationRef = useRef(null);
   const [ready, setReady] = useState(false);
   const [failed, setFailed] = useState(false);
-  const [showGreeting, setShowGreeting] = useState(false);
   const { isDark } = useTheme();
 
   useEffect(() => {
     const container = containerRef.current;
     const canvas = canvasRef.current;
-    const illustration = illustrationRef.current;
-    if (!container || !canvas || !illustration) return undefined;
+    if (!container || !canvas) return undefined;
 
     setReady(false);
     setFailed(false);
@@ -156,7 +153,6 @@ export default function SpatialScene({ reduceMotion = false }) {
       if (!reduceMotion) {
         stage.rotation.y += ((pointerX * 0.025) - stage.rotation.y) * 0.035;
         stage.rotation.x += ((pointerY * -0.012) - stage.rotation.x) * 0.035;
-        illustration.style.transform = `translate3d(${pointerX * -5}px, ${pointerY * -3}px, 0)`;
         fins.forEach((fin, index) => {
           fin.position.z = fin.userData.baseZ + Math.sin(seconds * 0.28 + index) * 0.035;
         });
@@ -175,7 +171,6 @@ export default function SpatialScene({ reduceMotion = false }) {
       window.removeEventListener('pointermove', handlePointer);
       resizeObserver.disconnect();
       if (animationFrame) window.cancelAnimationFrame(animationFrame);
-      illustration.style.transform = '';
       geometries.forEach((geometry) => geometry.dispose());
       materials.forEach((material) => material.dispose());
       grid.geometry.dispose();
@@ -188,39 +183,6 @@ export default function SpatialScene({ reduceMotion = false }) {
     <div ref={containerRef} className={`spatial-scene ${ready ? 'is-ready' : ''} ${failed ? 'has-failed' : ''}`}>
       <div className="spatial-scene-fallback" aria-hidden="true" />
       <canvas ref={canvasRef} aria-hidden="true" />
-      <div className={`spatial-illustration-wrap ${showGreeting ? 'is-greeting' : ''}`}>
-        <img
-          ref={illustrationRef}
-          className="spatial-illustration"
-          src="/backend-engineer-illustration.webp"
-          width="1280"
-          height="853"
-          alt=""
-          decoding="async"
-          fetchPriority="high"
-        />
-        <button
-          type="button"
-          className="spatial-person-hotspot"
-          aria-label="Say hello to Arihant"
-          aria-pressed={showGreeting}
-          onPointerEnter={(event) => {
-            if (event.pointerType === 'mouse') setShowGreeting(true);
-          }}
-          onPointerLeave={(event) => {
-            if (event.pointerType === 'mouse') setShowGreeting(false);
-          }}
-          onPointerUp={(event) => {
-            if (event.pointerType === 'touch' || event.pointerType === 'pen') {
-              setShowGreeting(true);
-            }
-          }}
-          onFocus={() => setShowGreeting(true)}
-          onBlur={() => setShowGreeting(false)}
-        >
-          <span aria-hidden="true">Hi :)</span>
-        </button>
-      </div>
     </div>
   );
 }
