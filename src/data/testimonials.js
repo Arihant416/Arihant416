@@ -15,7 +15,7 @@ export const testimonials = [
   },
   {
     name: 'Sanket Kamta',
-    role: 'Senior Software Engineer @ Perfios',
+    role: 'Team Lead @ Perfios',
     quote: "I highly recommend Arihant Jain as an exceptional Python Developer with advanced expertise in AWS. His technical skills are top-notch, consistently delivering efficient and innovative solutions. Arihant is a fantastic team player, always communicating effectively and contributing positively to group dynamics. His eagerness to learn and explore new technologies further amplifies his value, driving both personal and team success. Arihant’s dedication and enthusiasm make him an invaluable asset to any project.",
     linkedin: 'https://www.linkedin.com/in/sanketkamta',
     avatar: 'https://api.dicebear.com/7.x/thumbs/svg?seed=SanketKamta',
@@ -29,7 +29,7 @@ export const testimonials = [
   },
   {
     name: 'Nikhil Vaswani',
-    role: 'SDE-2 @ Groww (ex-Razorpay) — Former Peer at InTimeTec',
+    role: 'SSE @ PayPal — Former Peer at InTimeTec',
     quote: "Me and Arihant worked in one organisation for over an year. Arihant has very great knowledge of almost every aspect of Software Development. He is very well versed with front end platforms like React and Angular & same for BE stuff using Python. He is not only a friend of mine but also mentored me & helped a lot during my job search. He is the one I used to discuss a lot of Software things.",
     linkedin: 'https://www.linkedin.com/in/nikhilvaswani1',
     avatar: 'https://api.dicebear.com/7.x/thumbs/svg?seed=NikhilVaswani',
