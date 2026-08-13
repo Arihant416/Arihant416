@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { FiChevronLeft, FiChevronRight, FiExternalLink } from 'react-icons/fi';
 import { testimonials } from '../data/testimonials';
@@ -32,19 +32,35 @@ function Identity({ testimonial, compact = false }) {
   );
 }
 
-function ActiveCard({ testimonial, shouldReduceMotion, direction }) {
+function ActiveCard({ testimonial, shouldReduceMotion, direction, onPrevious, onNext }) {
+  const swipeStartX = useRef(null);
+
   return (
     <AnimatePresence mode="wait" custom={direction}>
       <motion.article
         key={testimonial.name}
         custom={direction}
-        className="console-panel rounded-[0.8rem] border-accent/55 p-5 shadow-[0_30px_80px_rgba(0,0,0,0.24)] sm:p-6 lg:p-7 xl:p-8"
+        className="testimonial-active-card console-panel rounded-[0.8rem] border-accent/55 p-4 shadow-[0_30px_80px_rgba(0,0,0,0.24)] sm:p-6 lg:p-7"
         initial={shouldReduceMotion ? false : { opacity: 0, x: direction * 34, y: 14, scale: 0.97 }}
         animate={{ opacity: 1, x: 0, y: 0, scale: 1 }}
         exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, x: direction * -28, y: -8, scale: 0.98 }}
         transition={cardTransition(shouldReduceMotion)}
+        onPointerDown={(event) => {
+          if (event.target.closest('a')) return;
+          swipeStartX.current = event.clientX;
+          event.currentTarget.setPointerCapture(event.pointerId);
+        }}
+        onPointerUp={(event) => {
+          if (swipeStartX.current === null) return;
+          const distance = event.clientX - swipeStartX.current;
+          swipeStartX.current = null;
+          if (distance > 50) onPrevious();
+          if (distance < -50) onNext();
+        }}
+        onPointerCancel={() => { swipeStartX.current = null; }}
+        aria-roledescription="slide"
       >
-        <div className="mb-6 flex items-start justify-between gap-4 border-b border-border pb-5">
+        <div className="testimonial-active-header flex items-start justify-between gap-4 border-b border-border pb-4 sm:pb-5">
           <Identity testimonial={testimonial} />
 
           <a
@@ -58,12 +74,12 @@ function ActiveCard({ testimonial, shouldReduceMotion, direction }) {
           </a>
         </div>
 
-        <blockquote>
-          <p className="text-[15px] font-light leading-relaxed text-text-dim sm:text-base lg:text-lg xl:text-xl">
-            <span className="mr-2 font-serif text-3xl leading-none text-accent">"</span>
-            {testimonial.quote}
-            <span className="ml-2 font-serif text-3xl leading-none text-accent">"</span>
-          </p>
+        <blockquote
+          className="testimonial-quote-wrap"
+          tabIndex={0}
+          aria-label={`Recommendation from ${testimonial.name}`}
+        >
+          <p className="testimonial-quote">{testimonial.quote}</p>
         </blockquote>
       </motion.article>
     </AnimatePresence>
@@ -87,11 +103,7 @@ function PreviewCard({ testimonial, side, onClick, shouldReduceMotion }) {
       aria-label={`Show testimonial from ${testimonial.name}`}
     >
       <Identity testimonial={testimonial} compact />
-      <p className="mt-4 max-h-24 overflow-hidden text-[12px] leading-relaxed text-text-dim">
-        <span className="mr-1 font-serif text-accent">"</span>
-        {testimonial.quote}
-        <span className="ml-1 font-serif text-accent">"</span>
-      </p>
+      <p className="testimonial-preview-quote mt-4 max-h-24 overflow-hidden">{testimonial.quote}</p>
       <span className="mt-4 inline-flex font-mono text-[10px] font-semibold uppercase tracking-[0.12em] text-muted transition-colors duration-200 group-hover:text-accent">
         Bring forward
       </span>
@@ -161,11 +173,13 @@ export default function Testimonials() {
             shouldReduceMotion={shouldReduceMotion}
           />
 
-          <div className="testimonial-active-frame">
+          <div className="testimonial-active-frame" aria-live="polite">
             <ActiveCard
               testimonial={testimonials[activeIndex]}
               shouldReduceMotion={shouldReduceMotion}
               direction={direction}
+              onPrevious={goPrevious}
+              onNext={goNext}
             />
           </div>
         </div>

@@ -326,13 +326,252 @@ main {
   position: relative;
   z-index: 20;
   width: 100%;
+  min-height: 24rem;
   margin-inline: auto;
+}
+
+.testimonial-active-card {
+  display: grid;
+  height: 24rem;
+  grid-template-rows: auto minmax(0, 1fr);
+  cursor: grab;
+  touch-action: pan-y;
+}
+
+.testimonial-active-card:active {
+  cursor: grabbing;
+}
+
+.testimonial-active-header {
+  margin-bottom: 1.25rem;
+}
+
+.testimonial-quote-wrap {
+  min-height: 0;
+  margin: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border-left: 1px solid color-mix(in srgb, var(--accent) 60%, var(--border));
+  padding: 0.1rem 0.75rem 0.35rem 1rem;
+  scrollbar-color: color-mix(in srgb, var(--accent) 32%, var(--muted2)) transparent;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+}
+
+.testimonial-quote-wrap::-webkit-scrollbar {
+  width: 5px;
+}
+
+.testimonial-quote-wrap::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.testimonial-quote-wrap::-webkit-scrollbar-thumb {
+  border: 0;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 32%, var(--muted2));
+}
+
+.testimonial-quote-wrap::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--accent) 55%, var(--muted2));
+}
+
+.testimonial-quote-wrap::-webkit-scrollbar-button,
+.testimonial-quote-wrap::-webkit-scrollbar-button:single-button,
+.testimonial-quote-wrap::-webkit-scrollbar-button:start:decrement,
+.testimonial-quote-wrap::-webkit-scrollbar-button:end:increment {
+  display: none;
+  width: 0;
+  height: 0;
+  -webkit-appearance: none;
+  background: transparent;
+}
+
+.testimonial-quote-wrap:focus-visible {
+  outline: 1px solid color-mix(in srgb, var(--accent) 65%, transparent);
+  outline-offset: 4px;
+}
+
+.testimonial-quote {
+  margin: 0;
+  color: var(--text-dim);
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.08rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.5;
 }
 
 .testimonial-preview-card {
   position: absolute;
   top: 3rem;
   display: none;
+}
+
+.testimonial-preview-quote {
+  color: var(--text-dim);
+  font-family: 'Instrument Serif', serif;
+  font-size: 0.9rem;
+  font-style: italic;
+  line-height: 1.45;
+}
+
+.skill-flow-section {
+  overflow: hidden;
+}
+
+.skill-flow {
+  min-width: 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.skill-flow-lane {
+  display: grid;
+  min-width: 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.skill-flow-lane:last-child {
+  border-bottom: 0;
+}
+
+.skill-flow-meta {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.75rem 0 0.3rem;
+}
+
+.skill-flow-meta span,
+.skill-flow-meta h3 {
+  margin: 0;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.skill-flow-meta span {
+  color: var(--accent);
+}
+
+.skill-flow-meta h3 {
+  overflow: hidden;
+  color: var(--text-dim);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.skill-flow-window {
+  min-width: 0;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+}
+
+.skill-flow-track,
+.skill-flow-group {
+  display: flex;
+  width: max-content;
+  align-items: center;
+}
+
+.skill-flow-track {
+  animation: skill-flow-left var(--skill-flow-duration) linear infinite;
+  will-change: transform;
+}
+
+.skill-flow-track.moves-right {
+  animation-direction: reverse;
+}
+
+.skill-flow-group {
+  flex: none;
+  gap: 0.6rem;
+  padding: 0.7rem 0.6rem 0.85rem 0;
+}
+
+.skill-flow-pill {
+  display: inline-flex;
+  min-height: 2.75rem;
+  flex: none;
+  align-items: center;
+  gap: 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--bg-card) 82%, transparent);
+  padding: 0.35rem 0.9rem 0.35rem 0.4rem;
+  color: var(--text-dim);
+  font-size: 0.76rem;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  transition: border-color 180ms ease, background-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.skill-flow-icon {
+  display: inline-flex;
+  width: 2rem;
+  height: 2rem;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--bg-card2);
+}
+
+.skill-flow-icon svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.skill-flow-monogram {
+  color: var(--accent);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.55rem;
+  font-weight: 700;
+}
+
+.skill-flow:hover .skill-flow-track,
+.skill-flow:focus-within .skill-flow-track {
+  animation-play-state: paused;
+}
+
+.skill-flow-pill:hover {
+  border-color: color-mix(in srgb, var(--accent) 68%, var(--border));
+  background: var(--bg-card2);
+  color: var(--text);
+  transform: translateY(-2px);
+}
+
+.skill-flow-window.is-static {
+  overflow-x: auto;
+  mask-image: none;
+  -webkit-mask-image: none;
+  scrollbar-width: none;
+}
+
+.skill-flow-window.is-static::-webkit-scrollbar {
+  display: none;
+}
+
+.skill-flow-window.is-static .skill-flow-track {
+  animation: none;
+  transform: none;
+}
+
+@keyframes skill-flow-left {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
 }
 
 .testimonial-preview-left {
@@ -354,6 +593,15 @@ main {
 
   .testimonial-active-frame {
     width: 75%;
+    min-height: 23.5rem;
+  }
+
+  .testimonial-active-card {
+    height: 23.5rem;
+  }
+
+  .testimonial-quote {
+    font-size: 1.14rem;
   }
 
   .testimonial-preview-card {
@@ -379,7 +627,12 @@ main {
   }
 
   .testimonial-active-frame {
-    width: 56%;
+    width: 58%;
+    min-height: 24rem;
+  }
+
+  .testimonial-active-card {
+    height: 24rem;
   }
 
   .testimonial-preview-card {
@@ -390,7 +643,7 @@ main {
 
 @media (min-width: 1280px) {
   .testimonial-active-frame {
-    width: 50%;
+    width: 54%;
   }
 
   .testimonial-preview-card {
@@ -619,6 +872,23 @@ main {
   line-height: 1.4;
 }
 
+@media (min-width: 720px) {
+  .skill-flow-lane {
+    grid-template-columns: minmax(10.5rem, 14rem) minmax(0, 1fr);
+    align-items: center;
+  }
+
+  .skill-flow-meta {
+    height: 100%;
+    border-right: 1px solid var(--border);
+    padding: 0 1.25rem 0 0;
+  }
+
+  .skill-flow-window {
+    margin-left: 1rem;
+  }
+}
+
 @media (min-width: 768px) {
   .experience-heading-row {
     gap: 1.5rem;
@@ -821,12 +1091,13 @@ main {
 }
 
 .site-footer-invite h2 {
-  max-width: 36rem;
+  max-width: 42rem;
   margin: 1.2rem 0 0;
   color: var(--text);
-  font-size: clamp(1.75rem, 4vw, 3.25rem);
+  font-size: clamp(1.7rem, 2.5vw, 2.65rem);
   font-weight: 400;
-  line-height: 1.05;
+  line-height: 1.08;
+  text-wrap: balance;
 }
 
 .site-footer-invite p {
@@ -950,6 +1221,10 @@ main {
 
   .site-footer-connect {
     justify-items: end;
+  }
+
+  .site-footer-invite h2 {
+    white-space: nowrap;
   }
 }
 
@@ -1684,6 +1959,15 @@ main {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .skill-flow-track {
+    animation: none;
+    transform: none;
+  }
+
+  .skill-flow-pill {
+    transition: none;
+  }
+
   .spatial-scene canvas,
   .spatial-scene-fallback,
   .spatial-visual,

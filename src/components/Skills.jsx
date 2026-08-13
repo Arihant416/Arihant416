@@ -1,59 +1,80 @@
-import { motion, useReducedMotion } from 'framer-motion';
+import { useReducedMotion } from 'framer-motion';
 import { skillCategories } from '../data/skills';
+
+function SkillPill({ skill, hidden = false }) {
+  const Icon = skill.Icon;
+  const monogram = skill.name
+    .split(/\s|\//)
+    .filter(Boolean)
+    .map((part) => part[0])
+    .join('')
+    .slice(0, 2)
+    .toUpperCase();
+
+  return (
+    <span
+      className="skill-flow-pill"
+      aria-hidden={hidden || undefined}
+      title={hidden ? undefined : skill.name}
+    >
+      <span className="skill-flow-icon">
+        {Icon ? (
+          <Icon style={{ color: skill.color }} aria-hidden="true" />
+        ) : (
+          <span className="skill-flow-monogram" aria-hidden="true">{monogram}</span>
+        )}
+      </span>
+      <span>{skill.name}</span>
+    </span>
+  );
+}
+
+function SkillGroup({ skills, copies = 1, hidden = false }) {
+  return (
+    <div className="skill-flow-group" aria-hidden={hidden || undefined}>
+      {Array.from({ length: copies }, (_, copyIndex) => (
+        skills.map((skill) => (
+          <SkillPill
+            key={`${copyIndex}-${skill.name}`}
+            skill={skill}
+            hidden={hidden || copyIndex > 0}
+          />
+        ))
+      ))}
+    </div>
+  );
+}
 
 export default function Skills() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <div className="section border-b border-border bg-bg">
+    <div className="section skill-flow-section border-b border-border bg-bg">
       <h2 className="section-kicker section-numbered-title">03 Skills</h2>
 
-      <div className="grid w-full grid-cols-1 gap-4 min-[960px]:grid-cols-2">
+      <div className="skill-flow" aria-label="Technical skills">
         {skillCategories.map((category, categoryIndex) => (
-          <motion.article
+          <article
             key={category.title}
-            className={`console-panel self-start rounded-[0.8rem] p-3 sm:p-6 ${
-              categoryIndex === skillCategories.length - 1 ? 'min-[960px]:col-span-2' : ''
-            }`}
-            initial={shouldReduceMotion ? false : { opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-30px' }}
-            transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.42, delay: categoryIndex * 0.05, ease: [0.22, 1, 0.36, 1] }}
+            className="skill-flow-lane"
           >
-            <div className="mb-4 flex items-center justify-between gap-3 border-b border-border pb-3 sm:mb-6 sm:pb-4">
-              <h3 className="font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-text sm:text-[11px]">
-                {category.title}
-              </h3>
-              <span className="mono-label text-muted">{String(categoryIndex + 1).padStart(2, '0')}</span>
+            <div className="skill-flow-meta">
+              <span>{String(categoryIndex + 1).padStart(2, '0')}</span>
+              <h3>{category.title}</h3>
             </div>
 
-            <div className="grid grid-cols-1 gap-2 min-[360px]:grid-cols-2 sm:gap-3">
-              {category.skills.map((skill, index) => {
-                const Icon = skill.Icon;
-                return (
-                  <motion.div
-                    key={skill.name}
-                    className="group flex min-h-[3rem] items-center gap-2 rounded-md border border-border bg-bg/70 px-2 py-2 transition-colors duration-200 hover:border-accent sm:min-h-[4rem] sm:gap-3 sm:px-4 sm:py-3"
-                    initial={shouldReduceMotion ? false : { opacity: 0, y: 8 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.34, delay: categoryIndex * 0.04 + index * 0.03 }}
-                  >
-                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-border bg-card2 sm:h-10 sm:w-10">
-                      {Icon ? (
-                        <Icon className="h-4 w-4 sm:h-5 sm:w-5" style={{ color: skill.color }} aria-hidden="true" />
-                      ) : (
-                        <span className="status-dot" />
-                      )}
-                    </span>
-                    <span className="min-w-0 text-[12px] font-semibold leading-snug text-text-dim transition-colors duration-200 group-hover:text-text sm:text-sm">
-                      {skill.name}
-                    </span>
-                  </motion.div>
-                );
-              })}
+            <div className={`skill-flow-window ${shouldReduceMotion ? 'is-static' : ''}`}>
+              <div
+                className={`skill-flow-track ${categoryIndex % 2 === 0 ? 'moves-left' : 'moves-right'}`}
+                style={{ '--skill-flow-duration': `${28 + categoryIndex * 3}s` }}
+              >
+                <SkillGroup skills={category.skills} copies={shouldReduceMotion ? 1 : 2} />
+                {!shouldReduceMotion && (
+                  <SkillGroup skills={category.skills} copies={2} hidden />
+                )}
+              </div>
             </div>
-          </motion.article>
+          </article>
         ))}
       </div>
     </div>
