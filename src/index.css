@@ -1537,6 +1537,11 @@ main {
 
   .spatial-proof {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-top: 0;
+  }
+
+  .spatial-proof div {
+    padding-top: 0.7rem;
   }
 
 }
@@ -1621,7 +1626,7 @@ main {
   }
 
   .spatial-proof div {
-    padding-top: 0.85rem;
+    padding-top: 0.7rem;
   }
 
   .spatial-proof dt {
