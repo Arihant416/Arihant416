@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { FiFileText, FiMenu, FiMoon, FiSun, FiX } from 'react-icons/fi';
+import { FiArrowUpRight, FiFileText, FiMenu, FiMoon, FiSun, FiX } from 'react-icons/fi';
 import { useTheme } from '../context/ThemeContext';
+import AppLink from './AppLink';
 
 const NAV = [
   { label: 'Work', href: '#experience' },
@@ -9,6 +10,7 @@ const NAV = [
   { label: 'Skills', href: '#skills' },
   { label: 'Reviews', href: '#testimonials' },
   { label: 'Contact', href: '#contact' },
+  { label: 'Beyond work', href: '/beyond-work', isRoute: true },
 ];
 
 export default function Header() {
@@ -25,7 +27,8 @@ export default function Header() {
       animationFrame = window.requestAnimationFrame(() => {
         setScrolled(window.scrollY > 24);
         const triggerLine = window.innerHeight * 0.42;
-        const next = NAV.reduce((current, { href }) => {
+        const next = NAV.reduce((current, { href, isRoute }) => {
+          if (isRoute) return current;
           const section = document.querySelector(href);
           return section?.getBoundingClientRect().top <= triggerLine ? href : current;
         }, null);
@@ -68,10 +71,17 @@ export default function Header() {
         </a>
 
         <div className="spatial-desktop-nav">
-          {NAV.map(({ label, href }) => (
-            <a key={href} href={href} aria-current={activeHref === href ? 'location' : undefined}>
-              {label}
-            </a>
+          {NAV.map(({ label, href, isRoute }) => (
+            isRoute ? (
+              <AppLink key={href} to={href} className="spatial-beyond-nav-link">
+                <span>{label}</span>
+                <FiArrowUpRight aria-hidden="true" />
+              </AppLink>
+            ) : (
+              <a key={href} href={href} aria-current={activeHref === href ? 'location' : undefined}>
+                {label}
+              </a>
+            )
           ))}
         </div>
 
@@ -113,10 +123,22 @@ export default function Header() {
             exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -6 }}
             transition={reduceMotion ? { duration: 0 } : { duration: 0.2 }}
           >
-            {NAV.map(({ label, href }) => (
-              <a key={href} href={href} onClick={() => setMobileMenuOpen(false)}>
-                {label}
-              </a>
+            {NAV.map(({ label, href, isRoute }) => (
+              isRoute ? (
+                <AppLink
+                  key={href}
+                  to={href}
+                  className="spatial-mobile-beyond"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <span>{label}</span>
+                  <FiArrowUpRight aria-hidden="true" />
+                </AppLink>
+              ) : (
+                <a key={href} href={href} onClick={() => setMobileMenuOpen(false)}>
+                  {label}
+                </a>
+              )
             ))}
           </motion.div>
         )}
