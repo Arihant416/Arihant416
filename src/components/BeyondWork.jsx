@@ -12,6 +12,14 @@ import { favorites, filmNotes, nowNotes, wallPosters, watchArchive } from '../da
 import AppLink from './AppLink';
 
 const spring = { stiffness: 95, damping: 24, mass: 0.7 };
+const revealTransition = { duration: 0.5, ease: [0.22, 1, 0.36, 1] };
+
+const revealProps = (reduceMotion, delay = 0) => ({
+  initial: reduceMotion ? false : { opacity: 0, y: 18 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, amount: 0.18 },
+  transition: { ...revealTransition, delay },
+});
 
 function PosterWall() {
   const wallRef = useRef(null);
@@ -47,6 +55,15 @@ function PosterWall() {
       <motion.div
         className="bw-poster-wall"
         style={reduceMotion ? undefined : { rotateX, rotateY }}
+        animate={reduceMotion ? undefined : {
+          y: [0, -6, 0, 4, 0],
+          scale: [1, 1.008, 1, 0.996, 1],
+        }}
+        transition={reduceMotion ? undefined : {
+          duration: 10,
+          ease: 'easeInOut',
+          repeat: Infinity,
+        }}
       >
         {wallPosters.map(({ title, image }, index) => (
           <figure
@@ -183,11 +200,11 @@ export default function BeyondWork() {
         </section>
 
         <section className="bw-section bw-favourites-section" aria-labelledby="favourites-heading">
-          <header className="bw-section-heading">
+          <motion.header className="bw-section-heading" {...revealProps(reduceMotion)}>
             <p className="section-kicker">Always in rotation</p>
             <h2 id="favourites-heading">The ones that stayed.</h2>
             <p>Not a ranking. Just the stories I can talk about for far too long.</p>
-          </header>
+          </motion.header>
           <div className="bw-favourites-grid">
             {favorites.map((item, index) => (
               <FavouriteStory item={item} index={index} key={item.title} reduceMotion={reduceMotion} />
@@ -196,50 +213,54 @@ export default function BeyondWork() {
         </section>
 
         <section className="bw-section bw-archive-section" aria-labelledby="archive-heading">
-          <header className="bw-section-heading">
+          <motion.header className="bw-section-heading" {...revealProps(reduceMotion)}>
             <p className="section-kicker">The wider shelf</p>
             <h2 id="archive-heading">A lot more screen time.</h2>
             <p>Thrillers usually win. Strong characters keep me around.</p>
-          </header>
-          <div className="bw-archive" role="list">
+          </motion.header>
+          <motion.div className="bw-archive" role="list" {...revealProps(reduceMotion, 0.08)}>
             {watchArchive.map(({ title, image }, index) => (
               <figure className={`bw-archive-item is-offset-${index % 4}`} key={title} role="listitem">
                 <img src={image} alt="" width="360" height="506" loading="lazy" decoding="async" />
                 <figcaption>{title}</figcaption>
               </figure>
             ))}
-          </div>
+          </motion.div>
           <p className="bw-art-credit">
             Poster data and artwork via <a href="https://www.tvmaze.com/api" target="_blank" rel="noopener noreferrer">TVMaze</a>.
           </p>
         </section>
 
         <section className="bw-section bw-movies-section" aria-labelledby="movies-heading">
-          <header className="bw-section-heading">
+          <motion.header className="bw-section-heading" {...revealProps(reduceMotion)}>
             <p className="section-kicker">Films</p>
             <h2 id="movies-heading">A few I return to.</h2>
             <p>Series usually win the evening. These films still make a very convincing case.</p>
-          </header>
+          </motion.header>
           <div className="bw-movie-ledger">
             {filmNotes.map(({ title, films, note }, index) => (
-              <article className="bw-movie-row" key={title}>
+              <motion.article
+                className="bw-movie-row"
+                key={title}
+                {...revealProps(reduceMotion, index * 0.05)}
+              >
                 <span>{String(index + 1).padStart(2, '0')}</span>
                 <div>
                   <p>{title}</p>
                   <h3>{films}</h3>
                 </div>
                 <p>{note}</p>
-              </article>
+              </motion.article>
             ))}
           </div>
         </section>
 
         <section className="bw-section bw-now-section" aria-labelledby="now-heading">
-          <header className="bw-section-heading">
+          <motion.header className="bw-section-heading" {...revealProps(reduceMotion)}>
             <p className="section-kicker">Right now</p>
             <h2 id="now-heading">A few things in progress.</h2>
             <p>What I am learning and thinking about at the moment.</p>
-          </header>
+          </motion.header>
           <div className="bw-now-list">
             {nowNotes.map(({ label, title, note }, index) => (
               <motion.article
@@ -262,17 +283,17 @@ export default function BeyondWork() {
         </section>
 
         <section className="bw-life-section" aria-labelledby="life-heading">
-          <div className="bw-life-heading">
+          <motion.div className="bw-life-heading" {...revealProps(reduceMotion)}>
             <p className="section-kicker">Away from the screen</p>
             <h2 id="life-heading">The parts that matter more.</h2>
-          </div>
-          <article className="bw-life-note">
+          </motion.div>
+          <motion.article className="bw-life-note" {...revealProps(reduceMotion, 0.05)}>
             <FiHeart aria-hidden="true" />
             <p className="bw-life-label">Fatherhood</p>
             <h3>Most of life outside work is being a dad.</h3>
             <div>Working remotely lets me stay close to the everyday moments. I value that more than any hobby.</div>
-          </article>
-          <article className="bw-life-note">
+          </motion.article>
+          <motion.article className="bw-life-note" {...revealProps(reduceMotion, 0.1)}>
             <FiMic aria-hidden="true" />
             <p className="bw-life-label">Music</p>
             <h3>I used to front a college band.</h3>
@@ -280,7 +301,7 @@ export default function BeyondWork() {
             <a href="https://instagram.com/arihantsings" target="_blank" rel="noopener noreferrer">
               @arihantsings <FiArrowUpRight aria-hidden="true" />
             </a>
-          </article>
+          </motion.article>
         </section>
       </main>
 
