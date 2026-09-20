@@ -4,44 +4,41 @@
 		<meta charset="utf-8" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="theme-color" content="#000000" />
-		<meta
-			name="description"
-			content="Senior Backend Engineer building the shared infrastructure behind 200+ production APIs: health-aware routing, distributed session coordination, and multi-region DR for 5M+ daily requests."
-		/>
+		<meta name="theme-color" content="#0b0d12" media="(prefers-color-scheme: dark)" />
+		<meta name="theme-color" content="#f2f4f7" media="(prefers-color-scheme: light)" />
+		<meta name="color-scheme" content="dark light" />
+		<!-- Apply the saved/system theme before first paint to avoid a flash -->
+		<script>
+			(function () {
+				var theme;
+				try { theme = localStorage.getItem('theme'); } catch (e) {}
+				if (theme !== 'dark' && theme !== 'light') {
+					theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+				}
+				var root = document.documentElement;
+				root.setAttribute('data-theme', theme);
+				if (theme === 'dark') root.classList.add('dark');
+			})();
+		</script>
+		<meta name="description" content="Senior Backend Engineer building the shared infrastructure behind 200+ production APIs: health-aware routing, distributed session coordination, and multi-region DR for 5M+ daily requests." />
 		<!-- OpenGraph things -->
 		<meta property="og:title" content="Arihant Jain · Senior Backend Engineer" />
-		<meta
-			property="og:description"
-			content="Senior Backend Engineer building the shared infrastructure behind 200+ production APIs: health-aware routing, distributed session coordination, and multi-region DR for 5M+ daily requests."
-		/>
+		<meta property="og:description" content="Senior Backend Engineer building the shared infrastructure behind 200+ production APIs: health-aware routing, distributed session coordination, and multi-region DR for 5M+ daily requests." />
 		<meta property="og:url" content="https://arihant416.vercel.app/" />
 		<meta property="og:site_name" content="Arihant Jain Portfolio" />
 		<meta property="og:image" content="https://arihant416.vercel.app/og-image.png" />
 		<meta property="og:image:width" content="1200" />
 		<meta property="og:image:height" content="630" />
-		<meta
-			property="og:image:alt"
-			content="Arihant Jain portfolio preview for Senior Backend Engineer work"
-		/>
+		<meta property="og:image:alt" content="Arihant Jain, Backend + Platform Engineer: evolving the backend and platform behind high-traffic KYC APIs" />
 		<meta property="og:type" content="website" />
 		<meta property="og:locale" content="en_US" />
 
 		<!-- Twitter Cards -->
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content="Arihant Jain · Senior Backend Engineer" />
-		<meta
-			name="twitter:description"
-			content="Senior Backend Engineer building the shared infrastructure behind 200+ production APIs: health-aware routing, distributed session coordination, and multi-region DR for 5M+ daily requests."
-		/>
-		<meta
-			name="twitter:image"
-			content="https://arihant416.vercel.app/twitter-card.png"
-		/>
-		<meta
-			name="twitter:image:alt"
-			content="Arihant Jain portfolio preview for Senior Backend Engineer work"
-		/>
+		<meta name="twitter:description" content="Senior Backend Engineer building the shared infrastructure behind 200+ production APIs: health-aware routing, distributed session coordination, and multi-region DR for 5M+ daily requests." />
+		<meta name="twitter:image" content="https://arihant416.vercel.app/og-image.png" />
+		<meta name="twitter:image:alt" content="Arihant Jain, Backend + Platform Engineer: evolving the backend and platform behind high-traffic KYC APIs" />
 		<meta name="twitter:url" content="https://arihant416.vercel.app/" />
 		<meta name="twitter:site" content="@Arihant2302" />
 		<meta name="twitter:creator" content="@Arihant2302" />

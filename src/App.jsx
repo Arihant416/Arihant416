@@ -10,7 +10,7 @@ import Footer from './components/Footer';
 
 const BeyondWork = lazy(() => import('./components/BeyondWork'));
 
-const getPathname = () => window.location.pathname.replace(/\/$/, '') || '/';
+const getPathname = () => window.location.pathname.replace(/\/(index\.html)?$/, '') || '/';
 
 export default function App() {
   const [pathname, setPathname] = useState(getPathname);

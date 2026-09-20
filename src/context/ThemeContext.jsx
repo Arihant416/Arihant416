@@ -4,7 +4,8 @@ const ThemeContext = createContext(null);
 
 const getInitial = () => {
   if (typeof window === 'undefined') return 'dark';
-  const stored = localStorage.getItem('theme');
+  let stored = null;
+  try { stored = localStorage.getItem('theme'); } catch { /* storage blocked */ }
   if (stored === 'dark' || stored === 'light') return stored;
   return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 };
@@ -21,7 +22,7 @@ export function ThemeProvider({ children }) {
       root.classList.remove('dark');
       root.setAttribute('data-theme', 'light');
     }
-    localStorage.setItem('theme', theme);
+    try { localStorage.setItem('theme', theme); } catch { /* storage blocked */ }
   }, [theme]);
 
   const toggleTheme = () => setTheme(t => t === 'dark' ? 'light' : 'dark');
