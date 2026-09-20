@@ -35,6 +35,33 @@ function ExperienceCard({ job, index, shouldReduceMotion }) {
 
         <p className="career-entry-summary">{job.shortDesc}</p>
 
+        {job.libraries?.length > 0 && (
+          <div className="career-libraries">
+            <p className="career-libraries-label">Libraries I built</p>
+            <ul aria-label={`Libraries built as ${job.title}`}>
+              {job.libraries.map((lib, libIndex) => (
+                <motion.li
+                  key={lib.name}
+                  className={`career-library tone-${lib.tone}`}
+                  initial={shouldReduceMotion ? false : { opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: '-30px' }}
+                  transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.4, delay: libIndex * 0.06, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <span className="career-library-pill">{lib.name}</span>
+                  <p className="career-library-text">{lib.text}</p>
+                  {lib.stat && (
+                    <p className="career-library-stat">
+                      <strong>{lib.stat.value}</strong>
+                      <span>{lib.stat.label}</span>
+                    </p>
+                  )}
+                </motion.li>
+              ))}
+            </ul>
+          </div>
+        )}
+
         {job.details?.length > 0 && (
           <ul className="career-entry-details" aria-label={`${job.title} selected work`}>
             {job.details.map((detail) => (
@@ -43,14 +70,16 @@ function ExperienceCard({ job, index, shouldReduceMotion }) {
           </ul>
         )}
 
-        <dl className="career-entry-proof">
-          {job.metrics.map(({ value, label }) => (
-            <div key={label}>
-              <dt>{value}</dt>
-              <dd>{label}</dd>
-            </div>
-          ))}
-        </dl>
+        {job.metrics?.length > 0 && (
+          <dl className="career-entry-proof">
+            {job.metrics.map(({ value, label }) => (
+              <div key={label}>
+                <dt>{value}</dt>
+                <dd>{label}</dd>
+              </div>
+            ))}
+          </dl>
+        )}
       </div>
     </motion.article>
   );
@@ -65,7 +94,7 @@ export default function Experience() {
         <div className="mx-auto max-w-[1600px]">
           <div className="experience-heading-row">
             <h2 className="section-kicker section-numbered-title">01 Experience</h2>
-            <p className="experience-heading-note">Product delivery → backend systems at scale.</p>
+            <p className="experience-heading-note">Product delivery → backend → platform.</p>
           </div>
 
           <div className="career-list">
