@@ -42,5 +42,4 @@ Senior Backend Engineer · Distributed Systems & Platform Infrastructure · Pyth
 
 ## Pending
 
-- Phase 2: light-theme button contrast, pause SpatialScene off-screen, no WebGL rebuild on theme toggle, pre-paint theme script, static /beyond-work metadata, new OG/Twitter cards
 - Phase 3: Systems case studies with diagrams, quota-meter flagship expansion, Earlier projects list

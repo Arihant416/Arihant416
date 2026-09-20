@@ -7,7 +7,7 @@
   "rewrites": [
     {
       "source": "/beyond-work",
-      "destination": "/"
+      "destination": "/beyond-work/index.html"
     }
   ]
 }
