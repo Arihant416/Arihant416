@@ -8,7 +8,7 @@ const NAV = [
   { label: 'Work', href: '#experience' },
   { label: 'Projects', href: '#projects' },
   { label: 'Skills', href: '#skills' },
-  { label: 'Reviews', href: '#testimonials' },
+  { label: 'Recommendations', href: '#testimonials' },
   { label: 'Contact', href: '#contact' },
   { label: 'Beyond work', href: '/beyond-work', isRoute: true },
 ];

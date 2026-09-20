@@ -1,5 +1,8 @@
-import { FiArrowUpRight, FiMail, FiMapPin } from 'react-icons/fi';
+import { useEffect, useRef, useState } from 'react';
+import { FiArrowUpRight, FiCheck, FiCopy, FiFileText, FiMail, FiMapPin } from 'react-icons/fi';
 import { FaGithub, FaInstagram, FaLinkedinIn, FaXTwitter } from 'react-icons/fa6';
+
+const EMAIL = 'arihantjain416@gmail.com';
 
 const LINKS = [
   { label: 'LinkedIn', href: 'https://linkedin.com/in/arihant416', Icon: FaLinkedinIn, color: '#0A66C2' },
@@ -8,7 +11,40 @@ const LINKS = [
   { label: 'X', href: 'https://x.com/Arihant2302', Icon: FaXTwitter, color: '#000000' },
 ];
 
+const delhiTime = () => new Intl.DateTimeFormat('en-IN', {
+  hour: '2-digit',
+  minute: '2-digit',
+  hour12: false,
+  timeZone: 'Asia/Kolkata',
+}).format(new Date());
+
+function useDelhiTime() {
+  const [time, setTime] = useState(delhiTime);
+  useEffect(() => {
+    const id = window.setInterval(() => setTime(delhiTime()), 30_000);
+    return () => window.clearInterval(id);
+  }, []);
+  return time;
+}
+
 export default function Footer() {
+  const time = useDelhiTime();
+  const [copied, setCopied] = useState(false);
+  const resetTimer = useRef();
+
+  useEffect(() => () => window.clearTimeout(resetTimer.current), []);
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(EMAIL);
+      setCopied(true);
+      window.clearTimeout(resetTimer.current);
+      resetTimer.current = window.setTimeout(() => setCopied(false), 1800);
+    } catch {
+      window.location.href = `mailto:${EMAIL}`;
+    }
+  };
+
   return (
     <footer className="site-footer" id="contact">
       <div className="site-footer-inner">
@@ -21,19 +57,39 @@ export default function Footer() {
             </p>
           </div>
 
-          <a
-            href="mailto:arihantjain416@gmail.com?subject=Hello%20Arihant"
-            className="site-footer-email"
-          >
-            <FiMail aria-hidden="true" />
-            <span>Send a note</span>
-            <FiArrowUpRight aria-hidden="true" />
-          </a>
+          <div className="site-footer-reach">
+            <a
+              href={`mailto:${EMAIL}?subject=Hello%20Arihant`}
+              className="site-footer-email"
+            >
+              <FiMail aria-hidden="true" />
+              <span>Send a note</span>
+              <FiArrowUpRight aria-hidden="true" />
+            </a>
+
+            <div className="site-footer-address">
+              <span>{EMAIL}</span>
+              <button
+                type="button"
+                onClick={copyEmail}
+                className={`site-footer-copy ${copied ? 'is-copied' : ''}`}
+                aria-label={copied ? 'Email address copied' : 'Copy email address'}
+              >
+                {copied ? <FiCheck aria-hidden="true" /> : <FiCopy aria-hidden="true" />}
+                <span aria-hidden="true">{copied ? 'Copied' : 'Copy'}</span>
+              </button>
+              <span className="sr-only" aria-live="polite">{copied ? 'Email address copied' : ''}</span>
+            </div>
+          </div>
 
           <div className="site-footer-connect">
             <p className="site-footer-location">
               <FiMapPin aria-hidden="true" />
               New Delhi, India
+              <span className="site-footer-time">
+                <i aria-hidden="true" />
+                {time} IST
+              </span>
             </p>
 
             <nav className="site-footer-socials" aria-label="Social links">
@@ -49,6 +105,15 @@ export default function Footer() {
                   <Icon aria-hidden="true" style={{ color }} />
                 </a>
               ))}
+              <a
+                href="https://arihant416.github.io/resume/index.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="site-footer-resume"
+              >
+                <FiFileText aria-hidden="true" />
+                Resume
+              </a>
             </nav>
           </div>
         </div>

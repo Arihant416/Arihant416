@@ -6,8 +6,8 @@ import HeroIllustration from './HeroIllustration';
 const SpatialScene = lazy(() => import('./SpatialScene'));
 
 const proof = [
-  { value: '5M+', label: 'requests each day' },
-  { value: '30+', label: 'APIs designed' },
+  { value: '200+', label: 'production APIs' },
+  { value: '5M+', label: 'daily requests' },
   { value: '$700K+', label: 'saved since 2024' },
 ];
 
@@ -30,18 +30,19 @@ export default function Hero() {
 
       <div className="spatial-hero-content">
         <motion.p className="spatial-identity" {...reveal(0.05, reduceMotion)}>
-          Arihant Jain <span>Senior Software Engineer</span>
+          Arihant Jain <span>Backend + Platform Engineer</span>
         </motion.p>
 
         <div className="spatial-hero-main">
           <div className="spatial-hero-copy">
             <motion.h1 {...reveal(0.12, reduceMotion)}>
-              I build reliable backend systems.
+              Evolving the backend and platform behind high-traffic KYC APIs.
             </motion.h1>
 
             <motion.p className="spatial-hero-intro" {...reveal(0.2, reduceMotion)}>
-              I work on fintech and KYC platforms at Perfios. I focus on dependable
-              APIs, clear decisions, and sensible operating costs.
+              At Perfios, I scale TotalKYC's core APIs and build what they
+              run on: shared libraries, health-aware routing, session
+              coordination, and disaster recovery.
             </motion.p>
 
             <motion.div className="spatial-hero-actions" {...reveal(0.28, reduceMotion)}>
