@@ -1,78 +1,68 @@
-import { lazy, Suspense } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { FiArrowDownRight, FiArrowUpRight } from 'react-icons/fi';
-import HeroIllustration from './HeroIllustration';
-
-const SpatialScene = lazy(() => import('./SpatialScene'));
 
 const proof = [
-  { value: '200+', label: 'production APIs' },
+  { value: '99.9%+', label: 'platform availability' },
   { value: '5M+', label: 'daily requests' },
-  { value: '$700K+', label: 'saved since 2024' },
+  { value: '$700K+', label: 'saved since Apr 2024' },
 ];
 
 const reveal = (delay, reduceMotion) => ({
-  initial: reduceMotion ? false : { opacity: 0, y: 18 },
+  initial: reduceMotion ? false : { opacity: 0, y: 24 },
   animate: { opacity: 1, y: 0 },
-  transition: reduceMotion ? { duration: 0 } : { duration: 0.62, delay, ease: [0.22, 1, 0.36, 1] },
+  transition: reduceMotion ? { duration: 0 } : { duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] },
 });
 
 export default function Hero() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section id="top" className="spatial-hero">
-      <Suspense fallback={<div className="spatial-scene-loading" aria-hidden="true" />}>
-        <SpatialScene reduceMotion={reduceMotion} />
-      </Suspense>
+    <section id="top" className="hero">
+      <div className="hero-grid" aria-hidden="true" />
 
-      <div className="spatial-hero-shade" aria-hidden="true" />
-
-      <div className="spatial-hero-content">
-        <motion.p className="spatial-identity" {...reveal(0.05, reduceMotion)}>
-          Arihant Jain <span>Backend + Platform Engineer</span>
+      <div className="page-shell hero-inner">
+        <motion.p className="hero-identity" {...reveal(0.05, reduceMotion)}>
+          Arihant Jain <span>Senior Backend Engineer · Platform</span>
         </motion.p>
 
-        <div className="spatial-hero-main">
-          <div className="spatial-hero-copy">
-            <motion.h1 {...reveal(0.12, reduceMotion)}>
-              Evolving the backend and platform behind high-traffic KYC APIs.
-            </motion.h1>
+        <motion.h1 className="display-1 hero-title" {...reveal(0.12, reduceMotion)}>
+          I build the shared infrastructure that <em>200+ production APIs</em> run on.
+        </motion.h1>
 
-            <motion.p className="spatial-hero-intro" {...reveal(0.2, reduceMotion)}>
+        <div className="hero-foot">
+          <motion.div className="hero-lede" {...reveal(0.22, reduceMotion)}>
+            <p className="hero-intro">
               At Perfios, I scale TotalKYC's core APIs and build what they
               run on: shared libraries, health-aware routing, session
               coordination, and disaster recovery.
-            </motion.p>
+            </p>
 
-            <motion.div className="spatial-hero-actions" {...reveal(0.28, reduceMotion)}>
-              <a href="#experience" className="spatial-action spatial-action-primary">
-                View my work
+            <div className="hero-actions">
+              <a href="#platform" className="button button-primary">
+                See the platform
                 <FiArrowDownRight aria-hidden="true" />
               </a>
               <a
-                href="https://arihant416.github.io/resume/index.pdf"
+                href="https://github.com/Arihant416"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="spatial-action spatial-action-secondary"
+                className="button"
               >
-                Resume
+                GitHub
                 <FiArrowUpRight aria-hidden="true" />
               </a>
-            </motion.div>
-          </div>
-
-          <HeroIllustration />
-        </div>
-
-        <motion.dl className="spatial-proof" {...reveal(0.36, reduceMotion)}>
-          {proof.map(({ value, label }) => (
-            <div key={label}>
-              <dt>{value}</dt>
-              <dd>{label}</dd>
             </div>
-          ))}
-        </motion.dl>
+          </motion.div>
+
+          <motion.dl className="hero-proof" {...reveal(0.32, reduceMotion)}>
+            {proof.map(({ value, label }) => (
+              <div key={label}>
+                <dt>{value}</dt>
+                <dd>{label}</dd>
+              </div>
+            ))}
+          </motion.dl>
+        </div>
       </div>
     </section>
   );

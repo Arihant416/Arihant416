@@ -13,7 +13,7 @@ export default function HeroIllustration() {
         height="853"
         alt=""
         decoding="async"
-        fetchPriority="high"
+        loading="lazy"
         onLoad={() => setIsLoaded(true)}
       />
       <button

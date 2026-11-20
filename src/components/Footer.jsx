@@ -1,14 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
-import { FiArrowUpRight, FiCheck, FiCopy, FiFileText, FiMail, FiMapPin } from 'react-icons/fi';
-import { FaGithub, FaInstagram, FaLinkedinIn, FaXTwitter } from 'react-icons/fa6';
+import { FiArrowUpRight, FiCheck, FiCopy, FiMapPin } from 'react-icons/fi';
+import HeroIllustration from './HeroIllustration';
 
 const EMAIL = 'arihantjain416@gmail.com';
 
 const LINKS = [
-  { label: 'LinkedIn', href: 'https://linkedin.com/in/arihant416', Icon: FaLinkedinIn, color: '#0A66C2' },
-  { label: 'GitHub', href: 'https://github.com/Arihant416', Icon: FaGithub, color: '#181717' },
-  { label: 'Instagram', href: 'https://instagram.com/arihannnt', Icon: FaInstagram, color: '#E4405F' },
-  { label: 'X', href: 'https://x.com/Arihant2302', Icon: FaXTwitter, color: '#000000' },
+  { label: 'LinkedIn', href: 'https://linkedin.com/in/arihant416' },
+  { label: 'GitHub', href: 'https://github.com/Arihant416' },
+  { label: 'Resume', href: 'https://arihant416.github.io/resume/index.pdf' },
+  { label: 'X', href: 'https://x.com/Arihant2302' },
+  { label: 'Instagram', href: 'https://instagram.com/arihannnt' },
 ];
 
 const delhiTime = () => new Intl.DateTimeFormat('en-IN', {
@@ -46,81 +47,60 @@ export default function Footer() {
   };
 
   return (
-    <footer className="site-footer" id="contact">
-      <div className="site-footer-inner">
-        <div className="site-footer-main">
-          <div className="site-footer-invite">
-            <span className="section-kicker">Let's catch up</span>
-            <h2>What are you working on?</h2>
-            <p>
-              I'd love to hear what you are building, improving, or trying to understand.
-            </p>
-          </div>
+    <footer className="site-footer room room--ink" id="contact">
+      <div className="page-shell contact">
+        <div className="contact-copy">
+          <p className="section-kicker">Contact</p>
+          <h2 className="display-1 contact-title">What are you working&nbsp;on?</h2>
+          <p className="contact-text">
+            I'd love to hear what you are building, improving, or trying to understand.
+          </p>
 
-          <div className="site-footer-reach">
-            <a
-              href={`mailto:${EMAIL}?subject=Hello%20Arihant`}
-              className="site-footer-email"
+          <a href={`mailto:${EMAIL}?subject=Hello%20Arihant`} className="contact-email">
+            {EMAIL}
+          </a>
+
+          <div className="contact-meta">
+            <button
+              type="button"
+              onClick={copyEmail}
+              className={`button contact-copy-button ${copied ? 'is-copied' : ''}`}
+              aria-label={copied ? 'Email address copied' : 'Copy email address'}
             >
-              <FiMail aria-hidden="true" />
-              <span>Send a note</span>
-              <FiArrowUpRight aria-hidden="true" />
-            </a>
+              {copied ? <FiCheck aria-hidden="true" /> : <FiCopy aria-hidden="true" />}
+              {copied ? 'Copied' : 'Copy email'}
+            </button>
+            <span className="sr-only" aria-live="polite">{copied ? 'Email address copied' : ''}</span>
 
-            <div className="site-footer-address">
-              <span>{EMAIL}</span>
-              <button
-                type="button"
-                onClick={copyEmail}
-                className={`site-footer-copy ${copied ? 'is-copied' : ''}`}
-                aria-label={copied ? 'Email address copied' : 'Copy email address'}
-              >
-                {copied ? <FiCheck aria-hidden="true" /> : <FiCopy aria-hidden="true" />}
-                <span aria-hidden="true">{copied ? 'Copied' : 'Copy'}</span>
-              </button>
-              <span className="sr-only" aria-live="polite">{copied ? 'Email address copied' : ''}</span>
-            </div>
-          </div>
-
-          <div className="site-footer-connect">
-            <p className="site-footer-location">
+            <p className="contact-location">
               <FiMapPin aria-hidden="true" />
               New Delhi, India
-              <span className="site-footer-time">
+              <span className="contact-time">
                 <i aria-hidden="true" />
                 {time} IST
               </span>
             </p>
-
-            <nav className="site-footer-socials" aria-label="Social links">
-              {LINKS.map(({ label, href, Icon, color }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="site-footer-social-link"
-                  aria-label={label}
-                >
-                  <Icon aria-hidden="true" style={{ color }} />
-                </a>
-              ))}
-              <a
-                href="https://arihant416.github.io/resume/index.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="site-footer-resume"
-              >
-                <FiFileText aria-hidden="true" />
-                Resume
-              </a>
-            </nav>
           </div>
         </div>
 
-        <div className="site-footer-bottom">
+        <div className="contact-art">
+          <HeroIllustration />
+        </div>
+      </div>
+
+      <div className="page-shell">
+        <nav className="footer-links" aria-label="Elsewhere">
+          {LINKS.map(({ label, href }) => (
+            <a key={label} href={href} target="_blank" rel="noopener noreferrer">
+              {label}
+              <FiArrowUpRight aria-hidden="true" />
+            </a>
+          ))}
+        </nav>
+
+        <div className="footer-bar">
           <p>&copy; {new Date().getFullYear()} Arihant Jain</p>
-          <a href="#top">Back to top <span aria-hidden="true">&uarr;</span></a>
+          <a href="#top" className="footer-top">Back to top <span aria-hidden="true">&uarr;</span></a>
         </div>
       </div>
     </footer>

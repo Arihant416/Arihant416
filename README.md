@@ -8,19 +8,22 @@ I build the shared infrastructure that 200+ production APIs run on. I work at Pe
 
 ## What that looks like
 
-- **Cost:** cut third-party vendor dependency by **55%** by rebuilding the routing and caching layer, for **$700K+ in cumulative savings** since Apr 2024.
-- **Reliability:** own active-passive disaster recovery across Mumbai and Hyderabad, supporting **5M+ daily requests at 99.9%+ availability**.
-- **Platform:** built **shared-utilities** (secrets access, schema validation, request configuration) and rolled it out across **200+ production APIs**. Changes that once required redeploying every API now ship as one package update.
-- **Routing:** built **proxy-service** for **120+ APIs** with health-aware selection and automatic cooldown recovery. It recovers **21%** of requests that would otherwise fail.
-- **Coordination:** built a Redis-backed session library with distributed locks across concurrent Lambda workloads, cutting session-related failures by **35%**.
+- **Cost:** cut third-party vendor spend **55%** by rebuilding the routing and caching layer; with retired infrastructure, cumulative savings reached **$700K+** since Apr 2024.
+- **Reliability:** designed and set up active-passive disaster recovery across Mumbai and Hyderabad for a platform serving **5M+ daily requests at 99.9%+ availability**, built for a 40–45 minute region switchover.
+- **Platform:** designed and rolled out **shared-utilities** (secrets access, schema validation, request configuration) across **200+ production APIs**. A fleet-wide change now ships as one package update instead of a redeploy of every API.
+- **Routing:** built health-aware routing with cooldowns for **120+ APIs**, replacing random route selection and raising first-attempt success from **60–70% to 90–95%**.
+- **Coordination:** built a Redis-backed session library with distributed locks for concurrent Lambda runs, cutting session failures by **35%** and recovering **15K–30K requests a day**.
+- **Operations:** brought incidents from **12–13 a week to 2–3** with trend-based monitoring.
 
 ---
 
 ## Tech
 
-- **Languages & backend:** Python, FastAPI, Pydantic, Celery, JavaScript, Node.js, SQL
-- **Data & messaging:** Redis, MongoDB, Kafka, RabbitMQ, Amazon SQS
-- **Cloud & delivery:** AWS Lambda, ECS/Fargate, EC2, S3, EventBridge, CloudFormation, Docker, GitLab CI/CD
+- **Languages:** Python, JavaScript, SQL, C++
+- **Backend & system design:** FastAPI, Node.js, Celery, REST APIs, event-driven architecture, microservices
+- **Data & messaging:** Redis, MongoDB, MySQL, RabbitMQ, Amazon SQS
+- **Cloud & infrastructure:** AWS Lambda, ECS/Fargate, S3, CloudFormation, Docker, GitLab CI/CD
+- **Observability, security & testing:** Prometheus, Grafana, AWS CloudWatch, Pytest, Playwright, Selenium, SAST, VAPT
 
 ---
 
@@ -28,7 +31,7 @@ I build the shared infrastructure that 200+ production APIs run on. I work at Pe
 
 ### [Distributed Quota-Metering Engine](https://github.com/Arihant416/quota-meter)
 
-A per-organization, per-feature quota service. A single Redis Lua script handles validation, idempotency, deduction, and denial recording atomically, with all-or-nothing batches, idempotent refunds, and cron-free monthly resets. It was validated with 10,000 simulated requests and zero over-serving.
+A per-organization, per-feature quota service. A single Redis Lua script validates, deduplicates, deducts, and records denials atomically, with all-or-nothing batches, idempotent refunds, and cron-free monthly resets. Load-tested 1,000 requests across 50 concurrent workers and 3 service instances with zero over-serving; same-key retries are charged once.
 
 ---
 

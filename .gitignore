@@ -25,3 +25,8 @@ yarn-error.log*
 
 # local planning ledger
 docs/portfolio-improvement-plan.md
+
+# private working notes (source of truth and metric register; never published)
+CLAUDE.md
+docs/portfolio-context.md
+docs/phase1-copy-sheet.md
