@@ -42,15 +42,15 @@ const breakable = (name) => name.split(/(?<=[a-z])(?=[A-Z])/).flatMap((part, i) 
 const logoTools = tools.filter((tool) => !tool.concept && ICONS[tool.name]);
 const concepts = tools.filter((tool) => tool.concept);
 
-// Spread the seven larger tiles through the cloud instead of bunching them in row one.
+// Cloud order. The first 16 tiles are the ones phones show (4 rows of 4): the 7 larger
+// tiles (P) spread through the 9 others (O) so no row or column bunches them. The `low`
+// tiles follow, shown from 700px up; on phones they appear as chips instead.
+const PHONE_PATTERN = 'POOPOPOOPOPOOPOP';
 const primaries = logoTools.filter((tool) => tool.primary);
-const others = logoTools.filter((tool) => !tool.primary);
-const cloud = [];
-for (let i = 0; i < others.length || primaries.length; i += 1) {
-  if (i % 3 === 1 && primaries.length) cloud.push(primaries.shift());
-  if (i < others.length) cloud.push(others[i]);
-}
-while (primaries.length) cloud.push(primaries.shift());
+const others = logoTools.filter((tool) => !tool.primary && !tool.low);
+const lows = logoTools.filter((tool) => tool.low);
+const cloud = [...PHONE_PATTERN].map((slot) => (slot === 'P' ? primaries : others).shift()).filter(Boolean);
+cloud.push(...primaries, ...others, ...lows);
 
 // Deterministic depth and float rhythm per tile, so no two neighbours move in step.
 const DEPTHS = [-40, 30, 70, -10, 45, -55, 15, 55, -25];
@@ -66,6 +66,8 @@ export default function Skills() {
   const reduceMotion = useReducedMotion();
   const stageRef = useRef(null);
   const [inView, setInView] = useState(false);
+  // Touch has no hover: a tap lights a tile up (a second tap, or another tile, clears it).
+  const [lit, setLit] = useState(null);
 
   // Pointer position (−0.5…0.5) → a spring-smoothed tilt of the whole cloud.
   const px = useMotionValue(0);
@@ -111,10 +113,18 @@ export default function Skills() {
           onPointerLeave={onPointerLeave}
         >
           <motion.ul className="tool-cloud" style={reduceMotion ? undefined : { rotateX, rotateY }}>
-            {cloud.map(({ name, primary }, index) => {
+            {cloud.map(({ name, primary, low }, index) => {
               const [Icon, brand] = ICONS[name];
+              const classes = ['tool', primary && 'tool--primary', low && 'tool--low', lit === name && 'is-lit'];
               return (
-                <li key={name} className={`tool ${primary ? 'tool--primary' : ''}`} style={tileStyle(index, brand)}>
+                <li
+                  key={name}
+                  className={classes.filter(Boolean).join(' ')}
+                  style={tileStyle(index, brand)}
+                  onPointerUp={(event) => {
+                    if (event.pointerType !== 'mouse') setLit((current) => (current === name ? null : name));
+                  }}
+                >
                   <span className="tool-chip">
                     <span className="tool-icon" aria-hidden="true"><Icon /></span>
                     <span className="tool-name">{breakable(name)}</span>
@@ -128,6 +138,9 @@ export default function Skills() {
         <div className="tool-also">
           <p className="strip-title">Also</p>
           <ul className="toolbox-chips">
+            {lows.map(({ name }) => (
+              <li key={name} className="chip chip--phone">{name}</li>
+            ))}
             {concepts.map(({ name }) => <li key={name} className="chip">{name}</li>)}
           </ul>
         </div>

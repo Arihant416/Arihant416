@@ -1635,20 +1635,58 @@ main {
   font-weight: 600;
 }
 
-/* Hover: the tile comes forward, scales up and takes its brand colour. */
+/* Lit (mouse hover, or a tap on touch screens): the tile comes forward, scales up, takes
+   its brand colour and glows: a brand ring, a soft halo and a coloured drop shadow. */
+.tool.is-lit .tool-chip {
+  transform: translateZ(48px) scale(1.14);
+}
+
+.tool.is-lit .tool-icon {
+  border-color: var(--brand);
+  background: color-mix(in srgb, var(--brand) 12%, var(--surface));
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--brand) 55%, transparent),
+    0 0 28px 4px color-mix(in srgb, var(--brand) 45%, transparent),
+    0 18px 36px -14px color-mix(in srgb, var(--brand) 70%, transparent);
+  color: var(--brand);
+}
+
+.tool.is-lit .tool-name {
+  color: var(--text);
+}
+
 @media (hover: hover) {
   .tool:hover .tool-chip {
     transform: translateZ(70px) scale(1.2);
   }
 
   .tool:hover .tool-icon {
-    border-color: color-mix(in srgb, var(--brand) 45%, var(--line));
-    box-shadow: 0 26px 44px -18px color-mix(in srgb, var(--brand) 60%, transparent);
+    border-color: var(--brand);
+    background: color-mix(in srgb, var(--brand) 12%, var(--surface));
+    box-shadow:
+      0 0 0 1px color-mix(in srgb, var(--brand) 55%, transparent),
+      0 0 28px 4px color-mix(in srgb, var(--brand) 45%, transparent),
+      0 18px 36px -14px color-mix(in srgb, var(--brand) 70%, transparent);
     color: var(--brand);
   }
 
   .tool:hover .tool-name {
     color: var(--text);
+  }
+}
+
+/* Phones show the 16 highest-priority tiles; the rest appear as chips under the cloud. */
+.chip--phone {
+  display: none;
+}
+
+@media (max-width: 699px) {
+  .tool--low {
+    display: none;
+  }
+
+  .chip--phone {
+    display: inline-flex;
   }
 }
 
@@ -1660,13 +1698,22 @@ main {
 }
 
 @media (max-width: 699px) {
+  .section--tools {
+    padding-block: 2.5rem;
+  }
+
+  .section--tools .section-head {
+    margin-bottom: 1rem;
+  }
+
   .tool-stage {
     --depth: 0.5;
-    padding-block: 0.5rem 1.5rem;
+    padding-block: 0.25rem 1.25rem;
   }
 
   .tool-cloud {
-    gap: 1.5rem 0.5rem;
+    gap: 1rem 0.5rem;
+    transform: rotateX(5deg);
   }
 
   .tool {
