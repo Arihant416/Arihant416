@@ -1,22 +1,42 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { FiArrowUpRight, FiFileText, FiMenu, FiMoon, FiSun, FiX } from 'react-icons/fi';
 import { useTheme } from '../context/ThemeContext';
 import AppLink from './AppLink';
 
 const NAV = [
+  { label: 'Platform', href: '#platform' },
   { label: 'Work', href: '#experience' },
   { label: 'Projects', href: '#projects' },
   { label: 'Skills', href: '#skills' },
-  { label: 'Recommendations', href: '#testimonials' },
+  { label: 'Recommendations', href: '#recommendations' },
   { label: 'Contact', href: '#contact' },
   { label: 'Beyond work', href: '/beyond-work', isRoute: true },
 ];
+
+// Moves focus to a destination heading once it exists (a lazy route may render a few
+// frames later). preventScroll keeps the anchor's smooth scroll undisturbed.
+function focusHeading(findHeading, framesLeft = 120) {
+  const heading = findHeading();
+  if (heading) {
+    if (!heading.hasAttribute('tabindex')) heading.setAttribute('tabindex', '-1');
+    heading.focus({ preventScroll: true });
+    return;
+  }
+  if (framesLeft > 0) window.requestAnimationFrame(() => focusHeading(findHeading, framesLeft - 1));
+}
+
+const headingIn = (href) => () => {
+  const target = document.querySelector(href);
+  if (!target) return null;
+  return target.matches('h1, h2') ? target : target.querySelector('h1, h2');
+};
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [activeHref, setActiveHref] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const menuButtonRef = useRef(null);
   const { isDark, toggleTheme } = useTheme();
   const reduceMotion = useReducedMotion();
 
@@ -50,7 +70,9 @@ export default function Header() {
   useEffect(() => {
     if (!mobileMenuOpen) return undefined;
     const closeOnEscape = (event) => {
-      if (event.key === 'Escape') setMobileMenuOpen(false);
+      if (event.key !== 'Escape') return;
+      setMobileMenuOpen(false);
+      menuButtonRef.current?.focus();
     };
     window.addEventListener('keydown', closeOnEscape);
     return () => window.removeEventListener('keydown', closeOnEscape);
@@ -65,9 +87,9 @@ export default function Header() {
         animate={{ opacity: 1, y: 0 }}
         transition={reduceMotion ? { duration: 0 } : { duration: 0.48, ease: [0.22, 1, 0.36, 1] }}
       >
-        <a href="#top" className="spatial-brand" aria-label="Arihant Jain, back to top">
-          <span>AJ</span>
-          <i aria-hidden="true" />
+        <a href="#top" className="site-brand" aria-label="Arihant Jain, back to top">
+          <span className="site-brand-mark" aria-hidden="true">AJ</span>
+          <span className="site-brand-name">Arihant Jain</span>
         </a>
 
         <div className="spatial-desktop-nav">
@@ -87,6 +109,7 @@ export default function Header() {
 
         <div className="spatial-nav-actions">
           <button
+            ref={menuButtonRef}
             type="button"
             className="spatial-icon-button spatial-menu-button"
             onClick={() => setMobileMenuOpen((open) => !open)}
@@ -129,13 +152,23 @@ export default function Header() {
                   key={href}
                   to={href}
                   className="spatial-mobile-beyond"
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    window.requestAnimationFrame(() => focusHeading(() => document.querySelector('.bw-page h1')));
+                  }}
                 >
                   <span>{label}</span>
                   <FiArrowUpRight aria-hidden="true" />
                 </AppLink>
               ) : (
-                <a key={href} href={href} onClick={() => setMobileMenuOpen(false)}>
+                <a
+                  key={href}
+                  href={href}
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    window.requestAnimationFrame(() => focusHeading(headingIn(href)));
+                  }}
+                >
                   {label}
                 </a>
               )

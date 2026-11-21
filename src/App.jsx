@@ -3,7 +3,9 @@ import { ThemeProvider } from './context/ThemeContext';
 
 import Header from './components/Header';
 import Hero from './components/Hero';
+import Platform from './components/Platform';
 import Experience from './components/Experience';
+import Projects from './components/Projects';
 import Skills from './components/Skills';
 import Testimonials from './components/Testimonials';
 import Footer from './components/Footer';
@@ -36,7 +38,9 @@ export default function App() {
           <Header />
           <main>
             <Hero />
+            <section id="platform"><Platform /></section>
             <section id="experience"><Experience /></section>
+            <section id="projects"><Projects /></section>
             <section id="skills"><Skills /></section>
             <section id="recommendations"><Testimonials /></section>
           </main>

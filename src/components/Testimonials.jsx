@@ -116,42 +116,45 @@ export default function Testimonials() {
   const scroller = useScrollEdges();
 
   return (
-    <div className="section rec-section border-b border-border bg-bg" id="testimonials">
-      <div className="rec-intro">
-        <h2 className="section-kicker section-numbered-title">04 Recommendations</h2>
-        <p className="rec-lede">
-          {testimonials.length} engineers from two teams, quoted word for word from LinkedIn.
-        </p>
-        <a
-          href={LINKEDIN_RECOMMENDATIONS}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="rec-source"
-        >
-          See them on LinkedIn
-          <FiArrowUpRight aria-hidden="true" />
-        </a>
-      </div>
-
-      <div className="rec-body">
-        <div
-          ref={scroller.ref}
-          onScroll={scroller.onScroll}
-          className={`rec-scroller ${scroller.edges.start ? 'fade-start' : ''} ${scroller.edges.end ? 'fade-end' : ''}`}
-          role="region"
-          aria-label="Recommendations (scrollable)"
-          tabIndex={0}
-        >
-          <div className="rec-grid">
-            {testimonials.map((item, index) => (
-              <RecommendationCard key={item.name} item={item} index={index} reduceMotion={reduceMotion} />
-            ))}
-          </div>
+    <div className="home-section">
+      <div className="page-shell rec-layout">
+        <div className="rec-intro">
+          <p className="section-kicker">Recommendations</p>
+          <h2 className="section-title">What colleagues say.</h2>
+          <p className="rec-lede">
+            {testimonials.length} engineers from two teams, quoted word for word from LinkedIn.
+          </p>
+          <a
+            href={LINKEDIN_RECOMMENDATIONS}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rec-source"
+          >
+            See them on LinkedIn
+            <FiArrowUpRight aria-hidden="true" />
+          </a>
         </div>
-        <p className={`rec-hint ${scroller.edges.end ? 'is-visible' : ''}`} aria-hidden="true">
-          <span className="rec-hint-scroll">Scroll for more</span>
-          <span className="rec-hint-swipe">Swipe for more</span>
-        </p>
+
+        <div className="rec-body">
+          <div
+            ref={scroller.ref}
+            onScroll={scroller.onScroll}
+            className={`rec-scroller ${scroller.edges.start ? 'fade-start' : ''} ${scroller.edges.end ? 'fade-end' : ''}`}
+            role="region"
+            aria-label="Recommendations (scrollable)"
+            tabIndex={0}
+          >
+            <div className="rec-grid">
+              {testimonials.map((item, index) => (
+                <RecommendationCard key={item.name} item={item} index={index} reduceMotion={reduceMotion} />
+              ))}
+            </div>
+          </div>
+          <p className={`rec-hint ${scroller.edges.end ? 'is-visible' : ''}`} aria-hidden="true">
+            <span className="rec-hint-scroll">Scroll for more</span>
+            <span className="rec-hint-swipe">Swipe for more</span>
+          </p>
+        </div>
       </div>
     </div>
   );

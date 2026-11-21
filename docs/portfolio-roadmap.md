@@ -2,44 +2,44 @@
 
 ## Source of truth
 
-The **Professional Profile — Master Reference** (claude.ai project "My Personal Portfolio Website") is the only source for public facts and deliberate exclusions. `resume/` and `tmp/` in this folder are stale and are **not** sources of truth.
+1. What Arihant decides.
+2. The resume: `github.com/Arihant416/resume` → `resume.tex` (live at arihant416.github.io/resume/index.pdf).
 
-## Current Positioning
+The site, this README and the page metadata must say the same thing, in the same numbers. When the resume and the site disagree, the resume wins until Arihant says otherwise.
+
+## Positioning
 
 "I build the shared infrastructure that 200+ production APIs run on."
 Senior Backend Engineer · Distributed Systems & Platform Infrastructure · Python · AWS.
 
 ## Public content rules
 
-- Do not mention sources, crawling, scraping, WAF/anti-bot, or upstream logins anywhere on the site.
-- Named systems allowed publicly: `shared-utilities`, `proxy-service`, `vendor-biller`. TotalKYC may be named as the core product.
-- Never double-count: $700K+ is cumulative since Apr 2024 (not annualized) and is a composite figure.
-- Excluded: Kubernetes, MySQL, AI tooling as skills, the 40s→6s PDF-generation latency claim, and the crawler-migration story.
-- C++ and PostgreSQL are listed in portfolio skills by owner decision (2026-09-20), even though the master reference keeps them off the resume.
+- Every number on the site traces to the resume. No invented or rounded-up figures.
+- Plain verbs, result first, then how. No inflation: "designed and rolled out", "designed and set up … built for a 40–45 minute switchover", never "owned" for work that was not.
+- Internal system names: only `shared-utilities` and `vendor-biller`. Everything else is described by what it does.
+- Skills list only what can be defended in a deep-dive interview.
+- Testimonials are verbatim LinkedIn quotes and are never edited.
 
-## Approved Public Metrics
+## Published metrics
 
 | Role | Metric |
 | --- | --- |
-| Senior (Apr 2024 –) | $700K+ cumulative savings since Apr 2024; 55% vendor dependency cut |
-| Senior | 5M+ daily requests at 99.9%+ availability (active-passive DR, Mumbai/Hyderabad) |
-| Senior | shared-utilities across 200+ production APIs; 300–400 duplicated lines removed |
-| Senior | proxy-service across 120+ APIs; 21% of failing requests recovered; 12–20 manual interventions/week removed |
-| Senior | 35% fewer session-related failures across 15K–30K daily requests |
-| Senior | 60+ PRs reviewed; triage SLA 3 days → 3–4 hours |
-| SE-I at Karza (Oct 2022 – Apr 2024) | 30+ APIs shipped in six months; 100+ maintained; P99 8s → 3s; 245 of 260 APIs containerized; Celery/Fargate throughput 3× |
-| InTimeTec (Mar 2021 – Sep 2022) | RedBuilt (US client): 9 modules .NET → Angular; 3× throughput; −44% deployment cycles; +54% test coverage |
+| Senior SWE, Perfios (Apr 2024 –) | Third-party vendor spend −55%; $700K+ cumulative savings since Apr 2024 (with retired infrastructure) |
+| Senior | Incidents 12–13 → 2–3 a week; triage SLA 3 days → 3–4 hours; 60+ pull requests reviewed |
+| Senior | `shared-utilities` across 200+ production APIs; 300–400 duplicated lines removed |
+| Senior | Health-aware routing for 120+ APIs: first-attempt success 60–70% → 90–95% |
+| Senior | Redis session library with distributed locks: −35% session failures, 15K–30K requests a day recovered |
+| Senior | Active-passive disaster recovery, Mumbai active and Hyderabad passive: 5M+ requests a day at 99.9%+ availability, 40–45 minute switchover as the design target |
+| SE-I, Karza → Perfios (Oct 2022 – Apr 2024) | Celery workers on Fargate: 3× throughput; Python 3.9 → 3.12 across 260 APIs, 245 containerized, zero rollbacks; P99 8s → 3s; `vendor-biller` +25% billing accuracy; 30+ APIs in six months; 100+ APIs maintained across 300+ data integrations |
+| InTimeTec (Intern from Mar 2021; Software Engineer Aug 2021 – Sep 2022) | RedBuilt (US client), front-end then the whole project: .NET desktop → responsive Angular web app, a handful of users → ~70, plus 6 new modules; team grew from one engineer to four; −44% deployment cycle time; +54% test coverage |
+| Project: quota-meter | 1,000 requests across 50 concurrent workers and 3 service instances, zero over-served; same-key retries charged once |
 
-## Do Not Change Without Approval
+## Do not change without approval
 
-- Testimonial quote text
-- Factual job titles
-- Public metrics (must match the Master Reference)
-- Backend-console inspired visual identity
-- Framer Motion architecture
-- Vite tooling
-- Vercel deployment config
+Testimonial quote text · job titles · the visual identity (display type over a quiet body, colour rooms, light and dark themes) · Framer Motion architecture · Vite tooling · Vercel config · reduced-motion support.
 
-## Pending
+## Plan
 
-- Phase 3: Systems case studies with diagrams, quota-meter flagship expansion, Earlier projects list
+- Iteration 1, facts and structure: done.
+- Iteration 2, readability, UI and the "systems notebook" redesign: done, in review. The recommendations card layout still needs a mock before it changes.
+- Iteration 3, depth: prerender `/` for non-JS readers; case studies (quota-meter first, then the shared framework); retire GitDev Finder after the first case study; mobile Lighthouse pass (LCP under 2.5s).
