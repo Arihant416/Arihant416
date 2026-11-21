@@ -25,9 +25,10 @@ export default function Hero() {
           Arihant Jain <span>Senior Backend Engineer · Platform</span>
         </motion.p>
 
-        <motion.h1 className="display-1 hero-title" {...reveal(0.12, reduceMotion)}>
+        {/* No reveal on the headline: it must paint with the first frame (LCP). */}
+        <h1 className="display-1 hero-title">
           I build the shared infrastructure that <em>200+ production APIs</em> run on.
-        </motion.h1>
+        </h1>
 
         <div className="hero-foot">
           <motion.div className="hero-lede" {...reveal(0.22, reduceMotion)}>

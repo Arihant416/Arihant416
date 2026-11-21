@@ -1,8 +1,8 @@
 export default function AppLink({ to, onClick, ...props }) {
   const handleClick = (event) => {
-    onClick?.(event);
+    // Modifier or non-primary clicks open a new tab/window: let the browser handle
+    // them and skip onClick, so e.g. Cmd/Ctrl-click doesn't close the mobile menu.
     if (
-      event.defaultPrevented ||
       event.button !== 0 ||
       event.metaKey ||
       event.ctrlKey ||
@@ -11,6 +11,9 @@ export default function AppLink({ to, onClick, ...props }) {
     ) {
       return;
     }
+
+    onClick?.(event);
+    if (event.defaultPrevented) return;
 
     event.preventDefault();
     window.history.pushState({}, '', to);

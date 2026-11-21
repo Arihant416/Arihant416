@@ -2,6 +2,18 @@ import { createContext, useContext, useState, useEffect } from 'react';
 
 const ThemeContext = createContext(null);
 
+// Browser chrome colour per theme; must match --bg in index.css and the pre-paint
+// script in index.html.
+const THEME_COLOR = { light: '#f6f5f1', dark: '#0c0d10' };
+
+// Both <meta name="theme-color"> tags (one per prefers-color-scheme) follow the
+// active theme, so the chrome matches even when it differs from the OS setting.
+const syncThemeColor = (theme) => {
+  document.querySelectorAll('meta[name="theme-color"]').forEach((meta) => {
+    meta.setAttribute('content', THEME_COLOR[theme]);
+  });
+};
+
 const getInitial = () => {
   if (typeof window === 'undefined') return 'dark';
   let stored = null;
@@ -22,6 +34,7 @@ export function ThemeProvider({ children }) {
       root.classList.remove('dark');
       root.setAttribute('data-theme', 'light');
     }
+    syncThemeColor(theme);
     try { localStorage.setItem('theme', theme); } catch { /* storage blocked */ }
   }, [theme]);
 
