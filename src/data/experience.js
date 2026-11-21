@@ -99,7 +99,7 @@ export const projects = [
     // The decision path one Redis Lua script runs atomically. Wording decided by Arihant (2026-11-20).
     flow: {
       title: 'One atomic Redis Lua script',
-      retry: 'Retry? Return the saved decision.',
+      replay: 'Replay → return saved decision ✓',
       load: 'New request: load limit and usage',
       branches: ['Allow: deduct', 'Deny: usage unchanged'],
       save: 'Save the decision',

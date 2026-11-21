@@ -18,6 +18,10 @@
 				var root = document.documentElement;
 				root.setAttribute('data-theme', theme);
 				if (theme === 'dark') root.classList.add('dark');
+				// Browser chrome follows the chosen theme, not just the OS setting.
+				var chrome = theme === 'dark' ? '#0c0d10' : '#f6f5f1';
+				var metas = document.querySelectorAll('meta[name="theme-color"]');
+				for (var i = 0; i < metas.length; i++) metas[i].setAttribute('content', chrome);
 			})();
 		</script>
 		<meta name="description" content="Senior Backend Engineer building the shared infrastructure behind 200+ production APIs: health-aware routing, distributed session coordination, and multi-region disaster recovery for 5M+ daily requests." />

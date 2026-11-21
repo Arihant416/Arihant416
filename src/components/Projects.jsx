@@ -54,7 +54,12 @@ export default function Projects() {
                   <figure className="lua-flow" aria-labelledby="lua-flow-title">
                     <figcaption id="lua-flow-title" className="role-label">{flagship.flow.title}</figcaption>
                     <ol className="lua-flow-steps">
-                      <li className="lua-node lua-node--check">{flagship.flow.retry}</li>
+                      {/* Start dot, then a side exit for replays: it ends there and never
+                          joins the main path, which starts at "New request". */}
+                      <li className="lua-start" aria-hidden="true" />
+                      <li className="lua-exit-row">
+                        <span className="lua-node lua-node--exit">{flagship.flow.replay}</span>
+                      </li>
                       <li className="lua-node">{flagship.flow.load}</li>
                       <li className="lua-branches">
                         <ul>
