@@ -2,109 +2,59 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { FiArrowUpRight } from 'react-icons/fi';
 import { projects } from '../data/experience';
 import { itemIn } from './motionPresets';
+import QuotaDemo from './QuotaDemo';
 
+// The quota-meter as a "lab": the story and its proof on the left, the live demo as the
+// one elevated console on the right. No outer card, so nothing is a box inside a box.
 export default function Projects() {
-  const shouldReduceMotion = useReducedMotion();
+  const reduceMotion = useReducedMotion();
   const flagship = projects.find((project) => project.flagship);
   const others = projects.filter((project) => !project.flagship);
+  if (!flagship) return null;
 
   return (
-    <div className="room room--coral">
+    <div className="section section--lab">
       <div className="page-shell">
         <header className="section-head">
-          <p className="section-kicker">Projects</p>
+          <p className="kicker">Projects</p>
           <h2 className="section-title">Side projects, built in the open.</h2>
         </header>
 
-        {flagship && (
-          <motion.article className="project-feature" {...itemIn(0, shouldReduceMotion)}>
-            <header className="project-feature-head">
-              <div>
-                <p className="project-flag">Flagship project</p>
-                <h3 className="project-title">{flagship.name}</h3>
-              </div>
-              {flagship.url && (
-                <a href={flagship.url} target="_blank" rel="noopener noreferrer" className="button">
-                  View on GitHub
-                  <FiArrowUpRight aria-hidden="true" />
-                </a>
-              )}
-            </header>
+        <article className="lab">
+          <motion.div className="lab-story" {...itemIn(0, reduceMotion)}>
+            <p className="card-name">quota-meter · open source</p>
+            <h3 className="project-title">{flagship.name}</h3>
+            <p className="lab-text">{flagship.problem} {flagship.solution}</p>
 
-            <div className="project-feature-body">
-              <dl className="project-story">
-                <div>
-                  <dt>Problem</dt>
-                  <dd>{flagship.problem}</dd>
+            <dl className="stat-bar">
+              {flagship.metrics.map(({ value, label }) => (
+                <div key={label}>
+                  <dt>{value}</dt>
+                  <dd>{label}</dd>
                 </div>
-                <div>
-                  <dt>Built</dt>
-                  <dd>{flagship.solution}</dd>
-                </div>
-                {flagship.tested && (
-                  <div>
-                    <dt>Tested</dt>
-                    <dd>{flagship.tested}</dd>
-                  </div>
-                )}
-              </dl>
+              ))}
+            </dl>
+            <p className="lab-text">{flagship.tested}</p>
 
-              <div className="project-feature-side">
-                {flagship.flow && (
-                  <figure className="lua-flow" aria-labelledby="lua-flow-title">
-                    <figcaption id="lua-flow-title" className="role-label">{flagship.flow.title}</figcaption>
-                    <ol className="lua-flow-steps">
-                      {/* Start dot, then a side exit for replays: it ends there and never
-                          joins the main path, which starts at "New request". */}
-                      <li className="lua-start" aria-hidden="true" />
-                      <li className="lua-exit-row">
-                        <span className="lua-node lua-node--exit">{flagship.flow.replay}</span>
-                      </li>
-                      <li className="lua-node">{flagship.flow.load}</li>
-                      <li className="lua-branches">
-                        <ul>
-                          {flagship.flow.branches.map((branch) => (
-                            <li key={branch} className="lua-node">{branch}</li>
-                          ))}
-                        </ul>
-                      </li>
-                      <li className="lua-node lua-node--save">{flagship.flow.save}</li>
-                    </ol>
-                  </figure>
-                )}
-              </div>
+            <div className="lab-actions">
+              <a href={flagship.url} target="_blank" rel="noopener noreferrer" className="btn">
+                View on GitHub
+                <FiArrowUpRight aria-hidden="true" />
+              </a>
             </div>
+          </motion.div>
 
-            {flagship.metrics?.length > 0 && (
-              <dl className="project-metrics">
-                {flagship.metrics.map(({ value, label }) => (
-                  <div key={label}>
-                    <dt>{value}</dt>
-                    <dd>{label}</dd>
-                  </div>
-                ))}
-              </dl>
-            )}
-          </motion.article>
-        )}
+          <motion.div className="lab-console" {...itemIn(1, reduceMotion)}>
+            {flagship.flow && <QuotaDemo flow={flagship.flow} />}
+          </motion.div>
+        </article>
 
-        {others.length > 0 && (
-          <ul className="project-list">
-            {others.map((project, index) => (
-              <motion.li key={project.name} className="project-row" {...itemIn(index + 1, shouldReduceMotion)}>
-                <h3 className="project-row-title">
-                  {project.url ? (
-                    <a href={project.url} target="_blank" rel="noopener noreferrer">
-                      {project.name}
-                      <FiArrowUpRight aria-hidden="true" />
-                    </a>
-                  ) : project.name}
-                </h3>
-                <p>{project.problem} {project.solution}</p>
-              </motion.li>
-            ))}
-          </ul>
-        )}
+        {others.map((project) => (
+          <a key={project.name} className="project-also" href={project.url} target="_blank" rel="noopener noreferrer">
+            <span>Also: <span className="project-also-name">{project.name}</span>. {project.solution}</span>
+            <FiArrowUpRight aria-hidden="true" />
+          </a>
+        ))}
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ import { ThemeProvider } from './context/ThemeContext';
 
 import Header from './components/Header';
 import Hero from './components/Hero';
-import Platform from './components/Platform';
+import Systems from './components/Systems';
 import Experience from './components/Experience';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
@@ -38,9 +38,10 @@ export default function App() {
           <Header />
           <main>
             <Hero />
-            <section id="platform"><Platform /></section>
-            <section id="experience"><Experience /></section>
+            {/* Order is the same at every width (Iteration 2 design). */}
+            <section id="platform"><Systems /></section>
             <section id="projects"><Projects /></section>
+            <section id="experience"><Experience /></section>
             <section id="skills"><Skills /></section>
             <section id="recommendations"><Testimonials /></section>
           </main>

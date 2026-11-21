@@ -6,8 +6,8 @@ import AppLink from './AppLink';
 
 const NAV = [
   { label: 'Platform', href: '#platform' },
-  { label: 'Work', href: '#experience' },
   { label: 'Projects', href: '#projects' },
+  { label: 'Work', href: '#experience' },
   { label: 'Skills', href: '#skills' },
   { label: 'Recommendations', href: '#recommendations' },
   { label: 'Contact', href: '#contact' },

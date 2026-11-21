@@ -1,80 +1,136 @@
+import { motion, useMotionValue, useReducedMotion, useSpring, useTransform } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
 import {
   SiAmazoncloudwatch, SiAmazons3, SiAmazonsqs, SiAwsfargate, SiAwslambda, SiCelery, SiCplusplus,
   SiDocker, SiFastapi, SiGitlab, SiGrafana, SiJavascript, SiMongodb, SiMysql, SiNodedotjs,
   SiPrometheus, SiPytest, SiPython, SiRabbitmq, SiRedis, SiSelenium,
 } from 'react-icons/si';
-import {
-  TbApi, TbBolt, TbHexagons, TbMasksTheater, TbShieldCode, TbShieldSearch, TbSql, TbStack2,
-} from 'react-icons/tb';
+import { TbMasksTheater, TbStack2 } from 'react-icons/tb';
 import { tools } from '../data/skills';
 
-// Icons sit in the room's ink colour and take their brand colour on hover. Concepts
-// without a brand mark (REST APIs, SAST, …) use Tabler line icons and the accent colour.
+// Icon + brand colour. Icons rest in the text colour and take the brand colour on hover.
+// CloudFormation and Playwright have no Simple Icons mark, so they use Tabler line icons.
 const ICONS = {
   Python: [SiPython, '#3776AB'],
   Redis: [SiRedis, '#DC382D'],
-  FastAPI: [SiFastapi, '#009688'],
-  Docker: [SiDocker, '#2496ED'],
-  'AWS Lambda': [SiAwslambda, '#FF9900'],
   Celery: [SiCelery, '#37814A'],
-  MongoDB: [SiMongodb, '#47A248'],
-  RabbitMQ: [SiRabbitmq, '#FF6600'],
   'ECS / Fargate': [SiAwsfargate, '#FF9900'],
-  'Node.js': [SiNodedotjs, '#339933'],
-  'Amazon SQS': [SiAmazonsqs, '#FF4F8B'],
-  JavaScript: [SiJavascript, '#E3C400'],
-  S3: [SiAmazons3, '#569A31'],
-  MySQL: [SiMysql, '#4479A1'],
-  'REST APIs': [TbApi],
+  'AWS Lambda': [SiAwslambda, '#FF9900'],
+  Docker: [SiDocker, '#2496ED'],
   'GitLab CI/CD': [SiGitlab, '#FC6D26'],
-  Microservices: [TbHexagons],
-  'Event-driven architecture': [TbBolt],
+  FastAPI: [SiFastapi, '#009688'],
+  'Node.js': [SiNodedotjs, '#339933'],
+  JavaScript: [SiJavascript, '#E3C400'],
+  'C++': [SiCplusplus, '#00599C'],
+  MongoDB: [SiMongodb, '#47A248'],
+  MySQL: [SiMysql, '#4479A1'],
+  RabbitMQ: [SiRabbitmq, '#FF6600'],
+  'Amazon SQS': [SiAmazonsqs, '#FF4F8B'],
+  S3: [SiAmazons3, '#569A31'],
   CloudFormation: [TbStack2, '#FF4F8B'],
   'AWS CloudWatch': [SiAmazoncloudwatch, '#FF4F8B'],
   Prometheus: [SiPrometheus, '#E6522C'],
   Grafana: [SiGrafana, '#F46800'],
-  SQL: [TbSql],
   Pytest: [SiPytest, '#0A9EDC'],
   Playwright: [TbMasksTheater, '#2EAD33'],
   Selenium: [SiSelenium, '#43B02A'],
-  SAST: [TbShieldCode],
-  VAPT: [TbShieldSearch],
-  'C++': [SiCplusplus, '#00599C'],
 };
 
-// Deterministic, varied float rhythm per tile (no two neighbours move in step).
-const floatStyle = (index) => ({
-  '--float-duration': `${4.6 + ((index * 7) % 5) * 0.55}s`,
+// Long names may break at an inner capital ("Cloud|Formation") on narrow tiles, never mid-word.
+const breakable = (name) => name.split(/(?<=[a-z])(?=[A-Z])/).flatMap((part, i) => (i ? [<wbr key={i} />, part] : [part]));
+
+const logoTools = tools.filter((tool) => !tool.concept && ICONS[tool.name]);
+const concepts = tools.filter((tool) => tool.concept);
+
+// Spread the seven larger tiles through the cloud instead of bunching them in row one.
+const primaries = logoTools.filter((tool) => tool.primary);
+const others = logoTools.filter((tool) => !tool.primary);
+const cloud = [];
+for (let i = 0; i < others.length || primaries.length; i += 1) {
+  if (i % 3 === 1 && primaries.length) cloud.push(primaries.shift());
+  if (i < others.length) cloud.push(others[i]);
+}
+while (primaries.length) cloud.push(primaries.shift());
+
+// Deterministic depth and float rhythm per tile, so no two neighbours move in step.
+const DEPTHS = [-40, 30, 70, -10, 45, -55, 15, 55, -25];
+const tileStyle = (index, brand) => ({
+  '--z': `${DEPTHS[index % DEPTHS.length]}px`,
+  '--float-duration': `${5 + ((index * 7) % 5) * 0.6}s`,
   '--float-delay': `${-((index * 0.83) % 4).toFixed(2)}s`,
-  '--float-distance': `${index % 3 === 0 ? 7 : 5}px`,
+  '--float-distance': `${index % 3 === 0 ? 10 : 6}px`,
+  '--brand': brand,
 });
 
 export default function Skills() {
+  const reduceMotion = useReducedMotion();
+  const stageRef = useRef(null);
+  const [inView, setInView] = useState(false);
+
+  // Pointer position (−0.5…0.5) → a spring-smoothed tilt of the whole cloud.
+  const px = useMotionValue(0);
+  const py = useMotionValue(0);
+  const spring = { stiffness: 110, damping: 18, mass: 0.6 };
+  const rotateY = useSpring(useTransform(px, [-0.5, 0.5], [-12, 12]), spring);
+  const rotateX = useSpring(useTransform(py, [-0.5, 0.5], [16, 0]), spring);
+
+  // Float only while the section is on screen.
+  useEffect(() => {
+    const node = stageRef.current;
+    if (!node || typeof IntersectionObserver === 'undefined') return undefined;
+    const observer = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting), { rootMargin: '120px' });
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
+  const onPointerMove = (event) => {
+    if (reduceMotion || event.pointerType !== 'mouse') return;
+    const rect = event.currentTarget.getBoundingClientRect();
+    px.set((event.clientX - rect.left) / rect.width - 0.5);
+    py.set((event.clientY - rect.top) / rect.height - 0.5);
+  };
+  const onPointerLeave = () => {
+    px.set(0);
+    py.set(0);
+  };
+
   return (
-    <div className="room room--teal">
+    <div className="section section--tools">
       <div className="page-shell">
         <header className="section-head">
-          <p className="section-kicker">Skills</p>
-          <h2 className="section-title">Tools I use.</h2>
+          <p className="kicker">Skills</p>
+          <h2 className="section-title">Tools I work with.</h2>
+          <p className="section-dek">The larger tiles are the tools behind the production work above.</p>
         </header>
 
-        <ul className="tool-cloud" aria-label="Tools">
-          {tools.map(({ name, primary }, index) => {
-            const [Icon, brand] = ICONS[name] || [TbApi];
-            return (
-              <li
-                key={name}
-                className={`tool ${primary ? 'tool--primary' : ''}`}
-                style={floatStyle(index)}
-              >
-                <span className="tool-chip" style={brand ? { '--brand': brand } : undefined}>
-                  <span className="tool-icon" aria-hidden="true"><Icon /></span>
-                  <span className="tool-name">{name}</span>
-                </span>
-              </li>
-            );
-          })}
-        </ul>
+        <div
+          ref={stageRef}
+          className="tool-stage"
+          data-running={inView && !reduceMotion ? 'true' : 'false'}
+          onPointerMove={onPointerMove}
+          onPointerLeave={onPointerLeave}
+        >
+          <motion.ul className="tool-cloud" style={reduceMotion ? undefined : { rotateX, rotateY }}>
+            {cloud.map(({ name, primary }, index) => {
+              const [Icon, brand] = ICONS[name];
+              return (
+                <li key={name} className={`tool ${primary ? 'tool--primary' : ''}`} style={tileStyle(index, brand)}>
+                  <span className="tool-chip">
+                    <span className="tool-icon" aria-hidden="true"><Icon /></span>
+                    <span className="tool-name">{breakable(name)}</span>
+                  </span>
+                </li>
+              );
+            })}
+          </motion.ul>
+        </div>
+
+        <div className="tool-also">
+          <p className="strip-title">Also</p>
+          <ul className="toolbox-chips">
+            {concepts.map(({ name }) => <li key={name} className="chip">{name}</li>)}
+          </ul>
+        </div>
       </div>
     </div>
   );

@@ -1,35 +1,37 @@
-// One flat list, no categories (Arihant, 2026-11-20). The order is curated to mix
-// languages, data, cloud and testing so it never reads as resume lanes.
-// `primary` marks the tools the resume bolds (Python, FastAPI, MongoDB, AWS); they
-// render larger. Check the Skills rules in CLAUDE.md before adding anything.
+// Skills, decided 2026-11-21: 28 tools, the same 28 as README.md. Check the Skills
+// rules in CLAUDE.md before adding anything.
+// - primary: used in the production work on this page; rendered as a larger tile.
+// - concept: no logo (a practice, not a product); listed as text under the cloud.
 export const tools = [
   { name: 'Python', primary: true },
-  { name: 'Redis' },
-  { name: 'FastAPI', primary: true },
-  { name: 'Docker' },
+  { name: 'Redis', primary: true },
+  { name: 'Celery', primary: true },
+  { name: 'ECS / Fargate', primary: true },
   { name: 'AWS Lambda', primary: true },
-  { name: 'Celery' },
-  { name: 'MongoDB', primary: true },
-  { name: 'RabbitMQ' },
-  { name: 'ECS / Fargate' },
+  { name: 'Docker', primary: true },
+  { name: 'GitLab CI/CD', primary: true },
+  { name: 'FastAPI' },
   { name: 'Node.js' },
-  { name: 'Amazon SQS' },
   { name: 'JavaScript' },
-  { name: 'S3' },
+  { name: 'C++' },
+  { name: 'MongoDB' },
   { name: 'MySQL' },
-  { name: 'REST APIs' },
-  { name: 'GitLab CI/CD' },
-  { name: 'Microservices' },
-  { name: 'Event-driven architecture' },
+  { name: 'RabbitMQ' },
+  { name: 'Amazon SQS' },
+  { name: 'S3' },
   { name: 'CloudFormation' },
   { name: 'AWS CloudWatch' },
   { name: 'Prometheus' },
   { name: 'Grafana' },
-  { name: 'SQL' },
   { name: 'Pytest' },
   { name: 'Playwright' },
   { name: 'Selenium' },
-  { name: 'SAST' },
-  { name: 'VAPT' },
-  { name: 'C++' },
+  { name: 'SQL', concept: true },
+  { name: 'REST APIs', concept: true },
+  { name: 'Microservices', concept: true },
+  { name: 'Event-driven architecture', concept: true },
+  { name: 'Security', concept: true },
 ];
+
+// All 28 names, for anything that needs the flat list.
+export const allTools = tools.map((tool) => tool.name);
