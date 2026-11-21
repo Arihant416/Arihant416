@@ -1,122 +1,78 @@
-import { Fragment } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { workExperience } from '../data/experience';
 import { itemIn } from './motionPresets';
+import { keepRanges, outcomeText, rich } from './text';
 
-// Keep number ranges like "2–3" or "60–70%" on one line (invisible word joiner after the dash).
-const keepRanges = (text) => text.replace(/(\d)–(\d)/g, '$1–⁠$2');
+// One timeline, newest role first. Each fact appears once on the page:
+// - a role flagged `systemCards` shows its `built` items as the system cards instead;
+// - outcomes with a `placement` (e.g. DR in the hero map) are shown there instead;
+// - a metric whose figure already appears in the role's outcomes is not repeated.
+const figureOf = (value) => value.replace(/^[−+-]/, '');
 
-// Renders **key figures** in bold. The data uses ** as the only markup.
-const rich = (text) => keepRanges(text).split('**').map((part, index) => (
-  index % 2 === 1 ? <strong key={index}>{part}</strong> : <Fragment key={index}>{part}</Fragment>
-));
-
-const roleId = (company, title) => `role-${`${company}-${title}`.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
-
-function RoleBlock({ role, company }) {
-  const headingId = roleId(company, role.title);
+function RoleItem({ role, company, index, reduceMotion }) {
+  const outcomes = (role.outcomes || []).filter((o) => typeof o === 'string' || !o.placement).map(outcomeText);
+  const shown = outcomes.join(' ');
+  const built = role.systemCards ? [] : (role.built || []);
+  const metrics = (role.metrics || []).filter((m) => !shown.includes(figureOf(m.value)));
+  const hasMore = built.length > 0 || metrics.length > 0;
 
   return (
-    <div className="role" role="group" aria-labelledby={headingId}>
-      <header className="role-aside">
-        <h4 id={headingId} className="role-title">{role.title}</h4>
-        <p className="role-meta">
-          <span>{role.date}</span>
-          <span>{role.location}</span>
-        </p>
+    <motion.li className={`tl-item ${role.date.includes('Present') ? 'is-current' : ''}`} {...itemIn(index, reduceMotion)}>
+      <p className="tl-when">{role.date}</p>
+      <div className="tl-body">
+        <h3 className="tl-role">{role.title}</h3>
+        <p className="tl-org">{role.org || `${company} · ${role.location}`}</p>
         {role.promotedFrom && (
-          <p className="role-badge">
-            <span aria-hidden="true">↑</span> Promoted from {role.promotedFrom}
-          </p>
+          <p className="chip tl-promo"><span aria-hidden="true">↑</span> Promoted from {role.promotedFrom}</p>
         )}
-      </header>
+        <p className="tl-summary">{rich(role.summary)}</p>
 
-      <div className="role-body">
-        <p className="role-summary">{rich(role.summary)}</p>
-
-        {role.outcomes?.length > 0 && (
-          <>
-            <p className="role-label">Outcomes</p>
-            <ul className="role-outcomes" aria-label={`Outcomes as ${role.title}`}>
-              {role.outcomes.map((outcome) => (
-                <li key={outcome}>{rich(outcome)}</li>
-              ))}
-            </ul>
-          </>
+        {outcomes.length > 0 && (
+          <ul className="tl-points" aria-label={`Outcomes as ${role.title}`}>
+            {outcomes.map((text) => <li key={text}>{rich(text)}</li>)}
+          </ul>
         )}
 
-        {role.built?.length > 0 && (
-          <>
-            <p className="role-label">What I built</p>
-            <ul className="built-list" aria-label={`What I built as ${role.title}`}>
-              {role.built.map((item) => (
-                <li key={item.name} className={`built-row tone-${item.tone}`}>
-                  <p className="built-name">{item.name}</p>
-                  <p className="built-text">{rich(item.text)}</p>
-                  {item.stat && (
-                    <p className="built-stat">
-                      <strong>{keepRanges(item.stat.value)}</strong>
-                      <span>{keepRanges(item.stat.label)}</span>
-                      {item.stat.sub && <span>{keepRanges(item.stat.sub)}</span>}
-                    </p>
-                  )}
+
+        {hasMore && (
+          <details className="tl-more">
+            <summary>More from this role</summary>
+            <ul className="tl-points">
+              {built.map((item) => (
+                <li key={item.name}>
+                  <strong>{item.stat ? keepRanges(item.stat.value) : item.name}</strong>
+                  {' '}{item.stat?.label} with {item.name}: {keepRanges(item.text.charAt(0).toLowerCase() + item.text.slice(1))}
                 </li>
               ))}
+              {metrics.map((m) => (
+                <li key={m.label}><strong>{m.value}</strong> {keepRanges(m.label)}</li>
+              ))}
             </ul>
-          </>
-        )}
-
-        {role.metrics?.length > 0 && (
-          <dl className="role-metrics">
-            {role.metrics.map(({ value, label }) => (
-              <div key={label}>
-                <dt>{value}</dt>
-                <dd>{label}</dd>
-              </div>
-            ))}
-          </dl>
+          </details>
         )}
       </div>
-    </div>
-  );
-}
-
-function EmployerBlock({ employer, index, shouldReduceMotion }) {
-  return (
-    <motion.article className="employer" {...itemIn(index, shouldReduceMotion)}>
-      <header className="employer-head">
-        <h3 className="employer-name">{employer.company}</h3>
-        <p className="employer-dates">{employer.date}</p>
-      </header>
-
-      {employer.roles.map((role) => (
-        <RoleBlock key={role.title} role={role} company={employer.company} />
-      ))}
-    </motion.article>
+    </motion.li>
   );
 }
 
 export default function Experience() {
-  const shouldReduceMotion = useReducedMotion();
+  const reduceMotion = useReducedMotion();
+  const roles = workExperience.flatMap((employer) => employer.roles.map((role) => ({ role, company: employer.company })));
 
   return (
-    <div className="home-section">
-      <div className="page-shell">
-        <header className="section-head">
-          <p className="section-kicker">Experience</p>
+    <div className="section">
+      <div className="page-shell experience">
+        <header className="section-head experience-head">
+          <p className="kicker">Experience</p>
           <h2 className="section-title">Product delivery → backend → platform.</h2>
+          <p className="section-dek">5+ years in software engineering, including 4+ in backend engineering.</p>
         </header>
 
-        <div className="employers">
-          {workExperience.map((employer, index) => (
-            <EmployerBlock
-              key={employer.company}
-              employer={employer}
-              index={index}
-              shouldReduceMotion={shouldReduceMotion}
-            />
+        <ol className="tl">
+          {roles.map(({ role, company }, index) => (
+            <RoleItem key={`${company}-${role.title}`} role={role} company={company} index={index} reduceMotion={reduceMotion} />
           ))}
-        </div>
+        </ol>
       </div>
     </div>
   );

@@ -19,11 +19,16 @@ I build the shared infrastructure that 200+ production APIs run on. I work at Pe
 
 ## Tech
 
-- **Languages:** Python, JavaScript, SQL, C++
-- **Backend & system design:** FastAPI, Node.js, Celery, REST APIs, event-driven architecture, microservices
-- **Data & messaging:** Redis, MongoDB, MySQL, RabbitMQ, Amazon SQS
-- **Cloud & infrastructure:** AWS Lambda, ECS/Fargate, S3, CloudFormation, Docker, GitLab CI/CD
-- **Observability, security & testing:** Prometheus, Grafana, AWS CloudWatch, Pytest, Playwright, Selenium, SAST, VAPT
+Where they show up:
+
+- **Python:** 260 APIs moved from 3.9 to 3.12, zero rollbacks
+- **Redis:** session locks; the quota-meter Lua script
+- **Celery + ECS / Fargate:** long-running workers, 3× throughput
+- **AWS Lambda:** concurrent runs kept from racing by the session library
+- **Docker:** 245 APIs containerized
+- **GitLab CI/CD:** the DR switchover pipeline
+
+Also in the toolbox: FastAPI, Node.js, JavaScript, SQL, C++, MongoDB, MySQL, RabbitMQ, Amazon SQS, S3, CloudFormation, AWS CloudWatch, Prometheus, Grafana, REST APIs, Microservices, Event-driven architecture, Pytest, Playwright, Selenium, Security
 
 ---
 
